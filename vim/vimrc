@@ -1,0 +1,83 @@
+let g:airline_powerline_fonts = 1
+let vim_markdown_preview_github=1
+let mapleader = ","
+let g:mapleader = ","
+let g:airline_theme="base16" 
+
+set path+=**
+" set wildmenu
+set clipboard+=unnamedplus
+set nu
+
+set tag=./test.tags
+    set number relativenumber
+
+" save buffer on switch 
+set autowrite
+
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
+
+nmap <silent> <A-Up> :wincmd k<CR>
+nmap <silent> <A-Down> :wincmd j<CR>
+nmap <silent> <A-Left> :wincmd h<CR>
+nmap <silent> <A-Right> :wincmd l<CR>
+
+
+call plug#begin('~/nvim/plugged')
+
+Plug 'kien/ctrlp.vim'
+Plug 'jremmen/vim-ripgrep'
+Plug 'bfredl/nvim-miniyank'
+Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'mhinz/vim-startify'
+
+
+" rest call support 
+Plug 'diepm/vim-rest-console'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" fuzzy search integration
+Plug 'junegunn/fzf.vim'
+
+
+" better status bar 
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'Valloric/YouCompleteMe'
+" git integration
+Plug 'tpope/vim-fugitive'
+
+
+call plug#end()
+
+command! MakeTags !ctags --tag-relative=yes -R -f /home/maren/test.tags --fields=+aimlS --languages=php,cobol --PHP-kinds=+cdfintv --exclude=composer.phar
+
+            
+" fzf ripgrep
+
+if executable("rg")
+    command! -bang -nargs=* Rg
+              \ call fzf#vim#grep(
+          \   'rg --column --line-number --no-heading --color=always --ignore-case <q-args>, 1,
+          \   <bang>0 ? fzf#vim#with_preview('up:60%')
+          \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+          \   <bang>0)
+
+    nnoremap <C-p>a :Rg
+endif
+
+noremap <leader>a :Rg <C-r>=expand('<cWORD>')<CR>
+noremap <leader>/ /<C-r>=expand('<cWORD>')<CR>
+noremap <leader>e :vsplit <C-r>=expand('<cWORD>')<CR>
+noremap <leader>c <C-r>=expand('<cWORD>')<CR> <C-w>p
+
+
+
