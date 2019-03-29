@@ -8,14 +8,23 @@ set path+=**
 " set wildmenu
 set clipboard+=unnamedplus
 set nu
+set number relativenumber
 
-set tag=./test.tags
-    set number relativenumber
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
 
 " save buffer on switch 
 set autowrite
 
-set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+set tabstop=4 softtabstop=4 expandtab shiftwidth=4 shiftround smarttab
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
 
 augroup numbertoggle
@@ -24,6 +33,8 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
+:set foldmethod=indent
+:set foldlevel=2
 
 nmap <silent> <A-Up> :wincmd k<CR>
 nmap <silent> <A-Down> :wincmd j<CR>
@@ -33,12 +44,17 @@ nmap <silent> <A-Right> :wincmd l<CR>
 
 call plug#begin('~/nvim/plugged')
 
+Plug 'shawncplus/phpcomplete.vim'
+
 Plug 'kien/ctrlp.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'bfredl/nvim-miniyank'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'mhinz/vim-startify'
-
+" linting
+Plug 'w0rp/ale'
+" folding 
+Plug 'swekaj/php-foldexpr.vim'
 
 " rest call support 
 Plug 'diepm/vim-rest-console'
@@ -47,14 +63,26 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " fuzzy search integration
 Plug 'junegunn/fzf.vim'
 
+" powerline 
+Plug 'powerline/powerline'
+
 
 " better status bar 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Valloric/YouCompleteMe'
 " git integration
 Plug 'tpope/vim-fugitive'
 
+Plug 'MattesGroeger/vim-bookmarks'
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
 
 call plug#end()
 
@@ -74,10 +102,32 @@ if executable("rg")
     nnoremap <C-p>a :Rg
 endif
 
+set completeopt=longest,menuone
+
+function! OmniPopup(action)
+    if pumvisible()
+        if a:action == 'j'
+            return "\<C-N>"
+        elseif a:action == 'k'
+            return "\<C-P>"
+        endif
+    endif
+    return a:action
+endfunction
+
+inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
+inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
+
+
 noremap <leader>a :Rg <C-r>=expand('<cWORD>')<CR>
 noremap <leader>/ /<C-r>=expand('<cWORD>')<CR>
 noremap <leader>e :vsplit <C-r>=expand('<cWORD>')<CR>
 noremap <leader>c <C-r>=expand('<cWORD>')<CR> <C-w>p
+noremap <leader>f :Files
+noremap <leader>n <C-w><W_bar> 
+noremap <leader>o <C-w>=
 
-
-
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
