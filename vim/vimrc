@@ -2,7 +2,22 @@ let g:airline_powerline_fonts = 1
 let vim_markdown_preview_github=1
 let mapleader = ","
 let g:mapleader = ","
-let g:airline_theme="base16" 
+let g:airline_theme="onedark" 
+let g:ctrlp_use_caching = 1
+
+set list listchars=tab:»·,trail:·
+set tags=/home/maren/test.tags
+
+autocmd FileType php setlocal omnifunc=phpactor#Complete
+inoremap <C-Space> <C-x><C-o>
+inoremap <C-@> <C-Space>
+
+
+let g:ale_linters = {
+\   'php': ['php'],
+\}
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 1
 
 set path+=**
 " set wildmenu
@@ -34,7 +49,7 @@ augroup numbertoggle
 augroup END
 
 :set foldmethod=indent
-:set foldlevel=2
+:set foldlevel=3
 
 nmap <silent> <A-Up> :wincmd k<CR>
 nmap <silent> <A-Down> :wincmd j<CR>
@@ -44,8 +59,9 @@ nmap <silent> <A-Right> :wincmd l<CR>
 
 call plug#begin('~/nvim/plugged')
 
-Plug 'shawncplus/phpcomplete.vim'
 
+" xdebug vim client
+Plug 'vim-vdebug/vdebug'
 Plug 'kien/ctrlp.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'bfredl/nvim-miniyank'
@@ -55,7 +71,6 @@ Plug 'mhinz/vim-startify'
 Plug 'w0rp/ale'
 " folding 
 Plug 'swekaj/php-foldexpr.vim'
-
 " rest call support 
 Plug 'diepm/vim-rest-console'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -66,7 +81,10 @@ Plug 'junegunn/fzf.vim'
 " powerline 
 Plug 'powerline/powerline'
 
-
+" requires phpactor
+Plug 'phpactor/phpactor' ,  {'do': 'composer install'}
+Plug 'Shougo/deoplete.nvim'
+Plug 'kristijanhusak/deoplete-phpactor'
 " better status bar 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -75,14 +93,6 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'MattesGroeger/vim-bookmarks'
 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
 
 call plug#end()
 
@@ -102,22 +112,7 @@ if executable("rg")
     nnoremap <C-p>a :Rg
 endif
 
-set completeopt=longest,menuone
-
-function! OmniPopup(action)
-    if pumvisible()
-        if a:action == 'j'
-            return "\<C-N>"
-        elseif a:action == 'k'
-            return "\<C-P>"
-        endif
-    endif
-    return a:action
-endfunction
-
-inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
-inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
-
+ set completeopt=longest,menuone
 
 noremap <leader>a :Rg <C-r>=expand('<cWORD>')<CR>
 noremap <leader>/ /<C-r>=expand('<cWORD>')<CR>
@@ -126,8 +121,24 @@ noremap <leader>c <C-r>=expand('<cWORD>')<CR> <C-w>p
 noremap <leader>f :Files
 noremap <leader>n <C-w><W_bar> 
 noremap <leader>o <C-w>=
+noremap <leader>s :w<CR>
+map <leaderer>gb :Gblame
+map <leaderer>gs :Gstatus
+map <leaderer>gc :Gcommit -m
+
+
+    
+autocmd FileType php setlocal omnifunc=phpactor#Complete
+
 
 vnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+yg_
 nnoremap  <leader>y  "+y
 nnoremap  <leader>yy  "+yy
+
+    let g:vdebug_options = {}
+let g:vdebug_options['break_on_open'] = 1
+
+" Mapping '/remote/path' : '/local/path'
+let g:vdebug_options.ide_key='PHPSTORM'
+let g:vdebug_options.path_maps = {"/home/www/work": "/home/maren/work"}
