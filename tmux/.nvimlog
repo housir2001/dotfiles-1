@@ -1,0 +1,8 @@
+INFO  2019-04-05T10:36:43.290 20626 on_process_exit:385: exited: pid=20627 status=0 stoptime=0
+INFO  2019-04-05T10:36:43.291 20626 channel_create_event:207: new channel 3 (function provider#python3#Call[9]..remote#host#Require[10]..provider#pythonx#Require[13]..provider#Poll:3) : {"id": 3, "client": {}, "mode": "rpc", "stream": "job"}
+INFO  2019-04-05T10:36:43.378 20626 on_process_exit:385: exited: pid=20629 status=0 stoptime=0
+INFO  2019-04-05T10:36:43.524 20626 main:592: starting main loop
+INFO  2019-04-05T10:36:43.527 20626 channel_create_event:207: new channel 4 (function airline#extensions#branch#get_head[1]..airline#extensions#branch#head[6]..<SNR>58_update_untracked[33]..airline#async#nvim_vcs_untracked:19) : {"id": 4, "mode": "bytes", "stream": "job"}
+INFO  2019-04-05T10:36:43.529 20626 on_process_exit:385: exited: pid=20631 status=0 stoptime=0
+INFO  2019-04-05T10:40:01.383 20626 on_process_exit:385: exited: pid=20935 status=0 stoptime=0
+INFO  2019-04-05T10:41:21.588 20626 on_process_exit:385: exited: pid=20964 status=0 stoptime=0

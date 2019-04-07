@@ -1,0 +1,48 @@
+INFO  2019-04-01T08:57:23.690 25498 channel_create_event:207: new channel 3 (function airline#extensions#branch#get_head[1]..airline#extensions#branch#head[6]..<SNR>52_update_untracked[33]..airline#async#nvim_vcs_untracked:19) : {"id": 3, "mode": "bytes", "stream": "job"}
+INFO  2019-04-01T08:57:23.694 25498 on_process_exit:385: exited: pid=25566 status=0 stoptime=0
+INFO  2019-04-01T08:58:05.612 25498 on_process_exit:385: exited: pid=25570 status=0 stoptime=0
+INFO  2019-04-01T08:58:46.901 25498 channel_create_event:207: new channel 4 (function provider#clipboard#Call[6]..15:31) : {"id": 4, "mode": "bytes", "stream": "job"}
+INFO  2019-04-01T08:58:46.969 25498 os_proc_tree_kill:96: sending SIGTERM to process group: -25577
+INFO  2019-04-01T08:58:46.970 25498 channel_create_event:207: new channel 5 (function provider#clipboard#Call[6]..15:31) : {"id": 5, "mode": "bytes", "stream": "job"}
+INFO  2019-04-01T08:58:46.970 25498 on_process_exit:385: exited: pid=25577 status=0 stoptime=126416011455535
+INFO  2019-04-01T08:59:35.320 25498 os_proc_tree_kill:96: sending SIGTERM to process group: -25579
+INFO  2019-04-01T08:59:35.322 25498 channel_create_event:207: new channel 6 (function provider#clipboard#Call[6]..15:31) : {"id": 6, "mode": "bytes", "stream": "job"}
+INFO  2019-04-01T08:59:35.323 25498 on_process_exit:385: exited: pid=25579 status=0 stoptime=126464363288192
+INFO  2019-04-01T08:59:38.094 25498 channel_create_event:207: new channel 7 (function airline#extensions#branch#get_head[1]..airline#extensions#branch#head[6]..<SNR>52_update_untracked[33]..airline#async#nvim_vcs_untracked:19) : {"id": 7, "mode": "bytes", "stream": "job"}
+INFO  2019-04-01T08:59:38.102 25498 on_process_exit:385: exited: pid=25705 status=0 stoptime=0
+INFO  2019-04-01T08:59:43.879 25498 on_process_exit:385: exited: pid=25706 status=0 stoptime=0
+INFO  2019-04-01T08:59:52.805 25498 on_process_exit:385: exited: pid=25710 status=0 stoptime=0
+INFO  2019-04-01T08:59:52.846 25498 on_process_exit:385: exited: pid=25712 status=0 stoptime=0
+INFO  2019-04-01T08:59:53.188 25498 on_process_exit:385: exited: pid=25713 status=0 stoptime=0
+INFO  2019-04-01T08:59:53.201 25498 on_process_exit:385: exited: pid=25716 status=0 stoptime=0
+INFO  2019-04-01T08:59:53.213 25498 on_process_exit:385: exited: pid=25719 status=0 stoptime=0
+INFO  2019-04-01T08:59:53.229 25498 on_process_exit:385: exited: pid=25722 status=0 stoptime=0
+INFO  2019-04-01T08:59:53.239 25498 on_process_exit:385: exited: pid=25725 status=0 stoptime=0
+INFO  2019-04-01T08:59:53.256 25498 on_process_exit:385: exited: pid=25728 status=0 stoptime=0
+INFO  2019-04-01T08:59:53.267 25498 on_process_exit:385: exited: pid=25731 status=0 stoptime=0
+INFO  2019-04-01T08:59:53.281 25498 on_process_exit:385: exited: pid=25734 status=0 stoptime=0
+INFO  2019-04-01T08:59:53.297 25498 on_process_exit:385: exited: pid=25737 status=0 stoptime=0
+INFO  2019-04-01T08:59:53.306 25498 on_process_exit:385: exited: pid=25740 status=0 stoptime=0
+INFO  2019-04-01T08:59:53.319 25498 channel_create_event:207: new channel 8 (function <SNR>2_install[1]..<SNR>2_update_impl[108]..<SNR>2_update_vim[4]..<SNR>2_tick[33]..<SNR>2_spawn:17) : {"id": 8, "mode": "bytes", "stream": "job"}
+INFO  2019-04-01T08:59:53.328 25498 on_process_exit:385: exited: pid=25746 status=0 stoptime=0
+INFO  2019-04-01T08:59:53.339 25498 on_process_exit:385: exited: pid=25750 status=0 stoptime=0
+INFO  2019-04-01T08:59:53.355 25498 on_process_exit:385: exited: pid=25753 status=0 stoptime=0
+INFO  2019-04-01T08:59:53.364 25498 on_process_exit:385: exited: pid=25756 status=0 stoptime=0
+INFO  2019-04-01T08:59:53.377 25498 on_process_exit:385: exited: pid=25759 status=0 stoptime=0
+INFO  2019-04-01T08:59:53.398 25498 on_process_exit:385: exited: pid=25762 status=0 stoptime=0
+INFO  2019-04-01T08:59:53.421 25498 on_process_exit:385: exited: pid=25765 status=0 stoptime=0
+INFO  2019-04-01T08:59:53.444 25498 on_process_exit:385: exited: pid=25768 status=0 stoptime=0
+INFO  2019-04-01T08:59:54.754 25498 on_process_exit:385: exited: pid=25743 status=0 stoptime=0
+INFO  2019-04-01T08:59:54.795 25498 on_process_exit:385: exited: pid=25778 status=0 stoptime=0
+INFO  2019-04-01T08:59:54.878 25498 on_process_exit:385: exited: pid=25780 status=0 stoptime=0
+INFO  2019-04-01T08:59:54.883 25498 channel_create_event:207: new channel 9 (function provider#python3#Call[9]..remote#host#Require[10]..provider#pythonx#Require[13]..provider#Poll:3) : {"id": 9, "client": {}, "mode": "rpc", "stream": "job"}
+INFO  2019-04-01T08:59:55.097 25498 on_process_exit:385: exited: pid=25783 status=0 stoptime=0
+INFO  2019-04-01T09:03:30.396 25498 on_process_exit:385: exited: pid=25704 status=0 stoptime=0
+INFO  2019-04-01T10:42:18.872 25498 os_proc_tree_kill:96: sending SIGTERM to process group: -25781
+INFO  2019-04-01T10:42:18.898 25498 on_process_exit:385: exited: pid=25781 status=0 stoptime=132627915059905
+INFO  2019-04-01T10:42:18.898 25498 mch_exit:152: Nvim exit: 0
+INFO  2019-04-04T16:46:59.806 21795 channel_create_event:207: new channel 4 (function airline#extensions#branch#get_head[1]..airline#extensions#branch#head[6]..<SNR>57_update_untracked[33]..airline#async#nvim_vcs_untracked:19) : {"id": 4, "mode": "bytes", "stream": "job"}
+INFO  2019-04-04T16:46:59.809 21795 on_process_exit:385: exited: pid=21801 status=0 stoptime=0
+INFO  2019-04-04T16:47:01.803 21795 os_proc_tree_kill:96: sending SIGTERM to process group: -21797
+INFO  2019-04-04T16:47:01.820 21795 on_process_exit:385: exited: pid=21797 status=0 stoptime=252214408827201
+INFO  2019-04-04T16:47:01.820 21795 mch_exit:152: Nvim exit: 0

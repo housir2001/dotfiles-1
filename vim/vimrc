@@ -68,6 +68,7 @@ Plug 'bfredl/nvim-miniyank'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'mhinz/vim-startify'
 " linting
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'w0rp/ale'
 " folding 
 Plug 'swekaj/php-foldexpr.vim'
@@ -77,7 +78,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " fuzzy search integration
 Plug 'junegunn/fzf.vim'
-
+Plug 'matze/vim-move'
 " powerline 
 Plug 'powerline/powerline'
 
@@ -122,11 +123,17 @@ noremap <leader>f :Files
 noremap <leader>n <C-w><W_bar> 
 noremap <leader>o <C-w>=
 noremap <leader>s :w<CR>
-map <leaderer>gb :Gblame
-map <leaderer>gs :Gstatus
-map <leaderer>gc :Gcommit -m
+noremap <leader>gb :Gblame<CR>
+noremap <leader>gs :Gstatus<CR>
+noremap <leader>gc :Gcommit -m
 
+let g:tmux_navigator_no_mappings = 1
 
+nnoremap <silent> {Left-Mapping} :TmuxNavigateLeft<cr>
+nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
+nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
+nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
+nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
     
 autocmd FileType php setlocal omnifunc=phpactor#Complete
 
