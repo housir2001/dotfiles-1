@@ -2,15 +2,19 @@ let g:airline_powerline_fonts = 1
 let vim_markdown_preview_github=1
 let mapleader = ","
 let g:mapleader = ","
+
 let g:airline_theme="onedark" 
 let g:ctrlp_use_caching = 1
+
+
+
 
 set list listchars=tab:»·,trail:·
 set tags=/home/maren/test.tags
 
-autocmd FileType php setlocal omnifunc=phpactor#Complete
-inoremap <C-Space> <C-x><C-o>
-inoremap <C-@> <C-Space>
+" autocmd FileType php setlocal omnifunc=phpactor#Complete
+" inoremap <C-Space> <C-x><C-o>
+" inoremap <C-@> <C-Space>
 
 
 let g:ale_linters = {
@@ -18,13 +22,14 @@ let g:ale_linters = {
 \}
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 1
+let $PATH=$PATH . ':' . expand('~/.config/composer/vendor/bin')
 
+let g:padawan#composer_command = "/usr/bin/composer"
 set path+=**
 " set wildmenu
 set clipboard+=unnamedplus
 set nu
 set number relativenumber
-
 set hlsearch
 set incsearch
 set ignorecase
@@ -51,22 +56,21 @@ augroup END
 :set foldmethod=indent
 :set foldlevel=3
 
-nmap <silent> <A-Up> :wincmd k<CR>
-nmap <silent> <A-Down> :wincmd j<CR>
-nmap <silent> <A-Left> :wincmd h<CR>
-nmap <silent> <A-Right> :wincmd l<CR>
-
 
 call plug#begin('~/nvim/plugged')
 
-
 " xdebug vim client
+" debbugging
 Plug 'vim-vdebug/vdebug'
-Plug 'kien/ctrlp.vim'
+
 Plug 'jremmen/vim-ripgrep'
-Plug 'bfredl/nvim-miniyank'
+" Plug 'bfredl/nvim-miniyank'
+
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'mhinz/vim-startify'
+Plug 'mkusher/padawan.vim'
+Plug 'scrooloose/nerdtree'
+
 " linting
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'w0rp/ale'
@@ -75,30 +79,43 @@ Plug 'swekaj/php-foldexpr.vim'
 " rest call support 
 Plug 'diepm/vim-rest-console'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
+Plug 'scrooloose/nerdcommenter'
 " fuzzy search integration
 Plug 'junegunn/fzf.vim'
+" move lines in visual mode with movement keys
 Plug 'matze/vim-move'
 " powerline 
 Plug 'powerline/powerline'
+" theme
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 " requires phpactor
-Plug 'phpactor/phpactor' ,  {'do': 'composer install'}
-Plug 'Shougo/deoplete.nvim'
+
+Plug 'padawan-php/deoplete-padawan'
 Plug 'kristijanhusak/deoplete-phpactor'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+Plug 'padawan-php/deoplete-padawan', { 'do': 'composer install' }
+
 " better status bar 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
 " git integration
 Plug 'tpope/vim-fugitive'
 
-Plug 'MattesGroeger/vim-bookmarks'
+Plug 'vimwiki/vimwiki'
 
+Plug 'rafi/vim-unite-issue'
 
+Plug 'mattn/webapi-vim' 
+Plug 'tyru/open-browser.vim' 
+Plug 'Shougo/unite.vim'
 call plug#end()
 
 command! MakeTags !ctags --tag-relative=yes -R -f /home/maren/test.tags --fields=+aimlS --languages=php,cobol --PHP-kinds=+cdfintv --exclude=composer.phar
 
+let g:deoplete#enable_at_startup = 1
             
 " fzf ripgrep
 
@@ -113,12 +130,19 @@ if executable("rg")
     nnoremap <C-p>a :Rg
 endif
 
- set completeopt=longest,menuone
+set completeopt=longest,menuone
+
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
+nmap <c-s> :w<CR>
+vmap <c-s> <Esc><c-s>gv
+imap <c-s> <Esc><c-s>
 
 noremap <leader>a :Rg <C-r>=expand('<cWORD>')<CR>
 noremap <leader>/ /<C-r>=expand('<cWORD>')<CR>
 noremap <leader>e :vsplit <C-r>=expand('<cWORD>')<CR>
-noremap <leader>c <C-r>=expand('<cWORD>')<CR> <C-w>p
 noremap <leader>f :Files
 noremap <leader>n <C-w><W_bar> 
 noremap <leader>o <C-w>=
@@ -126,26 +150,82 @@ noremap <leader>s :w<CR>
 noremap <leader>gb :Gblame<CR>
 noremap <leader>gs :Gstatus<CR>
 noremap <leader>gc :Gcommit -m
+noremap <leader>d :r! date "+\%d.\%m.\%Y"<CR>
 
-let g:tmux_navigator_no_mappings = 1
+noremap <leader>t :execute "!tmux send -t 1 'phpunit --filter " . expand("<cword>") . "' Enter" <CR> 
+noremap <leader>r :execute "!tmux send -t 1 Up Enter" <CR>
 
 nnoremap <silent> {Left-Mapping} :TmuxNavigateLeft<cr>
 nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
 nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
 nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
 nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
-    
+
+
+" open issue under cursor
+noremap <leader>ji :Unite issue:jira -custom-issue-jql=issuekey=<C-r>=expand('<cWORD>')<CR>
+" open all stories in sprint
+noremap <leader>js :Unite issue:jira -custom-issue-jql=(type=Story+OR+type=Bug)+AND+project=BCPO+AND+Sprint+in+openSprints()<CR>
+" open all subtasks
+noremap <leader>jst :Unite issue:jira -custom-issue-jql=parent+in+("<C-r>=expand('<cWORD>')<CR>")
+" open issue in browser
+noremap <leader>jio ! qutebrowser https://jira.sixt.com/browse/<C-r>=expand('<cWORD>')<CR>
+
+
+let g:tmux_navigator_no_mappings = 1
+
 autocmd FileType php setlocal omnifunc=phpactor#Complete
 
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+nmap <c-r> :NERDTreeFind 
+vmap <c-r> :NERDTreeFind 
+imap <c-r> :NERDTreeFind 
+vmap <c-n> :NERDTreeToggle 
+
+map <C-n> :NERDTreeToggle<CR>
 
 vnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+yg_
 nnoremap  <leader>y  "+y
 nnoremap  <leader>yy  "+yy
 
-    let g:vdebug_options = {}
+
+let g:vdebug_options = {}
 let g:vdebug_options['break_on_open'] = 1
 
 " Mapping '/remote/path' : '/local/path'
 let g:vdebug_options.ide_key='PHPSTORM'
 let g:vdebug_options.path_maps = {"/home/www/work": "/home/maren/work"}
+
+let g:NERDTreeDirArrowExpandable = '→'
+let g:NERDTreeDirArrowCollapsible = '⤷'
+
+let g:ycm_semantic_triggers =  {
+  \   'c': ['->', '.'],
+  \   'objc': ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s',
+  \            're!\[.*\]\s'],
+  \   'ocaml': ['.', '#'],
+  \   'cpp,cuda,objcpp': ['->', '.', '::'],
+  \   'perl': ['->'],
+  \   'php': ['->', '::'],
+  \   'cs,d,elixir,go,groovy,java,javascript,julia,perl6,python,scala,typescript,vb': ['.'],
+  \   'ruby,rust': ['.', '::'],
+  \   'lua': ['.', ':'],
+  \   'erlang': [':'],
+  \ }
+
+let g:ycm_semantic_triggers.php =
+\ ['->', '::', '(', 'use ', 'namespace ', '\']
+
+let g:unite_source_issue_jira_priority_table = {
+  \ 10000: '◡', 1: '⚡', 2: 'ᛏ', 3: '●', 4: '○', 5: '▽' }
+
+let g:unite_source_issue_jira_status_table = {
+  \ 1: 'plan', 3: 'develop', 4: 'reopened', 5: 'resolved', 6: 'closed',
+  \ 10000: 'feedback', 10001: 'staged', 10002: 'waiting',
+  \ 10003: 'deployed', 10004: 'pending', 10008: 'review' }
+
+let g:unite_source_issue_jira_type_table = {
+  \ 1: 'bug', 2: 'feature', 3: 'task', 4: 'change', 5: 'sub-task',
+  \ 6: 'epic', 7: 'story', 8: 'system', 9: 'sub-bug' }
+
