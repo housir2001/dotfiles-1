@@ -8,8 +8,6 @@ let g:airline_theme="onedark"
 set list listchars=tab:»·,trail:·
 set tags=/home/maren/test.tags
 
-
-
 let g:ale_linters = {
 \   'php': ['php'],
 \}
@@ -19,7 +17,6 @@ let $PATH=$PATH . ':' . expand('~/.config/composer/vendor/bin')
 
 let g:padawan#composer_command = "/usr/bin/composer"
 set path+=**
-" set wildmenu
 set clipboard+=unnamedplus
 set nu
 set number relativenumber
@@ -59,6 +56,10 @@ call plug#begin('~/nvim/plugged')
 
 " xdebug vim client
 " debbugging
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'Shougo/denite.nvim'
+
 Plug 'vim-vdebug/vdebug'
 Plug 'scrooloose/nerdtree'
 Plug 'dylanaraps/wal'
@@ -73,28 +74,21 @@ Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'mhinz/vim-startify'
 
 " linting
-" Plug 'christoomey/vim-tmux-navigator'
 Plug 'w0rp/ale'
 " folding 
-" Plug 'swekaj/php-foldexpr.vim'
 " rest call support 
 Plug 'diepm/vim-rest-console'
+
+" fuzzy search integration
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
 Plug 'scrooloose/nerdcommenter'
-" fuzzy search integration
-" Plug 'junegunn/fzf.vim'
+
 " move lines in visual mode with movement keys
 Plug 'matze/vim-move'
 
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-
-" requires phpactor
-
-" Plug 'mkusher/padawan.vim'
-" Plug 'kristijanhusak/deoplete-phpactor'
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'padawan-php/deoplete-padawan', { 'do': 'composer install' }
 
 " git integration
 Plug 'tpope/vim-fugitive'
@@ -108,10 +102,7 @@ call plug#end()
 
 command! MakeTags !ctags --tag-relative=yes -R -f /home/maren/test.tags --fields=+aimlS --languages=php,cobol --PHP-kinds=+cdfintv --exclude=composer.phar
 
-" let g:deoplete#enable_at_startup = 1
-            
 " fzf ripgrep
-
 if executable("rg")
     command! -bang -nargs=* Rg
               \ call fzf#vim#grep(
@@ -175,13 +166,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-
-
-
-
 let g:tmux_navigator_no_mappings = 1
-
-" autocmd FileType php setlocal omnifunc=phpactor#Complete
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 nmap <c-r> :NERDTreeFind 
