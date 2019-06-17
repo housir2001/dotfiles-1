@@ -1,9 +1,14 @@
+source ~/dotfiles/vim/.credencials
+
 let g:airline_powerline_fonts = 1
 let vim_markdown_preview_github=1
 let mapleader = ","
 let g:mapleader = ","
 let g:ctrlp_use_caching = 1
 let g:airline_theme="onedark"
+
+let g:ale_sign_column_always = 1
+
 
 set list listchars=tab:»·,trail:·
 set tags=/home/maren/test.tags
@@ -16,6 +21,7 @@ let g:ale_lint_on_text_changed = 1
 let $PATH=$PATH . ':' . expand('~/.config/composer/vendor/bin')
 
 let g:padawan#composer_command = "/usr/bin/composer"
+set spell spelllang=en_us
 set path+=**
 set clipboard+=unnamedplus
 set nu
@@ -29,7 +35,7 @@ set nobackup
 set nowritebackup
 set updatetime=300
 set shortmess+=c
-
+set numberwidth=4 
 " save buffer on switch 
 set autowrite
 
@@ -41,6 +47,9 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
 
 augroup numbertoggle
   autocmd!
@@ -48,25 +57,24 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
-:set foldmethod=indent
-:set foldlevel=3
-
 
 call plug#begin('~/nvim/plugged')
 
 " xdebug vim client
 " debbugging
+
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'Shougo/denite.nvim'
-
+Plug 'andymass/vim-matchup'
+Plug 'zackhsi/fzf-tags'
 Plug 'vim-vdebug/vdebug'
 Plug 'scrooloose/nerdtree'
 Plug 'dylanaraps/wal'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
-
+Plug 'stephpy/vim-php-cs-fixer'
 Plug 'jremmen/vim-ripgrep'
 " Plug 'bfredl/nvim-miniyank'
 
@@ -98,11 +106,23 @@ Plug 'rafi/vim-unite-issue'
 Plug 'mattn/webapi-vim' 
 Plug 'tyru/open-browser.vim' 
 Plug 'Shougo/unite.vim'
+" Track the engine.
+Plug 'majutsushi/tagbar'
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'AdamWhittingham/vim-copy-filename'
 call plug#end()
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+
+let g:matchup_matchparen_status_offscreen = 1
+
 
 command! MakeTags !ctags --tag-relative=yes -R -f /home/maren/test.tags --fields=+aimlS --languages=php,cobol --PHP-kinds=+cdfintv --exclude=composer.phar
 
 " fzf ripgrep
+set completeopt=longest,menuone
+
 if executable("rg")
     command! -bang -nargs=* Rg
               \ call fzf#vim#grep(
@@ -111,76 +131,9 @@ if executable("rg")
           \           : fzf#vim#with_preview('right:50%:hidden', '?'),
           \   <bang>0)
 
-    nnoremap <C-p>a :Rg
 endif
 
-set completeopt=longest,menuone
-
-nmap <silent> <c-k> :wincmd k<CR>
-nmap <silent> <c-j> :wincmd j<CR>
-nmap <silent> <c-h> :wincmd h<CR>
-nmap <silent> <c-l> :wincmd l<CR>
-nmap <c-s> :w<CR>
-vmap <c-s> <Esc><c-s>gv
-imap <c-s> <Esc><c-s>
-
-noremap <leader>a :Rg <C-r>=expand('<cWORD>')<CR>
-noremap <leader>/ /<C-r>=expand('<cWORD>')<CR>
-noremap <leader>e :vsplit <C-r>=expand('<cWORD>')<CR>
-noremap <leader>f :FZF
-noremap <leader>n <C-w><W_bar> 
-noremap <leader>o <C-w>=
-noremap <leader>s :w<CR>
-noremap <leader>gb :Gblame<CR>
-noremap <leader>gs :Gstatus<CR>
-noremap <leader>gc :Gcommit -m
-noremap <leader>d :r! date "+\%d.\%m.\%Y"<CR>
-
-noremap <leader>t :execute "!tmux send -t 1 'phpunit --filter " . expand("<cword>") . "' Enter" <CR> 
-noremap <leader>r :execute "!tmux send -t 1 Up Enter" <CR>
-
-nnoremap <silent> {Left-Mapping} :TmuxNavigateLeft<cr>
-nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
-nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
-nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
-nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
-
-
-" open issue under cursor
-noremap <leader>ji :Unite issue:jira -custom-issue-jql=issuekey=<C-r>=expand('<cWORD>')<CR>
-" open all stories in sprint
-noremap <leader>js :Unite issue:jira -custom-issue-jql=(type=Story+OR+type=Bug)+AND+project=BCPO+AND+Sprint+in+openSprints()<CR>
-" open all subtasks
-noremap <leader>jst :Unite issue:jira -custom-issue-jql=parent+in+("<C-r>=expand('<cWORD>')<CR>")
-" open issue in browser
-noremap <leader>jio ! qutebrowser https://jira.sixt.com/browse/<C-r>=expand('<cWORD>')<CR>
-
-
-
-inoremap <silent><expr> <c-space> coc#refresh()
-
-
-nmap <leader>rn <Plug>(coc-rename)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
 let g:tmux_navigator_no_mappings = 1
-
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-nmap <c-r> :NERDTreeFind 
-vmap <c-r> :NERDTreeFind 
-imap <c-r> :NERDTreeFind 
-vmap <c-n> :NERDTreeToggle 
-
-map <C-n> :NERDTreeToggle<CR>
-
-vnoremap  <leader>y  "+y
-nnoremap  <leader>Y  "+yg_
-nnoremap  <leader>y  "+y
-nnoremap  <leader>yy  "+yy
-
 
 let g:vdebug_options = {}
 let g:vdebug_options['break_on_open'] = 1
@@ -189,9 +142,8 @@ let g:vdebug_options['break_on_open'] = 1
 let g:vdebug_options.ide_key='PHPSTORM'
 let g:vdebug_options.path_maps = {"/home/www/work": "/home/maren/work"}
 
-let g:NERDTreeDirArrowExpandable = '→'
-let g:NERDTreeDirArrowCollapsible = '⤷'
-
+let g:NERDTreeDirArrowExpandable = "🗀'"
+let g:NERDTreeDirArrowCollapsible = "🗁'"
 
 let g:unite_source_issue_jira_priority_table = {
   \ 10000: '◡', 1: '⚡', 2: 'ᛏ', 3: '●', 4: '○', 5: '▽' }
@@ -205,6 +157,7 @@ let g:unite_source_issue_jira_type_table = {
   \ 1: 'bug', 2: 'feature', 3: 'task', 4: 'change', 5: 'sub-task',
   \ 6: 'epic', 7: 'story', 8: 'system', 9: 'sub-bug' }
 
+so ~/dotfiles/vim/mappings.vim
+
 
 colorscheme wal
-
