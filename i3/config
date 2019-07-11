@@ -38,7 +38,7 @@ set $right l
 floating_modifier Mod4
 
 # start a terminal
-bindsym Mod4+Return exec i3-sensible-terminal
+bindsym Mod4+Return exec termite 
 
 # kill focused window
 bindsym Mod4+Shift+q kill
@@ -203,7 +203,7 @@ bar {
     font pango: FontAwesome 8
     status_command i3status --config ~/.config/i3/i3status.conf
     position top
-    tray_output primary
+    tray_output DP
     mode dock
     hidden_state show
     verbose yes
@@ -244,7 +244,9 @@ client.background       $bg
 #bindsym Mod4+y exec vlc 
 
 #lock screen
-bindsym Mod4+o exec /home/maren/.config/i3/script/lock2.sh
+bindsym Mod4+o exec ~/dotfiles/i3/script/lock2.sh
+exec_always xautolock -time 2 -locker '~/dotfiles/i3/script/lock2.sh' &
+
 
 # gaps
 
@@ -253,20 +255,17 @@ gaps outer 0
 smart_gaps on
 
 #compton for window transperncy
-exec_always --no-startup-id "killall -q compton; compton --config ~/.config/i3/compton.conf"
-exec_always --no-startup-id "python3 /home/maren/dotfiles/i3/script/focusResize.py"
+exec_always --no-startup-id "killall -q compton; compton --config ~/dotfiles/i3/compton.conf"
+exec_always --no-startup-id "python3 ~/dotfiles/i3/script/focusResize.py"
 
 
 # Background image
-exec_always wal -i ~/Bilder/49966-red-and-golden-blur-2560x1600-minimalistic-wallpaper.jpg
+exec_always wal  -i  ~/dotfiles/i3/Background.jpg --backend color
+
 # keyboard layout
 exec_always setxkbmap -layout us,de
 
-# monitors
-bindsym Mod4+m exec autorandr --change
-
 #Key Pad binding
-
 bindsym Mod4+Mod2+KP_1 workspace $ws1
 bindsym Mod4+Mod2+KP_2 workspace $ws2
 bindsym Mod4+Mod2+KP_3 workspace $ws3
@@ -320,13 +319,14 @@ for_window [class="Spotify"] floating enable
 
 bindsym Mod4+c exec "qutebrowser -s content.headers.user_agent 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.128 Safari/537.36' https://e-sixt.slack.com/messages/DG04CKPAL/ https://outlook.office365.com/mail/inbox\#authRedirect\=true https://hangouts.google.com/ https://web.skype.com/en/ https://www.deezer.com/en/"
 
-workspace 3 output DP-2-3 
-workspace 2 output DP-2-2-1 
+workspace 2 output DP-2-3 
+workspace 3 output DP-2-2-1 
 workspace 1 output DP-2-2-8 
 
 
+
 assign [class="mpv"] "2" 
-assign [class="pidgin"] "2" 
+assign [class="pidgin"] "9" 
 
 
 ## exec_always autorandr --change

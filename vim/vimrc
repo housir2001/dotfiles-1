@@ -1,5 +1,4 @@
 source ~/dotfiles/vim/.credencials
-
 let g:airline_powerline_fonts = 1
 let vim_markdown_preview_github=1
 let mapleader = ","
@@ -8,7 +7,6 @@ let g:ctrlp_use_caching = 1
 let g:airline_theme="onedark"
 
 let g:ale_sign_column_always = 1
-
 
 set list listchars=tab:»·,trail:·
 set tags=/home/maren/test.tags
@@ -21,7 +19,6 @@ let g:ale_lint_on_text_changed = 1
 let $PATH=$PATH . ':' . expand('~/.config/composer/vendor/bin')
 
 let g:padawan#composer_command = "/usr/bin/composer"
-set spell spelllang=en_us
 set path+=**
 set clipboard+=unnamedplus
 set nu
@@ -38,7 +35,6 @@ set shortmess+=c
 set numberwidth=4 
 " save buffer on switch 
 set autowrite
-
 set tabstop=4 softtabstop=4 expandtab shiftwidth=4 shiftround smarttab
 
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -62,7 +58,7 @@ call plug#begin('~/nvim/plugged')
 
 " xdebug vim client
 " debbugging
-
+Plug 'arcticicestudio/nord-vim'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
@@ -88,8 +84,8 @@ Plug 'w0rp/ale'
 Plug 'diepm/vim-rest-console'
 
 " fuzzy search integration
-Plug 'junegunn/fzf'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 Plug 'scrooloose/nerdcommenter'
 
@@ -107,12 +103,17 @@ Plug 'mattn/webapi-vim'
 Plug 'tyru/open-browser.vim' 
 Plug 'Shougo/unite.vim'
 " Track the engine.
-Plug 'majutsushi/tagbar'
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'AdamWhittingham/vim-copy-filename'
+Plug 'liuchengxu/vista.vim'
+
+Plug 'echuraev/translate-shell.vim'
+
+
 call plug#end()
 
+so ~/dotfiles/vim/functions.vim
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 
 let g:matchup_matchparen_status_offscreen = 1
@@ -140,7 +141,7 @@ let g:vdebug_options['break_on_open'] = 1
 
 " Mapping '/remote/path' : '/local/path'
 let g:vdebug_options.ide_key='PHPSTORM'
-let g:vdebug_options.path_maps = {"/home/www/work": "/home/maren/work"}
+let g:vdebug_options.path_maps = {"/home/www/work": "/home/maren/work" , "/code/web":"/home/maren/development/PartnerGeoService/code/web"}
 
 let g:NERDTreeDirArrowExpandable = "🗀'"
 let g:NERDTreeDirArrowCollapsible = "🗁'"
@@ -157,7 +158,18 @@ let g:unite_source_issue_jira_type_table = {
   \ 1: 'bug', 2: 'feature', 3: 'task', 4: 'change', 5: 'sub-task',
   \ 6: 'epic', 7: 'story', 8: 'system', 9: 'sub-bug' }
 
-so ~/dotfiles/vim/mappings.vim
+let g:vista#renderer#enable_icon = 1
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
 
+
+let g:vista_fzf_preview = ['right:50%']
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+
+
+
+so ~/dotfiles/vim/mappings.vim
 
 colorscheme wal
