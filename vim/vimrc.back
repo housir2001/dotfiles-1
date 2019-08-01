@@ -5,18 +5,11 @@ let mapleader = ","
 let g:mapleader = ","
 let g:ctrlp_use_caching = 1
 let g:airline_theme="onedark"
-set viminfo='100,n$HOME/.vim/files/info/viminfo
+
 let g:ale_sign_column_always = 1
 
 set list listchars=tab:»·,trail:·
 set tags=/home/maren/test.tags
-
-
-autocmd InsertEnter,InsertLeave * set cul!
-
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
-set undodir=~/.vim/undo//
 
 let g:ale_linters = {
 \   'php': ['php'],
@@ -27,7 +20,7 @@ let $PATH=$PATH . ':' . expand('~/.config/composer/vendor/bin')
 
 let g:padawan#composer_command = "/usr/bin/composer"
 set path+=**
-set clipboard=unnamed
+set clipboard+=unnamedplus
 set nu
 set number relativenumber
 set hlsearch
@@ -60,28 +53,35 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
-augroup PatchDiffHighlight
-    autocmd! 
-    autocmd FileType diff           syntax enable
-augroup END
 
 call plug#begin('~/nvim/plugged')
 
 " xdebug vim client
 " debbugging
+Plug 'arcticicestudio/nord-vim'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'Shougo/denite.nvim'
 Plug 'andymass/vim-matchup'
 Plug 'zackhsi/fzf-tags'
 Plug 'vim-vdebug/vdebug'
 Plug 'scrooloose/nerdtree'
+Plug 'dylanaraps/wal'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'stephpy/vim-php-cs-fixer'
 Plug 'jremmen/vim-ripgrep'
+" Plug 'bfredl/nvim-miniyank'
+Plug 'mikelue/vim-maven-plugin'
+Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'mhinz/vim-startify'
 
 " linting
 Plug 'w0rp/ale'
+" folding 
+" rest call support 
+Plug 'diepm/vim-rest-console'
 
 " fuzzy search integration
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -98,12 +98,20 @@ Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'tpope/vim-fugitive'
 
 Plug 'vimwiki/vimwiki'
+Plug 'rafi/vim-unite-issue'
+Plug 'mattn/webapi-vim' 
+Plug 'tyru/open-browser.vim' 
+Plug 'Shougo/unite.vim'
+" Track the engine.
+" Snippets are separated from the engine. Add this if you want them:
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'AdamWhittingham/vim-copy-filename'
 Plug 'liuchengxu/vista.vim'
 
 Plug 'echuraev/translate-shell.vim'
-Plug 'ronakg/quickr-preview.vim'
+
+
+Plug '~/nvim/plugged/eclim'
 
 
 call plug#end()
@@ -112,21 +120,22 @@ so ~/dotfiles/vim/functions.vim
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 
 let g:matchup_matchparen_status_offscreen = 1
-let g:quickr_preview_exit_on_enter = 1
-let g:quickr_preview_on_cursor = 1
+
 
 command! MakeTags !ctags --tag-relative=yes -R -f /home/maren/test.tags --fields=+aimlS --languages=php,cobol --PHP-kinds=+cdfintv --exclude=composer.phar
 
 " fzf ripgrep
 set completeopt=longest,menuone
 
-command! -bang -nargs=* Rg
-\ call fzf#vim#grep(
-\   'rg --column --line-number --no-heading --color=always --ignore-case <q-args>, 5,
-\   <bang>0 ? fzf#vim#with_preview('up:60%')
-\           : fzf#vim#with_preview('right:50%:hidden', '?'),
-\   <bang>0)
+if executable("rg")
+    command! -bang -nargs=* Rg
+              \ call fzf#vim#grep(
+          \   'rg --column --line-number --no-heading --color=always --ignore-case <q-args>, 1,
+          \   <bang>0 ? fzf#vim#with_preview('up:60%')
+          \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+          \   <bang>0)
 
+endif
 
 let g:tmux_navigator_no_mappings = 1
 
@@ -140,16 +149,30 @@ let g:vdebug_options.path_maps = {"/home/www/work": "/home/maren/work" , "/code/
 let g:NERDTreeDirArrowExpandable = "🗀'"
 let g:NERDTreeDirArrowCollapsible = "🗁'"
 
+let g:unite_source_issue_jira_priority_table = {
+  \ 10000: '◡', 1: '⚡', 2: 'ᛏ', 3: '●', 4: '○', 5: '▽' }
+
+let g:unite_source_issue_jira_status_table = {
+  \ 1: 'plan', 3: 'develop', 4: 'reopened', 5: 'resolved', 6: 'closed',
+  \ 10000: 'feedback', 10001: 'staged', 10002: 'waiting',
+  \ 10003: 'deployed', 10004: 'pending', 10008: 'review' }
+
+let g:unite_source_issue_jira_type_table = {
+  \ 1: 'bug', 2: 'feature', 3: 'task', 4: 'change', 5: 'sub-task',
+  \ 6: 'epic', 7: 'story', 8: 'system', 9: 'sub-bug' }
+
 let g:vista#renderer#enable_icon = 1
 let g:vista#renderer#icons = {
 \   "function": "\uf794",
 \   "variable": "\uf71b",
 \  }
 
+
 let g:vista_fzf_preview = ['right:50%']
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 
 
+
 so ~/dotfiles/vim/mappings.vim
 
-colorscheme onehalfdark
+colorscheme wal

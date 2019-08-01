@@ -3,7 +3,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 PATH=$HOME/.composer/vendor/bin:$PATH:
 # Path to your oh-my-zsh installation.
-
+stty -ixon
   export ZSH="/home/maren/.oh-my-zsh"
   ZSH_THEME="agnoster"
 
@@ -123,5 +123,7 @@ source ~/dotfiles/jenkins/cli.sh
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export JAVA_HOME=/usr/lib/jvm/default-java
+export JAVA_SDK=/usr/lib/jvm/default-java
 
 

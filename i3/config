@@ -260,7 +260,7 @@ exec_always --no-startup-id "python3 ~/dotfiles/i3/script/focusResize.py"
 
 
 # Background image
-exec_always wal  -i  ~/dotfiles/i3/Background.jpg --backend color
+exec_always wal --theme ~/dotfiles/i3/theme/dark.json
 
 # keyboard layout
 exec_always setxkbmap -layout us,de
@@ -312,7 +312,8 @@ mode "moveit" {
 }
 
 bindsym Mod4+t focus floating mode "moveit"
-
+bindsym Mod4+b exec "wal --theme ~/dotfiles/i3/theme/dark.json"
+bindsym Mod4+m exec "wal --theme ~/dotfiles/i3/theme/light.json"
 
 for_window [class="Gimp"] floating enable
 for_window [class="Spotify"] floating enable
