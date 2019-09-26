@@ -45,17 +45,17 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 
 config.bind('<Ctrl-Shift-y>', 'hint links spawn --detach mpv --force-window yes {hint-url}')
 
-config.bind('<Ctrl-Shift-p>', 'hint links spawn --verbose --detach /home/maren/.config/i3/script/fillplaylist.sh push {hint-url}')
+config.bind('<Ctrl-Shift-p>', 'hint links spawn --verbose --detach /home/maren/dotfiles/i3/script/fillplaylist.sh push {hint-url}')
 
 config.bind('<Ctrl-Shift-l>', 'hint links spawn --verbose --detach  youtube-dl {hint-url} --output /home/maren/Downloads/ytFiles/%(title)s.%(ext)s')
 
-config.bind('<Ctrl-Shift-o>', 'spawn --detach /home/maren/.config/i3/script/fillplaylist.sh play')
+config.bind('<Ctrl-Shift-o>', 'spawn --detach /home/maren/dotfiles/i3/script/fillplaylist.sh play')
 
 config.bind('<Ctrl-Shift-d>', 'hint links spawn --verbose --detach mpv {hint-url}')
 
 config.set('content.headers.user_agent', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3029.110 Safari/537.36')
 
-config.bind('<Ctrl-Shift-k>', 'open -t /home/maren/.config/i3/script/translate.sh')
+config.bind('<Ctrl-Shift-k>', 'open -t /home/maren/dotfiles/i3/script/translate.sh')
 
 c.fonts.monospace = 'normal 10pt FiraCode'
 

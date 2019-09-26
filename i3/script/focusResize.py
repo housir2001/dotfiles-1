@@ -11,7 +11,7 @@ print('Focused window %s is on workspace %s' %
 
 def on_window_focus(i3, e):
     workspace = i3.get_tree().find_focused().workspace().num
-    i3.command("resize set 1300 1080")
+    i3.command("resize set 1400 1080")
     i3.command('move container to "%s"' % workspace)
     print('move Focused window %s ' %
       (workspace))

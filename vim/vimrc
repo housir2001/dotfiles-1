@@ -1,26 +1,54 @@
-source ~/dotfiles/vim/.credencials
+set noswapfile
 let g:airline_powerline_fonts = 1
 let vim_markdown_preview_github=1
 let mapleader = ","
 let g:mapleader = ","
 let g:ctrlp_use_caching = 1
-let g:airline_theme="onedark"
-
+hi MatchParen cterm=none ctermbg=green ctermfg=blue
 let g:ale_sign_column_always = 1
+syntax on
 
-set list listchars=tab:»·,trail:·
-set tags=/home/maren/test.tags
+" set font color fir code comments to gray 
+hi Comment guifg=#5C6370 ctermfg=59
+
+let g:airline_theme='onehalfdark'
+
+" Your customised tags go first.
+set tags+=~/tags,$DOC/tags,./.tags/tags,./.git/tags
+
+
+let parent_dir = expand("%:p:h")."/"
+
+" search for tags files 
+while match(parent_dir,"/",0)>-1 && isdirectory(parent_dir)
+  let parent_tag = parent_dir."tags"
+  if filereadable(parent_tag)
+    exe ":set tags+=".parent_tag
+  endif
+  let parent_dir = substitute(parent_dir,"[^/]*/$","","")
+endwhile
+let parent_dir = getcwd()."/"
+while match(parent_dir,"/",0)>-1 && isdirectory(parent_dir)
+  let parent_tag = parent_dir."tags"
+  if filereadable(parent_tag)
+    exe ":set tags+=".parent_tag
+  endif
+  let parent_dir = substitute(parent_dir,"[^/]*/$","","")
+endwhile
+
+unlet parent_dir parent_tag
+
+
+let g:easytags_dynamic_files = 1
 
 let g:ale_linters = {
-\   'php': ['php'],
+\   'java': ['java'],
 \}
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 1
-let $PATH=$PATH . ':' . expand('~/.config/composer/vendor/bin')
 
-let g:padawan#composer_command = "/usr/bin/composer"
 set path+=**
-set clipboard+=unnamedplus
+set clipboard=unnamedplus
 set nu
 set number relativenumber
 set hlsearch
@@ -35,17 +63,13 @@ set shortmess+=c
 set numberwidth=4 
 " save buffer on switch 
 set autowrite
-set tabstop=4 softtabstop=4 expandtab shiftwidth=4 shiftround smarttab
+set tabstop=2 softtabstop=2 expandtab shiftwidth=2 shiftround smarttab
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-
-au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-
 
 augroup numbertoggle
   autocmd!
@@ -56,41 +80,38 @@ augroup END
 
 call plug#begin('~/nvim/plugged')
 
-" xdebug vim client
-" debbugging
+
+"themes
 Plug 'arcticicestudio/nord-vim'
+Plug 'liuchengxu/space-vim-dark'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'Shougo/denite.nvim'
+
+" matching pairs {}()[]
 Plug 'andymass/vim-matchup'
-Plug 'zackhsi/fzf-tags'
-Plug 'vim-vdebug/vdebug'
+
+" better dir navigator
 Plug 'scrooloose/nerdtree'
-Plug 'dylanaraps/wal'
+
+" Statusline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'stephpy/vim-php-cs-fixer'
-Plug 'jremmen/vim-ripgrep'
-" Plug 'bfredl/nvim-miniyank'
 
-Plug 'JamshedVesuna/vim-markdown-preview'
+" faster grep
+Plug 'jremmen/vim-ripgrep'
+
+" startpage 
 Plug 'mhinz/vim-startify'
 
 " linting
 Plug 'w0rp/ale'
-" folding 
-" rest call support 
-Plug 'diepm/vim-rest-console'
 
 " fuzzy search integration
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'zackhsi/fzf-tags'
 
+" better code commenting
 Plug 'scrooloose/nerdcommenter'
-
-" move lines in visual mode with movement keys
-Plug 'matze/vim-move'
 
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
@@ -98,28 +119,51 @@ Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'tpope/vim-fugitive'
 
 Plug 'vimwiki/vimwiki'
-Plug 'rafi/vim-unite-issue'
-Plug 'mattn/webapi-vim' 
-Plug 'tyru/open-browser.vim' 
-Plug 'Shougo/unite.vim'
-" Track the engine.
-" Snippets are separated from the engine. Add this if you want them:
+
+" fuzzysearch for buffer and mru files 
 Plug 'ctrlpvim/ctrlp.vim'
+
 Plug 'AdamWhittingham/vim-copy-filename'
+
+" class outlining
 Plug 'liuchengxu/vista.vim'
 
+" translating tool
 Plug 'echuraev/translate-shell.vim'
+
+
+Plug 'mikelue/vim-maven-plugin'
+
+" file preview in quicklist
+Plug 'ronakg/quickr-preview.vim'
+ 
+
+"Java import generator
+Plug 'rustushki/JavaImp.vim'
+ 
+"for formating java code
+Plug 'google/vim-maktaba'
+ Plug 'google/vim-codefmt'
+" Also add Glaive, which is used to configure codefmt's maktaba flags. See
+" `:help :Glaive` for usage.
+Plug 'google/vim-glaive'
+
+" Java debugger 
+Plug 'https://gitlab.com/Dica-Developer/vim-jdb'
+
+" sytax files
+Plug 'uarun/vim-protobuf'
+
+" swagger previer
+Plug 'xavierchow/vim-swagger-preview'
 
 
 call plug#end()
 
-so ~/dotfiles/vim/functions.vim
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+call glaive#Install()
+
 
 let g:matchup_matchparen_status_offscreen = 1
-
-
-command! MakeTags !ctags --tag-relative=yes -R -f /home/maren/test.tags --fields=+aimlS --languages=php,cobol --PHP-kinds=+cdfintv --exclude=composer.phar
 
 " fzf ripgrep
 set completeopt=longest,menuone
@@ -139,37 +183,43 @@ let g:tmux_navigator_no_mappings = 1
 let g:vdebug_options = {}
 let g:vdebug_options['break_on_open'] = 1
 
-" Mapping '/remote/path' : '/local/path'
-let g:vdebug_options.ide_key='PHPSTORM'
-let g:vdebug_options.path_maps = {"/home/www/work": "/home/maren/work" , "/code/web":"/home/maren/development/PartnerGeoService/code/web"}
 
-let g:NERDTreeDirArrowExpandable = "🗀'"
-let g:NERDTreeDirArrowCollapsible = "🗁'"
-
-let g:unite_source_issue_jira_priority_table = {
-  \ 10000: '◡', 1: '⚡', 2: 'ᛏ', 3: '●', 4: '○', 5: '▽' }
-
-let g:unite_source_issue_jira_status_table = {
-  \ 1: 'plan', 3: 'develop', 4: 'reopened', 5: 'resolved', 6: 'closed',
-  \ 10000: 'feedback', 10001: 'staged', 10002: 'waiting',
-  \ 10003: 'deployed', 10004: 'pending', 10008: 'review' }
-
-let g:unite_source_issue_jira_type_table = {
-  \ 1: 'bug', 2: 'feature', 3: 'task', 4: 'change', 5: 'sub-task',
-  \ 6: 'epic', 7: 'story', 8: 'system', 9: 'sub-bug' }
+let g:NERDTreeDirArrowExpandable = "├─▸"
+let g:NERDTreeDirArrowCollapsible = "╰─▸"
+let NERDTreeQuitOnOpen = 0
+let g:NERDTreeWinSize=60
 
 let g:vista#renderer#enable_icon = 1
-let g:vista#renderer#icons = {
 \   "function": "\uf794",
 \   "variable": "\uf71b",
 \  }
+
+let g:vista_executive_for = {
+  \ 'java': 'coc',
+  \ }
+
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 
 let g:vista_fzf_preview = ['right:50%']
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 
+let g:quickr_preview_on_cursor = 1
+let g:quickr_preview_exit_on_enter = 1
 
+Glaive codefmt plugin[mappings]
+Glaive codefmt google_java_executable="java -jar /home/maren/dotfiles/tools/jarfiles/google-java-format-1.7-all-deps.jar"  
 
+" sourcing some additional files
+so ~/dotfiles/vim/.credencials
+so ~/dotfiles/vim/highligters/jbehave.vim
+so ~/dotfiles/vim/functions.vim
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+
+" set the filetype for story files
+au bufreadpre,bufnewfile *.story set ft=jbehave
+
+colorscheme onehalfdark
 so ~/dotfiles/vim/mappings.vim
 
-colorscheme wal

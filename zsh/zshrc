@@ -2,8 +2,11 @@
 export XDG_CONFIG_HOME="$HOME/.config"
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 PATH=$HOME/.composer/vendor/bin:$PATH:
+PATH=$HOME/.local/bin:$PATH:
+PATH=$HOME/.local/locations:$PATH:
+PATH=$HOME/node_modules/.bin:$PATH:
 # Path to your oh-my-zsh installation.
-
+stty -ixon
   export ZSH="/home/maren/.oh-my-zsh"
   ZSH_THEME="agnoster"
 
@@ -68,6 +71,7 @@ plugins=(
   git
   vi-mode
   tmux
+  mvn
   )
 
 source $ZSH/oh-my-zsh.sh
@@ -101,27 +105,46 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias pa="cd /home/maren/work/Partner"
-alias sixt-vagrant="cd /home/maren/vms/DeveloperVM"
+alias unrar='unrar x'
+alias dev='cd ~/development'
+alias untar='tar xzvf'
 alias c='clipcopy'
 alias v='clippaste'
 
+export FQSN='com.sixt.partner.corporate_customer_event_transfer'
+
+alias devp="cd ~/development/${FQSN}"
+
+
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 
-(cat ~/.cache/wal/sequences &)
-
-
 ZSH_TMUX_AUTOSTART=true
 
-source ~/dotfiles/jenkins/cli.sh
+# source ~/dotfiles/jenkins/cli.sh
+cat  ~/.cache/wal/sequences
 
 
-export LANG=en_US.UTF-8
+
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+
+# bindkey -M menuselect 'h' vi-backward-char
+# bindkey -M menuselect 'k' vi-up-line-or-history
+# bindkey -M menuselect 'l' vi-forward-char
+# bindkey -M menuselect 'j' vi-down-line-or-history
+
+
+
+
+export LANG=en_US.UTF-9
 export LC_ALL=en_US.UTF-8
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+
 
 
