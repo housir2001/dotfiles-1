@@ -1,0 +1,178 @@
+source ~/dotfiles/vim/.credencials
+let g:airline_powerline_fonts = 1
+let vim_markdown_preview_github=1
+let mapleader = ","
+let g:mapleader = ","
+let g:ctrlp_use_caching = 1
+let g:airline_theme="onedark"
+
+let g:ale_sign_column_always = 1
+
+set list listchars=tab:»·,trail:·
+set tags=/home/maren/test.tags
+
+let g:ale_linters = {
+\   'php': ['php'],
+\}
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 1
+let $PATH=$PATH . ':' . expand('~/.config/composer/vendor/bin')
+
+let g:padawan#composer_command = "/usr/bin/composer"
+set path+=**
+set clipboard+=unnamedplus
+set nu
+set number relativenumber
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set hidden
+set nobackup
+set nowritebackup
+set updatetime=300
+set shortmess+=c
+set numberwidth=4 
+" save buffer on switch 
+set autowrite
+set tabstop=4 softtabstop=4 expandtab shiftwidth=4 shiftround smarttab
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
+
+call plug#begin('~/nvim/plugged')
+
+" xdebug vim client
+" debbugging
+Plug 'arcticicestudio/nord-vim'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'Shougo/denite.nvim'
+Plug 'andymass/vim-matchup'
+Plug 'zackhsi/fzf-tags'
+Plug 'vim-vdebug/vdebug'
+Plug 'scrooloose/nerdtree'
+Plug 'dylanaraps/wal'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'stephpy/vim-php-cs-fixer'
+Plug 'jremmen/vim-ripgrep'
+" Plug 'bfredl/nvim-miniyank'
+Plug 'mikelue/vim-maven-plugin'
+Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'mhinz/vim-startify'
+
+" linting
+Plug 'w0rp/ale'
+" folding 
+" rest call support 
+Plug 'diepm/vim-rest-console'
+
+" fuzzy search integration
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+Plug 'scrooloose/nerdcommenter'
+
+" move lines in visual mode with movement keys
+Plug 'matze/vim-move'
+
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+
+" git integration
+Plug 'tpope/vim-fugitive'
+
+Plug 'vimwiki/vimwiki'
+Plug 'rafi/vim-unite-issue'
+Plug 'mattn/webapi-vim' 
+Plug 'tyru/open-browser.vim' 
+Plug 'Shougo/unite.vim'
+" Track the engine.
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'AdamWhittingham/vim-copy-filename'
+Plug 'liuchengxu/vista.vim'
+
+Plug 'echuraev/translate-shell.vim'
+
+
+Plug '~/nvim/plugged/eclim'
+
+
+call plug#end()
+
+so ~/dotfiles/vim/functions.vim
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+
+let g:matchup_matchparen_status_offscreen = 1
+
+
+command! MakeTags !ctags --tag-relative=yes -R -f /home/maren/test.tags --fields=+aimlS --languages=php,cobol --PHP-kinds=+cdfintv --exclude=composer.phar
+
+" fzf ripgrep
+set completeopt=longest,menuone
+
+if executable("rg")
+    command! -bang -nargs=* Rg
+              \ call fzf#vim#grep(
+          \   'rg --column --line-number --no-heading --color=always --ignore-case <q-args>, 1,
+          \   <bang>0 ? fzf#vim#with_preview('up:60%')
+          \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+          \   <bang>0)
+
+endif
+
+let g:tmux_navigator_no_mappings = 1
+
+let g:vdebug_options = {}
+let g:vdebug_options['break_on_open'] = 1
+
+" Mapping '/remote/path' : '/local/path'
+let g:vdebug_options.ide_key='PHPSTORM'
+let g:vdebug_options.path_maps = {"/home/www/work": "/home/maren/work" , "/code/web":"/home/maren/development/PartnerGeoService/code/web"}
+
+let g:NERDTreeDirArrowExpandable = "🗀'"
+let g:NERDTreeDirArrowCollapsible = "🗁'"
+
+let g:unite_source_issue_jira_priority_table = {
+  \ 10000: '◡', 1: '⚡', 2: 'ᛏ', 3: '●', 4: '○', 5: '▽' }
+
+let g:unite_source_issue_jira_status_table = {
+  \ 1: 'plan', 3: 'develop', 4: 'reopened', 5: 'resolved', 6: 'closed',
+  \ 10000: 'feedback', 10001: 'staged', 10002: 'waiting',
+  \ 10003: 'deployed', 10004: 'pending', 10008: 'review' }
+
+let g:unite_source_issue_jira_type_table = {
+  \ 1: 'bug', 2: 'feature', 3: 'task', 4: 'change', 5: 'sub-task',
+  \ 6: 'epic', 7: 'story', 8: 'system', 9: 'sub-bug' }
+
+let g:vista#renderer#enable_icon = 1
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
+
+
+let g:vista_fzf_preview = ['right:50%']
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+
+
+
+so ~/dotfiles/vim/mappings.vim
+
+colorscheme wal

@@ -40,6 +40,13 @@ unlet parent_dir parent_tag
 
 let g:easytags_dynamic_files = 1
 
+
+autocmd InsertEnter,InsertLeave * set cul!
+
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+
 let g:ale_linters = {
 \   'java': ['java'],
 \}
@@ -76,6 +83,10 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
+augroup PatchDiffHighlight
+    autocmd! 
+    autocmd FileType diff           syntax enable
+augroup END
 
 call plug#begin('~/nvim/plugged')
 
@@ -129,6 +140,7 @@ Plug 'liuchengxu/vista.vim'
 
 " translating tool
 Plug 'echuraev/translate-shell.vim'
+Plug 'ronakg/quickr-preview.vim'
 
 
 Plug 'mikelue/vim-maven-plugin'
@@ -170,15 +182,13 @@ let g:matchup_matchparen_status_offscreen = 1
 " fzf ripgrep
 set completeopt=longest,menuone
 
-if executable("rg")
-    command! -bang -nargs=* Rg
-              \ call fzf#vim#grep(
-          \   'rg --column --line-number --no-heading --color=always --ignore-case <q-args>, 1,
-          \   <bang>0 ? fzf#vim#with_preview('up:60%')
-          \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-          \   <bang>0)
+command! -bang -nargs=* Rg
+\ call fzf#vim#grep(
+\   'rg --column --line-number --no-heading --color=always --ignore-case <q-args>, 5,
+\   <bang>0 ? fzf#vim#with_preview('up:60%')
+\           : fzf#vim#with_preview('right:50%:hidden', '?'),
+\   <bang>0)
 
-endif
 
 let g:tmux_navigator_no_mappings = 1
 

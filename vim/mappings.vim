@@ -2,6 +2,9 @@ set spelllang=en_us
 nmap <leader>sc :set spell<CR>
 nmap <leader>!sc :set nospell<CR>
 
+nnoremap ; :
+
+
 nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
@@ -23,7 +26,6 @@ noremap <leader>f :FZF<CR>
 " some fungitive shortings
 noremap <leader>gb :Gblame<CR>
 noremap <leader>gs :Gstatus<CR>
-noremap <leader>gc :Gcommit -m
 
 noremap <leader>b :CtrlPBuffer<CR>
 
@@ -32,23 +34,6 @@ noremap <leader>re :execute "!tmux send -t 1 Up Enter" <CR>
 
 " no clue 
 noremap <leader>ra :execute "!tmux send -t 1 ~/test.sh Enter "<CR> 
-
-" i am not sure that this is even triggered
-nnoremap <silent> {Left-Mapping} :TmuxNavigateLeft<cr>
-nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
-nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
-nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
-nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
-
-
-" open issue under cursor
-noremap <leader>ji :Unite issue:jira -custom-issue-jql=issuekey=<C-r>=expand('<cWORD>')<CR>
-" open all stories in sprint
-noremap <leader>js :Unite issue:jira -custom-issue-jql=(type=Story+OR+type=Bug)+AND+project=BCPO+AND+Sprint+in+openSprints()<CR>
-" open all subtasks
-noremap <leader>jst :Unite issue:jira -custom-issue-jql=parent+in+("<C-r>=expand('<cWORD>')<CR>")
-" open issue in browser
-noremap <leader>jio ! qutebrowser https://jira.sixt.com/browse/<C-r>=expand('<cWORD>')<CR>
 
 
 inoremap <silent><expr> <c-space> coc#refresh()
