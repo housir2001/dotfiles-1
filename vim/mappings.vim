@@ -103,7 +103,7 @@ noremap <C-Tab> :tabnext<CR>
 noremap <C-S-Tab> :tabprev<CR>
 
 " something with preview, i think for swagger files
-nmap <unique> <leader>pr <Plug>GenerateDiagram 
+" nmap <unique> <leader>pr <Plug>GenerateDiagram 
 
 nmap <leader>cold :colorscheme onehalfdark<CR>
 nmap <leader>coll :colorscheme onehalflight<CR>

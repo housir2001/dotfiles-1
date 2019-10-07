@@ -57,7 +57,7 @@ config.set('content.headers.user_agent', 'Mozilla/5.0 (X11; Linux x86_64) AppleW
 
 config.bind('<Ctrl-Shift-k>', 'open -t /home/maren/dotfiles/i3/script/translate.sh')
 
-c.fonts.monospace = 'normal 10pt FiraCode'
+config.bind(',p', 'spawn --userscript qute-keepass -p ~/Documents/Database.kdbx')
 
 ## Background color of the completion widget category headers.
 ## Type: QssColor

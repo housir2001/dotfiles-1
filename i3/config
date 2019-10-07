@@ -38,7 +38,7 @@ set $right l
 floating_modifier Mod4
 
 # start a terminal
-bindsym Mod4+Return exec i3-sensible-terminal
+bindsym Mod4+Return exec kitty 
  
 
 # kill focused window
@@ -47,6 +47,10 @@ bindsym Mod4+Shift+q kill
 # start dmenu (a program launcher)
 bindsym Mod4+d exec rofi -combi-modi window#run#ssh -show combi -modi combi -theme ~/.cache/wal/colors-rofi-dark.rasi
 bindsym Mod4+v exec "sh ~/dotfiles/i3/script/clipboard.sh" 
+
+# kitti3 
+#exec --no-startup-id kitti3
+#bindsym $mod+n nop kitti3
 
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -298,10 +302,6 @@ mode "theme" {
 
 
 
-
-
-
-
 # keyboard layout
 exec_always setxkbmap -layout us,de
 exec_always xmodmap ~/.Xmodmap
@@ -352,7 +352,7 @@ mode "moveit" {
         bindsym Return mode "default"
 }
 
-bindsym Mod4+t focus floating mode "moveit"
+bindsym Mod4+p exec "/home/maren/.local/bin/fqsnExporter.sh"
 
 
 for_window [class="Gimp"] floating enable
