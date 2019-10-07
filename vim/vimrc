@@ -95,6 +95,8 @@ call plug#begin('~/nvim/plugged')
 Plug 'arcticicestudio/nord-vim'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'dylanaraps/wal.vim'
+
 
 " matching pairs {}()[]
 Plug 'andymass/vim-matchup'
@@ -243,7 +245,7 @@ syntax match lteq "<=" conceal cchar=≤
 setlocal concealcursor=nvic
 
 
-colorscheme space-vim-dark
+colorscheme wal 
 so ~/dotfiles/vim/mappings.vim
 
 syntax on

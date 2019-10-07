@@ -139,8 +139,17 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 ZSH_TMUX_AUTOSTART=true
 
 # source ~/dotfiles/jenkins/cli.sh
-cat  ~/.cache/wal/sequences
 
+(cat ~/.cache/wal/sequences &)
+
+
+# async apply to terminal emulator
+ (cat ~/.cache/wal/sequences &)
+# # synchronous alternative 
+ cat ~/.cache/wal/sequences
+#
+# # apply color scheme to TTY
+ source ~/.cache/wal/colors-tty.sh
 
 
 autoload edit-command-line; zle -N edit-command-line

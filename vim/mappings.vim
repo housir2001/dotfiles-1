@@ -26,6 +26,9 @@ noremap <leader>f :FZF<CR>
 " some fungitive shortings
 noremap <leader>gb :Gblame<CR>
 noremap <leader>gs :Gstatus<CR>
+noremap <leader>gc :Gcommit -m"
+noremap <leader>gp :Gpull
+noremap <leader>gh :Gpush
 
 noremap <leader>b :CtrlPBuffer<CR>
 
