@@ -1,4 +1,9 @@
 set spelllang=en_us
+let g:ranger_map_keys = 0
+
+map <leader>r :Ranger<CR>
+
+
 nmap <leader>sc :set spell<CR>
 nmap <leader>!sc :set nospell<CR>
 
@@ -27,8 +32,9 @@ noremap <leader>f :FZF<CR>
 noremap <leader>gb :Gblame<CR>
 noremap <leader>gs :Gstatus<CR>
 noremap <leader>gc :Gcommit -m"
-noremap <leader>gp :Gpull
-noremap <leader>gh :Gpush
+noremap <leader>gl :Gpull
+noremap <leader>gu :Gpush
+noremap <leader>gr :Gread
 
 noremap <leader>b :CtrlPBuffer<CR>
 
@@ -48,7 +54,11 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
 nnoremap <silent> <space>d  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " Remap for do codeAction of current line
 nmap <leader>ac  <Plug>(coc-codeaction)
@@ -66,6 +76,7 @@ nmap <leader>fo gg=G
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 nmap <leader>r :NERDTreeFind<CR> 
 map <leader>n :NERDTreeToggle<CR>
+nmap <leader>nr :Ranger<CR>
 
 " some yanking register stuff
 vnoremap  <leader>y  "+y
@@ -98,5 +109,5 @@ nmap <leader>coll :colorscheme onehalflight<CR>
 
 map <leader>gfv :vertical wincmd f<CR>
 
-
-
+nmap <c-w>== :set ead=ver ea noea<CR> " set windows equal vertically (^W, =, =)
+nmap <c-w>=- :set ead=hor ea noea<CR> " set windows equal horizontally (^W, =, -)

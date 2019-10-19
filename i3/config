@@ -257,9 +257,9 @@ bindsym Mod4+n exec termite -e ranger
 for_window [class="^.*"] border pixel 1
 new_window 1pixel
 
-client.focused          $fg     $fg     #2a97e0 #ffffff #5c1791
-client.focused_inactive $bg     $bg     $fg  $bg       $bg
-client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.focused          #000000     #000000     #000000 #000000 #000000
+client.focused_inactive #0000ff     #ff0000     #00ff00  #000000       #000000
+client.unfocused        #000000     #000000     #000000 #000000 #000000
 client.urgent           $bg     $bg     $fg  $bg       $bg
 client.placeholder      $bg     $bg     $fg  $bg       $bg
 
@@ -277,12 +277,13 @@ exec_always xautolock -time 2 -locker '~/dotfiles/i3/script/lock.sh' &
 
 # gaps
 
-gaps inner 5
-gaps outer 0
+gaps inner 10
+gaps outer 2
+
 smart_gaps on
 
 #compton for window transperncy
-exec_always --no-startup-id "killall -q compton; compton --config ~/dotfiles/i3/compton.conf"
+exec_always --no-startup-id "killall compton; compton --config ~/dotfiles/i3/compton.conf"
 exec_always --no-startup-id "python3 ~/dotfiles/i3/script/focusResize.py"
 
 
@@ -292,8 +293,8 @@ exec_always "wal -i ~/Pictures/background.jpg"
 bindsym Mod4+m mode "theme"
 mode "theme" {
 
-    bindsym l exec "wal -l -i ~/Pictures/background.jpg"
-    bindsym d exec "wal -i ~/Pictures/background.jpg"
+    bindsym l exec "/home/maren/dotfiles/i3/script/themeswitcher.sh -l"
+    bindsym d exec "/home/maren/dotfiles/i3/script/themeswitcher.sh -d"
     
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -338,6 +339,8 @@ mode "print" {
         bindsym f exec "maim /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png"
         bindsym w exec "maim -i $(xdotool getactivewindow) /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png"
         bindsym a exec "maim -s /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png"
+        bindsym t exec "gnome-screenshot -d 5"
+        bindsym g exec "gnome-screenshot"
         bindsym Escape mode "default"
         bindsym Return mode "default"
         

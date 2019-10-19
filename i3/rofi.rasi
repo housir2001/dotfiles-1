@@ -1,18 +1,18 @@
 configuration {
-	display-drun:                   "Activate";
-	display-run:                    "Execute";
 	show-icons:                     true;
-	sidebar-mode:                   true;
   font:                           "Roboto medium 12";
+  columns: 4;
+  lines: 8;
 }
 
-* {
-	background-color:             rgba(26, 26, 26, 0.20);
+*  {
+	background-color:         #0C0F1522 ;
 	text-color:                   rgb(255, 255, 255);
 	selbg:                        rgba(50,50,50, 0.0);
 	actbg:                        rgba(50, 50, 50, 0.75);
 	urgbg:                        #e53935;
-	winbg:			     		          #26c6da;
+	winbg:			     		          #27c6da;
+
 
 	selected-normal-foreground:  @winbg;
 	normal-foreground:           @text-color;
@@ -39,12 +39,7 @@ configuration {
 }
 
 window {
-	location:	 west;
-	anchor:		 west;
 	x-offset: 0px;
-	height:		 100%;
-	width:		 700px;
-	margin-right: 60px;
 	orientation: horizontal;
 	children:	 [mainbox];
 }
@@ -55,6 +50,7 @@ mainbox {
 	width:300px;
 	children: [ inputbar, listview, sidebar ];
 	expand: true;
+  border-radius: 8px;
 }
 
 button { padding: 5px 2px; }
@@ -82,7 +78,6 @@ listview {
 
 element {
 	padding: 16px;
-	border:  0 0 0 5px solid;
 }
 
 entry {
@@ -113,8 +108,6 @@ element selected.normal {
 	background-color: @selected-normal-background;
 	text-color:       @selected-normal-foreground;
 	padding: 16px;
-	border:           0 0 0 5px solid;
-	border-color:	    @active-background;
 }
 
 element selected.urgent {

@@ -109,8 +109,19 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
+cd()
+{
+    builtin cd $@
+    ls -l 
+}
+
+
+alias vup='cd ~/development/vagrant-talend-dev-vm; VBoxManage startvm Sixt-Talend-Dev-Vagrant-VM --type headless; vagrant ssh'
+alias vdo='cd ~/development/vagrant-talend-dev-vm; VBoxManage controlvm Sixt-Talend-Dev-Vagrant-VM poweroff '
+
 alias unrar='unrar x'
 alias dev='cd ~/development'
+alias confs="cd ~/development/solutions-configuration/src/${FQSN}/solution-conf"
 alias untar='tar xzvf'
 alias c='clipcopy'
 alias v='clippaste'
@@ -119,6 +130,7 @@ alias devp="cd ~/development/${FQSN}"
 alias fqsn="zsh ~/.local/bin/fqsnExporter.sh"
 
 alias tag="git branch | grep \* | cut -d ' ' -f2"
+
 
 source ~/exportedVars
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
@@ -169,3 +181,5 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 
 
+export COREMAN_HOME="/srv/integration/utils/coreman"
+export PATH="${PATH}:${COREMAN_HOME}/bin"

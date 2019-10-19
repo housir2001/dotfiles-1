@@ -4,8 +4,9 @@ let vim_markdown_preview_github=1
 let mapleader = ","
 let g:mapleader = ","
 let g:ctrlp_use_caching = 1
+let g:NERDTreeHijackNetrw = 0
+let g:ranger_replace_netrw = 1
 hi MatchParen cterm=none ctermbg=green ctermfg=blue
-let g:ale_sign_column_always = 1
 syntax on
 " set font color fir code comments to gray 
 hi Comment guifg=#5C6370 ctermfg=59
@@ -47,11 +48,6 @@ set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
 
-let g:ale_linters = {
-\   'java': ['java'],
-\}
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 1
 
 set path+=**
 set clipboard=unnamedplus
@@ -70,10 +66,12 @@ set numberwidth=4
 " save buffer on switch 
 set autowrite
 set tabstop=2 softtabstop=2 expandtab shiftwidth=2 shiftround smarttab
+set cmdheight=2 
+set fillchars+=vert:│    
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
@@ -84,8 +82,8 @@ augroup numbertoggle
 augroup END
 
 augroup PatchDiffHighlight
-    autocmd! 
-    autocmd FileType diff           syntax enable
+  autocmd! 
+  autocmd FileType diff           syntax enable
 augroup END
 
 call plug#begin('~/nvim/plugged')
@@ -96,13 +94,18 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'dylanaraps/wal.vim'
-
+Plug 'KabbAmine/vCoolor.vim'
 
 " matching pairs {}()[]
 Plug 'andymass/vim-matchup'
 
 " better dir navigator
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'francoiscabrol/ranger.vim'
+
+" icons 
+Plug 'ryanoasis/vim-devicons'
 
 " Statusline
 Plug 'vim-airline/vim-airline'
@@ -114,8 +117,6 @@ Plug 'jremmen/vim-ripgrep'
 " startpage 
 Plug 'mhinz/vim-startify'
 
-" linting
-Plug 'w0rp/ale'
 
 " fuzzy search integration
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -125,8 +126,7 @@ Plug 'zackhsi/fzf-tags'
 " better code commenting
 Plug 'scrooloose/nerdcommenter'
 
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-
+Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 " git integration
 Plug 'tpope/vim-fugitive'
 
@@ -149,14 +149,10 @@ Plug 'mikelue/vim-maven-plugin'
 
 " file preview in quicklist
 Plug 'ronakg/quickr-preview.vim'
- 
 
-"Java import generator
-Plug 'rustushki/JavaImp.vim'
- 
 "for formating java code
 Plug 'google/vim-maktaba'
- Plug 'google/vim-codefmt'
+Plug 'google/vim-codefmt'
 " Also add Glaive, which is used to configure codefmt's maktaba flags. See
 " `:help :Glaive` for usage.
 Plug 'google/vim-glaive'
@@ -170,9 +166,12 @@ Plug 'uarun/vim-protobuf'
 " swagger previer
 Plug 'xavierchow/vim-swagger-preview'
 
+" Java debugger
 Plug 'https://gitlab.com/Dica-Developer/vim-jdb.git'
 
 
+" Drawing tool
+Plug 'gyim/vim-boxdraw'
 
 call plug#end()
 
@@ -185,11 +184,11 @@ let g:matchup_matchparen_status_offscreen = 1
 set completeopt=longest,menuone
 
 command! -bang -nargs=* Rg
-\ call fzf#vim#grep(
-\   'rg --column --line-number --no-heading --color=always --ignore-case <q-args>, 5,
-\   <bang>0 ? fzf#vim#with_preview('up:60%')
-\           : fzf#vim#with_preview('right:50%:hidden', '?'),
-\   <bang>0)
+      \ call fzf#vim#grep(
+      \   'rg --column --line-number --no-heading --color=always --ignore-case <q-args>, 5,
+      \   <bang>0 ? fzf#vim#with_preview('up:60%')
+      \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+      \   <bang>0)
 
 
 let g:tmux_navigator_no_mappings = 1
@@ -198,26 +197,26 @@ let g:vdebug_options = {}
 let g:vdebug_options['break_on_open'] = 1
 
 
-let g:NERDTreeDirArrowExpandable = "├─▸"
-let g:NERDTreeDirArrowCollapsible = "╰─▸"
+let g:NERDTreeDirArrowExpandable = "├"
+let g:NERDTreeDirArrowCollapsible = "╰"
 let NERDTreeQuitOnOpen = 0
 let g:NERDTreeWinSize=60
 
 let g:vista#renderer#enable_icon = 1
-\   "function": "\uf794",
-\   "variable": "\uf71b",
-\  }
+      \   "function": "\uf794",
+      \   "variable": "\uf71b",
+      \  }
 
 let g:vista_executive_for = {
-  \ 'java': 'coc',
-  \ }
+      \ 'java': 'coc',
+      \ }
 
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 
 let g:vista_fzf_preview = ['right:50%']
-let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista_icon_indent = ["╰ ", "├ "]
 
 let g:quickr_preview_on_cursor = 1
 let g:quickr_preview_exit_on_enter = 1
@@ -229,6 +228,8 @@ Glaive codefmt google_java_executable="java -jar /home/maren/dotfiles/tools/jarf
 so ~/dotfiles/vim/.credencials
 so ~/dotfiles/vim/highligters/jbehave.vim
 so ~/dotfiles/vim/functions.vim
+
+
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 
 " set the filetype for story files
@@ -244,6 +245,13 @@ syntax match lteq "<=" conceal cchar=≤
 
 setlocal concealcursor=nvic
 
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 colorscheme wal 
 so ~/dotfiles/vim/mappings.vim
