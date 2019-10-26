@@ -283,7 +283,7 @@ gaps outer 2
 smart_gaps on
 
 #compton for window transperncy
-exec_always --no-startup-id "killall compton; compton --config ~/dotfiles/i3/compton.conf"
+exec_always --no-startup-id "killall compton; compton --config ~/dotfiles/i3/compton.conf &"
 exec_always --no-startup-id "python3 ~/dotfiles/i3/script/focusResize.py"
 
 
@@ -362,7 +362,7 @@ bindsym Mod4+p exec "/home/maren/.local/bin/fqsnExporter.sh"
 for_window [class="Gimp"] floating enable
 for_window [class="Spotify"] floating enable
 
-bindsym Mod4+c exec "qutebrowser -s content.headers.user_agent 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.128 Safari/537.36' https://e-sixt.slack.com/messages/DG04CKPAL/ https://outlook.office365.com/mail/inbox\#authRedirect\=true https://hangouts.google.com/ https://web.skype.com/en/ https://www.deezer.com/en/"
+bindsym Mod4+c exec "qutebrowser -s content.headers.user_agent 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.128 Safari/537.36' https://e-sixt.slack.com/messages/DG04CKPAL/ https://outlook.office365.com/mail/inbox\#authRedirect\=true  https://www.deezer.com/en/"
 
 workspace 2 output DP2-3 
 workspace 3 output DP2-2-1 

@@ -65,7 +65,7 @@ set shortmess+=c
 set numberwidth=4 
 " save buffer on switch 
 set autowrite
-set tabstop=2 softtabstop=2 expandtab shiftwidth=2 shiftround smarttab
+set tabstop=4 softtabstop=4 expandtab shiftwidth=4 shiftround smarttab
 set cmdheight=2 
 set fillchars+=vert:│    
 
@@ -137,9 +137,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'AdamWhittingham/vim-copy-filename'
 
-" class outlining
-Plug 'liuchengxu/vista.vim'
-
 " translating tool
 Plug 'echuraev/translate-shell.vim'
 Plug 'ronakg/quickr-preview.vim'
@@ -202,21 +199,9 @@ let g:NERDTreeDirArrowCollapsible = "╰"
 let NERDTreeQuitOnOpen = 0
 let g:NERDTreeWinSize=60
 
-let g:vista#renderer#enable_icon = 1
-      \   "function": "\uf794",
-      \   "variable": "\uf71b",
-      \  }
-
-let g:vista_executive_for = {
-      \ 'java': 'coc',
-      \ }
-
-
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 
-let g:vista_fzf_preview = ['right:50%']
-let g:vista_icon_indent = ["╰ ", "├ "]
 
 let g:quickr_preview_on_cursor = 1
 let g:quickr_preview_exit_on_enter = 1

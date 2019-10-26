@@ -3,12 +3,10 @@ let g:ranger_map_keys = 0
 
 map <leader>r :Ranger<CR>
 
-
 nmap <leader>sc :set spell<CR>
 nmap <leader>!sc :set nospell<CR>
 
 nnoremap ; :
-
 
 nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
@@ -20,7 +18,6 @@ nmap <c-s> :w<CR>
 vmap <c-s> <Esc><c-s>gv
 imap <c-s> <Esc><c-s>
 
-
 noremap <leader>t :call fzf_tags#Find(expand('<cword>'))<CR>
 noremap <leader>a :Rg <C-r>=expand('<cword>')<CR>
 " search in buffor for word under cursor
@@ -29,12 +26,12 @@ noremap <leader>/ /<C-r>=expand('<cword>')<CR>
 noremap <leader>f :FZF<CR>
 
 " some fungitive shortings
-noremap <leader>gb :Gblame<CR>
+noremap <leader>ge :Gblame<CR>
 noremap <leader>gs :Gstatus<CR>
-noremap <leader>gc :Gcommit -m"
-noremap <leader>gl :Gpull
-noremap <leader>gu :Gpush
-noremap <leader>gr :Gread
+noremap <leader>gc :Gcommit<CR>
+noremap <leader>gl :Gpull<CR>
+noremap <leader>gh :Gpush<CR>
+noremap <leader>gd :Gread<CR>
 
 noremap <leader>b :CtrlPBuffer<CR>
 
@@ -67,7 +64,7 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 nmap <leader>qf  <Plug>(coc-fix-current)
 
 " calss outline for code on the right side as split
-nmap <leader>tg :Vista!!<CR>
+nmap <leader>tg :CocList outline<CR>
 
 " format from top to bottom
 nmap <leader>fo gg=G
@@ -92,6 +89,7 @@ nnoremap <C-p>a :Rg
 
 " yank filename;linenumber to register
 nnoremap <leader>yl :let @+=expand("%") . ':' . line(".")<CR>
+nnoremap <leader>yf :let @+=expand("%") . ':' . line(".")<CR>
 
 " split vertical
 map vv <C-W>v
@@ -111,3 +109,19 @@ map <leader>gfv :vertical wincmd f<CR>
 
 nmap <c-w>== :set ead=ver ea noea<CR> " set windows equal vertically (^W, =, =)
 nmap <c-w>=- :set ead=hor ea noea<CR> " set windows equal horizontally (^W, =, -)
+
+
+" Debbugging
+map <F1> :JDBAttach<CR>
+map <F2> :JDBStepOver<CR>
+map <F3> :JDBStepIn<CR>
+map <F4> :JDBStepOut<C`R>
+map <F5> :JDBContinue<CR>
+map <F6> :JDBCommand locals<CR>
+map <F7> :JDBCommand print <C-r>=expand('<cword>')<CR>
+map <F8> :JDBCommand dump <C-r>=expand('<cword>')<CR>
+map <F9> :JDBToggleBreakpointOnLine<CR>
+
+
+
+
