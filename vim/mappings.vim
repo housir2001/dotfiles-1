@@ -14,9 +14,13 @@ nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
 " ctrl-s for save
-nmap <c-s> :w<CR>
+nmap <c-s> :w <CR>
 vmap <c-s> <Esc><c-s>gv
 imap <c-s> <Esc><c-s>
+
+nmap <leader>sp :w <bar> SSave! <C-R>=$FQSN <CR><CR>
+
+
 
 noremap <leader>t :call fzf_tags#Find(expand('<cword>'))<CR>
 noremap <leader>a :Rg <C-r>=expand('<cword>')<CR>

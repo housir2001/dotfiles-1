@@ -1,4 +1,5 @@
 set noswapfile
+
 let g:airline_powerline_fonts = 1
 let vim_markdown_preview_github=1
 let mapleader = ","
@@ -127,8 +128,11 @@ Plug 'zackhsi/fzf-tags'
 Plug 'scrooloose/nerdcommenter'
 
 Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+
 " git integration
 Plug 'tpope/vim-fugitive'
+Plug 'rbong/vim-flog'
+
 
 Plug 'vimwiki/vimwiki'
 

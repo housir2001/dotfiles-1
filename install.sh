@@ -1,8 +1,11 @@
 #!/bin/bash 
 
 
-# i3 config
+#pacman -Syu nodejs mpv qutebrowser kitty fzf ripgrep tmux neofetch 
+#pip3 install requests tldextract pykeepass pywal  youtube-dl 
 
+
+# i3 config
 rm ~/.config/i3/config 
 rm ~/.config/i3/compton.conf 
 rm ~/.config/i3/rofi.rasi
@@ -28,7 +31,6 @@ rm ~/.local/share/qutebrowser/greasemonkey
 ln -s ~/dotfiles/qutebrowser/greasemonkey ~/.local/share/qutebrowser/greasemonkey
 
 
-
 #zsh
 rm ~/.zshrc
 ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
@@ -36,3 +38,4 @@ ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
 # kitty 
 rm ~/.config/kitty/kitty.conf
 ln -s ~/dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf
+
