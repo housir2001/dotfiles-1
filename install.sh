@@ -1,8 +1,8 @@
 #!/bin/bash 
 
 
-#pacman -Syu nodejs mpv qutebrowser kitty fzf ripgrep tmux neofetch 
-#pip3 install requests tldextract pykeepass pywal  youtube-dl 
+#pacman -Syu nodejs mpv qutebrowser kitty fzf ripgrep tmux neofetch fd awesome-terminal-fonts ttf-font-awesome ttf-font-icons otf-fira-code gvim keepass jdk8-openjdk npm yarn
+#pip3 install requests tldextract pykeepass pywal  youtube-dl i3ipc
 
 
 # i3 config
