@@ -2,22 +2,19 @@ configuration {
 	show-icons:                     true;
   font:                           "Roboto medium 12";
   columns: 4;
-  lines: 8;
+  lines: 10;
 }
 
 *  {
-	background-color:         #0C0F1522 ;
 	text-color:                   rgb(255, 255, 255);
 	selbg:                        rgba(50,50,50, 0.0);
-	actbg:                        rgba(50, 50, 50, 0.75);
 	urgbg:                        #e53935;
 	winbg:			     		          #27c6da;
 
 
+	background-color:         #33333300 ;
 	selected-normal-foreground:  @winbg;
 	normal-foreground:           @text-color;
-	selected-normal-background:  @actbg;
-	normal-background:           @background-color;
 
 	selected-urgent-foreground:  @background-color;
 	urgent-foreground:           @text-color;
@@ -27,7 +24,6 @@ configuration {
 	selected-active-foreground:  @winbg;
 	active-foreground:           @text-color;
 	selected-active-background:  @actbg;
-	active-background:           @selbg;
 
 	line-margin:                 2;
 	line-padding:                2;
@@ -39,24 +35,24 @@ configuration {
 }
 
 window {
+	background-color:         #0C0F1522 ;
 	x-offset: 0px;
 	orientation: horizontal;
 	children:	 [mainbox];
+	width:100%;
 }
 
 mainbox {
-	spacing:  0em;
-	padding: 0px;
-	width:300px;
-	children: [ inputbar, listview, sidebar ];
+	spacing: 0em;
+	background-color:         #0C0F1522 ;
+width:100%;
 	expand: true;
-  border-radius: 8px;
+
 }
 
 button { padding: 5px 2px; }
 
 button selected {
-	background-color: @active-background;
 	text-color:       @background-color;
 }
 
@@ -71,26 +67,26 @@ textbox-prompt-colon {
  }
 
 listview {
-	spacing: 0em;
-	dynamic: false;
+	spacing:0em;
+	dynamic: true;
 	cycle:   true;
 }
 
 element {
-	padding: 16px;
+	padding: 10px;
+	background-color:         #33333300 ;
 }
 
 entry {
+	background-color:         #33333300 ;
 	expand:         true;
 	text-color:     @normal-foreground;
-	background-color: rgb(26, 26, 26, 0.10);
 	vertical-align: 1;
 	padding:        12px;
 	font:            "Roboto medium 13";
 }
 
 element normal.normal {
-	background-color: @normal-background;
 	text-color:       @normal-foreground;
 }
 
@@ -121,7 +117,6 @@ element selected.active {
 }
 
 element alternate.normal {
-	background-color: @normal-background;
 	text-color:       @normal-foreground;
 }
 

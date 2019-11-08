@@ -89,6 +89,7 @@ augroup END
 
 call plug#begin('~/nvim/plugged')
 
+Plug 'junegunn/rainbow_parentheses.vim'
 
 "themes
 Plug 'arcticicestudio/nord-vim'
@@ -118,6 +119,8 @@ Plug 'jremmen/vim-ripgrep'
 " startpage 
 Plug 'mhinz/vim-startify'
 
+" aligning everything
+Plug 'junegunn/vim-easy-align'
 
 " fuzzy search integration
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -174,7 +177,12 @@ Plug 'https://gitlab.com/Dica-Developer/vim-jdb.git'
 " Drawing tool
 Plug 'gyim/vim-boxdraw'
 
+Plug 'paulkass/jira-vim'
+
+
+
 call plug#end()
+
 
 call glaive#Install()
 
@@ -224,6 +232,10 @@ so ~/dotfiles/vim/functions.vim
 " set the filetype for story files
 au bufreadpre,bufnewfile *.story set ft=jbehave
 
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+
 syntax match div "//" conceal cchar=÷
 syntax match mul "*" conceal cchar=×
 syntax match eq "==" conceal cchar=≣
@@ -241,6 +253,11 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+
+" if &diff 
+
+" endif
+
 
 colorscheme wal 
 so ~/dotfiles/vim/mappings.vim

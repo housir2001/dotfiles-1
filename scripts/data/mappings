@@ -1,0 +1,65 @@
+<leader>r :Ranger
+<leader>sc :set spell
+<leader>!sc :set nospell
+<silent> <c-k> :wincmd k
+<silent> <c-j> :wincmd j
+<silent> <c-h> :wincmd h
+<silent> <c-l> :wincmd l
+<leader>sp :w <bar> SSave! <C-R>=$FQSN 
+<leader>T :call fzf_tags#Find(expand('<CWORD>'))
+<leader>t :call fzf_tags#Find(expand('<cword>'))
+<leader>a :Rg <C-r>=expand('<cword>')
+<leader>A :Rg <C-r>=expand('<WORD>')
+<leader>f :FZF
+<leader>ge :Gblame
+<leader>gs :Gstatus
+<leader>gc :Gcommit
+<leader>gl :Gpull
+<leader>gh :Gpush
+<leader>gd :Gread
+" repeat the last call in pane 1
+<leader>re :execute "!tmux send -t 1 Up Enter" 
+<leader>rn <Plug>(coc-rename)
+<silent> gd <Plug>(coc-definition)
+<silent> gy <Plug>(coc-type-definition)
+<silent> gi <Plug>(coc-implementation)
+<silent> gr <Plug>(coc-references)
+<silent> K :call <SID>show_documentation()
+" Refor do codeAction of current line 
+<leader>ac  <Plug>(coc-codeaction)"Fix autofix problem of current line 
+<leader>qf  <Plug>(coc-fix-current)" Show all diagnostics 
+<silent> <space>a  :<C-u>CocList diagnostics<cr>" Show commands 
+<silent> <space>c  :<C-u>CocList commands<cr>" Find symbol of current document  
+<silent> <space>o  :<C-u>CocList outline<cr>" Search workspace symbols 
+<silent> <space>s  :<C-u>CocList -I symbols<cr>" Do default action for next item. 
+<silent> <space>j  :<C-u>CocNext
+" Do default action for previous item. 
+<silent> <space>k  :<C-u>CocPrev
+" Resume latest coc list 
+<silent> <space>p  :<C-u>CocListResume
+<leader>fo gg=G " format from top to bottom
+<leader>r :NERDTreeFind
+<leader>n :NERDTreeToggle
+<leader>nr :Ranger
+<C-p>a :Rg " ripgrep 
+<leader>yl :let @+=expand("%") . ':' . line(".")
+ " yank filename with linenumber
+<leader>yf :let @+=expand("%") 
+ " yank filenamevv <C-W>v " split verticalss <C-W>s " split horizontally<C-Tab> :tabnext
+<C-S-Tab> :tabprev
+<leader>cold :colorscheme onehalfdark
+<leader>coll :colorscheme onehalflight
+open file vertical 
+<leader>gfv :vertical wincmd f
+<c-w>== :set ead=ver ea noea
+ " set windows equal vertically (^W, =, =)<c-w>=- :set ead=hor ea noea
+ " set windows equal horizontally (^W, =, -)<F1> :JDBAttach
+<F2> :JDBStepOver
+<F3> :JDBStepI
+<F4> :JDBStepOut<C`R><F5> :JDBContinue
+<F6> :JDBCommand locals
+<F7> :JDBCommand print <C-r>=expand('<cword>')
+<F8> :JDBCommand dump <C-r>=expand('<cword>')
+<F9> :JDBToggleBreakpointOnLine
+ga <Plug>(EasyAlign)
+ga <Plug>(EasyAlign)

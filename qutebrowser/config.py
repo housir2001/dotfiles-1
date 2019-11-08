@@ -34,7 +34,7 @@ nord = {
 # Enable JavaScript.
 # Type: Bool
 config.set('content.javascript.enabled', True, 'file://*')
-
+config.set('fonts.monospace', 'Fira Mono')
 # Enable JavaScript.
 # Type: Bool
 config.set('content.javascript.enabled', True, 'chrome://*/*')

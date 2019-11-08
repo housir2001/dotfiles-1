@@ -6,6 +6,8 @@
 
 
 # i3 config
+mkdir -p ~/.config/i3
+
 rm ~/.config/i3/config 
 rm ~/.config/i3/compton.conf 
 rm ~/.config/i3/rofi.rasi
@@ -21,12 +23,15 @@ rm ~/.vimrc
 ln -s ~/dotfiles/vim/vimrc ~/.vimrc
 
 # qutebrowser
+mkdir -p ~/.config/qutebrowser
 rm ~/.config/qutebrowser/config.py
 ln -s ~/dotfiles/qutebrowser/config.py ~/.config/qutebrowser/config.py
 
+mkdir -p ~/.local/share/qutebrowser/userscript
 rm ~/.local/share/qutebrowser/userscript
 ln -s ~/dotfiles/qutebrowser/userscrips ~/.local/share/qutebrowser/userscript
 
+mkdir  ~/.local/share/qutebrowser/greasemonkey
 rm ~/.local/share/qutebrowser/greasemonkey
 ln -s ~/dotfiles/qutebrowser/greasemonkey ~/.local/share/qutebrowser/greasemonkey
 
@@ -36,6 +41,7 @@ rm ~/.zshrc
 ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
 
 # kitty 
+mkdir ~/.config/kitty
 rm ~/.config/kitty/kitty.conf
 ln -s ~/dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf
 

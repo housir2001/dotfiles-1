@@ -5,6 +5,7 @@ PATH=$HOME/.composer/vendor/bin:$PATH:
 PATH=$HOME/.local/bin:$PATH:
 PATH=$HOME/.local/locations:$PATH:
 PATH=$HOME/node_modules/.bin:$PATH:
+export EDITOR=vim
 # Path to your oh-my-zsh installation.
 stty -ixon
   export ZSH="/home/maren/.oh-my-zsh"
@@ -125,7 +126,6 @@ cd()
     ls -l 
 }
 
-alias fd=fdfind
 alias vup='cd ~/development/vagrant-talend-dev-vm; VBoxManage startvm Sixt-Talend-Dev-Vagrant-VM --type headless; vagrant ssh'
 alias vdo='cd ~/development/vagrant-talend-dev-vm; VBoxManage controlvm Sixt-Talend-Dev-Vagrant-VM poweroff '
 
@@ -147,8 +147,7 @@ source ~/exportedVars
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
+source "$HOME/.fzf/shell/key-bindings.zsh"
 
 
 
@@ -188,7 +187,7 @@ bindkey '^e' edit-command-line
 
 export LANG=en_US.UTF-9
 export LC_ALL=en_US.UTF-8
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export JAVA_HOME=/usr/lib/jvm/default
 
 
 
