@@ -14,6 +14,9 @@ def on_window_focus(i3, e):
     i3.command("resize set 1400 1080")
     i3.command('move container to "%s"' % workspace)
 
+
+
+
 # subscribe to an event
 i3.on("window::focus", on_window_focus)
 

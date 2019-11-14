@@ -1,6 +1,4 @@
 
-map <leader>r :Ranger<CR>
-
 nmap <leader>sc :set spell<CR> 
 nmap <leader>!sc :set nospell<CR> 
 
@@ -94,12 +92,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " format from top to bottom
 nmap <leader>fo gg=G
-
-
-
-
-
-
+nmap <leader>fj :%!python -m json.tool<CR>
 
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

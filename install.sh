@@ -45,3 +45,7 @@ mkdir ~/.config/kitty
 rm ~/.config/kitty/kitty.conf
 ln -s ~/dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf
 
+
+# tmux 
+rm ~/.tmux.conf
+ln -s ~/dotfiles/tmux/tmux.conf .tmux.conf

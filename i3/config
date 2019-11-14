@@ -281,7 +281,6 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-# Lock screen
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -444,12 +443,13 @@ exec_always xautolock -time 2 -locker '~/dotfiles/i3/script/lock.sh' &
 exec_always --no-startup-id "killall compton; compton --config ~/dotfiles/i3/compton.conf &"
 exec_always --no-startup-id "python3 ~/dotfiles/i3/script/focusResize.py"
 exec_always --no-startup-id "killall udiskie ;  udiskie -t"
-exec_always --no-startup-id "wal --theme .cache/wal/schemes/_home_maren_Downloads_wallpapers_Stary-See-Night_jpg_dark_None_None_1.1.0.json"
+exec_always --no-startup-id "wal --theme /home/maren/.cache/wal/colors.json"
 bindsym $mod+p exec "/home/maren/dotfiles/scripts/fqsnExporter.sh"
 bindsym $mod+c exec "qutebrowser -s content.headers.user_agent 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.128 Safari/537.36' https://e-sixt.slack.com/messages/DG04CKPAL/ https://outlook.office365.com/mail/inbox\#authRedirect\=true  https://www.deezer.com/en/"
 bindsym $mod+m exec "/home/maren/dotfiles/scripts/cheats.sh"
 assign [class="mpv"] "4" 
-exec_always --no-startup-id "pulseaudio -k ; pulseaudio && pasystray"
+exec_always --no-startup-id "pulseaudio -k ; pulseaudio &; killall pasystray ; pasystray &"
+exec_always --no-startup-id "xset -b"
 bindsym $mod+0 exec "sh ~/dotfiles/scripts/shutDown.sh" 
 
 

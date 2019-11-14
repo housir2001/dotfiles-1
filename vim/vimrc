@@ -1,5 +1,5 @@
 set noswapfile
-
+let g:ranger_map_keys = 0
 let g:airline_powerline_fonts = 1
 let vim_markdown_preview_github=1
 let mapleader = ","
@@ -38,6 +38,15 @@ while match(parent_dir,"/",0)>-1 && isdirectory(parent_dir)
 endwhile
 
 unlet parent_dir parent_tag
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
 
 
 let g:easytags_dynamic_files = 1
@@ -187,6 +196,9 @@ call plug#end()
 call glaive#Install()
 
 
+Glaive codefmt plugin[mappings]
+Glaive codefmt google_java_executable="java -jar /home/maren/nvim/libs/google-java-format-1.7-all-deps.jar"
+
 let g:matchup_matchparen_status_offscreen = 1
 
 " fzf ripgrep
@@ -218,8 +230,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 let g:quickr_preview_on_cursor = 1
 let g:quickr_preview_exit_on_enter = 1
 
-Glaive codefmt plugin[mappings]
-Glaive codefmt google_java_executable="java -jar /home/maren/dotfiles/tools/jarfiles/google-java-format-1.7-all-deps.jar"  
 
 " sourcing some additional files
 so ~/dotfiles/vim/.credencials
@@ -235,6 +245,20 @@ au bufreadpre,bufnewfile *.story set ft=jbehave
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
+augroup autoformat_settings
+  autocmd FileType bzl AutoFormatBuffer buildifier
+  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+  autocmd FileType dart AutoFormatBuffer dartfmt
+  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType gn AutoFormatBuffer gn
+  autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+  autocmd FileType java AutoFormatBuffer google-java-format
+  autocmd FileType python AutoFormatBuffer yapf
+  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
+  autocmd FileType vue AutoFormatBuffer prettier
+augroup END
+
+
 
 syntax match div "//" conceal cchar=÷
 syntax match mul "*" conceal cchar=×
@@ -242,24 +266,15 @@ syntax match eq "==" conceal cchar=≣
 syntax match neq "!=" conceal cchar=≠
 syntax match gteq ">=" conceal cchar=≥
 syntax match lteq "<=" conceal cchar=≤
-
-
 setlocal concealcursor=nvic
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
 
-" if &diff 
 
-" endif
-
+augroup rainbow_lisp
+  autocmd!
+  autocmd FileType java,json,lisp,clojure,scheme RainbowParentheses
+augroup END
 
 colorscheme wal 
 so ~/dotfiles/vim/mappings.vim
-
 syntax on
