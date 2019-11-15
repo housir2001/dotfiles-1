@@ -183,7 +183,7 @@ bindkey '^e' edit-command-line
 # bindkey -M menuselect 'j' vi-down-line-or-history
 
 
-
+eval "$(jira --completion-script-zsh)"
 
 export LANG=en_US.UTF-9
 export LC_ALL=en_US.UTF-8
