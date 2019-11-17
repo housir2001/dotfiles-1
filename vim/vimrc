@@ -1,56 +1,28 @@
+" sourcing some additional files
+so ~/dotfiles/vim/.credencials
+so ~/dotfiles/vim/plugins.vim
+so ~/dotfiles/vim/functions.vim
+
+
 set noswapfile
-let g:ranger_map_keys = 0
+
+
+
 let g:airline_powerline_fonts = 1
 let vim_markdown_preview_github=1
 let mapleader = ","
 let g:mapleader = ","
-let g:ctrlp_use_caching = 1
+let g:castrlp_use_caching = 1
 let g:NERDTreeHijackNetrw = 0
-let g:ranger_replace_netrw = 1
+
 hi MatchParen cterm=none ctermbg=green ctermfg=blue
 syntax on
 " set font color fir code comments to gray 
 hi Comment guifg=#5C6370 ctermfg=59
 
-let g:airline_theme='onehalfdark'
+let g:airline_theme='wal'
 
-" Your customised tags go first.
 set tags+=~/tags,$DOC/tags,./.tags/tags,./.git/tags
-
-
-let parent_dir = expand("%:p:h")."/"
-
-" search for tags files 
-while match(parent_dir,"/",0)>-1 && isdirectory(parent_dir)
-  let parent_tag = parent_dir."tags"
-  if filereadable(parent_tag)
-    exe ":set tags+=".parent_tag
-  endif
-  let parent_dir = substitute(parent_dir,"[^/]*/$","","")
-endwhile
-let parent_dir = getcwd()."/"
-while match(parent_dir,"/",0)>-1 && isdirectory(parent_dir)
-  let parent_tag = parent_dir."tags"
-  if filereadable(parent_tag)
-    exe ":set tags+=".parent_tag
-  endif
-  let parent_dir = substitute(parent_dir,"[^/]*/$","","")
-endwhile
-
-unlet parent_dir parent_tag
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-
-
-let g:easytags_dynamic_files = 1
-
 
 autocmd InsertEnter,InsertLeave * set cul!
 
@@ -79,12 +51,6 @@ set tabstop=4 softtabstop=4 expandtab shiftwidth=4 shiftround smarttab
 set cmdheight=2 
 set fillchars+=vert:│    
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
 augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
@@ -96,114 +62,12 @@ augroup PatchDiffHighlight
   autocmd FileType diff           syntax enable
 augroup END
 
-call plug#begin('~/nvim/plugged')
-
-Plug 'junegunn/rainbow_parentheses.vim'
-
-"themes
-Plug 'arcticicestudio/nord-vim'
-Plug 'liuchengxu/space-vim-dark'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
-Plug 'dylanaraps/wal.vim'
-Plug 'KabbAmine/vCoolor.vim'
-
-" matching pairs {}()[]
-Plug 'andymass/vim-matchup'
-
-" better dir navigator
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'francoiscabrol/ranger.vim'
-
-" icons 
-Plug 'ryanoasis/vim-devicons'
-
-" Statusline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" faster grep
-Plug 'jremmen/vim-ripgrep'
-
-" startpage 
-Plug 'mhinz/vim-startify'
-
-" aligning everything
-Plug 'junegunn/vim-easy-align'
-
-" fuzzy search integration
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'zackhsi/fzf-tags'
-
-" better code commenting
-Plug 'scrooloose/nerdcommenter'
-
-Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
-
-" git integration
-Plug 'tpope/vim-fugitive'
-Plug 'rbong/vim-flog'
-Plug 'airblade/vim-gitgutter'
-
-Plug 'vimwiki/vimwiki'
-
-" fuzzysearch for buffer and mru files 
-Plug 'ctrlpvim/ctrlp.vim'
-
-Plug 'AdamWhittingham/vim-copy-filename'
-
-" translating tool
-Plug 'echuraev/translate-shell.vim'
-Plug 'ronakg/quickr-preview.vim'
-
-
-Plug 'mikelue/vim-maven-plugin'
-
-" file preview in quicklist
-Plug 'ronakg/quickr-preview.vim'
-
-"for formating java code
-Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
-" Also add Glaive, which is used to configure codefmt's maktaba flags. See
-" `:help :Glaive` for usage.
-Plug 'google/vim-glaive'
-
-" Java debugger 
-" Plug 'https://gitlab.com/Dica-Developer/vim-jdb'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'idanarye/vim-vebugger'
-
-" sytax files
-Plug 'uarun/vim-protobuf'
-
-" swagger previer
-Plug 'xavierchow/vim-swagger-preview'
-
-" Java debugger
-Plug 'https://gitlab.com/Dica-Developer/vim-jdb.git'
-"Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-"Plug 'idanarye/vim-vebugger'
-
-
-" Drawing tool
-Plug 'gyim/vim-boxdraw'
-
-Plug 'paulkass/jira-vim'
-
-Plug 'kkoomen/vim-doge'
-
-call plug#end()
-
 
 call glaive#Install()
 
 
 Glaive codefmt plugin[mappings]
 Glaive codefmt google_java_executable="java -jar /home/maren/nvim/libs/google-java-format-1.7-all-deps.jar"
-
-let g:matchup_matchparen_status_offscreen = 1
 
 " fzf ripgrep
 set completeopt=longest,menuone
@@ -218,10 +82,6 @@ command! -bang -nargs=* Rg
 
 let g:tmux_navigator_no_mappings = 1
 
-let g:vdebug_options = {}
-let g:vdebug_options['break_on_open'] = 1
-
-
 let g:NERDTreeDirArrowExpandable = "├"
 let g:NERDTreeDirArrowCollapsible = "╰"
 let NERDTreeQuitOnOpen = 0
@@ -229,22 +89,8 @@ let g:NERDTreeWinSize=60
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-
-
 let g:quickr_preview_on_cursor = 1
 let g:quickr_preview_exit_on_enter = 1
-
-
-" sourcing some additional files
-so ~/dotfiles/vim/.credencials
-so ~/dotfiles/vim/highligters/jbehave.vim
-so ~/dotfiles/vim/functions.vim
-
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-
-" set the filetype for story files
-au bufreadpre,bufnewfile *.story set ft=jbehave
 
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
@@ -262,8 +108,6 @@ augroup autoformat_settings
   autocmd FileType vue AutoFormatBuffer prettier
 augroup END
 
-
-
 syntax match div "//" conceal cchar=÷
 syntax match mul "*" conceal cchar=×
 syntax match eq "==" conceal cchar=≣
@@ -273,12 +117,11 @@ syntax match lteq "<=" conceal cchar=≤
 setlocal concealcursor=nvic
 
 
-
 augroup rainbow_lisp
   autocmd!
   autocmd FileType java,json,lisp,clojure,scheme RainbowParentheses
 augroup END
 
 colorscheme wal 
+
 so ~/dotfiles/vim/mappings.vim
-syntax on
