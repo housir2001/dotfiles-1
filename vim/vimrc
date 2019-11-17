@@ -144,7 +144,7 @@ Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 " git integration
 Plug 'tpope/vim-fugitive'
 Plug 'rbong/vim-flog'
-
+Plug 'airblade/vim-gitgutter'
 
 Plug 'vimwiki/vimwiki'
 
@@ -171,7 +171,9 @@ Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 
 " Java debugger 
-Plug 'https://gitlab.com/Dica-Developer/vim-jdb'
+" Plug 'https://gitlab.com/Dica-Developer/vim-jdb'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'idanarye/vim-vebugger'
 
 " sytax files
 Plug 'uarun/vim-protobuf'
@@ -181,6 +183,8 @@ Plug 'xavierchow/vim-swagger-preview'
 
 " Java debugger
 Plug 'https://gitlab.com/Dica-Developer/vim-jdb.git'
+"Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+"Plug 'idanarye/vim-vebugger'
 
 
 " Drawing tool
@@ -188,7 +192,7 @@ Plug 'gyim/vim-boxdraw'
 
 Plug 'paulkass/jira-vim'
 
-
+Plug 'kkoomen/vim-doge'
 
 call plug#end()
 
