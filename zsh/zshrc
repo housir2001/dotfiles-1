@@ -161,6 +161,8 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 ZSH_TMUX_AUTOSTART=true
 
 source ~/dotfiles/jenkins/cli.sh
+source ~/dotfiles/jenkins/snapshot.sh
+source ~/dotfiles/jenkins/devDeploy.sh
 
 (cat ~/.cache/wal/sequences &)
 
@@ -193,5 +195,20 @@ export JAVA_HOME=/usr/lib/jvm/default
 
 export COREMAN_HOME="/srv/integration/utils/coreman"
 export PATH="${PATH}:${COREMAN_HOME}/bin"
+
+
+alias comment='f() { jira comment $1 };f' 
+alias subtaskUnassign='f() { jira unassign $1 };f' 
+alias subtaskAssign='f() { jira assign $1 m9338  };f' 
+alias subtaskReview='f() { jira transition "In Review" $1 };f' 
+alias subtaskProgress='f() { jira transition "In Progress" $1 };f' 
+alias subtaskDone='f() { jira transition "Done" $1 };f' 
+alias sprint='jira listStories' 
+alias subtask='f() { jira listSubtasks $1};f' 
+alias subtaskView='f() { jira view $1};f' 
+
+
+#jira transition "In Review" INTS-3320
+
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

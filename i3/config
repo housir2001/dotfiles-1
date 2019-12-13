@@ -437,6 +437,18 @@ mode "$mode_gaps_outer" {
      bindsym $mod+r mode "default"
  }
 
+ bindsym $mod+o mode "monitor"
+ mode "monitor" {
+ 
+     bindsym w exec "autorandr work"
+     bindsym h exec "autorandr home"
+     
+     bindsym Return mode "default"
+     bindsym Escape mode "default"
+     bindsym $mod+r mode "default"
+ }
+
+
 
 
 bindsym $mod+i exec "sh ~/dotfiles/i3/script/clipboard.sh" 
@@ -452,6 +464,7 @@ assign [class="mpv"] "4"
 exec_always --no-startup-id "pulseaudio -k ; pulseaudio &; killall pasystray ; pasystray &"
 exec_always --no-startup-id "xset -b"
 bindsym $mod+0 exec "sh ~/dotfiles/scripts/shutDown.sh" 
-
+bindsym $mod+> exec "autorandr work" 
+bindsym $mod+< exec "autorandr home" 
 
 

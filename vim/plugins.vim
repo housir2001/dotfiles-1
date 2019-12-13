@@ -14,7 +14,6 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'dylanaraps/wal.vim'
-Plug 'KabbAmine/vCoolor.vim'
 
 " matching pairs {}()[]
 Plug 'andymass/vim-matchup'
@@ -22,7 +21,6 @@ Plug 'andymass/vim-matchup'
 " better dir navigator
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'francoiscabrol/ranger.vim'
 
 " icons 
 Plug 'ryanoasis/vim-devicons'
@@ -53,9 +51,9 @@ Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 " git integration
 Plug 'tpope/vim-fugitive'
 Plug 'rbong/vim-flog'
-Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 
-Plug 'vimwiki/vimwiki'
+Plug 'junegunn/vim-journal'
 
 " fuzzysearch for buffer and mru files 
 Plug 'ctrlpvim/ctrlp.vim'
@@ -63,7 +61,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'AdamWhittingham/vim-copy-filename'
 
 " translating tool
-Plug 'echuraev/translate-shell.vim'
 Plug 'ronakg/quickr-preview.vim'
 
 
@@ -79,11 +76,6 @@ Plug 'google/vim-codefmt'
 " `:help :Glaive` for usage.
 Plug 'google/vim-glaive'
 
-" Java debugger 
-" Plug 'https://gitlab.com/Dica-Developer/vim-jdb'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'idanarye/vim-vebugger'
-
 " sytax files
 Plug 'uarun/vim-protobuf'
 
@@ -92,17 +84,11 @@ Plug 'xavierchow/vim-swagger-preview'
 
 " Java debugger
 Plug 'https://gitlab.com/Dica-Developer/vim-jdb.git'
-"Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-"Plug 'idanarye/vim-vebugger'
 
 
-" Drawing tool
-Plug 'gyim/vim-boxdraw'
-
-Plug 'paulkass/jira-vim'
-
-Plug 'kkoomen/vim-doge'
-
+Plug 'psliwka/vim-smoothie'
+Plug 'benmills/vimux'
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 

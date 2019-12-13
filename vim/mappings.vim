@@ -3,10 +3,6 @@ nmap <leader>sc :set spell<CR>
 nmap <leader>!sc :set nospell<CR> 
 
 nnoremap ; :
-nmap <silent> <c-k> :wincmd k<CR>
-nmap <silent> <c-j> :wincmd j<CR>
-nmap <silent> <c-h> :wincmd h<CR>
-nmap <silent> <c-l> :wincmd l<CR>
 nmap <c-s> :w <CR>
 vmap <c-s> <Esc><c-s>gv
 imap <c-s> <Esc><c-s>
@@ -26,13 +22,20 @@ noremap <leader>gl :Gpull<CR>
 noremap <leader>gh :Gpush<CR>
 noremap <leader>gd :Gread<CR>
 
+noremap <leader>gus :SignifyHunkDiff<CR>
+noremap <leader>gutu :SignifyHunkUndo<CR>
+noremap <leader>gutd :SignifyDiff<CR>
+
+
 noremap <leader>b :CtrlPBuffer<CR>
 
 " repeat the last call in pane 1
-noremap <leader>re :execute "!tmux send -t 1 Up Enter" <CR>
+noremap <leader>ds :VimuxRunCommand "mvn -Dmaven.surefire.debug  -Dtest=".expand("%:t:r")." test"<CR>
+noremap <leader>rs :VimuxRunCommand "mvn -Dtest=".expand("%:t:r")." test" <CR>
+noremap <leader>rS :VimuxRunCommand "mvn test" <CR>
+noremap <leader>mc :VimuxRunCommand "mvn clean" <CR>
 
-" no clue 
-noremap <leader>ra :execute "!tmux send -t 1 ~/test.sh Enter "<CR> 
+noremap <leader>ra :execute "!tmux send -t 1 mvn -Dtest=" . % . " test"<CR> 
 
 xmap ga <Plug>(EasyAlign)
 
@@ -63,7 +66,7 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> K :call <SID>Show_documentation()<CR>
 
 " Remap for do codeAction of current line
 nmap <leader>ac  <Plug>(coc-codeaction)
@@ -147,6 +150,22 @@ map <F7> :JDBCommand print <C-r>=expand('<cword>')<CR>
 map <F8> :JDBCommand dump <C-r>=expand('<cword>')<CR>
 map <F9> :JDBToggleBreakpointOnLine<CR>
 
+
+nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+
+ map <leader>jS :call ViewSprint() 
+ map <leader>js :call SubtaskJira(expand("<cWORD>"))
+ map <leader>jv :call ViewJira(expand("<cWORD>"))
+ map <leader>jc :call CommentJira(expand("<cWORD>"))
+ map <leader>ju :call JiraUnassign(expand("<cWORD>"))
+ map <leader>ja :call JiraAssign(expand("<cWORD>"))
+ map <leader>jr :call JiraReview(expand("<cWORD>"))
+ map <leader>jd :call JiraDone(expand("<cWORD>"))
+ map <leader>jp :call JiraProgress(expand("<cWORD>"))
+ map <leader>jl :call SubtaskJira("INTS-1932")
 
 
 

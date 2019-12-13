@@ -24,7 +24,6 @@ let g:airline_theme='wal'
 
 set tags+=~/tags,$DOC/tags,./.tags/tags,./.git/tags
 
-autocmd InsertEnter,InsertLeave * set cul!
 
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
@@ -52,14 +51,14 @@ set cmdheight=2
 set fillchars+=vert:│    
 
 augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
 augroup PatchDiffHighlight
-  autocmd! 
-  autocmd FileType diff           syntax enable
+    autocmd! 
+    autocmd FileType diff           syntax enable
 augroup END
 
 
@@ -67,17 +66,17 @@ call glaive#Install()
 
 
 Glaive codefmt plugin[mappings]
-Glaive codefmt google_java_executable="java -jar /home/maren/nvim/libs/google-java-format-1.7-all-deps.jar"
+Glaive codefmt google_java_executable="java -jar /home/maren/nvim/libs/google-java-format-1.7-all-deps.jar --aosp"
 
 " fzf ripgrep
 set completeopt=longest,menuone
 
 command! -bang -nargs=* Rg
-      \ call fzf#vim#grep(
-      \   'rg --column --line-number --no-heading --color=always --ignore-case <q-args>, 5,
-      \   <bang>0 ? fzf#vim#with_preview('up:60%')
-      \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-      \   <bang>0)
+            \ call fzf#vim#grep(
+            \   'rg --column --line-number --no-heading --color=always --ignore-case <q-args>, 5,
+            \   <bang>0 ? fzf#vim#with_preview('up:60%')
+            \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+            \   <bang>0)
 
 
 let g:tmux_navigator_no_mappings = 1
@@ -95,18 +94,6 @@ let g:quickr_preview_exit_on_enter = 1
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
-augroup autoformat_settings
-  autocmd FileType bzl AutoFormatBuffer buildifier
-  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
-  autocmd FileType dart AutoFormatBuffer dartfmt
-  autocmd FileType go AutoFormatBuffer gofmt
-  autocmd FileType gn AutoFormatBuffer gn
-  autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
-  autocmd FileType java AutoFormatBuffer google-java-format
-  autocmd FileType python AutoFormatBuffer yapf
-  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
-  autocmd FileType vue AutoFormatBuffer prettier
-augroup END
 
 syntax match div "//" conceal cchar=÷
 syntax match mul "*" conceal cchar=×
@@ -118,10 +105,28 @@ setlocal concealcursor=nvic
 
 
 augroup rainbow_lisp
-  autocmd!
-  autocmd FileType java,json,lisp,clojure,scheme RainbowParentheses
+    autocmd!
+    autocmd FileType java,json,lisp,clojure,scheme RainbowParentheses
 augroup END
 
-colorscheme wal 
+augroup pandoc_syntax
+    au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+augroup END
 
+augroup autoformat_settings
+  autocmd FileType proto,javascript AutoFormatBuffer clang-format
+  autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+  autocmd FileType java AutoFormatBuffer google-java-format
+augroup END
+
+inoremap <Left>  <NOP>
+inoremap <Right> <NOP>
+inoremap <Up>    <NOP>
+inoremap <Down>  <NOP>
+nnoremap <Left>  <NOP>
+nnoremap <Right> <NOP>
+nnoremap <Up>    <NOP>
+nnoremap <Down>  <NOP>
+
+colorscheme wal 
 so ~/dotfiles/vim/mappings.vim
