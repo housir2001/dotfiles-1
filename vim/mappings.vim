@@ -101,7 +101,6 @@ nmap <leader>fj :%!python -m json.tool<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 nmap <leader>r :NERDTreeFind<CR> 
 map <leader>n :NERDTreeToggle<CR>
-nmap <leader>nr :Ranger<CR>
 
 " some yanking register stuff
 vnoremap  <leader>y  "+y
@@ -117,7 +116,7 @@ nnoremap <C-p>a :Rg
 
 " yank filename;linenumber to register
 nnoremap <leader>yl :let @+=expand("%") . ':' . line(".")<CR>
-nnoremap <leader>yf :let @+=expand("%") . ':' . line(".")<CR>
+nnoremap <leader>yf :let @+=expand("%") <CR>
 
 " split vertical
 map vv <C-W>v
@@ -140,15 +139,15 @@ nmap <c-w>=- :set ead=hor ea noea<CR> " set windows equal horizontally (^W, =, -
 
 
 " Debbugging
-map <F1> :JDBAttach<CR>
-map <F2> :JDBStepOver<CR>
-map <F3> :JDBStepIn<CR>
-map <F4> :JDBStepOut<C`R>
-map <F5> :JDBContinue<CR>
-map <F6> :JDBCommand locals<CR>
-map <F7> :JDBCommand print <C-r>=expand('<cword>')<CR>
-map <F8> :JDBCommand dump <C-r>=expand('<cword>')<CR>
-map <F9> :JDBToggleBreakpointOnLine<CR>
+map <leader>at :JDBAttach<CR>
+map <leader>so :JDBStepOver<CR>
+map <leader>si :JDBStepIn<CR>
+map <leader>soo :JDBStepOut<C`R>
+map <leader>sc :JDBContinue<CR>
+map <leader>ll :JDBCommand locals<CR>
+map <leader>pe :JDBCommand print <C-r>=expand('<cword>')<CR>
+map <leader>de :JDBCommand dump <C-r>=expand('<cword>')<CR>
+map <leader>tb :JDBToggleBreakpointOnLine<CR>
 
 
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>

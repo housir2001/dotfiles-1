@@ -84,7 +84,7 @@ Plug 'xavierchow/vim-swagger-preview'
 
 " Java debugger
 Plug 'https://gitlab.com/Dica-Developer/vim-jdb.git'
-
+" Plug 'puremourning/vimspector'
 
 Plug 'psliwka/vim-smoothie'
 Plug 'benmills/vimux'

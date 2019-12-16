@@ -2,6 +2,7 @@
 so ~/dotfiles/vim/.credencials
 so ~/dotfiles/vim/plugins.vim
 so ~/dotfiles/vim/functions.vim
+so ~/dotfiles/vim/snippets.vim
 
 
 set noswapfile
