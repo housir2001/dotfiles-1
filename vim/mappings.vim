@@ -168,4 +168,6 @@ nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
  map <leader>jl :call SubtaskJira("INTS-1932")
  map <leader>jm :call MineJira()
 
+ nmap <leader>rpc :ter newman run % <CR> 
+ nmap <leader>rp :ter newman run % --folder <cword><CR>
 
