@@ -49,6 +49,11 @@ function! JiraAssign(word)
     :execute "ter jira assign " . a:word . " m9338"
 endfunction
 
+function! MineJira()
+    :normal ggdG
+    :execute "ter jira mine"
+endfunction
+
 function! ViewJira(word)
     :normal ggdG
     :execute "read ! jira view " . a:word 

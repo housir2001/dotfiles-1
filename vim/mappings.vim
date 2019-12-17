@@ -70,7 +70,8 @@ nnoremap <silent> K :call <SID>Show_documentation()<CR>
 
 " Remap for do codeAction of current line
 nmap <leader>ac  <Plug>(coc-codeaction)
-
+xmap <leader>acv <Plug>(coc-codeaction-selected)
+nmap <leader>acv <Plug>(coc-codeaction-selected)
 "Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)
 
@@ -165,6 +166,6 @@ nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
  map <leader>jd :call JiraDone(expand("<cWORD>"))
  map <leader>jp :call JiraProgress(expand("<cWORD>"))
  map <leader>jl :call SubtaskJira("INTS-1932")
-
+ map <leader>jm :call MineJira()
 
 
