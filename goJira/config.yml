@@ -1,0 +1,89 @@
+endpoint: https://jira.sixt.com
+# Your project
+project: INTS
+# your ldap login name  
+user: m9338
+custom-commands:
+  - name: dones
+    help: display issues assigned to me
+    script: |-
+      # $JIRA_PROJECT if to want to overwrite the project id set as terminal viariable
+      if [ -n "$JIRA_PROJECT" ]; then
+          # if `project: ...` configured just list the issues for current project
+          {{jira}} list --template table2 --query "sprint in openSprints() and resolution = done and project = $JIRA_PROJECT ORDER BY priority asc, created"
+      else
+          # otherwise list issues for all project
+          {{jira}} list --template table2 --query "sprint in openSprints() and resolution = done  ORDER BY priority asc, created"
+      fi 
+  - name: mine
+    help: display issues assigned to me
+    script: |-
+      if [ -n "$JIRA_PROJECT" ]; then
+          # if `project: ...` configured just list the issues for current project
+          {{jira}} list --template list  --query "resolution = unresolved and assignee=currentuser() and project = $JIRA_PROJECT ORDER BY priority asc, created"
+      else
+          # otherwise list issues for all project
+          {{jira}} list --template table --query "resolution = unresolved and assignee=currentuser() ORDER BY priority asc, created"
+      fi
+  - name: shortList
+    help: display issues for active sprint
+    script: |-
+      if [ -n "$JIRA_PROJECT" ]; then
+          # if `project: ...` configured just list the issues for current project
+          {{jira}} list --template list --query "sprint in openSprints() and type != epic and resolution = unresolved and project=$JIRA_PROJECT ORDER BY rank asc, created" 
+      else # otherwise list issues for all project
+          echo "\"project: ...\" configuration missing from .jira.d/config.yml"
+      fi   
+  - name: sprint
+    help: display issues for active sprint
+    script: |-
+      if [ -n "$JIRA_PROJECT" ]; then
+          # if `project: ...` configured just list the issues for current project
+          {{jira}} list --template table2 --query "sprint in openSprints() and type != epic and resolution = unresolved and project=$JIRA_PROJECT ORDER BY rank asc, created"
+      else
+          # otherwise list issues for all project
+          echo "\"project: ...\" configuration missing from .jira.d/config.yml"
+      fi   
+  - name: listSubtasks
+    help: display issues for active sprint
+    args:
+      - name: task
+        required: true
+    script: |-
+      if [ -n "$JIRA_PROJECT" ]; then
+          # if `project: ...` configured just list the issues for current project
+      {{jira}} list --template table2 --query "project = $JIRA_PROJECT  AND Sprint in openSprints() AND type = Sub-task and parent = {{args.task}}"
+      else
+          # otherwise list issues for all project
+          echo "\"project: ...\" configuration missing from .jira.d/config.yml"
+      fi   
+  - name: listStories
+    help: display stories for active sprint
+    script: |-
+      if [ -n "$JIRA_PROJECT" ]; then
+          # if `project: ...` configured just list the issues for current project
+      {{jira}} list --template table2 --query "project = $JIRA_PROJECT AND Sprint in openSprints() AND type = Story"
+      else
+          # otherwise list issues for all project
+          echo "\"project: ...\" configuration missing from .jira.d/config.yml"
+      fi   
+  - name: platform
+    help: display stories for active sprint
+    script: |-
+      if [ -n "$JIRA_PROJECT" ]; then
+          # if `project: ...` configured just list the issues for current project
+      {{jira}} list --template table2 --query "project = \"Integration Platform\" and type = Task and (status = Icebox  or status = \"To Do\" )"
+      else
+          # otherwise list issues for all project
+          echo "\"project: ...\" configuration missing from .jira.d/config.yml"
+      fi   
+  - name: platformDebug
+    help: display stories for active sprint
+    script: |-
+      if [ -n "$JIRA_PROJECT" ]; then
+          # if `project: ...` configured just list the issues for current project
+      {{jira}} list --template debug --query "project = \"Integration Platform\" and type = Task and status = Icebox  "
+      else
+          # otherwise list issues for all project
+          echo "\"project: ...\" configuration missing from .jira.d/config.yml"
+      fi   

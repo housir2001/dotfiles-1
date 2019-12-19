@@ -54,6 +54,11 @@ function! MineJira()
     :execute "ter jira mine"
 endfunction
 
+function! JiraPlatform()
+    :normal ggdG
+    :execute "ter jira platform"
+endfunction
+
 function! ViewJira(word)
     :normal ggdG
     :execute "read ! jira view " . a:word 

@@ -168,6 +168,14 @@ nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
  map <leader>jl :call SubtaskJira("INTS-1932")
  map <leader>jm :call MineJira()
 
- nmap <leader>rpc :ter newman run % <CR> 
- nmap <leader>rp :ter newman run % --folder <cword><CR>
+
+nmap <leader>rpd :vert rightb ter newman run % --folder  <cword> --environment   "%:p:h"/Dev.postman_environment.json<CR>
+
+nmap <leader>rpcd :vert rightb ter newman run %  --environment Dev.postman_environment.json<CR>
+
+
+nmap <leader>rpc :vert rightb ter newman run % <CR> 
+nmap <leader>rp :vert rightb ter newman run % --folder <cword><CR>
+
+
 
