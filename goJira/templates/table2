@@ -1,6 +1,6 @@
 {{/*  table template */ -}} 
-{{$w := sub termWidth 207 -}}
-| {{ "Issue" | printf "%-14s" }}  | {{ "Summary" | printf (printf "%%-%ds" (sub $w 2)) }}  | {{"Status"}} | {{ "Assignee" | printf "%-14s" }} |
+{{$w := sub termWidth 170 -}}
+| {{ "Issue" | printf "%-10s" }}  | {{ "Summary" | printf (printf "%%-%ds" (sub $w 9)) }}  | {{"Status" | printf "%-12s"}} | {{ "Assignee" | printf "%-12s" }} |
 {{ range .issues -}} 
-| {{ .key | printf "%-14s"}}  | {{ .fields.summary | abbrev (sub $w 2) | printf (printf "%%-%ds" (sub $w 2)) }}  | {{ .fields.status.name }} | {{if .fields.assignee}} {{.fields.assignee.name | printf "%-14s"  }} {{else}}<unassigned>{{end}} |
+| {{ .key | printf "%-10s"}}  | {{ .fields.summary | abbrev (sub $w 9) | printf (printf "%%-%ds" (sub $w 9)) }}  | {{ .fields.status.name | printf "%-12s" }} | {{if .fields.assignee}} {{.fields.assignee.name | printf "%-10s"  }} {{else}}<unassigned>{{end}} |
 {{ end -}}

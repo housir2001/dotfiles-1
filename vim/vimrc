@@ -114,12 +114,6 @@ augroup pandoc_syntax
     au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
 augroup END
 
-augroup autoformat_settings
-  autocmd FileType proto,javascript AutoFormatBuffer clang-format
-  autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
-  autocmd FileType java AutoFormatBuffer google-java-format
-augroup END
-
 inoremap <Left>  <NOP>
 inoremap <Right> <NOP>
 inoremap <Up>    <NOP>
@@ -128,6 +122,7 @@ nnoremap <Left>  <NOP>
 nnoremap <Right> <NOP>
 nnoremap <Up>    <NOP>
 nnoremap <Down>  <NOP>
-
+let g:vimspector_enable_mappings = 'HUMAN'
 colorscheme wal 
+packadd! vimspector
 so ~/dotfiles/vim/mappings.vim

@@ -8,7 +8,7 @@ endif
 call plug#begin('~/nvim/plugged')
 
 Plug 'junegunn/rainbow_parentheses.vim'
-
+Plug 'dracula/vim', { 'name': 'dracula' }
 "themes
 Plug 'arcticicestudio/nord-vim'
 Plug 'liuchengxu/space-vim-dark'
@@ -83,12 +83,20 @@ Plug 'uarun/vim-protobuf'
 Plug 'xavierchow/vim-swagger-preview'
 
 " Java debugger
-Plug 'https://gitlab.com/Dica-Developer/vim-jdb.git'
+"Plug 'https://gitlab.com/Dica-Developer/vim-jdb.git'
 " Plug 'puremourning/vimspector'
 
 Plug 'psliwka/vim-smoothie'
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'voldikss/vim-floaterm'
+
+Plug 'vimwiki/vimwiki'
+
+
+Plug 'tpope/vim-surround'
+
 call plug#end()
+
 
 

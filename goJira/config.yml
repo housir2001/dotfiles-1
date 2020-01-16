@@ -57,6 +57,20 @@ custom-commands:
           # otherwise list issues for all project
           echo "\"project: ...\" configuration missing from .jira.d/config.yml"
       fi   
+
+  - name: listSubtasksMyStory
+    help: display issues for active sprint
+    args:
+      - name: task
+        required: true
+    script: |-
+      if [ -n "$JIRA_PROJECT" ]; then
+          # if `project: ...` configured just list the issues for current project
+      {{jira}} list --template list --query "project = $JIRA_PROJECT  AND Sprint in openSprints() AND type = Sub-task and parent = {{args.task}}"
+      else
+          # otherwise list issues for all project
+          echo "\"project: ...\" configuration missing from .jira.d/config.yml"
+      fi 
   - name: listStories
     help: display stories for active sprint
     script: |-

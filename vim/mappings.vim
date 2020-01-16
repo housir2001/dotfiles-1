@@ -12,6 +12,7 @@ noremap <leader>t :call fzf_tags#Find(expand('<cword>'))<CR>
 noremap <leader>a :Rg <C-r>=expand('<cword>')<CR>
 noremap <leader>A :Rg <C-r>=expand('<CWORD>')<CR>
 
+
 noremap <leader>f :FZF<CR>
 
 " some fungitive shortings
@@ -156,18 +157,18 @@ nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 
- map <leader>jS :call ViewSprint() 
- map <leader>js :call SubtaskJira(expand("<cWORD>"))
- map <leader>jv :call ViewJira(expand("<cWORD>"))
- map <leader>jc :call CommentJira(expand("<cWORD>"))
- map <leader>ju :call JiraUnassign(expand("<cWORD>"))
- map <leader>ja :call JiraAssign(expand("<cWORD>"))
- map <leader>jr :call JiraReview(expand("<cWORD>"))
- map <leader>jd :call JiraDone(expand("<cWORD>"))
- map <leader>jp :call JiraProgress(expand("<cWORD>"))
- map <leader>jl :call SubtaskJira("INTS-1932")
- map <leader>jm :call MineJira()
-
+ map <leader>jS :call ViewSprint() <CR>
+ map <leader>js :call SubtaskJira(expand("<cWORD>"))<CR>
+ map <leader>jv :call ViewJira(expand("<cWORD>"))<CR>
+ map <leader>jc :call CommentJira(expand("<cWORD>"))<CR>
+ map <leader>ju :call JiraUnassign(expand("<cWORD>"))<CR>
+ map <leader>ja :call JiraAssign(expand("<cWORD>"))<CR>
+ map <leader>jr :call JiraReview(expand("<cWORD>"))<CR>
+ map <leader>jd :call JiraDone(expand("<cWORD>"))<CR>
+ map <leader>jp :call JiraProgress(expand("<cWORD>"))<CR>
+ map <leader>jl :call SubtaskJira("INTS-3538")<CR>
+ map <leader>jm :call MineJira()<CR>
+ map <leader>jn :call JiraCreateSubtask(expand("<cWORD>"))<CR>
 
 nmap <leader>rpd :vert rightb ter newman run % --folder  <cword> --environment   "%:p:h"/Dev.postman_environment.json<CR>
 
@@ -177,5 +178,11 @@ nmap <leader>rpcd :vert rightb ter newman run %  --environment Dev.postman_envir
 nmap <leader>rpc :vert rightb ter newman run % <CR> 
 nmap <leader>rp :vert rightb ter newman run % --folder <cword><CR>
 
-
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
 
