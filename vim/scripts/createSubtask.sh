@@ -1,3 +1,6 @@
+#!/bin/bash
+
+tee /tmp/jiraTemplate << END
 fields:
   project:
     key: INTS
@@ -16,4 +19,9 @@ fields:
   issuetype:
     name: Sub-task
   parent:
-    key: ADD STORY ID
+    key: $1
+END
+
+jira subtask $1 -t /tmp/jiraTemplate  
+
+

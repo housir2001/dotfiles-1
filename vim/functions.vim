@@ -1,4 +1,3 @@
-let b:ActualTicket = "INTS-3538"
 function! Show_documentation()
     if (index(['vim','help'], &filetype) >= 0)
         execute 'h '.expand('<cword>')
@@ -22,56 +21,60 @@ function! SubtaskJira(word)
 endfunction
 
 
+function! EditJira(word)
+    :execute "ter jira edit " . a:word  
+endfunction
+
 function! CommentJira(word)
     :execute "ter jira comment " . a:word  
 endfunction
 
 function! JiraDone(word) 
-    :execute "ter jira transition \"Done\"  " . a:word 
+    :execute "ter jira transition \"Done\" --noedit  " . a:word 
     redraw 
-    sleep 500m
+    sleep 800m
     redraw 
     :q!
-    SubtaskJira(b:ActualTicket)    
+    :execute     SubtaskJira(g:ActualTicket)    
 endfunction
 
 
 function! JiraReview(word) 
     :execute "ter jira transition \"In Review\" --noedit " . a:word 
     redraw 
-    sleep 500m
+    sleep 800m
     redraw 
     :q!
-    SubtaskJira(b:ActualTicket)    
+    :execute     SubtaskJira(g:ActualTicket)    
 endfunction
 
 
 function! JiraProgress(word) 
     :execute "ter jira transition \"In Progress\" --noedit  " . a:word 
     redraw 
-    sleep 500m
+    sleep 800m
     redraw 
     :q!
-    SubtaskJira(b:ActualTicket)    
+    :execute    SubtaskJira(g:ActualTicket)    
 endfunction
 
 
 function! JiraUnassign(word) 
     :execute "ter jira unassign " . a:word 
     redraw 
-    sleep 500m
+    sleep 800m
     redraw
     :q!
-    SubtaskJira(b:ActualTicket)    
+    :execute    SubtaskJira(g:ActualTicket)    
 endfunction
 
 function! JiraAssign(word) 
     :execute "ter jira assign " . a:word . " m9338"
     redraw 
-    sleep 500m
+    sleep 800m
     redraw 
     :q!
-    SubtaskJira(b:ActualTicket)    
+    :execute    SubtaskJira(g:ActualTicket)    
 endfunction
 
 function! MineJira()
@@ -80,9 +83,14 @@ function! MineJira()
 endfunction
 
 function! JiraCreateSubtask(word)
-    :execute "ter jira subtask ". a:word." -t /home/maren/dotfiles/vim/template/jiraSubtask.yml"
+    :execute "ter bash /home/maren/dotfiles/vim/scripts/createSubtask.sh " . a:word
+    :normal 4j
+    :normal i
 endfunction
 
+function JiraOpen(word)
+    :execute "!qutebrowser https://jira.sixt.com/browse/" . a:word
+endfunction
 
 function! JiraPlatform()
     :normal ggdG
@@ -93,3 +101,4 @@ function! ViewJira(word)
     :normal ggdG
     :execute "read ! jira view " . a:word 
 endfunction
+

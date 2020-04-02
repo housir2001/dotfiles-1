@@ -15,9 +15,6 @@ default_floating_border normal
 hide_edge_borders none
 
 # change borders
-bindsym $mod+u border none
-bindsym $mod+y border pixel 1
-bindsym $mod+n border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -68,9 +65,29 @@ bindsym $mod+F5 exec terminal -e 'mocp'
 bindsym $mod+Ctrl+t exec --no-startup-id compton --config ~/.config/compton.conf
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
-bindsym Print exec --no-startup-id i3-scrot
-bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
-bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+# fullscreen
+bindsym Print exec "maim /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png" 
+# window
+bindsym $mod+Print exec  "maim -i $(xdotool getactivewindow) /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png"
+# selected area
+bindsym $mod+Shift+Print  exec "maim -s /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png"
+
+
+
+#mode "print" {
+#
+#        bindsym f exec "maim /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png"
+#        bindsym w exec "maim -i $(xdotool getactivewindow) /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png"
+#        bindsym a exec "maim -s /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png"
+#        bindsym t exec "gnome-screenshot -d 5"
+#        bindsym g exec "gnome-screenshot"
+#        bindsym Escape mode "default"
+#        bindsym Return mode "default"
+#        
+#}
+
+
+
 
 # focus_follows_mouse no
 
@@ -195,12 +212,18 @@ bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 
 # Open applications on specific workspaces
  assign [class="Thunderbird"] $ws9
- assign [class="psi"] $ws9
+ assign [class="Shadow Launcher"] $ws7
+ assign [class="shadow launcher"] $ws7
+ assign [class="Shadow"] $ws7
+ assign [class="qutebrowser"] $ws1
+ assign [class="slack"] $ws3
+ assign [class="microsoft teams - preview"] $ws3
 # assign [class="Pale moon"] $ws2
 # assign [class="Pcmanfm"] $ws3
 # assign [class="Skype"] $ws5
 
 # Open specific applications in floating mode
+
 for_window [title="alsamixer"] floating enable border pixel 1
 for_window [class="calamares"] floating enable border normal
 for_window [class="Clipgrab"] floating enable
@@ -457,14 +480,16 @@ exec_always --no-startup-id "killall compton; compton --config ~/dotfiles/i3/com
 exec_always --no-startup-id "python3 ~/dotfiles/i3/script/focusResize.py"
 exec_always --no-startup-id "killall udiskie ;  udiskie -t"
 exec_always --no-startup-id "wal --theme /home/maren/.cache/wal/colors.json"
-bindsym $mod+p exec "/home/maren/dotfiles/scripts/fqsnExporter.sh"
-bindsym $mod+c exec "qutebrowser -s content.headers.user_agent 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.128 Safari/537.36' https://e-sixt.slack.com/messages/DG04CKPAL/ https://outlook.office365.com/mail/inbox\#authRedirect\=true  https://www.deezer.com/en/"
-bindsym $mod+m exec "/home/maren/dotfiles/scripts/cheats.sh"
+#bindsym $mod+p exec "/home/maren/dotfiles/scripts/fqsnExporter.sh"
+#bindsym $mod+n exec "/home/maren/dotfiles/scripts/copyFqsn.sh"
+#bindsym $mod+m exec "/home/maren/dotfiles/scripts/copyErrorQueue.sh"
 assign [class="mpv"] "4" 
+bindsym $mod+c exec "qutebrowser -s content.headers.user_agent 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.128 Safari/537.36' https://e-sixt.slack.com/messages/DG04CKPAL/ https://outlook.office365.com/mail/inbox\#authRedirect\=true"
 exec_always --no-startup-id "pulseaudio -k ; pulseaudio &; killall pasystray ; pasystray &"
 exec_always --no-startup-id "xset -b"
 bindsym $mod+0 exec "sh ~/dotfiles/scripts/shutDown.sh" 
-bindsym $mod+> exec "autorandr work" 
-bindsym $mod+< exec "autorandr home" 
+#bindsym $mod+> exec "autorandr work" 
+#bindsym $mod+< exec "autorandr home" 
 
 
+bindsym $mod+p exec "sh ~/dotfiles/scripts/launcher.sh" 

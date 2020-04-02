@@ -9,9 +9,9 @@ imap <c-s> <Esc><c-s>
 nmap <leader>sp :w <bar> SSave! <C-R>=$FQSN <CR><CR>
 noremap <leader>T :call fzf_tags#Find(expand('<cword>'))<CR>
 noremap <leader>t :call fzf_tags#Find(expand('<cword>'))<CR>
-noremap <leader>a :Rg <C-r>=expand('<cword>')<CR>
+" ripgrep 
+noremap <leader>a :Rg <C-r>=expand('<cword>') <CR>
 noremap <leader>A :Rg <C-r>=expand('<CWORD>')<CR>
-
 
 noremap <leader>f :FZF<CR>
 
@@ -113,12 +113,10 @@ nnoremap  <leader>yy  "+yy
 " use fzf for tags result list
 nmap <C-]> <Plug>(fzf_tags)
 
-" ripgrep 
-nnoremap <C-p>a :Rg
-
 " yank filename;linenumber to register
 nnoremap <leader>yl :let @+=expand("%") . ':' . line(".")<CR>
 nnoremap <leader>yf :let @+=expand("%") <CR>
+nnoremap <leader>yfn :let @+=expand("%:t") <CR>
 
 " split vertical
 map vv <C-W>v
@@ -145,7 +143,7 @@ map <leader>at :JDBAttach<CR>
 map <leader>so :JDBStepOver<CR>
 map <leader>si :JDBStepIn<CR>
 map <leader>soo :JDBStepOut<C`R>
-map <leader>sc :JDBContinue<CR>
+map <leader>jc :JDBContinue<CR>
 map <leader>ll :JDBCommand locals<CR>
 map <leader>pe :JDBCommand print <C-r>=expand('<cword>')<CR>
 map <leader>de :JDBCommand dump <C-r>=expand('<cword>')<CR>
@@ -161,14 +159,17 @@ nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
  map <leader>js :call SubtaskJira(expand("<cWORD>"))<CR>
  map <leader>jv :call ViewJira(expand("<cWORD>"))<CR>
  map <leader>jc :call CommentJira(expand("<cWORD>"))<CR>
+ map <leader>je :call EditJira(expand("<cWORD>"))<CR>
  map <leader>ju :call JiraUnassign(expand("<cWORD>"))<CR>
  map <leader>ja :call JiraAssign(expand("<cWORD>"))<CR>
  map <leader>jr :call JiraReview(expand("<cWORD>"))<CR>
  map <leader>jd :call JiraDone(expand("<cWORD>"))<CR>
  map <leader>jp :call JiraProgress(expand("<cWORD>"))<CR>
- map <leader>jl :call SubtaskJira("INTS-3538")<CR>
+ map <leader>jl :call SubtaskJira(g:ActualTicket)<CR>
  map <leader>jm :call MineJira()<CR>
  map <leader>jn :call JiraCreateSubtask(expand("<cWORD>"))<CR>
+ map <leader>jpl :call JiraPlatform()<CR>
+ map <leader>jo :call JiraOpen("<cWORD>")<CR>
 
 nmap <leader>rpd :vert rightb ter newman run % --folder  <cword> --environment   "%:p:h"/Dev.postman_environment.json<CR>
 
@@ -184,5 +185,9 @@ inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
 
+
+nnoremap <silent> <Up>    :call animate#window_delta_height(10)<CR>
+nnoremap <silent> <Down>  :call animate#window_delta_height(-10)<CR>
+nnoremap <silent> <Left>  :call animate#window_delta_width(10)<CR>
+nnoremap <silent> <Right> :call animate#window_delta_width(-10)<CR>

@@ -4,11 +4,11 @@
 export DISPLAY=:0
 export XAUTHORITY=/home/maren/.Xauthority
 ARR=()
-ARR+=("Shutdown")
-ARR+=("Reboot")
-ARR+=("Suspend")
 ARR+=("Lock")
+ARR+=("Suspend")
+ARR+=("Reboot")
 ARR+=("Exit")
+ARR+=("Shutdown")
 
 CHOICE="$(printf '%s\n' "${ARR[@]}" | rofi -dmenu -config ~/dotfiles/i3/rofi.rasi -p " Power")"
 

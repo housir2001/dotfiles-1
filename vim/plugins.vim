@@ -6,12 +6,7 @@ endif
 
 
 call plug#begin('~/nvim/plugged')
-
-Plug 'junegunn/rainbow_parentheses.vim'
-Plug 'dracula/vim', { 'name': 'dracula' }
-"themes
-Plug 'arcticicestudio/nord-vim'
-Plug 'liuchengxu/space-vim-dark'
+Plug 'greymd/oscyank.vim'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'dylanaraps/wal.vim'
 
@@ -53,7 +48,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'rbong/vim-flog'
 Plug 'mhinz/vim-signify'
 
-Plug 'junegunn/vim-journal'
 
 " fuzzysearch for buffer and mru files 
 Plug 'ctrlpvim/ctrlp.vim'
@@ -69,13 +63,6 @@ Plug 'mikelue/vim-maven-plugin'
 " file preview in quicklist
 Plug 'ronakg/quickr-preview.vim'
 
-"for formating java code
-Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
-" Also add Glaive, which is used to configure codefmt's maktaba flags. See
-" `:help :Glaive` for usage.
-Plug 'google/vim-glaive'
-
 " sytax files
 Plug 'uarun/vim-protobuf'
 
@@ -85,18 +72,21 @@ Plug 'xavierchow/vim-swagger-preview'
 " Java debugger
 "Plug 'https://gitlab.com/Dica-Developer/vim-jdb.git'
 " Plug 'puremourning/vimspector'
-
+Plug 'liuchengxu/vista.vim'
+" smooth scrooling"
 Plug 'psliwka/vim-smoothie'
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'voldikss/vim-floaterm'
 
 Plug 'vimwiki/vimwiki'
 
-
 Plug 'tpope/vim-surround'
 
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax' 
+Plug 'dstein64/vim-startuptime'
+
+Plug 'camspiers/animate.vim'
+
 call plug#end()
-
-
 

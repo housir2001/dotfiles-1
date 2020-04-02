@@ -212,5 +212,5 @@ alias subtaskView='f() { jira view $1};f'
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
+export BROWSER=/usr/bin/qutebrowser
 source /home/maren/.config/broot/launcher/bash/br

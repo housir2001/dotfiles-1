@@ -5,9 +5,10 @@ so ~/dotfiles/vim/functions.vim
 so ~/dotfiles/vim/snippets.vim
 
 
+let g:ActualTicket = "INTS-3787"
+
+
 set noswapfile
-
-
 
 let g:airline_powerline_fonts = 1
 let vim_markdown_preview_github=1
@@ -49,7 +50,7 @@ set numberwidth=4
 set autowrite
 set tabstop=4 softtabstop=4 expandtab shiftwidth=4 shiftround smarttab
 set cmdheight=2 
-set fillchars+=vert:│    
+" "set fillchars+=vert:│    
 
 augroup numbertoggle
     autocmd!
@@ -62,12 +63,6 @@ augroup PatchDiffHighlight
     autocmd FileType diff           syntax enable
 augroup END
 
-
-call glaive#Install()
-
-
-Glaive codefmt plugin[mappings]
-Glaive codefmt google_java_executable="java -jar /home/maren/nvim/libs/google-java-format-1.7-all-deps.jar --aosp"
 
 " fzf ripgrep
 set completeopt=longest,menuone
@@ -95,21 +90,6 @@ let g:quickr_preview_exit_on_enter = 1
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
-
-syntax match div "//" conceal cchar=÷
-syntax match mul "*" conceal cchar=×
-syntax match eq "==" conceal cchar=≣
-syntax match neq "!=" conceal cchar=≠
-syntax match gteq ">=" conceal cchar=≥
-syntax match lteq "<=" conceal cchar=≤
-setlocal concealcursor=nvic
-
-
-augroup rainbow_lisp
-    autocmd!
-    autocmd FileType java,json,lisp,clojure,scheme RainbowParentheses
-augroup END
-
 augroup pandoc_syntax
     au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
 augroup END
@@ -124,5 +104,6 @@ nnoremap <Up>    <NOP>
 nnoremap <Down>  <NOP>
 let g:vimspector_enable_mappings = 'HUMAN'
 colorscheme wal 
-packadd! vimspector
+
 so ~/dotfiles/vim/mappings.vim
+

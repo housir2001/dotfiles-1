@@ -34,7 +34,6 @@ nord = {
 # Enable JavaScript.
 # Type: Bool
 config.set('content.javascript.enabled', True, 'file://*')
-config.set('fonts.monospace', 'Fira Mono')
 # Enable JavaScript.
 # Type: Bool
 config.set('content.javascript.enabled', True, 'chrome://*/*')
@@ -51,7 +50,7 @@ config.bind('<Ctrl-Shift-l>', 'hint links spawn --verbose --detach  youtube-dl {
 
 config.bind('<Ctrl-Shift-f>', 'hint links spawn --verbose --detach  /home/maren/Downloads/nzbmonkey-v0.2.5-linux/nzbmonkey.py {hint-url} ')
 
-config.bind('<Ctrl-Shift-o>', 'spawn --detach /home/maren/dotfiles/i3/script/fillplaylist.sh play')
+config.bind('<Ctrl-Shift-o>', 'spawn --verbose --detach /home/maren/dotfiles/i3/script/fillplaylist.sh play')
 
 config.bind('<Ctrl-Shift-d>', 'hint links spawn --verbose --detach mpv {hint-url}')
 

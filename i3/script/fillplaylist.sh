@@ -1,7 +1,8 @@
 #!/bin/bash
 
 if [ $1 == "play" ]; then
-    mpv --playlist /tmp/playlist
+echo "play mpv"
+    mpv --playlist=/tmp/playlist
     rm -f /tmp/playlist
 fi 
 
