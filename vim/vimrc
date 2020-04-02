@@ -22,9 +22,16 @@ syntax on
 " set font color fir code comments to gray 
 hi Comment guifg=#5C6370 ctermfg=59
 
-let g:airline_theme='wal'
+let g:airline_theme='bubblegum'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
-set tags+=~/tags,$DOC/tags,./.tags/tags,./.git/tags
+
+
+
+
+
+set tags+=~/tags,$DOC/tags,./.tags/tags,./.git/tags,../tags/tags
 
 
 set backupdir=~/.vim/backup//

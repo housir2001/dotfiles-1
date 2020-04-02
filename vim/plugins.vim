@@ -16,7 +16,8 @@ Plug 'andymass/vim-matchup'
 " better dir navigator
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-
+Plug 'mafflerbach/nerdtree-ripgrep-plugin'
+"
 " icons 
 Plug 'ryanoasis/vim-devicons'
 
@@ -72,7 +73,7 @@ Plug 'xavierchow/vim-swagger-preview'
 " Java debugger
 "Plug 'https://gitlab.com/Dica-Developer/vim-jdb.git'
 " Plug 'puremourning/vimspector'
-Plug 'liuchengxu/vista.vim'
+" Plug 'liuchengxu/vista.vim'
 " smooth scrooling"
 Plug 'psliwka/vim-smoothie'
 Plug 'benmills/vimux'
