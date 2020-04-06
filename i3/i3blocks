@@ -22,7 +22,6 @@ separator_block_width=25
 label=   
 command= DATE=$(date +%d-%m-%y) && FILE="/home/maren/dotfiles/scripts/data/$DATE.log" && if [ -f $FILE ]; then SECS=$(cat $FILE) && printf '%dh %dm\n' $(($SECS/3600)) $(($SECS%3600/60)); fi
 interval=15
-color=#BCC0FF
 
 #[weekend]
 #label=   

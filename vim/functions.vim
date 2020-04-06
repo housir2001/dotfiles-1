@@ -38,6 +38,16 @@ function! JiraDone(word)
     :execute     SubtaskJira(g:ActualTicket)    
 endfunction
 
+function! JiraOpenReview() 
+    :execute "ter jira listOpenReviews"
+    redraw 
+    sleep 800m
+    redraw 
+    :q!
+    :execute     SubtaskJira(g:ActualTicket)    
+endfunction
+
+
 
 function! JiraReview(word) 
     :execute "ter jira transition \"In Review\" --noedit " . a:word 
@@ -48,6 +58,15 @@ function! JiraReview(word)
     :execute     SubtaskJira(g:ActualTicket)    
 endfunction
 
+
+function! JiraTodo(word) 
+    :execute "ter jira transition \"Backlog\" --noedit  " . a:word 
+    redraw 
+    sleep 800m
+    redraw 
+    :q!
+    :execute    SubtaskJira(g:ActualTicket)    
+endfunction
 
 function! JiraProgress(word) 
     :execute "ter jira transition \"In Progress\" --noedit  " . a:word 

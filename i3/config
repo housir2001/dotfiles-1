@@ -51,7 +51,7 @@ bindsym $mod+Ctrl+p exec pavucontrol
 bindsym XF86AudioRaiseVolume exec pamixer -i5 # increase sound volume
 bindsym XF86AudioLowerVolume exec pamixer -d5 #decrease sound volume
 bindsym XF86AudioMute exec pamixer -t # mute sound  
- # muting 
+# muting 
 
 
 # Start Applications
@@ -211,15 +211,15 @@ bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 
 
 # Open applications on specific workspaces
- assign [class="Thunderbird"] $ws9
- assign [class="Shadow Launcher"] $ws7
- assign [class="shadow launcher"] $ws7
- assign [class="Shadow"] $ws7
- assign [class="qutebrowser"] $ws2
- assign [class="slack"] $ws3
- assign [class="Slack"] $ws3
- assign [class="microsoft teams - preview"] $ws3
- assign [class="Microsoft Teams - Preview"] $ws3
+assign [class="Thunderbird"] $ws9
+assign [class="Shadow Launcher"] $ws7
+assign [class="shadow launcher"] $ws7
+assign [class="Shadow"] $ws7
+assign [class="qutebrowser"] $ws2
+assign [class="slack"] $ws3
+assign [class="Slack"] $ws3
+assign [class="microsoft teams - preview"] $ws3
+assign [class="Microsoft Teams - Preview"] $ws3
 # assign [class="Pale moon"] $ws2
 # assign [class="Pcmanfm"] $ws3
 # assign [class="Skype"] $ws5
@@ -286,23 +286,23 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # Resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 5 px or 5 ppt
+# These bindings trigger as soon as you enter the resize mode
+# Pressing left will shrink the window’s width.
+# Pressing right will grow the window’s width.
+# Pressing up will shrink the window’s height.
+# Pressing down will grow the window’s height.
+    bindsym j resize shrink width 5 px or 5 ppt
         bindsym k resize grow height 5 px or 5 ppt
         bindsym l resize shrink height 5 px or 5 ppt
         bindsym semicolon resize grow width 5 px or 5 ppt
 
-        # same bindings, but for the arrow keys
+# same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
-        # exit resize mode: Enter or Escape
+# exit resize mode: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
@@ -352,47 +352,53 @@ set_from_resource $term_color13    color13
 set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
 
-# Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
-	i3bar_command i3bar
-	status_command i3status
-	position bottom
-
-## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-#	tray_output primary
-#	tray_output eDP1
-
-	bindsym button4 nop
-	bindsym button5 nop
-	strip_workspace_numbers yes
-    font pango: FontAwesome 10
-    
-    colors {
-        background #222D31
-        statusline #F9FAF9
-        separator  #454947
-
-#                      border  backgr. text
-        focused_workspace  #F9FAF9 #16a085 #292F34
-        active_workspace   #595B5B #353836 #FDF6E3
-        inactive_workspace #595B5B #222D31 #EEE8D5
-        binding_mode       #16a085 #2C2C2C #F9FAF9
-        urgent_workspace   #16a085 #FDF6E3 #E5201D
-    }
+    status_command i3blocks
+        position top
+        font pango: FontAwesome 10
+        colors {
+            background $term_background
+                statusline $term_foreground
+                separator  #454947
+# 
+# #                      border  backgr. text
+                focused_workspace  $term_foreground  $term_foreground $term_background
+                active_workspace   $term_foreground  $term_foreground $term_background
+                inactive_workspace $term_foreground  $term_background $term_foreground 
+                binding_mode       $term_foreground  $term_color2 $term_foreground 
+                urgent_workspace   $term_foreground  $term_color1 $term_foreground 
+        }
 }
+# Start i3bar to display a workspace bar (plus the system information i3status if available)
+# bar {
+# 	i3bar_command i3bar
+# 	status_command i3status
+# 	position bottom
+# 
+# ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+# #	tray_output primary
+# #	tray_output eDP1
+# 
+# 	bindsym button4 nop
+# 	bindsym button5 nop
+# 	strip_workspace_numbers yes
+#     font pango: FontAwesome 10
+#     
+
+# }
 
 # hide/unhide i3status bar
 #bindsym $mod+m bar mode toggle
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #000000 #000000 #000000 #000000
-  client.focused_inactive #000000 #000000 #000000 #000000
-  client.unfocused        #000000 #000000 #000000 #000000
-  client.urgent           #000000 #000000 #000000 #000000
-  client.placeholder      #000000 #000000 #000000 #000000 
+client.focused          #000000 $term_background $term_foreground #000000
+client.focused_inactive #000000 $term_background $term_foreground #000000
+client.unfocused        #000000 $term_background $term_foreground #000000
+client.urgent           #000000 $term_background $term_foreground #000000
+client.placeholder      #000000 $term_background $term_foreground #000000 
 
-  client.background       #000000
+client.background       #000000
 
 #############################
 ### settings for i3-gaps: ###
@@ -421,13 +427,13 @@ set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 bindsym $mod+Shift+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
+    bindsym o      mode "$mode_gaps_outer"
         bindsym i      mode "$mode_gaps_inner"
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
 mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
+    bindsym plus  gaps inner current plus 5
         bindsym minus gaps inner current minus 5
         bindsym 0     gaps inner current set 0
 
@@ -439,7 +445,7 @@ mode "$mode_gaps_inner" {
         bindsym Escape mode "default"
 }
 mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
+    bindsym plus  gaps outer current plus 5
         bindsym minus gaps outer current minus 5
         bindsym 0     gaps outer current set 0
 
@@ -451,27 +457,27 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
- bindsym $mod+t mode "theme"
- mode "theme" {
- 
-     bindsym l exec "/home/maren/dotfiles/i3/script/themeswitcher.sh -l"
-     bindsym d exec "/home/maren/dotfiles/i3/script/themeswitcher.sh -d"
-     
-     bindsym Return mode "default"
-     bindsym Escape mode "default"
-     bindsym $mod+r mode "default"
- }
+bindsym $mod+t mode "theme"
+mode "theme" {
 
- bindsym $mod+o mode "monitor"
- mode "monitor" {
- 
-     bindsym w exec "autorandr work"
-     bindsym h exec "autorandr home"
-     
-     bindsym Return mode "default"
-     bindsym Escape mode "default"
-     bindsym $mod+r mode "default"
- }
+    bindsym l exec "/home/maren/dotfiles/i3/script/themeswitcher.sh -l"
+        bindsym d exec "/home/maren/dotfiles/i3/script/themeswitcher.sh -d"
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+o mode "monitor"
+mode "monitor" {
+
+    bindsym w exec "autorandr work"
+        bindsym h exec "autorandr home"
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
 
 
 

@@ -21,6 +21,7 @@ noremap <leader>gs :Gstatus<CR>
 noremap <leader>gc :Gcommit<CR>
 noremap <leader>gl :Gpull<CR>
 noremap <leader>gh :Gpush<CR>
+noremap <leader>gm :Git push -o merge_request.create<CR>
 noremap <leader>gd :Gread<CR>
 
 noremap <leader>gus :SignifyHunkDiff<CR>
@@ -163,8 +164,10 @@ nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
  map <leader>ju :call JiraUnassign(expand("<cWORD>"))<CR>
  map <leader>ja :call JiraAssign(expand("<cWORD>"))<CR>
  map <leader>jr :call JiraReview(expand("<cWORD>"))<CR>
+ map <leader>jr :call JiraOpenReview(expand("<cWORD>"))<CR>
  map <leader>jd :call JiraDone(expand("<cWORD>"))<CR>
  map <leader>jp :call JiraProgress(expand("<cWORD>"))<CR>
+ map <leader>jt :call JiraTodo(expand("<cWORD>"))<CR>
  map <leader>jl :call SubtaskJira(g:ActualTicket)<CR>
  map <leader>jm :call MineJira()<CR>
  map <leader>jn :call JiraCreateSubtask(expand("<cWORD>"))<CR>
@@ -178,14 +181,6 @@ nmap <leader>rpcd :vert rightb ter newman run %  --environment Dev.postman_envir
 
 nmap <leader>rpc :vert rightb ter newman run % <CR> 
 nmap <leader>rp :vert rightb ter newman run % --folder <cword><CR>
-
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-
 
 nnoremap <silent> <Up>    :call animate#window_delta_height(10)<CR>
 nnoremap <silent> <Down>  :call animate#window_delta_height(-10)<CR>

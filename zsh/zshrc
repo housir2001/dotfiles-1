@@ -141,7 +141,7 @@ alias fqsn="zsh ~/.local/bin/fqsnExporter.sh"
 alias pro="zsh ~/.local/bin/openProject.sh"
 
 alias tag="git branch | grep \* | cut -d ' ' -f2"
-
+alias gitremote="git remote -v | head -n1 | cut -f2 | sed s/\(fetch\)//g | c"
 
 source ~/exportedVars
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
