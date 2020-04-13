@@ -7,11 +7,11 @@ nmap <c-s> :w <CR>
 vmap <c-s> <Esc><c-s>gv
 imap <c-s> <Esc><c-s>
 nmap <leader>sp :w <bar> SSave! <C-R>=$FQSN <CR><CR>
-noremap <leader>T :call fzf_tags#Find(expand('<cword>'))<CR>
+noremap <leader>T :call fzf_tags#Find(expand('<CWORD>'))<CR>
 noremap <leader>t :call fzf_tags#Find(expand('<cword>'))<CR>
 " ripgrep 
 noremap <leader>a :Rg <C-r>=expand('<cword>') <CR>
-noremap <leader>A :Rg <C-r>=expand('<CWORD>')<CR>
+noremap <leader>A :Rg <C-r>=expand('<CWORD>') <CR>
 
 noremap <leader>f :FZF<CR>
 
@@ -29,7 +29,7 @@ noremap <leader>gutu :SignifyHunkUndo<CR>
 noremap <leader>gutd :SignifyDiff<CR>
 
 
-noremap <leader>b :CtrlPBuffer<CR>
+noremap <leader>b :Buffers<CR>
 
 " repeat the last call in pane 1
 noremap <leader>ds :VimuxRunCommand "mvn -Dmaven.surefire.debug  -Dtest=".expand("%:t:r")." test"<CR>
@@ -37,7 +37,6 @@ noremap <leader>rs :VimuxRunCommand "mvn -Dtest=".expand("%:t:r")." test" <CR>
 noremap <leader>rS :VimuxRunCommand "mvn test" <CR>
 noremap <leader>mc :VimuxRunCommand "mvn clean" <CR>
 
-noremap <leader>ra :execute "!tmux send -t 1 mvn -Dtest=" . % . " test"<CR> 
 
 xmap ga <Plug>(EasyAlign)
 
@@ -100,6 +99,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 nmap <leader>fo gg=G
 nmap <leader>fj :%!python -m json.tool<CR>
 
+nmap <leader>log kdggjdGdt{$dT}x,fj 
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 nmap <leader>r :NERDTreeFind<CR> 
@@ -164,7 +164,7 @@ nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
  map <leader>ju :call JiraUnassign(expand("<cWORD>"))<CR>
  map <leader>ja :call JiraAssign(expand("<cWORD>"))<CR>
  map <leader>jr :call JiraReview(expand("<cWORD>"))<CR>
- map <leader>jr :call JiraOpenReview(expand("<cWORD>"))<CR>
+ map <leader>jro :call JiraOpenReview()<CR>
  map <leader>jd :call JiraDone(expand("<cWORD>"))<CR>
  map <leader>jp :call JiraProgress(expand("<cWORD>"))<CR>
  map <leader>jt :call JiraTodo(expand("<cWORD>"))<CR>

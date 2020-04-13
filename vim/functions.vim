@@ -39,12 +39,8 @@ function! JiraDone(word)
 endfunction
 
 function! JiraOpenReview() 
-    :execute "ter jira listOpenReviews"
-    redraw 
-    sleep 800m
-    redraw 
-    :q!
-    :execute     SubtaskJira(g:ActualTicket)    
+    :normal ggdG
+    :execute "read ! jira listOpenReviews " 
 endfunction
 
 
