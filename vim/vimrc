@@ -27,10 +27,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 
-
-
-
-
 set tags+=~/tags,$DOC/tags,./.tags/tags,./.git/tags,../tags/tags
 
 
@@ -100,6 +96,11 @@ augroup pandoc_syntax
     au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
 augroup END
 
+augroup httpFiles
+    au! BufNewFile,BufFilePre,BufRead *.post set filetype=rest
+augroup END
+
+
 inoremap <Left>  <NOP>
 inoremap <Right> <NOP>
 inoremap <Up>    <NOP>
@@ -110,6 +111,8 @@ nnoremap <Up>    <NOP>
 nnoremap <Down>  <NOP>
 let g:vimspector_enable_mappings = 'HUMAN'
 colorscheme wal 
+
+highlight link JavaIdentifier NONE
 
 so ~/dotfiles/vim/mappings.vim
 

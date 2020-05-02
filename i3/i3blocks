@@ -18,10 +18,11 @@ separator_block_width=25
 # interval=60
 # color=#6EDDA4
 
-[worked]
-label=   
-command= DATE=$(date +%d-%m-%y) && FILE="/home/maren/dotfiles/scripts/data/$DATE.log" && if [ -f $FILE ]; then SECS=$(cat $FILE) && printf '%dh %dm\n' $(($SECS/3600)) $(($SECS%3600/60)); fi
+[Tracker]
+label=WORK 
+command=echo "$(watson status)"
 interval=15
+
 
 #[weekend]
 #label=   

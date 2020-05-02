@@ -6,3 +6,7 @@ fqsn|/home/maren/dotfiles/scripts/copyFqsn.sh
 queue|/home/maren/dotfiles/scripts/copyErrorQueue.sh
 stream|/home/maren/dotfiles/scripts/openStream.sh
 audio|pulseaudio -k; sleep 2; pulseaudio & killall pasystray ; pasystray &
+keyboard activate|/home/maren/dotfiles/scripts/keyboardSwitch.sh true
+keyboard deaktivate|/home/maren/dotfiles/scripts/keyboardSwitch.sh false
+watson stop|watson stop
+watson restart|watson restart

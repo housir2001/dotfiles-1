@@ -10,14 +10,14 @@ Plug 'greymd/oscyank.vim'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'dylanaraps/wal.vim'
 
+Plug 'mafflerbach/java-syntax.vim'
 " matching pairs {}()[]
 Plug 'andymass/vim-matchup'
-
 " better dir navigator
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'mafflerbach/nerdtree-ripgrep-plugin'
-"
+Plug 'diepm/vim-rest-console' 
 " icons 
 Plug 'ryanoasis/vim-devicons'
 

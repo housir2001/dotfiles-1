@@ -228,6 +228,8 @@ assign [class="Microsoft Teams - Preview"] $ws3
 # Open specific applications in floating mode
 
 for_window [title="alsamixer"] floating enable border pixel 1
+for_window [title="Microsoft Teams Notification"] floating enable border pixel 1
+for_window [title="Microsoft Teams - Preview"] floating enable border pixel 1
 for_window [class="calamares"] floating enable border normal
 for_window [class="Clipgrab"] floating enable
 for_window [title="File Transfer*"] floating enable
@@ -359,15 +361,15 @@ bar {
         font pango: FontAwesome 10
         colors {
             background $term_background
-                statusline $term_foreground
-                separator  #454947
+            statusline $term_foreground
+            separator  #454947
 # 
 # #                      border  backgr. text
-                focused_workspace  $term_background  $term_foreground $term_background
-                active_workspace   $term_background  $term_foreground $term_background
-                inactive_workspace $term_background  $term_background $term_foreground 
-                binding_mode       $term_background  $term_color2 $term_foreground 
-                urgent_workspace   $term_background  $term_color1 $term_foreground 
+            focused_workspace  $term_background  $term_foreground $term_background
+            active_workspace   $term_background  $term_foreground $term_background
+            inactive_workspace $term_background  $term_background $term_foreground 
+            binding_mode       $term_background  $term_color2 $term_foreground 
+            urgent_workspace   $term_background  $term_color1 $term_foreground 
         }
 }
 # Start i3bar to display a workspace bar (plus the system information i3status if available)

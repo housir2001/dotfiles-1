@@ -6,6 +6,43 @@ function! Show_documentation()
     endif
 endfunction
 
+function! RunMvnTest() 
+  let mvnResult = system("mvn test")
+
+    vsplit __Potion_Bytecode__
+    normal! ggdG
+    setlocal buftype=nofile
+
+    call append(0, split(mvnResult, '\v\n'))
+endfunction
+
+function! RunMvnThisTest(file) 
+  let mvnResult = system("mvn test  -Dtest=" . a:file)
+
+    vsplit __Potion_Bytecode__
+    normal! ggdG
+    setlocal buftype=nofile
+
+    call append(0, split(mvnResult, '\v\n'))
+endfunction
+
+
+function! StopTime() 
+    :execute "ter watson stop"
+    redraw 
+    sleep 400m
+    redraw 
+    :q!
+endfunction
+
+function! StartTimeTracking(word) 
+    :execute "ter watson start " . a:word 
+    redraw 
+    sleep 400m
+    redraw 
+    :q!
+endfunction
+
 
 function! ViewSprint() 
     let tmpWord=expand('<cWORD>')
@@ -41,9 +78,8 @@ endfunction
 function! JiraOpenReview() 
     :normal ggdG
     :execute "read ! jira listOpenReviews " 
+
 endfunction
-
-
 
 function! JiraReview(word) 
     :execute "ter jira transition \"In Review\" --noedit " . a:word 
@@ -52,6 +88,8 @@ function! JiraReview(word)
     redraw 
     :q!
     :execute     SubtaskJira(g:ActualTicket)    
+    :%s/\r/\n/g
+    :%s/\%x00//g
 endfunction
 
 

@@ -33,13 +33,17 @@ noremap <leader>b :Buffers<CR>
 
 " repeat the last call in pane 1
 noremap <leader>ds :VimuxRunCommand "mvn -Dmaven.surefire.debug  -Dtest=".expand("%:t:r")." test"<CR>
-noremap <leader>rs :VimuxRunCommand "mvn -Dtest=".expand("%:t:r")." test" <CR>
-noremap <leader>rS :VimuxRunCommand "mvn test" <CR>
+" noremap <leader>rs :VimuxRunCommand "mvn -Dtest=".expand("%:t:r")." test" <CR>
+" noremap <leader>rS :VimuxRunCommand "mvn test" <CR>
 noremap <leader>mc :VimuxRunCommand "mvn clean" <CR>
 
+noremap <leader>rS :call RunMvnTest()<CR>
+noremap <leader>rs :call RunMvnThisTest(expand("%:t:r"))<CR>
+
+noremap <leader>tim :call StartTimeTracking(g:ActualTicket)<CR>
+noremap <leader>tims :call StopTime()<CR>
 
 xmap ga <Plug>(EasyAlign)
-
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
@@ -99,7 +103,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 nmap <leader>fo gg=G
 nmap <leader>fj :%!python -m json.tool<CR>
 
-nmap <leader>log kdggjdGdt{$dT}x,fj 
+nmap <leader>log kdggjdGdt{$dT}
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 nmap <leader>r :NERDTreeFind<CR> 
@@ -138,17 +142,25 @@ map <leader>gfv :vertical wincmd f<CR>
 nmap <c-w>== :set ead=ver ea noea<CR> " set windows equal vertically (^W, =, =)
 nmap <c-w>=- :set ead=hor ea noea<CR> " set windows equal horizontally (^W, =, -)
 
+" <Plug>VimspectorContinue
+" <Plug>VimspectorStop
+" <Plug>VimspectorRestart
+" <Plug>VimspectorPause
+" <Plug>VimspectorToggleBreakpoint
+" <Plug>VimspectorAddFunctionBreakpoint
+" <Plug>VimspectorStepOver
+" <Plug>VimspectorStepInto
+" <Plug>VimspectorStepOut
+
 
 " Debbugging
-map <leader>at :JDBAttach<CR>
-map <leader>so :JDBStepOver<CR>
-map <leader>si :JDBStepIn<CR>
-map <leader>soo :JDBStepOut<C`R>
-map <leader>jc :JDBContinue<CR>
-map <leader>ll :JDBCommand locals<CR>
-map <leader>pe :JDBCommand print <C-r>=expand('<cword>')<CR>
-map <leader>de :JDBCommand dump <C-r>=expand('<cword>')<CR>
-map <leader>tb :JDBToggleBreakpointOnLine<CR>
+map <leader>at :CocCommand java.debug.vimspector.start<CR>
+map <leader>st <Plug>VimspectorStop<CR>
+map <leader>so  <Plug>VimspectorStepOver<CR>
+map <leader>si <Plug>VimspectorStepInto<CR>
+map <leader>soo <Plug>VimspectorStepOut<CR>
+map <leader>jc <Plug>VimspectorContinue<CR>
+map <leader>tb <Plug>VimspectorToggleBreakpoint<CR>
 
 
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
@@ -159,7 +171,7 @@ nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
  map <leader>jS :call ViewSprint() <CR>
  map <leader>js :call SubtaskJira(expand("<cWORD>"))<CR>
  map <leader>jv :call ViewJira(expand("<cWORD>"))<CR>
- map <leader>jc :call CommentJira(expand("<cWORD>"))<CR>
+ map <leader>jco :call CommentJira(expand("<cWORD>"))<CR>
  map <leader>je :call EditJira(expand("<cWORD>"))<CR>
  map <leader>ju :call JiraUnassign(expand("<cWORD>"))<CR>
  map <leader>ja :call JiraAssign(expand("<cWORD>"))<CR>
