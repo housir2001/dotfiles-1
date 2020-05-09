@@ -20,7 +20,7 @@ Plug 'mafflerbach/nerdtree-ripgrep-plugin'
 Plug 'diepm/vim-rest-console' 
 " icons 
 Plug 'ryanoasis/vim-devicons'
-
+Plug 'aquach/vim-http-client'
 " Statusline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'

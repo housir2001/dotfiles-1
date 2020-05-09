@@ -16,7 +16,6 @@ def on_window_focus(i3, e):
 
 
 
-
 # subscribe to an event
 i3.on("window::focus", on_window_focus)
 
