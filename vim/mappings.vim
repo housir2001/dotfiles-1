@@ -104,6 +104,7 @@ nmap <leader>fo gg=G
 nmap <leader>fj :%!python -m json.tool<CR>
 
 nmap <leader>log kdggjdGdt{$dT}
+nmap <leader>lig dt{$dT}
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 nmap <leader>r :NERDTreeFind<CR> 

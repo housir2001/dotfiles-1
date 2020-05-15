@@ -10,3 +10,5 @@ keyboard activate|/home/maren/dotfiles/scripts/keyboardSwitch.sh true
 keyboard deaktivate|/home/maren/dotfiles/scripts/keyboardSwitch.sh false
 watson stop|watson stop
 watson restart|watson restart
+pass|/home/maren/Documents/test/passtest.sh
+tpass|/home/maren/Documents/test/passtest.sh --type

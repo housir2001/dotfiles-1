@@ -5,8 +5,8 @@ so ~/dotfiles/vim/functions.vim
 so ~/dotfiles/vim/snippets.vim
 
 
-let g:ActualTicket = "INTS-3787"
-
+let g:ActualTicket = "INTS-4285"
+let g:arduino_dir = "/home/maren/Arduino"
 
 set noswapfile
 
@@ -99,7 +99,7 @@ augroup END
 augroup httpFiles
     au! BufNewFile,BufFilePre,BufRead *.post set filetype=rest
 augroup END
-
+au BufRead,BufNewFile *.ino,*.pde set filetype=c++
 
 inoremap <Left>  <NOP>
 inoremap <Right> <NOP>

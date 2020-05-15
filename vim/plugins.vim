@@ -89,5 +89,6 @@ Plug 'dstein64/vim-startuptime'
 
 Plug 'camspiers/animate.vim'
 
+Plug 'stevearc/vim-arduino'
 call plug#end()
 
