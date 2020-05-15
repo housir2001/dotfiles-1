@@ -64,8 +64,11 @@ rm -rf ~/.jira.d ; mkdir ~/.jira.d
 ln -s ~/dotfiles/goJira/config.yml ~/.jira.d/config.yml
 ln -s ~/dotfiles/goJira/templates ~/.jira.d/templates
 
-
+# Git settings
+rm -rf ~/.gitconfig
+ln -s ~/dotfiles/git/gitconfig ~/.gitconfig
 
 # coc vim packages
+
 
 ln -s ~/dotfiles/coc/package.json ~/.config/coc/extensions/package.json
