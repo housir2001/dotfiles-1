@@ -1,3 +1,4 @@
-#!/usr/bin/env bash
-watson stop
-i3lock-fancy -gpf Comic-Sans-MS 
+#!/bin/bash
+
+i3lock -i /home/maren/dotfiles/i3lock/lock.png
+

@@ -9,7 +9,7 @@ elseif exists("b:current_syntax")
   finish
 endif
 
-syn keyword gwt Given When Then Meta Narrative Scenario And 
+syn keyword gwt Given When Then Meta Narrative Scenario And Before
 syn keyword tableHeader reqUrl reqMethod respBody respStatusCode respContentType reqBody times contentType headers
 syn match gwt "^\s*And"
 
@@ -19,5 +19,5 @@ syn match   reference           "resources.*.json\s"
 hi link pipes Operator
 hi link reference String  
 
-hi link tableHeader Define
+hi link tableHeader DiffText
 hi link gwt Identifier

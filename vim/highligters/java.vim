@@ -321,7 +321,7 @@ hi def link javaLineComment		Comment
 hi def link javaConstant		Constant
 hi def link javaTypedef		Typedef
 hi def link javaTodo			Todo
-hi def link javaAnnotation		PreProc
+hi def link javaAnnotation	    Comment
 
 hi def link javaCommentTitle		SpecialComment
 hi def link javaDocTags		Special

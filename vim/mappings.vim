@@ -32,7 +32,7 @@ noremap <leader>gutd :SignifyDiff<CR>
 noremap <leader>b :Buffers<CR>
 
 " repeat the last call in pane 1
-noremap <leader>ds :VimuxRunCommand "mvn -Dmaven.surefire.debug  -Dtest=".expand("%:t:r")." test"<CR>
+noremap <leader>ds :VimuxRunCommand "mvn -Dmaven.surefire.debug  -Dtest=".expand("%:t:r")." test --offline"<CR>
 " noremap <leader>rs :VimuxRunCommand "mvn -Dtest=".expand("%:t:r")." test" <CR>
 " noremap <leader>rS :VimuxRunCommand "mvn test" <CR>
 noremap <leader>mc :VimuxRunCommand "mvn clean" <CR>
@@ -115,6 +115,9 @@ vnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+yg_
 nnoremap  <leader>y  "+y
 nnoremap  <leader>yy  "+yy
+
+map tt :tabnew<CR>
+map tc :tabclose<CR>
 
 " use fzf for tags result list
 nmap <C-]> <Plug>(fzf_tags)

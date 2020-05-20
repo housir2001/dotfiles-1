@@ -4,8 +4,7 @@ so ~/dotfiles/vim/plugins.vim
 so ~/dotfiles/vim/functions.vim
 so ~/dotfiles/vim/snippets.vim
 
-
-let g:ActualTicket = "INTS-4285"
+let g:ActualTicket = "INTS-4052"
 let g:arduino_dir = "/home/maren/Arduino"
 
 set noswapfile
@@ -17,18 +16,16 @@ let g:mapleader = ","
 let g:castrlp_use_caching = 1
 let g:NERDTreeHijackNetrw = 0
 
-hi MatchParen cterm=none ctermbg=green ctermfg=blue
 syntax on
-" set font color fir code comments to gray 
-hi Comment guifg=#5C6370 ctermfg=59
 
-let g:airline_theme='bubblegum'
+let g:airline_theme='wal'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 
-set tags+=~/tags,$DOC/tags,./.tags/tags,./.git/tags,../tags/tags
 
+" set tags+=~/tags,$DOC/tags,./.tags/tags,./.git/tags,../tags/tags,~/development/.tags/tags
+set tags+=~/tags,$DOC/tags,./.tags/tags,./.git/tags,../tags/tags
 
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
@@ -53,7 +50,7 @@ set numberwidth=4
 set autowrite
 set tabstop=4 softtabstop=4 expandtab shiftwidth=4 shiftround smarttab
 set cmdheight=2 
-" "set fillchars+=vert:│    
+set fillchars+=vert:│    
 augroup numbertoggle
     autocmd!
     autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
@@ -112,7 +109,12 @@ nnoremap <Down>  <NOP>
 let g:vimspector_enable_mappings = 'HUMAN'
 colorscheme wal 
 
+:hi LineNr  ctermfg=0 ctermbg=5
+hi MatchParen cterm=none ctermbg=green ctermfg=blue
 highlight link JavaIdentifier NONE
-
+hi vertsplit guifg=fg guibg=bg
+hi! VertSplit guifg=black guibg=black ctermfg=black ctermbg=black
+highlight Pmenu ctermbg=black guibg=bg ctermfg=1
+highlight PmenuSbar ctermbg=black guibg=bg ctermfg=1
+highlight PmenuSel ctermfg=black ctermbg=1 guibg=black
 so ~/dotfiles/vim/mappings.vim
-

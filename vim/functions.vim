@@ -7,7 +7,7 @@ function! Show_documentation()
 endfunction
 
 function! RunMvnTest() 
-  let mvnResult = system("mvn test")
+  let mvnResult = system("mvn test --offline")
 
     vsplit __Potion_Bytecode__
     normal! ggdG
@@ -17,7 +17,7 @@ function! RunMvnTest()
 endfunction
 
 function! RunMvnThisTest(file) 
-  let mvnResult = system("mvn test  -Dtest=" . a:file)
+  let mvnResult = system("mvn test --offline -Dtest=" . a:file)
 
     vsplit __Potion_Bytecode__
     normal! ggdG
@@ -46,6 +46,7 @@ endfunction
 
 function! ViewSprint() 
     let tmpWord=expand('<cWORD>')
+    split a:tmpWord
     :normal ggdG
     :read ! jira listStories 
 endfunction
@@ -151,7 +152,13 @@ function! JiraPlatform()
 endfunction
 
 function! ViewJira(word)
-    :normal ggdG
-    :execute "read ! jira view " . a:word 
+  let jiraView = system("jira view " . a:word)
+
+    vsplit ViewTicket
+    normal! ggdG
+    setlocal buftype=nofile
+    call append(0, split(jiraView, '\v\n'))   
+    :%s/\r/\n/g
+    :%s/\%x00//g
 endfunction
 
