@@ -11,22 +11,22 @@ show-icons:false;
 
 	font:												"Roboto medium 12";
 
-    active-background: @color2;
+    active-background: @color3;
     active-foreground: @color0;
-    normal-background: @color2;
+    normal-background: @color3;
     normal-foreground: @color0;
     urgent-background: @color3;
     urgent-foreground: @color1;
 
     
-    alternate-active-background: @color2;
+    alternate-active-background: @color3;
     alternate-active-foreground: @color0;
 
     selected-active-background: @color1;
     selected-active-foreground: @color0;
 
 
-    alternate-normal-background: @color2;
+    alternate-normal-background: @color3;
     alternate-normal-foreground: @color0;
 
     selected-normal-background: @color1;

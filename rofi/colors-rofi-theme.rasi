@@ -12,9 +12,9 @@ background:#00000000;  color0:#000000;  color1:#D19E63;  color2:#5679AE;  color3
 
 	font:												"Roboto medium 12";
 
-    active-background: @color2;
+    active-background: @color3;
     active-foreground: @color0;
-    normal-background: @color2;
+    normal-background: @color3;
     normal-foreground: @color0;
     urgent-background: @color3;
     urgent-foreground: @color1;

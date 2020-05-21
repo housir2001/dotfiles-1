@@ -379,8 +379,8 @@ bar {
 
 # Theme colors
 # class                 border  backgr. text    indic.           child_border
-client.focused          #000000 $term_color1     $term_background #000000
-client.focused_inactive #000000 $term_background $term_color1     #000000
+client.focused          #000000 $term_color3     $term_background #000000
+client.focused_inactive #000000 $term_background $term_color3     #000000
 client.unfocused        #000000 $term_background $term_foreground #000000
 client.urgent           #000000 $term_background $term_foreground #000000
 client.placeholder      #000000 $term_background $term_foreground #000000
