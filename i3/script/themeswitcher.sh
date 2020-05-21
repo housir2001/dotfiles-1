@@ -16,6 +16,7 @@ do
 esac
 done
 
+/home/maren/dotfiles/scripts/rofiThemeGenerator.sh
 
 
 

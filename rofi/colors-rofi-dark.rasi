@@ -1,36 +1,76 @@
+configuration {
+show-icons:false;
+  font:                           "Roboto medium 12";
+  columns: 1;
+  lines: 10;
+
+}
 * {
-    active-background: #893626;
-    active-foreground: @foreground;
-    normal-background: @background;
-    normal-foreground: @foreground;
-    urgent-background: #565E56;
+
+
+background: #01010100;
+foreground: #ddc3dd;
+cursor: #ddc3dd;
+
+color0: #010101;
+color1: #DF996A;
+color2: #6867A4;
+color3: #AB6D96;
+color4: #DEB29F;
+color5: #9B9AE6;
+color6: #9A99FE;
+color7: #ddc3dd;
+color8: #9a889a;
+color9: #DF996A;
+color10: #6867A4;
+color11: #AB6D96;
+color12: #DEB29F;
+color13: #9B9AE6;
+color14: #9A99FE;
+
+
+
+	font:												"Roboto medium 12";
+
+    active-background: @color2;
+    active-foreground: @color0;
+    normal-background: @color2;
+    normal-foreground: @color0;
+    urgent-background: @color3;
     urgent-foreground: @foreground;
 
-    alternate-active-background: @background;
-    alternate-active-foreground: @foreground;
-    alternate-normal-background: @background;
-    alternate-normal-foreground: @foreground;
-    alternate-urgent-background: @background;
-    alternate-urgent-foreground: @foreground;
+    
+    alternate-active-background: @color2;
+    alternate-active-foreground: @color0;
 
-    selected-active-background: #565E56;
-    selected-active-foreground: @foreground;
-    selected-normal-background: #893626;
-    selected-normal-foreground: @foreground;
-    selected-urgent-background: #9D5332;
-    selected-urgent-foreground: @foreground;
+    selected-active-background: @color1;
+    selected-active-foreground: @color0;
+
+
+    alternate-normal-background: @color2;
+    alternate-normal-foreground: @color0;
+
+    selected-normal-background: @color1;
+    selected-normal-foreground: @color0;
+
+
+    alternate-urgent-background: @color3;
+    alternate-urgent-foreground: @color0;
+
+    selected-urgent-background: @color3;
+    selected-urgent-foreground: @color0;
 
     background-color: @background;
-    background: #12040d;
-    foreground: #8fb0bc;
-    border-color: @background;
-    spacing: 2;
+
+    spacing: 5;
+
 }
 
 #window {
-    background-color: #00000044;
-    border: 0;
-    padding: 2.5ch;
+    background-color: @background;
+    border: 10;
+    border-color:@color1;
+    border-radius:1ch;
 }
 
 #mainbox {
@@ -40,12 +80,12 @@
 
 #message {
     border: 2px 0px 0px;
-    border-color: @border-color;
+    border-color: @color1;
     padding: 1px;
 }
 
 #textbox {
-    text-color: @foreground;
+    text-color: @color1;
 }
 
 #inputbar {
@@ -56,21 +96,21 @@
     expand: false;
     str: ":";
     margin: 0px 0.3em 0em 0em;
-    text-color: @normal-foreground;
+    text-color: @color1;
 }
 
 #listview {
     fixed-height: 0;
-    border: 2px 0px 0px;
-    border-color: @border-color;
-    spacing: 2px;
+    border: 5px 0px 0px;
+    border-color:@color1;
     scrollbar: true;
-    padding: 2px 0px 0px;
+    padding:15 0 ;
+    margin:0;
 }
 
 #element {
     border: 0;
-    padding: 1px;
+    padding: 15px;
 }
 
 #element.normal.normal {
@@ -86,11 +126,13 @@
 #element.normal.active {
     background-color: @active-background;
     text-color: @active-foreground;
+    margin:50  10;
 }
 
 #element.selected.normal {
     background-color: @selected-normal-background;
     text-color: @selected-normal-foreground;
+    border-radius: 0 25 25 0;
 }
 
 #element.selected.urgent {
@@ -101,6 +143,7 @@
 #element.selected.active {
     background-color: @selected-active-background;
     text-color: @selected-active-foreground;
+    border-radius: 0 25 25 0;
 }
 
 #element.alternate.normal {
@@ -119,15 +162,13 @@
 }
 
 #scrollbar {
-    width: 4px;
+    width: 0px;
     border: 0;
-    handle-width: 8px;
+    handle-width: 0px;
     padding: 0;
 }
 
 #sidebar {
-    border: 2px 0px 0px;
-    border-color: @border-color;
 }
 
 #button {
@@ -140,9 +181,9 @@
 }
 
 #inputbar {
-    spacing: 0;
+    spacing: 2;
     text-color: @normal-foreground;
-    padding: 1px;
+    padding: 10px;
 }
 
 #case-indicator {
@@ -152,10 +193,11 @@
 
 #entry {
     spacing: 0;
-    text-color: @normal-foreground;
+    text-color: @color2;
 }
 
 #prompt {
     spacing: 0;
-    text-color: @normal-foreground;
+    text-color: @color1;
+
 }
