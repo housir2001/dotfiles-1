@@ -74,22 +74,6 @@ bindsym $mod+Shift+Print  exec "maim -s /tmp/foo.png && xclip -selection clipboa
 
 
 
-#mode "print" {
-#
-#        bindsym f exec "maim /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png"
-#        bindsym w exec "maim -i $(xdotool getactivewindow) /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png"
-#        bindsym a exec "maim -s /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png"
-#        bindsym t exec "gnome-screenshot -d 5"
-#        bindsym g exec "gnome-screenshot"
-#        bindsym Escape mode "default"
-#        bindsym Return mode "default"
-#        
-#}
-
-
-
-
-# focus_follows_mouse no
 
 # change focus
 bindsym $mod+j focus left
@@ -493,8 +477,6 @@ bindsym $mod+c exec "qutebrowser -s content.headers.user_agent 'Mozilla/5.0 (X11
 exec_always --no-startup-id "pulseaudio -k ; pulseaudio &; killall pasystray ; pasystray &"
 exec_always --no-startup-id "xset -b"
 bindsym $mod+0 exec "sh ~/dotfiles/scripts/shutDown.sh" 
-#bindsym $mod+> exec "autorandr work" 
-#bindsym $mod+< exec "autorandr home" 
 
 
 bindsym $mod+p exec "sh ~/dotfiles/scripts/launcher.sh" 

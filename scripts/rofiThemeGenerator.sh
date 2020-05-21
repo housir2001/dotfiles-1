@@ -15,12 +15,10 @@ do
 
     ((i++))
 
-
 done < "$input"
 
-cp /home/maren/dotfiles/rofi/colors-rofi-template.rasi /home/maren/dotfiles/rofi/colors-rofi-theme.rasi
+cp /home/maren/dotfiles/rofi/colors-rofi-template.rasi /home/maren/dotfiles/i3/rofi.rasi
 
-sed -i "10i$content" /home/maren/dotfiles/rofi/colors-rofi-theme.rasi
+sed -i "10i$content" /home/maren/dotfiles/i3/rofi.rasi
 
-cp /home/maren/dotfiles/rofi/colors-rofi-theme.rasi /home/maren/dotfiles/i3/rofi.rasi
 
