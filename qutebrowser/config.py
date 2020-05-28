@@ -34,9 +34,15 @@ nord = {
 # Enable JavaScript.
 # Type: Bool
 config.set('content.javascript.enabled', True, 'file://*')
+config.set('fonts.default_family' , 'JetBrains Mono NL Regular')
+config.set('fonts.default_size' , '10pt')
 # Enable JavaScript.
 # Type: Bool
 config.set('content.javascript.enabled', True, 'chrome://*/*')
+config.set('content.javascript.can_access_clipboard', True)
+
+config.set('url.searchengines',{"d": "https://duckduckgo.com/?q={}", "DEFAULT": "https://www.google.com/search?q={}"})
+
 
 # Enable JavaScript.
 # Type: Bool

@@ -90,5 +90,9 @@ Plug 'dstein64/vim-startuptime'
 Plug 'camspiers/animate.vim'
 
 Plug 'stevearc/vim-arduino'
+
+Plug 'junkblocker/patchreview-vim'
+Plug 'codegram/vim-codereview'
+
 call plug#end()
 

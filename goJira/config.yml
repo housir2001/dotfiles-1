@@ -5,7 +5,7 @@ project: INTS
 user: m9338
 custom-commands:
   - name: dones
-    help: display issues assigned to me
+    help: shows all tickes with staus done
     script: |-
       # $JIRA_PROJECT if to want to overwrite the project id set as terminal viariable
       if [ -n "$JIRA_PROJECT" ]; then
@@ -45,7 +45,7 @@ custom-commands:
           echo "\"project: ...\" configuration missing from .jira.d/config.yml"
       fi   
   - name: listSubtasks
-    help: display issues for active sprint
+    help: list al subtask for anissue
     args:
       - name: task
         required: true

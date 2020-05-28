@@ -188,6 +188,15 @@ alias subtask='f() { jira listSubtasks $1};f'
 alias subtaskView='f() { jira view $1};f' 
 alias tree=br
 alias gent="mkdir tags; ctags --tag-relative=yes -R -f tags/tags  --fields=+aimlS"
+
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export BROWSER=/usr/bin/qutebrowser
+
+
 source /home/maren/.config/broot/launcher/bash/br
+
+
+
+
+
