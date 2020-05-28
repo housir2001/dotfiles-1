@@ -1,21 +1,53 @@
 #/bin/bash
 source ~/dotfiles/.credencials
 
-# link="$(gh pr view 1 | tail -n1 | cut -d" " -f7 )/.diff"
-# echo $link
-# 
-# curl --request GET \
-#         --url $link \
-#         --header 'authorization: Bearer $githubToken ' \
-#         -o temp.diff
-# 
-# vimdiff temp.diff
+REPO_OWNER=$(git remote get-url origin | sed 's/git@github.com://g' | sed 's/.git//g' | cut -d'/' -f1)
+REPO_NAME=$(git remote get-url origin | sed 's/git@github.com://g' | sed 's/.git//g' | cut -d'/' -f2)
+PR_NUMBER=$(gh pr status | sed -n 5p | cut -d' ' -f3 | sed 's/#//')
 
-REPO_OWNER="mafflerbach"
-REPO_NAME="dotfiles"
-PR_NUMBER=1
+commit_id=$(git log --format="%H" -n 1)
+
+lineNumber=$2
+path=$3
+
+if [[ $path =~ "fugitive:///" ]]; then
+    # wtf sed -r 's/.*?\///' seems to match nothing o.O
+    path=$(echo $path | sed 's/.*\/\///g' | sed  's/\//|/' | cut -d'|' -f2)
+fi
 
 
- curl -s -H "Authorization: token ${githubToken}" \
- -X POST -d '{"body": "Your Message to Comment"}' \
- "https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues/${PR_NUMBER}/comments"
+while getopts lv option
+
+do
+    case "${option}"
+        in
+
+        l) 
+        curl -v -s -H "Authorization: token ${githubToken}" \
+            -X POST -d @/tmp/GithubComment.gitcomment \
+            "https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/pulls/${PR_NUMBER}/comments"
+
+        ;;
+    v)
+
+        tee /tmp/GithubComment.gitcomment << END
+{
+"body": "", 
+"path":"${path}", 
+"position":${lineNumber}, 
+"commit_id":"${commit_id}"
+}
+
+END
+
+vim /tmp/GithubComment.gitcomment
+
+;;
+
+esac
+done
+
+
+
+
+

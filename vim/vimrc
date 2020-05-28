@@ -2,9 +2,11 @@
 so ~/dotfiles/vim/.credencials
 so ~/dotfiles/vim/plugins.vim
 so ~/dotfiles/vim/functions.vim
+so ~/dotfiles/vim/github.vim
 so ~/dotfiles/vim/snippets.vim
 
-let g:ActualTicket = "INTS-4052"
+let g:ActualTicket = "INTS-4289"
+
 let g:arduino_dir = "/home/maren/Arduino"
 
 set noswapfile
@@ -50,7 +52,7 @@ set numberwidth=4
 set autowrite
 set tabstop=4 softtabstop=4 expandtab shiftwidth=4 shiftround smarttab
 set cmdheight=2 
-set fillchars+=vert:│    
+
 augroup numbertoggle
     autocmd!
     autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
@@ -109,12 +111,13 @@ nnoremap <Down>  <NOP>
 let g:vimspector_enable_mappings = 'HUMAN'
 colorscheme wal 
 
+
 :hi LineNr  ctermfg=0 ctermbg=2
 hi MatchParen cterm=none ctermbg=green ctermfg=blue
 highlight link JavaIdentifier NONE
 hi vertsplit guifg=fg guibg=bg
 hi! VertSplit guifg=black guibg=black ctermfg=black ctermbg=black
-highlight Pmenu ctermbg=black guibg=bg ctermfg=1
+highlight Pmenu ctermbg=blue guibg=bg ctermfg=black
 highlight PmenuSbar ctermbg=black guibg=bg ctermfg=1
 highlight PmenuSel ctermfg=black ctermbg=1 guibg=black
 so ~/dotfiles/vim/mappings.vim

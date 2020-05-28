@@ -16,6 +16,7 @@ function! RunMvnTest()
     call append(0, split(mvnResult, '\v\n'))
 endfunction
 
+
 function! RunMvnThisTest(file) 
   let mvnResult = system("mvn test --offline -Dtest=" . a:file)
 
@@ -139,7 +140,6 @@ endfunction
 function! JiraCreateSubtask(word)
     :execute "ter bash /home/maren/dotfiles/vim/scripts/createSubtask.sh " . a:word
     :normal 4j
-    :normal i
 endfunction
 
 function JiraOpen(word)
@@ -161,4 +161,6 @@ function! ViewJira(word)
     :%s/\r/\n/g
     :%s/\%x00//g
 endfunction
+
+
 

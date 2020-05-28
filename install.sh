@@ -1,11 +1,13 @@
 #!/bin/bash 
 
 
-#pacman -Syu nodejs mpv qutebrowser kitty fzf ripgrep tmux neofetch fd awesome-terminal-fonts ttf-font-awesome ttf-font-icons otf-fira-code gvim keepass jdk8-openjdk npm yarn i3blocks
+#pacman -Syu nodejs mpv qutebrowser kitty fzf ripgrep tmux neofetch fd awesome-terminal-fonts ttf-font-awesome ttf-font-icons otf-fira-code gvim keepass jdk8-openjdk npm yarn i3blocks mutt
 
 #pip3 install requests tldextract pykeepass pywal  youtube-dl i3ipc
 
 # go get github.com/go-jira/jira/cmd/jira
+# curl -L https://github.com/gokcehan/lf/releases/latest/download/lf-linux-amd64.tar.gz | tar xzC ~/.local/bin
+
 
 # i3 config
 mkdir -p ~/.config/i3
