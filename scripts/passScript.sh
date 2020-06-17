@@ -18,14 +18,13 @@ echo $password
 [[ -n $password ]] || exit
 
 if [[ $typeit -eq 0 ]]; then
-	pass show -c "$password" 2>/dev/null
+    pass show -c "$password" | head -n1  2>/dev/null
 
 else
-    tempVar=$(pass show $password)
-
-while read -r line
-do
-    xdotool type "$line"
+    passw=$(pass show $password | head -n1 )
+    uname=$(pass show $password | tail -n1 )
+    xdotool type "$uname"
     xdotool key Tab
-done <<<"$tempVar"
+    xdotool type "$passw"
+    xdotool key Tab
 fi

@@ -35,6 +35,7 @@ do
 "body": "", 
 "path":"${path}", 
 "position":${lineNumber}, 
+"side": "RIGHT",
 "commit_id":"${commit_id}"
 }
 

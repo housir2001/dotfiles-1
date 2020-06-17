@@ -71,6 +71,14 @@ rm -rf ~/.gitconfig
 ln -s ~/dotfiles/git/gitconfig ~/.gitconfig
 
 # coc vim packages
-
-
 ln -s ~/dotfiles/coc/package.json ~/.config/coc/extensions/package.json
+
+
+
+
+# MISC 
+rm -rf ~/.urlview
+ln -s ~/dotfiles/misc/urlview ~/.urlview
+
+
+

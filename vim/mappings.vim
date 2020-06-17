@@ -2,6 +2,10 @@
 nmap <leader>sc :set spell<CR> 
 nmap <leader>!sc :set nospell<CR> 
 
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+
 nmap <c-s> :w <CR>
 vmap <c-s> <Esc><c-s>gv
 imap <c-s> <Esc><c-s>
@@ -66,8 +70,17 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-nnoremap <silent> K :call <SID>Show_documentation()<CR>
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+"
 " Remap for do codeAction of current line
 nmap <leader>ac  <Plug>(coc-codeaction)
 "Fix autofix problem of current line
@@ -78,7 +91,7 @@ nmap <leader>tg :Vista!!<CR>
 
 " Using CocList
 " Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <space>a  ::CocFzfList diagnostics<cr>
 " Show commands
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
@@ -160,8 +173,21 @@ nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
  map <leader>jo :call JiraOpen("<cWORD>")<CR>
 
 
+ map <leader>cgc :call CreateGitHubComment()<CR>
+ map <leader>sgc :call SendGithubComment()<CR>
 
 nnoremap <silent> <Up>    :call animate#window_delta_height(10)<CR>
 nnoremap <silent> <Down>  :call animate#window_delta_height(-10)<CR>
 nnoremap <silent> <Left>  :call animate#window_delta_width(10)<CR>
 nnoremap <silent> <Right> :call animate#window_delta_width(-10)<CR>
+
+map ,ll :s/target\/classes\/META-INF/src\/main\/resources\/META-INF/g <bar> :s/\[/\[ /g <bar> :s/\]/ \]/g <bar> :s/:/:\r/g <CR>
+
+map ,RP :Far <C-R>a <C-R>s 
+map ,rp :%s/<C-R>a/<C-R>s/g
+map ,1 "ayiW
+map ,2 "syiW
+map ,3 "qyiW
+map ,p1 "ap
+map ,p2 "sp
+map ,p3 "qp

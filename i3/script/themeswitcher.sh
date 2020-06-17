@@ -8,10 +8,10 @@ do
     in
 
     l) 
-      wal -l -i /home/maren/Downloads/wallpapers/$wallpaper 
+      wal -l -i /home/maren/Downloads/wallpapers/$wallpaper --backend=schemere
     ;;
     d)
-      wal -i /home/maren/Downloads/wallpapers/$wallpaper
+      wal -i /home/maren/Downloads/wallpapers/$wallpaper --backend=schemere2
     ;;
 esac
 done

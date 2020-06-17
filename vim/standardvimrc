@@ -1,0 +1,97 @@
+" sourcing some additional files
+so ~/dotfiles/vim/.credencials
+so ~/dotfiles/vim/plugins.vim
+so ~/dotfiles/vim/functions.vim
+so ~/dotfiles/vim/github.vim
+so ~/dotfiles/vim/snippets.vim
+
+
+let g:arduino_dir = "/home/maren/Arduino"
+
+let g:far#enable_undo=1
+let g:airline_powerline_fonts = 1
+let vim_markdown_preview_github=1
+let g:castrlp_use_caching = 1
+let g:NERDTreeHijackNetrw = 0
+
+
+let g:airline_theme='wal'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+
+
+" set tags+=~/tags,$DOC/tags,./.tags/tags,./.git/tags,../tags/tags,~/development/.tags/tags
+set tags+=~/tags,$DOC/tags,./.tags/tags,./.git/tags,../tags/tags
+
+
+augroup numbertoggle
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
+augroup PatchDiffHighlight
+    autocmd! 
+    autocmd FileType diff           syntax enable
+augroup END
+
+
+" fzf ripgrep
+set completeopt=longest,menuone
+
+command! -bang -nargs=* Rg
+            \ call fzf#vim#grep(
+            \   'rg --column --line-number --no-heading --color=always --ignore-case -g!tags <q-args>, 5,
+            \   <bang>0 ? fzf#vim#with_preview('up:60%')
+            \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+            \   <bang>0)
+
+
+let g:tmux_navigator_no_mappings = 1
+
+let g:NERDTreeDirArrowExpandable = "├"
+let g:NERDTreeDirArrowCollapsible = "╰"
+let NERDTreeQuitOnOpen = 0
+let g:NERDTreeWinSize=60
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+let g:quickr_preview_on_cursor = 1
+let g:quickr_preview_exit_on_enter = 1
+
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+augroup pandoc_syntax
+    au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+augroup END
+
+augroup httpFiles
+    au! BufNewFile,BufFilePre,BufRead *.post set filetype=rest
+augroup END
+au BufRead,BufNewFile *.ino,*.pde set filetype=c++
+
+let g:vimspector_enable_mappings = 'HUMAN'
+colorscheme wal 
+
+
+":hi LineNr  ctermfg=0 ctermbg=2
+hi MatchParen cterm=none ctermbg=green ctermfg=blue
+"highlight link JavaIdentifier NONE
+"hi vertsplit guifg=fg guibg=bg
+"hi! VertSplit guifg=black guibg=black ctermfg=black ctermbg=black
+highlight Pmenu ctermbg=blue guibg=bg ctermfg=black
+highlight PmenuSbar ctermbg=black guibg=bg ctermfg=1
+highlight PmenuSel ctermfg=black ctermbg=1 guibg=black
+set fillchars+=vert:░
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+  execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+so ~/dotfiles/vim/mappings.vim

@@ -6,10 +6,10 @@ endif
 
 
 call plug#begin('~/nvim/plugged')
+Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'greymd/oscyank.vim'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'dylanaraps/wal.vim'
-
 Plug 'mafflerbach/java-syntax.vim'
 " matching pairs {}()[]
 Plug 'andymass/vim-matchup'
@@ -43,7 +43,7 @@ Plug 'zackhsi/fzf-tags'
 Plug 'scrooloose/nerdcommenter'
 
 Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
-
+Plug 'antoinemadec/coc-fzf'
 " git integration
 Plug 'tpope/vim-fugitive'
 Plug 'rbong/vim-flog'
@@ -60,7 +60,6 @@ Plug 'ronakg/quickr-preview.vim'
 
 
 Plug 'mikelue/vim-maven-plugin'
-
 " file preview in quicklist
 Plug 'ronakg/quickr-preview.vim'
 
@@ -93,6 +92,6 @@ Plug 'stevearc/vim-arduino'
 
 Plug 'junkblocker/patchreview-vim'
 Plug 'codegram/vim-codereview'
-
+Plug 'brooth/far.vim'
 call plug#end()
 
