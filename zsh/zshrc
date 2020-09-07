@@ -5,6 +5,12 @@ PATH=$HOME/.composer/vendor/bin:$PATH:
 PATH=$HOME/.local/bin:$PATH:
 PATH=$HOME/.local/locations:$PATH:
 PATH=$HOME/node_modules/.bin:$PATH:
+PATH=$HOME/.cargo/bin:$PATH:
+PATH=$HOME/development/esp-idf/tools:$PATH:
+PATH=$HOME/Downloads/gcc-arm-9.2-2019.12-aarch64-arm-none-linux-gnueabihf/bin:$PATH:
+
+
+
 export EDITOR=vim
 # Path to your oh-my-zsh installation.
 stty -ixon
@@ -176,6 +182,7 @@ export COREMAN_HOME="/srv/integration/utils/coreman"
 export PATH="${PATH}:${COREMAN_HOME}/bin"
 
 
+
 alias comment='f() { jira comment $1 };f' 
 alias subtaskUnassign='f() { jira unassign $1 };f' 
 alias subtaskAssign='f() { jira assign $1 m9338  };f' 
@@ -187,10 +194,16 @@ alias subtask='f() { jira listSubtasks $1};f'
 alias subtaskView='f() { jira view $1};f' 
 alias tree=br
 alias gent="mkdir tags; ctags --tag-relative=yes -R -f tags/tags  --fields=+aimlS"
-
+alias bigFiles="du -a . | sort -n -r | head -n 20"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export BROWSER=/usr/bin/qutebrowser
+
+alias mpv="devour mpv --input-ipc-server=/tmp/mpvsocket "
+alias qutebrowser="devour qutebrowser"
+alias zathura="devour zathura"
+alias sabnzbd="devour /usr/lib/sabnzbd/SABnzbd.py"
+alias get_idf='. $HOME/development/esp-idf/export.sh'
 
 
 source /home/maren/.config/broot/launcher/bash/br
@@ -199,3 +212,9 @@ source /home/maren/.config/broot/launcher/bash/br
 
 
 
+
+PATH="/home/maren/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/maren/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/maren/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/maren/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/maren/perl5"; export PERL_MM_OPT;

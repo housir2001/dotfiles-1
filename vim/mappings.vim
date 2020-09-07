@@ -16,6 +16,8 @@ noremap <leader>t :call fzf_tags#Find(expand('<cword>'))<CR>
 noremap <leader>a :Rg <C-r>=expand('<cword>') <CR>
 noremap <leader>A :Rg <C-r>=expand('<CWORD>') <CR>
 
+noremap <leader>cos :CocSearch <C-r>=expand('<CWORD>') <CR>
+
 noremap <leader>f :FZF<CR>
 
 " some fungitive shortings
@@ -29,7 +31,6 @@ noremap <leader>gd :Gread<CR>
 noremap <leader>gus :SignifyHunkDiff<CR>
 noremap <leader>gutu :SignifyHunkUndo<CR>
 noremap <leader>gutd :SignifyDiff<CR>
-
 
 noremap <leader>b :Buffers<CR>
 
@@ -136,6 +137,9 @@ map tc :tabclose<CR>
 
 map <leader>gfv :vertical wincmd f<CR>
 
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
 nmap <c-w>== :set ead=ver ea noea<CR> " set windows equal vertically (^W, =, =)
 nmap <c-w>=- :set ead=hor ea noea<CR> " set windows equal horizontally (^W, =, -)
 
@@ -172,7 +176,6 @@ nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
  map <leader>jpl :call JiraPlatform()<CR>
  map <leader>jo :call JiraOpen("<cWORD>")<CR>
 
-
  map <leader>cgc :call CreateGitHubComment()<CR>
  map <leader>sgc :call SendGithubComment()<CR>
 
@@ -180,6 +183,9 @@ nnoremap <silent> <Up>    :call animate#window_delta_height(10)<CR>
 nnoremap <silent> <Down>  :call animate#window_delta_height(-10)<CR>
 nnoremap <silent> <Left>  :call animate#window_delta_width(10)<CR>
 nnoremap <silent> <Right> :call animate#window_delta_width(-10)<CR>
+
+map <leader>" ysiw"
+map <leader>) ysiw)
 
 map ,ll :s/target\/classes\/META-INF/src\/main\/resources\/META-INF/g <bar> :s/\[/\[ /g <bar> :s/\]/ \]/g <bar> :s/:/:\r/g <CR>
 
@@ -191,3 +197,6 @@ map ,3 "qyiW
 map ,p1 "ap
 map ,p2 "sp
 map ,p3 "qp
+
+map ,ru           :Dispatch ROCKET_PORT=9990 TEST=1  cargo run settings/settings_testing.json <CR>
+map ,co           :Dispatch cargo build<CR>

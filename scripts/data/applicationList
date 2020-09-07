@@ -1,5 +1,6 @@
 workplace Home|autorandr home
 workplace Work|autorandr work
+workplace wfh|autorandr wfh
 light|/home/maren/dotfiles/i3/script/themeswitcher.sh -l
 dark|/home/maren/dotfiles/i3/script/themeswitcher.sh -d
 fqsn|/home/maren/dotfiles/scripts/copyFqsn.sh

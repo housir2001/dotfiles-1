@@ -8,7 +8,7 @@ do
     in
 
     l) 
-      wal -l -i /home/maren/Downloads/wallpapers/$wallpaper --backend=schemere
+      wal -l -i /home/maren/Downloads/wallpapers/$wallpaper --backend=schemere -t
     ;;
     d)
       wal -i /home/maren/Downloads/wallpapers/$wallpaper --backend=schemere2

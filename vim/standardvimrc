@@ -5,7 +5,7 @@ so ~/dotfiles/vim/functions.vim
 so ~/dotfiles/vim/github.vim
 so ~/dotfiles/vim/snippets.vim
 
-
+set encoding=UTF-8
 let g:arduino_dir = "/home/maren/Arduino"
 
 let g:far#enable_undo=1
@@ -39,6 +39,7 @@ augroup END
 
 " fzf ripgrep
 set completeopt=longest,menuone
+let g:fzf_layout = {'window': {'width':0.8, 'height':0.8}}
 
 command! -bang -nargs=* Rg
             \ call fzf#vim#grep(
@@ -81,10 +82,108 @@ hi MatchParen cterm=none ctermbg=green ctermfg=blue
 "highlight link JavaIdentifier NONE
 "hi vertsplit guifg=fg guibg=bg
 "hi! VertSplit guifg=black guibg=black ctermfg=black ctermbg=black
-highlight Pmenu ctermbg=blue guibg=bg ctermfg=black
-highlight PmenuSbar ctermbg=black guibg=bg ctermfg=1
-highlight PmenuSel ctermfg=black ctermbg=1 guibg=black
+"highlight Pmenu ctermbg=blue guibg=bg ctermfg=black
+"highlight PmenuSbar ctermbg=black guibg=bg ctermfg=1
+"highlight PmenuSel ctermfg=black ctermbg=1 guibg=black
 set fillchars+=vert:░
+set guifont=DroidSansMono\ Nerd\ Font\ 15
+
+
+
+function! DoPrettyXML()
+  " save the filetype so we can restore it later
+  let l:origft = &ft
+  set ft=
+  " delete the xml header if it exists. This will
+  " permit us to surround the document with fake tags
+  " without creating invalid xml.
+  1s/<?xml .*?>//e
+  " insert fake tags around the entire document.
+  " This will permit us to pretty-format excerpts of
+  " XML that may contain multiple top-level elements.
+  0put ='<PrettyXML>'
+  $put ='</PrettyXML>'
+  silent %!xmllint --format -
+  " xmllint will insert an <?xml?> header. it's easy enough to delete
+  " if you don't want it.
+  " delete the fake tags
+  2d
+  $d
+  " restore the 'normal' indentation, which is one extra level
+  " too deep due to the extra tags we wrapped around the document.
+  silent %<
+  " back to home
+  1
+  " restore the filetype
+  exe "set ft=" . l:origft
+endfunction
+command! PrettyXML call DoPrettyXML()
+
+let g:rust_use_custom_ctags_defs = 0  " if using rust.vim
+let g:tagbar_type_rust = {
+  \ 'ctagsbin' : '/usr/bin/ctags',
+  \ 'ctagstype' : 'rust',
+  \ 'kinds' : [
+      \ 'n:modules',
+      \ 's:structures:1',
+      \ 'i:interfaces',
+      \ 'c:implementations',
+      \ 'f:functions:1',
+      \ 'g:enumerations:1',
+      \ 't:type aliases:1:0',
+      \ 'v:constants:1:0',
+      \ 'M:macros:1',
+      \ 'm:fields:1:0',
+      \ 'e:enum variants:1:0',
+      \ 'P:methods:1',
+  \ ],
+  \ 'sro': '::',
+  \ 'kind2scope' : {
+      \ 'n': 'module',
+      \ 's': 'struct',
+      \ 'i': 'interface',
+      \ 'c': 'implementation',
+      \ 'f': 'function',
+      \ 'g': 'enum',
+      \ 't': 'typedef',
+      \ 'v': 'variable',
+      \ 'M': 'macro',
+      \ 'm': 'field',
+      \ 'e': 'enumerator',
+      \ 'P': 'method',
+  \ },
+\ }
+let g:tagbar_type_json = {
+    \ 'ctagstype' : 'json',
+    \ 'kinds' : [
+      \ 'o:objects',
+      \ 'a:arrays',
+      \ 'n:numbers',
+      \ 's:strings',
+      \ 'b:booleans',
+      \ 'z:nulls'
+    \ ],
+  \ 'sro' : '.',
+    \ 'scope2kind': {
+    \ 'object': 'o',
+      \ 'array': 'a',
+      \ 'number': 'n',
+      \ 'string': 's',
+      \ 'boolean': 'b',
+      \ 'null': 'z'
+    \ },
+    \ 'kind2scope': {
+    \ 'o': 'object',
+      \ 'a': 'array',
+      \ 'n': 'number',
+      \ 's': 'string',
+      \ 'b': 'boolean',
+      \ 'z': 'null'
+    \ },
+    \ 'sort' : 0
+    \ }
+autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
+autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -95,3 +194,4 @@ function! s:show_documentation()
 endfunction
 
 so ~/dotfiles/vim/mappings.vim
+set guifont=DroidSansMono\ Nerd\ Font\ 30
