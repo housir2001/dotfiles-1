@@ -1,16 +1,20 @@
-workplace Home|autorandr home
-workplace Work|autorandr work
-light|/home/maren/dotfiles/i3/script/themeswitcher.sh -l
+DEEN|/home/maren/dotfiles/scripts/translate.sh -e
+ENDE|/home/maren/dotfiles/scripts/translate.sh -d
+Pause MPV|/home/maren/dotfiles/scripts/mpv.sh -s
+Resume MPV|/home/maren/dotfiles/scripts/mpv.sh -r
 dark|/home/maren/dotfiles/i3/script/themeswitcher.sh -d
 fqsn|/home/maren/dotfiles/scripts/copyFqsn.sh
-queue|/home/maren/dotfiles/scripts/copyErrorQueue.sh
-stream|/home/maren/dotfiles/scripts/openStream.sh
-audio|pulseaudio -k; sleep 2; pulseaudio & killall pasystray ; pasystray &
 keyboard activate|/home/maren/dotfiles/scripts/keyboardSwitch.sh true
 keyboard deaktivate|/home/maren/dotfiles/scripts/keyboardSwitch.sh false
-watson stop|watson stop
-watson restart|watson restart
+light|/home/maren/dotfiles/i3/script/themeswitcher.sh -l
 pass|/home/maren/dotfiles/scripts/passScript.sh
+queue|/home/maren/dotfiles/scripts/copyErrorQueue.sh
+stream|/home/maren/dotfiles/scripts/openStream.sh
 tpass|/home/maren/dotfiles/scripts/passScript.sh --type
-ENDE|/home/maren/dotfiles/scripts/translate.sh -d
-DEEN|/home/maren/dotfiles/scripts/translate.sh -e
+watson restart|watson restart
+watson stop|watson stop
+workplace Home|autorandr home
+workplace Work|autorandr work
+workplace wfh|autorandr wfh
+screen Area|maim -s /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png
+screen window|maim -i $(xdotool getactivewindow) /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png

@@ -2,7 +2,7 @@
 
 if [ $1 == "play" ]; then
 echo "play mpv"
-    mpv --playlist=/tmp/playlist
+    mpv --playlist=/tmp/playlist --input-ipc-server=/tmp/mpvsocket
     rm -f /tmp/playlist
 fi 
 

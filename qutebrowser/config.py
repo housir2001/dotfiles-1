@@ -34,7 +34,7 @@ nord = {
 # Enable JavaScript.
 # Type: Bool
 config.set('content.javascript.enabled', True, 'file://*')
-config.set('fonts.default_family' , 'JetBrains Mono NL Regular')
+config.set('fonts.default_family' ,  ["Inconsolata-dz for Powerline", "Monospace", "DejaVu Sans Mono", "Monaco", "Bitstream Vera Sans Mono", "Andale Mono", "Courier New", "Courier", "Liberation Mono", "monospace", "Fixed", "Consolas", "Terminal", "JetBrains Mono NL Regular"])
 config.set('fonts.default_size' , '10pt')
 # Enable JavaScript.
 # Type: Bool
@@ -48,17 +48,17 @@ config.set('url.searchengines',{"d": "https://duckduckgo.com/?q={}", "DEFAULT": 
 # Type: Bool
 config.set('content.javascript.enabled', True, 'qute://*/*')
 
-config.bind('<Ctrl-Shift-y>', 'hint links spawn --detach mpv --force-window yes {hint-url}')
+config.bind('<Ctrl-Shift-y>', 'hint links spawn --verbose --detach /home/maren/dotfiles/i3/script/playYtOnClient.sh "{hint-url}" ')
 
 config.bind('<Ctrl-Shift-p>', 'hint links spawn --verbose --detach /home/maren/dotfiles/i3/script/fillplaylist.sh push {hint-url}')
 
 config.bind('<Ctrl-Shift-l>', 'hint links spawn --verbose --detach  youtube-dl {hint-url} --output /home/maren/Downloads/ytFiles/%(title)s.%(ext)s')
 
-config.bind('<Ctrl-Shift-f>', 'hint links spawn --verbose --detach  /home/maren/Downloads/nzbmonkey-v0.2.5-linux/nzbmonkey.py {hint-url} ')
+config.bind('<Ctrl-Shift-f>', 'hint links spawn --verbose --detach  /opt/nzb-monkey/nzbmonkey.py {hint-url} ')
 
 config.bind('<Ctrl-Shift-o>', 'spawn --verbose --detach /home/maren/dotfiles/i3/script/fillplaylist.sh play')
 
-config.bind('<Ctrl-Shift-d>', 'hint links spawn --verbose --detach mpv {hint-url}')
+config.bind('<Ctrl-Shift-d>', 'hint links spawn --verbose --detach mpv {hint-url} --input-ipc-server=/tmp/mpvsocket')
 
 config.set('content.headers.user_agent', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36')
 

@@ -4,10 +4,11 @@
     email = maren@afflerbach.info
 	name = Maren Afflerbach
 [merge]
-	tool = vimdiff3
+	tool = vimdiff
     conflictStyle = diff3 
 [core]
 	pager = diff-so-fancy | less
+    editor = vim 
 [color]
 	ui = true
 [color "diff-highlight"]
@@ -24,3 +25,7 @@
 	whitespace = red reverse
 [mergetool "vimdiff3"]
 	cmd = vim -f -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
+[difftool]
+    prompt = 0
+[pull]
+	rebase = false
