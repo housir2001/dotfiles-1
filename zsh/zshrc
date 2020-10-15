@@ -11,7 +11,7 @@ PATH=$HOME/Downloads/gcc-arm-9.2-2019.12-aarch64-arm-none-linux-gnueabihf/bin:$P
 
 
 
-export EDITOR=vim
+export EDITOR=nvim
 # Path to your oh-my-zsh installation.
 stty -ixon
   export ZSH="/home/maren/.oh-my-zsh"
@@ -143,7 +143,7 @@ alias v='clippaste'
 alias fqsn="zsh ~/.local/bin/fqsnExporter.sh"
 alias pro="zsh ~/.local/bin/openProject.sh"
 
-alias vpnaddress="hostname -i | cut -f3 -d' ' | c"
+alias vpnaddress="hostname -i | cut -f4 -d' ' | c"
 alias tag="git branch | grep \* | cut -d ' ' -f2"
 alias gitremote="git remote -v | head -n1 | cut -f2 | sed s/\(fetch\)//g | c"
 
@@ -204,11 +204,12 @@ alias qutebrowser="devour qutebrowser"
 alias zathura="devour zathura"
 alias sabnzbd="devour /usr/lib/sabnzbd/SABnzbd.py"
 alias get_idf='. $HOME/development/esp-idf/export.sh'
-
-
 source /home/maren/.config/broot/launcher/bash/br
 
+function lastCommit {
+repoUrl=$(git config --get remote.origin.url |sed -e 's/:/\//' -e 's/git@/https:\/\//' -e 's/\.git//'); commit=$(git log | head -n1 | sed -e 's/commit //') ; echo $repoUrl/commit/#$commit
 
+}
 
 
 

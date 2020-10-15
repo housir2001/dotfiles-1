@@ -27,7 +27,7 @@ Plug 'vim-airline/vim-airline-themes'
 " faster grep
 Plug 'jremmen/vim-ripgrep'
 
-" startpage 
+""" startpage 
 Plug 'mhinz/vim-startify'
 
 " aligning everything
@@ -39,8 +39,7 @@ Plug 'junegunn/fzf.vim'
 
 " better code commenting
 Plug 'scrooloose/nerdcommenter'
-
-Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'antoinemadec/coc-fzf'
 " git integration
 Plug 'tpope/vim-fugitive'
@@ -82,6 +81,7 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax' 
 Plug 'dstein64/vim-startuptime'
 
+
 Plug 'camspiers/animate.vim'
 
 Plug 'stevearc/vim-arduino'
@@ -101,6 +101,9 @@ Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 " icons 
 Plug 'ryanoasis/vim-devicons'
+
+Plug 'chrisbra/csv.vim'
+
 call plug#end()
 
 call glaive#Install()

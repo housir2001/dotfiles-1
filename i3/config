@@ -58,6 +58,8 @@ bindsym XF86AudioLowerVolume exec pamixer -d5 #decrease sound volume
 bindsym XF86AudioMute exec pamixer -t # mute sound  
 # muting 
 
+bindsym XF86MonBrightnessUp exec --no-startup-id bash -c 'xbacklight -inc 10'
+bindsym XF86MonBrightnessDown exec --no-startup-id bash -c 'xbacklight -dec 10'
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
@@ -476,16 +478,15 @@ mode "monitor" {
 bindsym $mod+grave		exec --no-startup-id "sh ~/dotfiles/scripts/dmenuUnicode.sh"
 
 bindsym $mod+i exec "sh ~/dotfiles/i3/script/clipboard.sh" 
-exec_always --no-startup-id "pulseaudio -k; sleep 2; pulseaudio & killall pasystray ; pasystray &"
 exec_always --no-startup-id "killall compton; compton --config ~/dotfiles/i3/compton.conf &"
 exec_always --no-startup-id "python3 ~/dotfiles/i3/script/focusResize.py"
 exec_always --no-startup-id "killall udiskie ;  udiskie -t"
 exec_always --no-startup-id "wal --theme /home/maren/.cache/wal/colors.json"
 bindsym $mod+c exec "qutebrowser -s content.headers.user_agent 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.128 Safari/537.36' https://app.slack.com/client/T39SMKZ6U/CAAK243CJ https://outlook.office365.com/mail/inbox\#authRedirect\=true"
-exec_always --no-startup-id "xset -b"
 bindsym $mod+0 exec "sh ~/dotfiles/scripts/shutDown.sh" 
-exec_always --no-startup-id "bash ~/dotfiles/i3/script/lockTest.sh &"
- exec_always --no-startup-id "killall redshift; sleep 4 ; redshift -l 48.024395:11.598893 &"
+exec_always --no-startup-id "/home/maren/dotfiles/i3/script/lockTest.sh &"
+exec_always --no-startup-id "killall redshift; sleep 4 ; redshift -l 48.024395:11.598893 &"
 
+exec_always --no-startup-id "pulseaudio -k; sleep 2; pulseaudio & killall pasystray ; pasystray &"
 
 bindsym $mod+p exec "sh ~/dotfiles/scripts/launcher.sh" 

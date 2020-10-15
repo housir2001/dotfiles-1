@@ -104,6 +104,7 @@ nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " format from top to bottom
 nmap <leader>fo gg=G
 nmap <leader>fj :%!python -m json.tool<CR>
+vmap <leader>fj :'<,'> call BeautifyMvnLog()<CR>
 
 nmap <leader>log kdggjdGdt{$dT}
 nmap <leader>lig dt{$dT}

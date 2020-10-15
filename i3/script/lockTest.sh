@@ -1,5 +1,5 @@
 #!/bin/bash
-
+export DISPLAY=:0
 # Only exported variables can be used within the timer's command.
 export PRIMARY_DISPLAY="$(xrandr | awk '/ primary/{print $1}')"
 
@@ -10,7 +10,7 @@ xidlehook \
   `# Don't lock when there's audio playing` \
   --not-when-audio \
   `# Dim the screen after 60 seconds, undim if user becomes active` \
-  --timer 60 \
+  --timer 300 \
     'xset dpms force off' \
     'xset dpms force on' \
   `# Undim & lock after 5 more seconds` \

@@ -7,7 +7,7 @@ function! Show_documentation()
 endfunction
 
 function! RunMvnTest() 
-  let mvnResult = system("mvn test --offline")
+  let mvnResult = system("export JAVA_HOME=/usr/lib/jvm/java-8-openjdk; mvn test --offline")
 
     vsplit __Potion_Bytecode__
     normal! ggdG
@@ -18,7 +18,7 @@ endfunction
 
 
 function! RunMvnThisTest(file) 
-  let mvnResult = system("mvn test --offline -Dtest=" . a:file)
+  let mvnResult = system("export JAVA_HOME=/usr/lib/jvm/java-8-openjdk;mvn test --offline -Dtest=" . a:file)
 
     vsplit __Potion_Bytecode__
     normal! ggdG
@@ -162,5 +162,20 @@ function! ViewJira(word)
     :%s/\%x00//g
 endfunction
 
+function! Selection() abort
+  try
+    let a_save = @a
+    silent! normal! gv"ay
+    return @a
+  finally
+    let @a = a_save
+  endtry
+endfunction
 
+function! BeautifyMvnLog() 
+    let selection = Selection()
+  let output = system("~/dotfiles/scripts/parseMvnLogs.sh '". selection."'")
+call append(line('.'), split(output, '\n'))
+
+endfunction
 
