@@ -19,7 +19,14 @@ let g:airline_theme='wal'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " set tags+=~/tags,$DOC/tags,./.tags/tags,./.git/tags,../tags/tags,~/development/.tags/tags
 set tags+=~/tags,$DOC/tags,./.tags/tags,./.git/tags,../tags/tags
@@ -185,13 +192,9 @@ let g:tagbar_type_json = {
 autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
 autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
-"function! s:show_documentation()
-  "if (index(['vim','help'], &filetype) >= 0)
-  "execute 'h '.expand('<cword>')
-  "else
-    "call CocAction('doHover')
-  "endif
-"endfunction
+let g:syntastic_java_checkers = ['checkstyle']
+let g:syntastic_java_checkstyle_classpath = '~/nvim/libs/checkstyle-8.36.2-all.jar'
+let g:syntastic_java_checkstyle_conf_file = '~/development/platform.utils.java-common-env/eclipse-java-google-style-adopted.xml'
 
 so ~/dotfiles/vim/mappings.vim
 set guifont=DroidSansMono\ Nerd\ Font\ 30

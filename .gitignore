@@ -4,3 +4,4 @@ vim/.credencials
 .nvimlog
 qutebrowser/greasemonkey/*
 vim/session
+i3/rofi.rasi

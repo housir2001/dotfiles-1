@@ -94,21 +94,23 @@ Plug 'kkoomen/vim-doge'
 "Database client 
 Plug 'tpope/vim-dadbod'
 " Needed for formatter
-Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
+"Plug 'google/vim-maktaba'
+"Plug 'google/vim-codefmt'
 " Also add Glaive, which is used to configure codefmt's maktaba flags. See
 " `:help :Glaive` for usage.
-Plug 'google/vim-glaive'
+"Plug 'google/vim-glaive'
 " icons 
 Plug 'ryanoasis/vim-devicons'
 
 Plug 'chrisbra/csv.vim'
+Plug 'vim-syntastic/syntastic'
+Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
-call glaive#Install()
+"call glaive#Install()
 " Optional: Enable codefmt's default mappings on the <Leader>= prefix.
-Glaive codefmt plugin[mappings]
-Glaive codefmt google_java_executable="java -jar /home/maren/nvim/libs/google-java-format-1.7-all-deps.jar"
+"Glaive codefmt plugin[mappings]
+"Glaive codefmt google_java_executable="java -jar /home/maren/nvim/libs/google-java-format-1.7-all-deps.jar"
 
 
