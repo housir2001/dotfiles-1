@@ -1,9 +1,43 @@
 " sourcing some additional files
-so ~/dotfiles/vim/.credencials
-so ~/dotfiles/vim/plugins.vim
-so ~/dotfiles/vim/functions.vim
-so ~/dotfiles/vim/github.vim
-so ~/dotfiles/vim/snippets.vim
+set noswapfile
+
+let mapleader = ","
+let g:mapleader = ","
+
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+
+set path+=**
+set clipboard=unnamedplus
+set nu
+set number relativenumber
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set hidden
+set nobackup
+set nowritebackup
+set updatetime=300
+set shortmess+=c
+set numberwidth=4 
+" save buffer on switch 
+set autowrite
+set tabstop=4 softtabstop=4 expandtab shiftwidth=4 shiftround smarttab
+set cmdheight=2 
+
+inoremap <Left>  <NOP>
+inoremap <Right> <NOP>
+inoremap <Up>    <NOP>
+inoremap <Down>  <NOP>
+nnoremap <Left>  <NOP>
+nnoremap <Right> <NOP>
+nnoremap <Up>    <NOP>
+nnoremap <Down>  <NOP>
+
+syntax on
+
 
 set encoding=UTF-8
 let g:arduino_dir = "/home/maren/Arduino"
@@ -97,34 +131,7 @@ set guifont=DroidSansMono\ Nerd\ Font\ 15
 
 
 
-function! DoPrettyXML()
-  " save the filetype so we can restore it later
-  let l:origft = &ft
-  set ft=
-  " delete the xml header if it exists. This will
-  " permit us to surround the document with fake tags
-  " without creating invalid xml.
-  1s/<?xml .*?>//e
-  " insert fake tags around the entire document.
-  " This will permit us to pretty-format excerpts of
-  " XML that may contain multiple top-level elements.
-  0put ='<PrettyXML>'
-  $put ='</PrettyXML>'
-  silent %!xmllint --format -
-  " xmllint will insert an <?xml?> header. it's easy enough to delete
-  " if you don't want it.
-  " delete the fake tags
-  2d
-  $d
-  " restore the 'normal' indentation, which is one extra level
-  " too deep due to the extra tags we wrapped around the document.
-  silent %<
-  " back to home
-  1
-  " restore the filetype
-  exe "set ft=" . l:origft
-endfunction
-command! PrettyXML call DoPrettyXML()
+
 
 let g:rust_use_custom_ctags_defs = 0  " if using rust.vim
 let g:tagbar_type_rust = {
@@ -196,5 +203,4 @@ let g:syntastic_java_checkers = ['checkstyle']
 let g:syntastic_java_checkstyle_classpath = '~/nvim/libs/checkstyle-8.36.2-all.jar'
 let g:syntastic_java_checkstyle_conf_file = '~/development/platform.utils.java-common-env/eclipse-java-google-style-adopted.xml'
 
-so ~/dotfiles/vim/mappings.vim
 set guifont=DroidSansMono\ Nerd\ Font\ 30

@@ -11,7 +11,7 @@ do
       wal -l -i /home/maren/Downloads/wallpapers/$wallpaper
     ;;
     d)
-      wal -i /home/maren/Downloads/wallpapers/$wallpaper
+      wal -i /home/maren/Downloads/wallpapers/$wallpaper 
     ;;
 esac
 done

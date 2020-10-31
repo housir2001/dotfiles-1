@@ -6,6 +6,12 @@ endif
 
 
 call plug#begin('~/nvim/plugged')
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+
+Plug '~/nvim/plugged/nvim-java-dependencies'
+
+Plug 'rafcamlet/nvim-whid'
+
 Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'greymd/oscyank.vim'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}

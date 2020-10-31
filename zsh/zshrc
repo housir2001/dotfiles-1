@@ -10,8 +10,8 @@ PATH=$HOME/development/esp-idf/tools:$PATH:
 PATH=$HOME/Downloads/gcc-arm-9.2-2019.12-aarch64-arm-none-linux-gnueabihf/bin:$PATH:
 
 
-
-export EDITOR=nvim
+export EDITOR=/usr/sbin/nvim
+export VISUAL=/usr/sbin/nvim
 # Path to your oh-my-zsh installation.
 stty -ixon
   export ZSH="/home/maren/.oh-my-zsh"
@@ -204,6 +204,7 @@ alias qutebrowser="devour qutebrowser"
 alias zathura="devour zathura"
 alias sabnzbd="devour /usr/lib/sabnzbd/SABnzbd.py"
 alias get_idf='. $HOME/development/esp-idf/export.sh'
+alias vim='/usr/sbin/nvim'
 source /home/maren/.config/broot/launcher/bash/br
 
 function lastCommit {

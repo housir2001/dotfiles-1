@@ -1,10 +1,12 @@
-so ~/dotfiles/vim/generalrc
-so ~/dotfiles/vim/mappings.vim
-if !exists('g:vscode')
-    so ~/dotfiles/vim/standardvimrc
-
 let g:ActualTicket = "INTS-4886"
-else
-    so ~/dotfiles/vim/vscodeNeovimrc
-endif
+
+so ~/dotfiles/vim/.credencials
+so ~/dotfiles/vim/plugins.vim
+so ~/dotfiles/vim/functions.vim
+so ~/dotfiles/vim/github.vim
+so ~/dotfiles/vim/snippets.vim
+
+so ~/dotfiles/vim/standardvimrc
+
+so ~/dotfiles/vim/mappings.vim
 
