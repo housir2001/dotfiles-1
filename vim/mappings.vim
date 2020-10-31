@@ -39,6 +39,9 @@ noremap <leader>mc :VimuxRunCommand "mvn clean" <CR>
 
 noremap <leader>rS :call RunMvnTest()<CR>
 noremap <leader>rs :call RunMvnThisTest(expand("%:t:r"))<CR>
+"noremap <leader>rS :Dispatch mvn test<CR>
+"noremap <leader>rs :Dispatch /home/maren/dotfiles/scripts/runTests.sh % <CR>
+
 
 noremap <leader>tim :call StartTimeTracking(g:ActualTicket)<CR>
 noremap <leader>tims :call StopTime()<CR>
@@ -102,7 +105,8 @@ nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
 
 " format from top to bottom
-nmap <leader>fo gg=G
+nmap <leader>fo gg=G''
+nmap <leader>fO :Dispatch! /home/maren/dotfiles/scripts/format.sh %<cr>
 nmap <leader>fj :%!python -m json.tool<CR>
 vmap <leader>fj :'<,'> call BeautifyMvnLog()<CR>
 
@@ -135,6 +139,13 @@ map ss <C-W>s
 
 map tt :tabnew<CR>
 map tc :tabclose<CR>
+" switch tabs
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+
+" center cursor for search result
+nnoremap n nzzzv
+nnoremap N Nzzzv
 
 map <leader>gfv :vertical wincmd f<CR>
 
@@ -184,7 +195,7 @@ nnoremap <silent> <Up>    :call animate#window_delta_height(10)<CR>
 nnoremap <silent> <Down>  :call animate#window_delta_height(-10)<CR>
 nnoremap <silent> <Left>  :call animate#window_delta_width(10)<CR>
 nnoremap <silent> <Right> :call animate#window_delta_width(-10)<CR>
-
+imap <leader>C <Esc>[s1z=`]a
 map <leader>" ysiw"
 map <leader>) ysiw)
 

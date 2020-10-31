@@ -1,8 +1,6 @@
 
 set noswapfile
 
-let g:ActualTicket = "INTS-2857"
-
 let mapleader = ","
 let g:mapleader = ","
 
