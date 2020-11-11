@@ -6,26 +6,42 @@ endif
 
 
 call plug#begin('~/nvim/plugged')
+" Markdown preview in browser
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
+" For Github reviews and writing review comments
+Plug 'matthias-margush/critiq.vim'
+
+" self developed plugin for java project dependencies (not ready yet)
 Plug '~/nvim/plugged/nvim-java-dependencies'
 
+" example lua plugin - no special use
 Plug 'rafcamlet/nvim-whid'
 
-Plug 'kristijanhusak/vim-carbon-now-sh'
-Plug 'greymd/oscyank.vim'
+" color scheme
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
+
+" color scheme
 Plug 'dylanaraps/wal.vim'
+
+" better java syntax highlighting
 Plug 'mafflerbach/java-syntax.vim'
+
 " matching pairs {}()[]
 Plug 'andymass/vim-matchup'
+ 
 " better dir navigator
 Plug 'scrooloose/nerdtree'
+
+" git status symbols in nerdtree
 Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" using ripgrep instead of grep
 Plug 'mafflerbach/nerdtree-ripgrep-plugin'
+
 " http client
-"Plug 'aquach/vim-http-client'
 Plug 'diepm/vim-rest-console' 
+
 " Statusline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -43,80 +59,73 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+Plug 'vimwiki/vimwiki'
+
 " better code commenting
 Plug 'scrooloose/nerdcommenter'
+" Coc vim implements language server features for different languages
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'antoinemadec/coc-fzf'
+
 " git integration
 Plug 'tpope/vim-fugitive'
-Plug 'rbong/vim-flog'
+" Git status in file per line
 Plug 'mhinz/vim-signify'
-
 
 " fuzzysearch for buffer and mru files 
 Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'AdamWhittingham/vim-copy-filename'
 
-Plug 'mikelue/vim-maven-plugin'
 " file preview in quicklist
 Plug 'ronakg/quickr-preview.vim'
 
-" sytax files
+" sytax highlighting for protobuf
 Plug 'uarun/vim-protobuf'
 
 " swagger previer
 Plug 'xavierchow/vim-swagger-preview'
 
-" Java debugger
+" debugger
 Plug 'puremourning/vimspector'
+ 
 " Outline code
 Plug 'majutsushi/tagbar'
+
 " smooth scrooling"
 Plug 'psliwka/vim-smoothie'
+Plug 'camspiers/animate.vim'
+
 " vim tmux integration 
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
 
-Plug 'vimwiki/vimwiki'
 
 Plug 'tpope/vim-surround'
-"async calls 
+" async calls 
 Plug 'tpope/vim-dispatch'
+
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax' 
-Plug 'dstein64/vim-startuptime'
 
-
-Plug 'camspiers/animate.vim'
-
+" Arduino build and flash support
 Plug 'stevearc/vim-arduino'
-"Plug 'junkblocker/patchreview-vim'
-"Plug 'codegram/vim-codereview'
+
+" more intuitivfe find and replace in the whole project
 Plug 'brooth/far.vim'
 " creates doc comments
 Plug 'kkoomen/vim-doge'
 
 "Database client 
 Plug 'tpope/vim-dadbod'
-" Needed for formatter
-"Plug 'google/vim-maktaba'
-"Plug 'google/vim-codefmt'
-" Also add Glaive, which is used to configure codefmt's maktaba flags. See
-" `:help :Glaive` for usage.
-"Plug 'google/vim-glaive'
-" icons 
+" icons in nerdtree
 Plug 'ryanoasis/vim-devicons'
 
+" Better csv file handling
 Plug 'chrisbra/csv.vim'
-Plug 'vim-syntastic/syntastic'
+
+" Distraction free writing
 Plug 'junegunn/goyo.vim'
 
 call plug#end()
-
-"call glaive#Install()
-" Optional: Enable codefmt's default mappings on the <Leader>= prefix.
-"Glaive codefmt plugin[mappings]
-"Glaive codefmt google_java_executable="java -jar /home/maren/nvim/libs/google-java-format-1.7-all-deps.jar"
-
 

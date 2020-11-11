@@ -15,20 +15,20 @@ function CreateGitHubComment() abort
 endfunction
 
 function ViewPullRequests() abort
-let    prId=expand("<cword>")
+    let    prId=expand("<cword>")
     let prLink = system("gh pr view ".prId." | tail -n1 | cut -d' ' -f7 ")[:-2]. ".diff"
 
-                "let curlcommand="curl -L --request GET --url ".prLink." --header 'authorization: Bearer ".token." ' -o /tmp/tempDiff.diff"
-"    let callDiff = system(curlcommand)[:-2]
+    "let curlcommand="curl -L --request GET --url ".prLink." --header 'authorization: Bearer ".token." ' -o /tmp/tempDiff.diff"
+    "    let callDiff = system(curlcommand)[:-2]
 
-    
-        execute 'CodeReview '. prLink
+
+    execute 'CodeReview '. prLink
 
 endfunction
 
 function! GetOpenPullrequest()
 
-  let prList = system("gh pr list ")
+    let prList = system("gh pr list ")
     vsplit ListPullRequests
     normal! ggdG
     setlocal buftype=nofile

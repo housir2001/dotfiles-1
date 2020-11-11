@@ -7,7 +7,8 @@ function! Show_documentation()
 endfunction
 
 function! RunMvnTest() 
-  let mvnResult = system("export JAVA_HOME=/usr/lib/jvm/java-8-openjdk; mvn test --offline")
+    " Dealing with old java
+    let mvnResult = system("export JAVA_HOME=/usr/lib/jvm/java-8-openjdk; mvn test --offline")
 
     vsplit __Potion_Bytecode__
     normal! ggdG
@@ -18,7 +19,7 @@ endfunction
 
 
 function! RunMvnThisTest(file) 
-  let mvnResult = system("export JAVA_HOME=/usr/lib/jvm/java-8-openjdk;mvn test --offline -Dtest=" . a:file)
+    let mvnResult = system("export JAVA_HOME=/usr/lib/jvm/java-8-openjdk;mvn test --offline -Dtest=" . a:file)
 
     vsplit __Potion_Bytecode__
     normal! ggdG
@@ -152,7 +153,7 @@ function! JiraPlatform()
 endfunction
 
 function! ViewJira(word)
-  let jiraView = system("jira view " . a:word)
+    let jiraView = system("jira view " . a:word)
 
     vsplit ViewTicket
     normal! ggdG
@@ -163,48 +164,49 @@ function! ViewJira(word)
 endfunction
 
 function! Selection() abort
-  try
-    let a_save = @a
-    silent! normal! gv"ay
-    return @a
-  finally
-    let @a = a_save
-  endtry
+    try
+        let a_save = @a
+        silent! normal! gv"ay
+        return @a
+    finally
+        let @a = a_save
+    endtry
 endfunction
 
 function! BeautifyMvnLog() 
     let selection = Selection()
-  let output = system("~/dotfiles/scripts/parseMvnLogs.sh '". selection."'")
-call append(line('.'), split(output, '\n'))
+    " using jq for formatting
+    let output = system("~/dotfiles/scripts/parseMvnLogs.sh '". selection."'")
+    call append(line('.'), split(output, '\n'))
 
 endfunction
 
 function! DoPrettyXML()
-  " save the filetype so we can restore it later
-  let l:origft = &ft
-  set ft=
-  " delete the xml header if it exists. This will
-  " permit us to surround the document with fake tags
-  " without creating invalid xml.
-  1s/<?xml .*?>//e
-  " insert fake tags around the entire document.
-  " This will permit us to pretty-format excerpts of
-  " XML that may contain multiple top-level elements.
-  0put ='<PrettyXML>'
-  $put ='</PrettyXML>'
-  silent %!xmllint --format -
-  " xmllint will insert an <?xml?> header. it's easy enough to delete
-  " if you don't want it.
-  " delete the fake tags
-  2d
-  $d
-  " restore the 'normal' indentation, which is one extra level
-  " too deep due to the extra tags we wrapped around the document.
-  silent %<
-  " back to home
-  1
-  " restore the filetype
-  exe "set ft=" . l:origft
+    " save the filetype so we can restore it later
+    let l:origft = &ft
+    set ft=
+    " delete the xml header if it exists. This will
+    " permit us to surround the document with fake tags
+    " without creating invalid xml.
+    1s/<?xml .*?>//e
+    " insert fake tags around the entire document.
+    " This will permit us to pretty-format excerpts of
+    " XML that may contain multiple top-level elements.
+    0put ='<PrettyXML>'
+    $put ='</PrettyXML>'
+    silent %!xmllint --format -
+    " xmllint will insert an <?xml?> header. it's easy enough to delete
+    " if you don't want it.
+    " delete the fake tags
+    2d
+    $d
+    " restore the 'normal' indentation, which is one extra level
+    " too deep due to the extra tags we wrapped around the document.
+    silent %<
+    " back to home
+    1
+    " restore the filetype
+    exe "set ft=" . l:origft
 endfunction
 
 command! PrettyXML call DoPrettyXML()

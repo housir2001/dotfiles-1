@@ -12,7 +12,7 @@ path=$3
 
 if [[ $path =~ "fugitive:///" ]]; then
     # wtf sed -r 's/.*?\///' seems to match nothing o.O
-    path=$(echo $path | sed 's/.*\/\///g' | sed  's/\//|/' | cut -d'|' -f2)
+    path=$(echo $path | sed -e 's/.*\/\///g' -e 's/\//|/' | cut -d'|' -f2)
 fi
 
 

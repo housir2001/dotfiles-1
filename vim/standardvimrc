@@ -26,6 +26,7 @@ set numberwidth=4
 set autowrite
 set tabstop=4 softtabstop=4 expandtab shiftwidth=4 shiftround smarttab
 set cmdheight=2 
+    let g:vimwiki_global_ext = 0
 
 inoremap <Left>  <NOP>
 inoremap <Right> <NOP>
