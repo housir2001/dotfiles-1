@@ -1,27 +1,6 @@
 #!/bin/bash
 
-tee /tmp/jiraTemplate << END
-fields:
-  project:
-    key: INTS
-  summary: >- 
-    CHANGE HERE
-  priority:
-    name: Medium
-  components: # Values: Action Points, Business Testing, Technical Story, 
-    - name: 
-  description: |~
-    
-  assignee:
-    name: 
-  reporter:
-    name: m9338
-  issuetype:
-    name: Sub-task
-  parent:
-    key: $1
-END
-
-jira subtask $1 -t /tmp/jiraTemplate  
+sed -e "s/STORYID/$1/g" /home/maren/dotfiles/vim/template/jiraSubtask.yml > /tmp/Subtask.yml 
+jira subtask $1 -t /tmp/Subtask.yml  
 
 

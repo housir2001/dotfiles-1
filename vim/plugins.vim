@@ -127,5 +127,7 @@ Plug 'chrisbra/csv.vim'
 " Distraction free writing
 Plug 'junegunn/goyo.vim'
 
+" lsp support for nvim
+Plug 'neovim/nvim-lspconfig'
 call plug#end()
 

@@ -171,8 +171,8 @@ map ss <C-W>s
 map tt :tabnew<CR>
 map tc :tabclose<CR>
 " switch tabs
-nnoremap <Tab> gt
-nnoremap <S-Tab> gT
+" nnoremap <Tab> gt
+" nnoremap <S-Tab> gT
 
 " center cursor for search result
 nnoremap n nzzzv

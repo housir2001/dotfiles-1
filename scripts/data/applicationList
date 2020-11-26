@@ -11,6 +11,8 @@ pass|/home/maren/dotfiles/scripts/passScript.sh
 queue|/home/maren/dotfiles/scripts/copyErrorQueue.sh
 stream|/home/maren/dotfiles/scripts/openStream.sh
 tpass|/home/maren/dotfiles/scripts/passScript.sh --type
+megatron|/home/maren/dotfiles/scripts/megatron.sh
+jenkins|/home/maren/dotfiles/scripts/jenkins.sh
 watson restart|watson restart
 watson stop|watson stop
 workplace Home|autorandr home

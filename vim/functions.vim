@@ -85,14 +85,8 @@ function! JiraOpenReview()
 endfunction
 
 function! JiraReview(word) 
-    :execute "ter jira transition \"In Review\" --noedit " . a:word 
-    redraw 
-    sleep 800m
-    redraw 
-    :q!
+    :execute '!jira transition \"In Review\" --noedit ' . a:word 
     :execute     SubtaskJira(g:ActualTicket)    
-    :%s/\r/\n/g
-    :%s/\%x00//g
 endfunction
 
 
@@ -106,30 +100,18 @@ function! JiraTodo(word)
 endfunction
 
 function! JiraProgress(word) 
-    :execute "ter jira transition \"In Progress\" --noedit  " . a:word 
-    redraw 
-    sleep 800m
-    redraw 
-    :q!
+    :execute "silent !jira transition \"In Progress\" --noedit " . a:word . "
     :execute    SubtaskJira(g:ActualTicket)    
 endfunction
 
 
 function! JiraUnassign(word) 
-    :execute "ter jira unassign " . a:word 
-    redraw 
-    sleep 800m
-    redraw
-    :q!
+    :execute '!jira unassign ' . a:word 
     :execute    SubtaskJira(g:ActualTicket)    
 endfunction
 
 function! JiraAssign(word) 
-    :execute "ter jira assign " . a:word . " m9338"
-    redraw 
-    sleep 800m
-    redraw 
-    :q!
+    :execute "silent !jira unassign " . a:word . " m9338"
     :execute    SubtaskJira(g:ActualTicket)    
 endfunction
 
@@ -139,8 +121,8 @@ function! MineJira()
 endfunction
 
 function! JiraCreateSubtask(word)
-    :execute "ter bash /home/maren/dotfiles/vim/scripts/createSubtask.sh " . a:word
-    :normal 4j
+    :call VimuxRunCommand("bash /home/maren/dotfiles/vim/scripts/createSubtask.sh " . a:word)<CR>
+    :call VimuxZoomRunner()<CR>
 endfunction
 
 function JiraOpen(word)
@@ -149,7 +131,8 @@ endfunction
 
 function! JiraPlatform()
     :normal ggdG
-    :execute "ter jira platform"
+    :execute ':normal! i Parent Story ' . a:word
+    :execute "read ! jira platform "
 endfunction
 
 function! ViewJira(word)
