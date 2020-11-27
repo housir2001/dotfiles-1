@@ -14,6 +14,7 @@ import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, s
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.WorkspaceHistory
+import XMonad.Layout.IndependentScreens
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --

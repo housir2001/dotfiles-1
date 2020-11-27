@@ -14,6 +14,8 @@ import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, s
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.WorkspaceHistory
+import XMonad.Layout.IndependentScreens
+import XMonad.Util.EZConfig
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
@@ -54,12 +56,28 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#111516"
-myFocusedBorderColor = "#f1c6e6"
+myNormalBorderColor  = "#0D0B0C"
+myFocusedBorderColor = "#d0d8dd"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
+
+myAddKeys :: [(String, X ())]
+myAddKeys =
+    -- Xmonad
+        [ 
+    -- Multimedia Keys
+         ("<XF86AudioMute>", spawn "pamixer -t")
+        , ("<XF86AudioLowerVolume>", spawn "pamixer -d5")
+        , ("<XF86AudioRaiseVolume>", spawn "pamixer -i5")
+
+        , ("<XF86MonBrightnessUp>", spawn "xbacklight -inc 10")
+        , ("<XF86MonBrightnessDown>", spawn "xbacklight -dec 10")
+
+        ]
+
+
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch a terminal
@@ -134,11 +152,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm              , xK_p     ), spawn "sh ~/dotfiles/scripts/launcher.sh" )
     , ((modm              , xK_d     ), spawn "rofi -combi-modi window#run#ssh -show combi -modi combi -theme ~/dotfiles/i3/rofi.rasi" )
     , ((modm              , xK_grave     ), spawn "sh ~/dotfiles/scripts/dmenuUnicode.sh")
-
-  --  , ("<XF86AudioMute>" , spawn "pamixer -t")
-  --  , ("<XF86AudioLowerVolume>", spawn "pamixer -d5")
-  --  , ("<XF86AudioRaiseVolume>", spawn "pamixer -i5")
-
 
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
@@ -263,8 +276,10 @@ myStartupHook = do
         spawnOnce  "killall udiskie ;  udiskie -t"
         spawnOnce  "wal --theme /home/maren/.cache/wal/colors.json"
         spawnOnce "killall redshift; sleep 4 ; redshift -l 48.024395:11.598893 &"
-        spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282c34  --height 22 &"
+        spawnOnce "killall trayer; trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282c34  --height 22 &"
         spawnOnce "pulseaudio -k; sleep 2; pulseaudio & killall pasystray ; pasystray &"
+
+        spawnOnce "killall blueman-applet; blueman-applet &"
         spawnOnce "nm-applet &"
 
 
@@ -298,18 +313,18 @@ main = do
         handleEventHook    = myEventHook,
         logHook = workspaceHistoryHook <+> myLogHook <+> dynamicLogWithPP xmobarPP
                         { ppOutput = \x -> hPutStrLn xmproc0 x  >> hPutStrLn xmproc1 x
-                        , ppCurrent = xmobarColor "#f1c6e6" "" . wrap "[" "]" -- Current workspace in xmobar
-                        , ppVisible = xmobarColor "#B2AC5E" ""                -- Visible but not current workspace
-                        , ppHidden = xmobarColor "#E49A6A" "" . wrap "*" ""   -- Hidden workspaces in xmobar
-                        , ppHiddenNoWindows = xmobarColor "#a88aa1" ""        -- Hidden workspaces (no windows)
-                        , ppTitle = xmobarColor "#f1c6e6" "" . shorten 60     -- Title of active window in xmobar
-                        , ppSep =  "<fc=#f1c6e6> <fn=2>|</fn> </fc>"          -- Separators in xmobar
-                        , ppUrgent = xmobarColor "#a88aa1" "" . wrap "!" "!"  -- Urgent workspace
+                        , ppCurrent = xmobarColor "#d0d8dd" "" . wrap "[" "]" -- Current workspace in xmobar
+                        , ppVisible = xmobarColor "#5048A8" ""                -- Visible but not current workspace
+                        , ppHidden = xmobarColor "#B95AC5" "" . wrap "*" ""   -- Hidden workspaces in xmobar
+                        , ppHiddenNoWindows = xmobarColor "#91979a" ""        -- Hidden workspaces (no windows)
+                        , ppTitle = xmobarColor "#d0d8dd" "" . shorten 60     -- Title of active window in xmobar
+                        , ppSep =  "<fc=#d0d8dd> <fn=2>|</fn> </fc>"          -- Separators in xmobar
+                        , ppUrgent = xmobarColor "#91979a" "" . wrap "!" "!"  -- Urgent workspace
                         , ppExtras  = [windowCount]                           -- # of windows current workspace
                         , ppOrder  = \(ws:l:t:ex) -> [ws,l]++ex++[t]
                         },
         startupHook        = myStartupHook
-    }
+    } `additionalKeysP` myAddKeys
 
 -- | Finally, a copy of the default bindings in simple textual tabular format.
 help :: String
