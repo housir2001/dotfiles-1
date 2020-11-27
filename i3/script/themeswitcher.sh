@@ -17,5 +17,6 @@ esac
 done
 
       /home/maren/dotfiles/scripts/rofiThemeGenerator.sh
+      /home/maren/dotfiles/scripts/xmobarThemeGenerator.sh
 
 

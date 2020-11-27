@@ -4,8 +4,8 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=14:antialias=true:hinting=t
                            , "xft:Mononoki Nerd Font:pixelsize=16:antialias=true:hinting=true"
                            , "xft:FontAwesome:pixelsize=13"
                            ]
-       , bgColor = "#111516"
-       , fgColor = "#f1c6e6"
+       , bgColor = "BGCOLOR"
+       , fgColor = "FGCOLOR"
        , position = Static { xpos = 0 , ypos = 0, width = 1920, height = 24 }
        , lowerOnStart = True
        , hideOnStart = False
@@ -33,5 +33,5 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=14:antialias=true:hinting=t
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " <action=`xdotool key control+alt+g`><icon=haskell_20.xpm/> </action><fc=#f1c6e6>  |</fc> %UnsafeStdinReader% }{ <fc=#f1c6e6><fn=2>|</fn> </fc><fc=#E49A6A> %cpu% </fc><fc=#f1c6e6> <fn=2>|</fn></fc> <fc=#E49A6A> %memory% </fc><fc=#f1c6e6> <fn=2>|</fn></fc> <fc=#E49A6A> %disku% </fc><fc=#f1c6e6> <fn=2>|</fn></fc>  <fc=#D556B6> %enp0s31f6% </fc><fc=#f1c6e6> <fn=2>|</fn></fc> <fc=#f1c6e6> <fn=2>|</fn></fc> <fc=#D556B6> %wlp3s0wi% </fc><fc=#f1c6e6> <fn=2>|</fn></fc> <fc=#B65463> %date% </fc><fc=#f1c6e6><fn=2>|</fn></fc> <fc=#B65463>%watson2% / %watson%</fc> "
+       , template = " <action=`xdotool key control+alt+g`><icon=haskell_20.xpm/> </action><fc=FGCOLOR>  |</fc> %UnsafeStdinReader% }{ <fc=FGCOLOR><fn=2>|</fn> </fc><fc=COLOR3> %cpu% </fc><fc=FGCOLOR> <fn=2>|</fn></fc> <fc=COLOR3> %memory% </fc><fc=FGCOLOR> <fn=2>|</fn></fc> <fc=COLOR3> %disku% </fc><fc=FGCOLOR> <fn=2>|</fn></fc>  <fc=COLOR4> %enp0s31f6% </fc><fc=FGCOLOR> <fn=2>|</fn></fc> <fc=FGCOLOR> <fn=2>|</fn></fc> <fc=COLOR4> %wlp3s0wi% </fc><fc=FGCOLOR> <fn=2>|</fn></fc> <fc=COLOR1> %date% </fc><fc=FGCOLOR><fn=2>|</fn></fc> <fc=COLOR1>%watson2% / %watson%</fc> "
        }

@@ -7,7 +7,7 @@ show-icons:false;
 }
 * {
 
-background:#09051600;  color0:#090516;  color1:#5E524D;  color2:#A8464B;  color3:#5A9560;  color4:#E0B649;  color5:#3F2DAA;  color6:#B54CAE;  color7:#91d2e6;  color8:#6593a1;  color9:#5E524D;  color10:#A8464B;  color11:#5A9560;  color12:#E0B649;  color13:#3F2DAA;  color14:#B54CAE;  color15:#91d2e6;
+background:#11151600;  color0:#111516;  color1:#B65463;  color2:#B2AC5E;  color3:#E49A6A;  color4:#D556B6;  color5:#F3A299;  color6:#F8DC9F;  color7:#f1c6e6;  color8:#a88aa1;  color9:#B65463;  color10:#B2AC5E;  color11:#E49A6A;  color12:#D556B6;  color13:#F3A299;  color14:#F8DC9F;  color15:#f1c6e6;
 
 
 	font:												"Roboto medium 12";

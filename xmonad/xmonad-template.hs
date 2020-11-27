@@ -54,8 +54,8 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#111516"
-myFocusedBorderColor = "#f1c6e6"
+myNormalBorderColor  = "BGCOLOR"
+myFocusedBorderColor = "FGCOLOR"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -298,13 +298,13 @@ main = do
         handleEventHook    = myEventHook,
         logHook = workspaceHistoryHook <+> myLogHook <+> dynamicLogWithPP xmobarPP
                         { ppOutput = \x -> hPutStrLn xmproc0 x  >> hPutStrLn xmproc1 x
-                        , ppCurrent = xmobarColor "#f1c6e6" "" . wrap "[" "]" -- Current workspace in xmobar
-                        , ppVisible = xmobarColor "#B2AC5E" ""                -- Visible but not current workspace
-                        , ppHidden = xmobarColor "#E49A6A" "" . wrap "*" ""   -- Hidden workspaces in xmobar
-                        , ppHiddenNoWindows = xmobarColor "#a88aa1" ""        -- Hidden workspaces (no windows)
-                        , ppTitle = xmobarColor "#f1c6e6" "" . shorten 60     -- Title of active window in xmobar
-                        , ppSep =  "<fc=#f1c6e6> <fn=2>|</fn> </fc>"          -- Separators in xmobar
-                        , ppUrgent = xmobarColor "#a88aa1" "" . wrap "!" "!"  -- Urgent workspace
+                        , ppCurrent = xmobarColor "FGCOLOR" "" . wrap "[" "]" -- Current workspace in xmobar
+                        , ppVisible = xmobarColor "COLOR2" ""                -- Visible but not current workspace
+                        , ppHidden = xmobarColor "COLOR3" "" . wrap "*" ""   -- Hidden workspaces in xmobar
+                        , ppHiddenNoWindows = xmobarColor "COLOR8" ""        -- Hidden workspaces (no windows)
+                        , ppTitle = xmobarColor "FGCOLOR" "" . shorten 60     -- Title of active window in xmobar
+                        , ppSep =  "<fc=FGCOLOR> <fn=2>|</fn> </fc>"          -- Separators in xmobar
+                        , ppUrgent = xmobarColor "COLOR8" "" . wrap "!" "!"  -- Urgent workspace
                         , ppExtras  = [windowCount]                           -- # of windows current workspace
                         , ppOrder  = \(ws:l:t:ex) -> [ws,l]++ex++[t]
                         },
