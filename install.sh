@@ -74,8 +74,12 @@ ln -s ~/dotfiles/git/gitconfig ~/.gitconfig
 # coc vim packages
 ln -s ~/dotfiles/coc/package.json ~/.config/coc/extensions/package.json
 
+#xmonad
+rm -rf ~/.config/xmobar ;
+ln -s ~/dotfiles/xmobar ~/.config/xmobar
 
-
+rm -rf ~/.xmonad/xmonad.hs ;
+ln -s ~/dotfiles/xmonad/xmonad.hs ~/.xmonad/xmonad.hs
 
 # MISC 
 rm -rf ~/.urlview

@@ -7,42 +7,33 @@ function! Show_documentation()
 endfunction
 
 function! RunMvnTest() 
-    " Dealing with old java
-    let mvnResult = system("export JAVA_HOME=/usr/lib/jvm/java-8-openjdk; mvn test --offline")
-
+    bd! __Potion_Bytecode__
     vsplit __Potion_Bytecode__
     normal! ggdG
     setlocal buftype=nofile
-
-    call append(0, split(mvnResult, '\v\n'))
+    :execute "silent !{export JAVA_HOME=/usr/lib/jvm/java-8-openjdk; mvn test --offline > /tmp/build}"
+    :r /tmp/build
+    normal! G
 endfunction
 
-
 function! RunMvnThisTest(file) 
-    let mvnResult = system("export JAVA_HOME=/usr/lib/jvm/java-8-openjdk;mvn test --offline -Dtest=" . a:file)
 
+    bd! __Potion_Bytecode__
     vsplit __Potion_Bytecode__
     normal! ggdG
     setlocal buftype=nofile
-
-    call append(0, split(mvnResult, '\v\n'))
+    :execute "silent !{export JAVA_HOME=/usr/lib/jvm/java-8-openjdk; mvn test --offline -Dtest=".a:file." > /tmp/build}"
+    :r /tmp/build
+    normal! G
 endfunction
 
 
 function! StopTime() 
-    :execute "ter watson stop"
-    redraw 
-    sleep 400m
-    redraw 
-    :q!
+    :execute "silent ! watson stop"
 endfunction
 
 function! StartTimeTracking(word) 
-    :execute "ter watson start " . a:word 
-    redraw 
-    sleep 400m
-    redraw 
-    :q!
+    :execute "silent ! watson start " . a:word 
 endfunction
 
 
@@ -62,19 +53,17 @@ endfunction
 
 
 function! EditJira(word)
-    :execute "ter jira edit " . a:word  
+    :call VimuxRunCommand("jira edit " . a:word)<CR>
+    :call VimuxZoomRunner()<CR>
 endfunction
 
 function! CommentJira(word)
-    :execute "ter jira comment " . a:word  
+    :call VimuxRunCommand("jira comment " . a:word)<CR>
+    :call VimuxZoomRunner()<CR>
 endfunction
 
 function! JiraDone(word) 
-    :execute "ter jira transition \"Done\" --noedit  " . a:word 
-    redraw 
-    sleep 800m
-    redraw 
-    :q!
+    :execute "silent !jira transition \"Done\" --noedit " . a:word 
     :execute     SubtaskJira(g:ActualTicket)    
 endfunction
 
@@ -85,17 +74,13 @@ function! JiraOpenReview()
 endfunction
 
 function! JiraReview(word) 
-    :execute '!jira transition \"In Review\" --noedit ' . a:word 
+    :execute 'silent !jira transition \"In Review\" --noedit ' . a:word 
     :execute     SubtaskJira(g:ActualTicket)    
 endfunction
 
 
 function! JiraTodo(word) 
-    :execute "ter jira transition \"Backlog\" --noedit  " . a:word 
-    redraw 
-    sleep 800m
-    redraw 
-    :q!
+    :execute 'silent !jira transition \"Backlog\" --noedit ' . a:word 
     :execute    SubtaskJira(g:ActualTicket)    
 endfunction
 
@@ -106,7 +91,7 @@ endfunction
 
 
 function! JiraUnassign(word) 
-    :execute '!jira unassign ' . a:word 
+    :execute 'silent !jira unassign ' . a:word 
     :execute    SubtaskJira(g:ActualTicket)    
 endfunction
 
@@ -117,7 +102,7 @@ endfunction
 
 function! MineJira()
     :normal ggdG
-    :execute "ter jira mine"
+    :execute "read ! jira mine "
 endfunction
 
 function! JiraCreateSubtask(word)
@@ -131,7 +116,6 @@ endfunction
 
 function! JiraPlatform()
     :normal ggdG
-    :execute ':normal! i Parent Story ' . a:word
     :execute "read ! jira platform "
 endfunction
 
@@ -142,8 +126,8 @@ function! ViewJira(word)
     normal! ggdG
     setlocal buftype=nofile
     call append(0, split(jiraView, '\v\n'))   
-    :%s/\r/\n/g
-    :%s/\%x00//g
+    :silent %s/\r/\n/g
+    :silent %s/\%x00//g
 endfunction
 
 function! Selection() abort
