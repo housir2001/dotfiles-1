@@ -30,7 +30,7 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=14:antialias=true:hinting=t
                     , Run Com "watson.sh" ["-l"] "watson" 60
                     , Run Com "watson.sh" ["-s"] "watson2" 60
                     , Run Com "/home/maren/.config/xmobar/trayer-padding-icon.sh" [] "trayerpad" 20
-                    , Run UnsafeStdinReader
+                    , Run StdinReader
                     , Run Battery        [ "--template" , "<fc=COLOR3>Batt:</fc> <acstatus>"
                              , "--Low"      , "10"        -- units: %
                              , "--High"     , "80"        -- units: %
@@ -49,5 +49,5 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=14:antialias=true:hinting=t
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " <action=`xdotool key control+alt+g`><icon=haskell_20.xpm/> </action><fc=FGCOLOR>  |</fc> %UnsafeStdinReader% }{ <fc=FGCOLOR><fn=2>|</fn> </fc><fc=COLOR3> %cpu% </fc><fc=FGCOLOR> <fn=2>|</fn></fc> <fc=COLOR3> %memory% </fc><fc=FGCOLOR> <fn=2>|</fn></fc> <fc=COLOR3> %disku% </fc><fc=FGCOLOR> <fn=2>|</fn></fc>  <fc=COLOR4> %enp0s31f6% </fc><fc=FGCOLOR> <fn=2>|</fn></fc> <fc=FGCOLOR> <fn=2>|</fn></fc> <fc=COLOR4> %wlp3s0wi% </fc><fc=FGCOLOR> <fn=2>|</fn></fc> <fc=COLOR1> %date% </fc><fc=FGCOLOR><fn=2>|</fn></fc> <fc=COLOR1>%watson2% / %watson% | %battery% %trayerpad%</fc> "
+       , template = " <action=`xdotool key control+alt+g`><icon=haskell_20.xpm/> </action><fc=FGCOLOR>  |</fc> %StdinReader% }{ <fc=FGCOLOR><fn=2>|</fn> </fc><fc=COLOR3> %cpu% </fc><fc=FGCOLOR> <fn=2>|</fn></fc> <fc=COLOR3> %memory% </fc><fc=FGCOLOR> <fn=2>|</fn></fc> <fc=COLOR3> %disku% </fc><fc=FGCOLOR> <fn=2>|</fn></fc>  <fc=COLOR4> %enp0s31f6% </fc><fc=FGCOLOR> <fn=2>|</fn></fc> <fc=FGCOLOR> <fn=2>|</fn></fc> <fc=COLOR4> %wlp3s0wi% </fc><fc=FGCOLOR> <fn=2>|</fn></fc> <fc=COLOR1> %date% </fc><fc=FGCOLOR><fn=2>|</fn></fc> <fc=COLOR1>%watson2% / %watson% | %battery% %trayerpad%</fc> "
        }
