@@ -85,7 +85,7 @@ function! JiraTodo(word)
 endfunction
 
 function! JiraProgress(word) 
-    :execute "silent !jira transition \"In Progress\" --noedit " . a:word . "
+    :execute "silent !jira transition \"In Progress\" --noedit " . a:word 
     :execute    SubtaskJira(g:ActualTicket)    
 endfunction
 

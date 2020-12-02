@@ -81,6 +81,10 @@ ln -s ~/dotfiles/xmobar ~/.config/xmobar
 rm -rf ~/.xmonad/xmonad.hs ;
 ln -s ~/dotfiles/xmonad/xmonad.hs ~/.xmonad/xmonad.hs
 
+# awesome
+rm -rf ~/.config/awesome ;
+ln -s ~/dotfiles/awesome ~/.config/awesome
+
 # MISC 
 rm -rf ~/.urlview
 ln -s ~/dotfiles/misc/urlview ~/.urlview

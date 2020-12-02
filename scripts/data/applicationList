@@ -20,3 +20,5 @@ workplace Work|autorandr work
 workplace wfh|autorandr wfh
 screen Area|maim -s /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png
 screen window|maim -i $(xdotool getactivewindow) /tmp/foo.png && xclip -selection clipboard -t image/png -i /tmp/foo.png
+connect vpn|/home/maren/dotfiles/scripts/vpn.sh -c
+disconnect vpn|/home/maren/dotfiles/scripts/vpn.sh -k

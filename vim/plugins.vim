@@ -78,7 +78,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'AdamWhittingham/vim-copy-filename'
 
 " file preview in quicklist
-Plug 'ronakg/quickr-preview.vim'
+"Plug 'ronakg/quickr-preview.vim'
 
 " sytax highlighting for protobuf
 Plug 'uarun/vim-protobuf'

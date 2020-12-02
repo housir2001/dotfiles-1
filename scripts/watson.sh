@@ -21,10 +21,12 @@ while :; do
             echo " $(watson log | head -n1)"
             ;;
         -t) 
+            shift
             today=1
             watsonCall $1 $2 $calcDate
             ;;
         -y) 
+            shift
             yesterday=1
             current_date=$(date +"%Y-%m-%d")
             calcDate=$(date -d "$current_date - 1 days" +"%Y-%m-%d")

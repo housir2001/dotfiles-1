@@ -15,6 +15,9 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.FadeInactive
 import XMonad.Layout.IndependentScreens
 import XMonad.Util.EZConfig
+import XMonad.Hooks.ManageDocks ( docksEventHook, manageDocks, ToggleStruts(..))
+import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
+import XMonad.Layout.NoBorders
 
 
 -- The preferred terminal program, which is used in a binding below and by
@@ -50,8 +53,10 @@ myModMask       = mod4Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
+--
 windowCount :: X (Maybe String)
 windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
+
 
 myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
@@ -139,7 +144,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
     -- See also the statusBar function from Hooks.DynamicLog.
     --
-    -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
+     , ((modm              , xK_f     ), sendMessage ToggleStruts)
 
     -- Quit xmonad
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
@@ -204,10 +209,10 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts $ magicFocus (tiled ||| Mirror tiled ||| Full)
+myLayout = avoidStruts $ magicFocus (tiled ||| Mirror tiled ||| noBorders Full)
   where
      -- default tiling algorithm partitions the screen into two panes
-     tiled   = spacing 10 $ Tall nmaster delta ratio
+     tiled   = spacing 5 $ Tall nmaster delta ratio
 
      -- The default number of windows in the master pane
      nmaster = 1
@@ -270,12 +275,15 @@ myLogHook = fadeInactiveLogHook fadeAmount
 -- By default, do nothing.
 myStartupHook = do 
         spawnOnce  "killall compton; compton --config ~/dotfiles/i3/compton.conf &"
+        spawnOnce  "sh /home/maren/dotfiles/scripts/xidelhook.sh &"
+        spawnOnce  "sh /home/maren/dotfiles/scripts/xidelhook.sh &"
         spawnOnce  "killall udiskie ;  udiskie -t"
         spawnOnce  "wal --theme /home/maren/.cache/wal/colors.json"
         spawnOnce "killall redshift; sleep 4 ; redshift -l 48.024395:11.598893 &"
-        spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282c34  --height 22 &"
+        spawnOnce "killall trayer; trayer --edge top --align right --widthtype request --padding 6  --expand true --monitor 1 --transparent true --alpha 255 --tint 0x282c34  --height 22 &"
         spawnOnce "pulseaudio -k; sleep 2; pulseaudio & killall pasystray ; pasystray &"
         spawnOnce "nm-applet &"
+        spawnOnce "blueman-applet"
 
 
 ---------------------------import XMonad.Util.SpawnOnce---------------------------------------------
@@ -287,7 +295,6 @@ main = do
         xmproc0 <- spawnPipe "xmobar -x 0 /home/maren/.config/xmobar/xmobarrc0 -A 200"
         xmproc1 <- spawnPipe "xmobar -x 1 /home/maren/.config/xmobar/xmobarrc1 -A 200"
         xmonad $ ewmh $ docks $ def {
-
       -- simple stuff
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
@@ -304,18 +311,17 @@ main = do
 
       -- hooks, layouts
         layoutHook         = myLayout,
-        manageHook         = myManageHook,
+        manageHook = ( isFullscreen --> doFullFloat ) <+> myManageHook <+> manageDocks,
         handleEventHook    = myEventHook,
         logHook = myLogHook <+> dynamicLogWithPP xmobarPP
                         { ppOutput = \x -> hPutStrLn xmproc0 x  >> hPutStrLn xmproc1 x
                         , ppCurrent = xmobarColor "FGCOLOR" "" . wrap "[" "]" -- Current workspace in xmobar
                         , ppVisible = xmobarColor "COLOR2" ""                -- Visible but not current workspace
                         , ppHidden = xmobarColor "COLOR3" "" . wrap "*" ""   -- Hidden workspaces in xmobar
-                        , ppHiddenNoWindows = xmobarColor "COLOR8" ""        -- Hidden workspaces (no windows)
                         , ppSep =  "<fc=FGCOLOR> <fn=2>|</fn> </fc>"          -- Separators in xmobar
                         , ppUrgent = xmobarColor "COLOR8" "" . wrap "!" "!"  -- Urgent workspace
                         , ppExtras  = [windowCount]                           -- # of windows current workspace
-                        , ppOrder  = \(ws:l:t:ex) -> [ws]
+                        , ppOrder  = \(ws:l:t) -> [ws]
                         },
         startupHook        = myStartupHook
     } `additionalKeysP` myAddKeys

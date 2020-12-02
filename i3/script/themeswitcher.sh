@@ -18,5 +18,6 @@ done
 
       /home/maren/dotfiles/scripts/rofiThemeGenerator.sh
       /home/maren/dotfiles/scripts/xmobarThemeGenerator.sh
+      /home/maren/dotfiles/scripts/awesomeThemeGenerator.sh
 
 

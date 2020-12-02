@@ -38,8 +38,8 @@ noremap <leader>gutd :SignifyDiff<CR>
 noremap <leader>b :Buffers<CR>
 
 " start mvn build in debug mode
-noremap <leader>ds :VimuxRunCommand "mvn -Dmaven.surefire.debug  -Dtest=".expand("%:t:r")." test --offline"<CR>
-noremap <leader>mc :VimuxRunCommand "mvn clean" <CR>
+noremap <leader>ds :VimuxRunCommand "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk; mvn -Dmaven.surefire.debug  -Dtest=".expand("%:t:r")." test --offline"<CR>
+noremap <leader>mc :VimuxRunCommand "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk; mvn clean" <CR>
 
 " calls mvn test and open the result in a buffer 
 noremap <leader>rS :call RunMvnTest()<CR>
