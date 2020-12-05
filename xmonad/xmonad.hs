@@ -62,8 +62,8 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#0C0E1C"
-myFocusedBorderColor = "#cfddeb"
+myNormalBorderColor  = "#040104"
+myFocusedBorderColor = "#d3a6d1"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -315,11 +315,11 @@ main = do
         handleEventHook    = myEventHook,
         logHook = myLogHook <+> dynamicLogWithPP xmobarPP
                         { ppOutput = \x -> hPutStrLn xmproc0 x  >> hPutStrLn xmproc1 x
-                        , ppCurrent = xmobarColor "#cfddeb" "" . wrap "[" "]" -- Current workspace in xmobar
-                        , ppVisible = xmobarColor "#966CB5" ""                -- Visible but not current workspace
-                        , ppHidden = xmobarColor "#6F94CF" "" . wrap "*" ""   -- Hidden workspaces in xmobar
-                        , ppSep =  "<fc=#cfddeb> <fn=2>|</fn> </fc>"          -- Separators in xmobar
-                        , ppUrgent = xmobarColor "#909aa4" "" . wrap "!" "!"  -- Urgent workspace
+                        , ppCurrent = xmobarColor "#d3a6d1" "" . wrap "[" "]" -- Current workspace in xmobar
+                        , ppVisible = xmobarColor "#AA5346" ""                -- Visible but not current workspace
+                        , ppHidden = xmobarColor "#A25163" "" . wrap "*" ""   -- Hidden workspaces in xmobar
+                        , ppSep =  "<fc=#d3a6d1> <fn=2>|</fn> </fc>"          -- Separators in xmobar
+                        , ppUrgent = xmobarColor "#937492" "" . wrap "!" "!"  -- Urgent workspace
                         , ppExtras  = [windowCount]                           -- # of windows current workspace
                         , ppOrder  = \(ws:l:t) -> [ws]
                         },

@@ -4,8 +4,8 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=14:antialias=true:hinting=t
                            , "xft:Mononoki Nerd Font:pixelsize=16:antialias=true:hinting=true"
                            , "xft:FontAwesome:pixelsize=13"
                            ]
-       , bgColor = "#0C0E1C"
-       , fgColor = "#cfddeb"
+       , bgColor = "#040104"
+       , fgColor = "#d3a6d1"
        , position = Static { xpos = 1920 , ypos = 0, width = 1920, height = 24 }
        , lowerOnStart = True
        , hideOnStart = False
@@ -30,7 +30,7 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=14:antialias=true:hinting=t
                     , Run Com "watson.sh" ["-s"] "watson2" 60
                     , Run Com "/home/maren/.config/xmobar/trayer-padding-icon.sh" [] "trayerpad" 20
 
-                    , Run Battery        [ "--template" , "<fc=#6F94CF>Batt:</fc> <acstatus>"
+                    , Run Battery        [ "--template" , "<fc=#A25163>Batt:</fc> <acstatus>"
                              , "--Low"      , "10"        -- units: %
                              , "--High"     , "80"        -- units: %
                              , "--low"      , "darkred"
@@ -51,6 +51,6 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=14:antialias=true:hinting=t
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " <action=`xdotool key control+alt+g`><icon=haskell_20.xpm/> </action><fc=#cfddeb>  |</fc> %StdinReader% }{ <fc=#cfddeb><fn=2>|</fn> </fc><fc=#6F94CF> %cpu% </fc><fc=#cfddeb> <fn=2>|</fn></fc> <fc=#6F94CF> %memory% </fc><fc=#cfddeb> <fn=2>|</fn></fc> <fc=#6F94CF> %disku% </fc><fc=#cfddeb> <fn=2>|</fn></fc>  <fc=#B993B2> %enp0s31f6% </fc><fc=#cfddeb> <fn=2>|</fn></fc> <fc=#cfddeb> <fn=2>|</fn></fc> <fc=#B993B2> %wlp3s0wi% </fc><fc=#cfddeb> <fn=2>|</fn></fc> <fc=#5C54AA> %date% </fc><fc=#cfddeb><fn=2>|</fn></fc> <fc=#5C54AA>%watson2% / %watson%</fc> %battery% |  %trayerpad% "
+       , template = " <action=`xdotool key control+alt+g`><icon=haskell_20.xpm/> </action><fc=#d3a6d1>  |</fc> %StdinReader% }{ <fc=#d3a6d1><fn=2>|</fn> </fc><fc=#A25163> %cpu% </fc><fc=#d3a6d1> <fn=2>|</fn></fc> <fc=#A25163> %memory% </fc><fc=#d3a6d1> <fn=2>|</fn></fc> <fc=#A25163> %disku% </fc><fc=#d3a6d1> <fn=2>|</fn></fc>  <fc=#DF8F68> %enp0s31f6% </fc><fc=#d3a6d1> <fn=2>|</fn></fc> <fc=#d3a6d1> <fn=2>|</fn></fc> <fc=#DF8F68> %wlp3s0wi% </fc><fc=#d3a6d1> <fn=2>|</fn></fc> <fc=#95295E> %date% </fc><fc=#d3a6d1><fn=2>|</fn></fc> <fc=#95295E>%watson2% / %watson%</fc> %battery% |  %trayerpad% "
 
        }

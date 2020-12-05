@@ -14,25 +14,43 @@ local theme = {}
 
 theme.font          = "NerdFont 10"
 
-theme.bg_normal     = "#0C0E1CAA"
-theme.bg_focus      = "#0C0E1CAA"
-theme.bg_urgent     = "#5C54AAAA"
-theme.bg_minimize   = "#5C54AAAA"
+theme.bg_normal     = "#040104AA"
+theme.bg_focus      = "#040104AA"
+theme.bg_urgent     = "#95295E99AA"
+theme.bg_minimize   = "#95295E99AA"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#cfddeb"
-theme.fg_focus      = "#cfddebAA"
-theme.fg_urgent     = "#cfddebAA"
-theme.fg_minimize   = "#cfddebAA"
+theme.fg_normal     = "#d3a6d1"
+theme.fg_focus      = "#d3a6d1AA"
+theme.fg_urgent     = "#d3a6d1AA"
+theme.fg_minimize   = "#d3a6d1AA"
 
 theme.useless_gap   = dpi(2)
 theme.border_width  = dpi(1)
 theme.border_normal = "#000000"
-theme.border_focus  = "#cfddeb"
-theme.border_marked = "#6F94CF"
+theme.border_focus  = "#d3a6d1"
+theme.border_marked = "#A2516399"
 
 
-theme.titlebar_bg= "#cfddeb"
+theme.bg_widget1="#95295E99"
+theme.bg_widget2="#AA534699"
+theme.bg_widget3="#A2516399"
+theme.bg_widget4="#DF8F6899"
+theme.bg_widget5="#0F2F9A99"
+theme.bg_widget6="#3E4CC999"
+theme.bg_widget7="#d3a6d199"
+theme.bg_widget8="#93749299"
+
+theme.fg_widget1="#95295E99"
+theme.fg_widget2="#AA534699"
+theme.fg_widget3="#A2516399"
+theme.fg_widget4="#DF8F6899"
+theme.fg_widget5="#0F2F9A99"
+theme.fg_widget6="#3E4CC999"
+theme.fg_widget7="#d3a6d199"
+theme.fg_widget8="#93749299"
+
+theme.titlebar_bg= "#d3a6d1"
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
@@ -100,7 +118,7 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = "/home/maren/Downloads/wallpapers/Lost_In_Space.jpg"
+theme.wallpaper = "/home/maren/Downloads/wallpapers/flowerPink.jpg"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairhw.png"

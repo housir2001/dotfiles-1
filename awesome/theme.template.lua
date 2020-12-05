@@ -32,6 +32,24 @@ theme.border_focus  = "FGCOLOR"
 theme.border_marked = "COLOR3"
 
 
+theme.bg_widget1="COLOR1"
+theme.bg_widget2="COLOR2"
+theme.bg_widget3="COLOR3"
+theme.bg_widget4="COLOR4"
+theme.bg_widget5="COLOR5"
+theme.bg_widget6="COLOR6"
+theme.bg_widget7="COLOR7"
+theme.bg_widget8="COLOR8"
+
+theme.fg_widget1="COLOR1"
+theme.fg_widget2="COLOR2"
+theme.fg_widget3="COLOR3"
+theme.fg_widget4="COLOR4"
+theme.fg_widget5="COLOR5"
+theme.fg_widget6="COLOR6"
+theme.fg_widget7="COLOR7"
+theme.fg_widget8="COLOR8"
+
 theme.titlebar_bg= "FGCOLOR"
 -- There are other variable sets
 -- overriding the default one when

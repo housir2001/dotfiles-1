@@ -13,6 +13,7 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
+local lain = require("lain")
 local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
@@ -47,6 +48,8 @@ end
 -- Themes define colours, icons, font and wallpapers.
 --beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 beautiful.init("/home/maren/.config/awesome/theme.lua")
+
+
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"
 editor = os.getenv("EDITOR") or "vim"
@@ -107,7 +110,158 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+
+local markup = lain.util.markup
+
+local clock_icon = wibox.widget.imagebox(beautiful.widget_clock)
+local clock = awful.widget.textclock(" %a %d %b  %H:%M ")
+local clock_widget = wibox.container.background(wibox.container.margin(wibox.widget {clock_icon, clock, layout = wibox.layout.align.horizontal }, 0, 1), beautiful.bg_widget1)
+
+local calendar = lain.widget.calendar({
+    cal = "cal --color=always",
+    attach_to = { clock_widget },
+    notification_preset = {
+        font = beautiful.font,
+        fg   = beautiful.fg_normal,
+        bg   = beautiful.bg_normal
+    }
+})
+
+-- FS
+local fs_icon = wibox.widget.imagebox("/home/maren/dotfiles/awesome/Font-Awesome/png40/hdd.png")
+local fs = lain.widget.fs({
+    notification_preset = { fg = beautiful.fg_normal, bg = beautiful.bg_normal, font = beautiful.font },
+    settings = function()
+        local fsp = string.format(" %3.2f %s ", fs_now["/"].free, fs_now["/"].units)
+        widget:set_markup(markup.font(beautiful.font, markup.fg.color(beautiful.fg_normal, fsp)))
+    end
+})
+local fs_widget =  wibox.container.background(wibox.container.margin(wibox.widget { fs_icon, fs.widget, layout = wibox.layout.align.horizontal }, 0, 0), beautiful.bg_widget4)
+
+
+-- CPU
+local cpu_icon = wibox.widget.imagebox("/home/maren/dotfiles/awesome/Font-Awesome/png40/microchip.png")
+local cpu = lain.widget.cpu({
+    settings = function()
+        widget:set_markup(markup.font(beautiful.font, markup.fg.color(beautiful.fg_normal, " " .. cpu_now.usage .. "% ")))
+    end
+})
+local cpu_widget =  wibox.container.background(wibox.container.margin(wibox.widget { cpu_icon, cpu.widget, layout = wibox.layout.align.horizontal }, 0, 0), beautiful.bg_widget3)
+
+
+-- MEM 
+local mem_icon = wibox.widget.imagebox("/home/maren/dotfiles/awesome/Font-Awesome/png40/memory.png")
+local mem = lain.widget.mem({
+    settings = function()
+        widget:set_markup(markup.font(beautiful.font, markup.fg.color(beautiful.fg_normal, " " .. mem_now.used .. "/" .. mem_now.perc .. "%")))
+    end
+})
+ mem_widget =  wibox.container.background(wibox.container.margin(wibox.widget { mem_icon, mem.widget, layout = wibox.layout.align.horizontal }, 0, 0), beautiful.bg_widget2)
+
+
+
+
+-- Battery
+local bat_icon = wibox.widget.imagebox("/home/maren/dotfiles/awesome/Font-Awesome/png40/memory.png")
+local batspr_l = wibox.widget.imagebox("/home/maren/dotfiles/awesome/icons/display/5.png")
+local batspr_r = wibox.widget.imagebox("/home/maren/dotfiles/awesome/icons/display/6.png")
+local bat = lain.widget.bat({
+    battery = "BAT0",
+    timeout = 1,
+    notify = "on",
+    n_perc = {5,15},
+    settings = function()
+        bat_notification_low_preset = {
+            title = "Battery low",
+            text = "Plug the cable!",
+            timeout = 15,
+            fg = "#232323",
+            bg = "#f18e38"
+        }
+        bat_notification_critical_preset = {
+            title = "Battery exhausted",
+            text = "Shutdown imminent",
+            timeout = 15,
+            fg = "#232323",
+            bg = "#c92132"
+        }
+
+        if bat_now.status ~= "N/A" then
+            if bat_now.status == "Charging" then
+                bat_icon:set_image("/home/maren/dotfiles/awesome/Font-Awesome/png40/plug.png")
+                widget:set_markup(markup.font(beautiful.font, markup.bg.color(beautiful.fg_normal, markup.fg.color(beautiful.bg_widget6," +" .. bat_now.perc .. "% [" .. bat_now.watt .. "W][" .. bat_now.time .. "]"))))
+            elseif bat_now.status == "Full" then
+                bat_icon:set_image("/home/maren/dotfiles/awesome/Font-Awesome/png40/battery-full.png")
+                widget:set_markup(markup.font(beautiful.font, markup.fg.color(beautiful.fg_normal, " ~" .. bat_now.perc .. "% [" .. bat_now.watt .. "W][" .. bat_now.time .. "]")))
+            elseif tonumber(bat_now.perc) <= 35 then
+                bat_icon:set_image("/home/maren/dotfiles/awesome/Font-Awesome/png40/battery-quarter.png")
+                widget:set_markup(markup.font(beautiful.font, markup.bg.color(beautiful.fg_normal, markup.fg.color(beautiful.fg_normal, " -" .. bat_now.perc .. "% [" .. bat_now.watt .. "W][" .. bat_now.time .. "]"))))     
+            elseif tonumber(bat_now.perc) <= 70 then
+                bat_icon:set_image("/home/maren/dotfiles/awesome/Font-Awesome/png40/battery-half.png")
+                widget:set_markup(markup.font(beautiful.font, markup.bg.color(beautiful.fg_normal, markup.fg.color(beautiful.fg_normal, " -" .. bat_now.perc .. "% [" .. bat_now.watt .. "W][" .. bat_now.time .. "]"))))
+            elseif tonumber(bat_now.perc) <= 90 then
+                bat_icon:set_image("/home/maren/dotfiles/awesome/Font-Awesome/png40/battery-three-quarters.png")
+                widget:set_markup(markup.font(beautiful.font, markup.bg.color(beautiful.fg_normal, markup.fg.color(beautiful.fg_normal, " -" .. bat_now.perc .. "% [" .. bat_now.watt .. "W][" .. bat_now.time .. "]"))))
+            else
+                bat_icon:set_image("/home/maren/dotfiles/awesome/Font-Awesome/png40/battery-empty.png")
+                widget:set_markup(markup.font(beautiful.font, markup.bg.color(beautiful.fg_normal, markup.fg.color(beautiful.fg_widget, " -" .. bat_now.perc .. "% [" .. bat_now.watt .. "W][" .. bat_now.time .. "]"))))
+            end
+        else
+            widget:set_markup(markup.font(beautiful.font, markup.bg.color(beautiful.bg_urgent, markup.fg.color(beautiful.fg_widget, " AC "))))
+            bat_icon:set_image(beautiful.widget_battery_no)
+        end
+    end
+})
+
+-- Battery
+local batbar = wibox.widget {
+    forced_height    = 1,
+    forced_width     = 45,
+    color            = beautiful.fg_normal,
+    background_color = beautiful.bg_widget5,
+    margins          = 1,
+    paddings         = 1,
+    ticks            = true,
+    ticks_size       = 5,
+    widget           = wibox.widget.progressbar,
+}
+
+local batupd = lain.widget.bat({
+    battery = "BAT0",
+    timeout = 1,
+    settings = function()
+        if bat_now.status ~= "N/A" then
+            if bat_now.status == "Charging" then
+                batbar:set_color(beautiful.fg_normal)
+            elseif bat_now.status == "Full" then
+                batbar:set_color(beautiful.fg_normal)
+            elseif tonumber(bat_now.perc) <= 35 then
+                batbar:set_color(beautiful.fg_normal)
+            elseif tonumber(bat_now.perc) <= 70 then
+                batbar:set_color(beautiful.fg_normal)
+            elseif tonumber(bat_now.perc) <= 90 then
+                batbar:set_color(beautiful.fg_normal)
+            else
+                batbar:set_color(beautiful.fg_normal)
+            end
+            batbar:set_value(bat_now.perc / 100)
+        else
+            return
+        end
+    end
+})
+local batbg = wibox.container.background(batbar, "#474747", gears.shape.rectangle)
+local bat_widget = wibox.container.margin(batbg, 2, 7, 4, 4)
+
+local battery_widget1 = wibox.container.background(wibox.container.margin(wibox.widget { bat_icon, bat_widget,  layout = wibox.layout.align.horizontal }, 1, 1), beautiful.bg_widget5)
+
+local battery_widget2 = wibox.container.background(wibox.container.margin(wibox.widget { batspr_l, bat.widget, batspr_r, layout = wibox.layout.align.horizontal }, 0, 0), beautiful.bg_widget5)
+
+
+
+
+
+
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -169,7 +323,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "Dev", "Web", "Com", "4", "5", "6" }, s, awful.layout.layouts[1])
+    awful.tag({ "", "", "", "", "", "" }, s, awful.layout.layouts[1])
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
     -- Create an imagebox widget which will contain an icon indicating which layout we're using.
@@ -208,16 +362,21 @@ awful.screen.connect_for_each_screen(function(s)
         },
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            wibox.widget.textbox('  |  '),
             awful.widget.watch('bash -c "/home/maren/dotfiles/scripts/sysInfo.sh -watson"', 15),
-            wibox.widget.textbox('  |  '),
-            awful.widget.watch('bash -c "/home/maren/dotfiles/scripts/sysInfo.sh -df"', 15),
-            wibox.widget.textbox('  |  '),
-            mytextclock,
-            wibox.widget.textbox('  |  '),
-            s.mylayoutbox,
-            wibox.widget.textbox('  |  '),
-            wibox.widget.systray(),
+            wibox.widget.imagebox("/home/maren/dotfiles/awesome/icons/display/1.png"),
+            clock_widget,
+            wibox.widget.imagebox("/home/maren/dotfiles/awesome/icons/display/2.png"),
+            mem_widget,
+            wibox.widget.imagebox("/home/maren/dotfiles/awesome/icons/display/3.png"),
+            cpu_widget,
+            wibox.widget.imagebox("/home/maren/dotfiles/awesome/icons/display/4.png"),
+            fs_widget,
+            wibox.widget.imagebox("/home/maren/dotfiles/awesome/icons/display/5.png"),
+            battery_widget1,
+            wibox.widget.imagebox("/home/maren/dotfiles/awesome/icons/display/6.png"),
+
+            -- s.mylayoutbox,
+            -- wibox.widget.systray(),
         },
     }
 end)
