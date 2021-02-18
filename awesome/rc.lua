@@ -832,13 +832,13 @@ end)
 
 -- }}}
 
---awful.spawn.with_shell(  "killall compton; compton --config ~/dotfiles/i3/compton.conf &")
- --awful.spawn.with_shell(  "sh /home/maren/dotfiles/scripts/xidelhook.sh &")
- --awful.spawn.with_shell(  "killall udiskie ;  udiskie -t")
---awful.spawn.with_shell(  "wal --theme /home/maren/.cache/wal/colors.json")
- --awful.spawn.with_shell( "killall redshift; sleep 4 ; redshift -l 48.024395:11.598893 &")
- --awful.spawn.with_shell( "pulseaudio -k; sleep 2; pulseaudio & killall pasystray ; pasystray &")
- --awful.spawn.with_shell( "nm-applet &")
- --awful.spawn.with_shell( "blueman-applet")
+awful.spawn.with_shell(  "killall compton; compton --config ~/dotfiles/i3/compton.conf &")
+ awful.spawn.with_shell(  "killall xidelhook; sh /home/maren/dotfiles/scripts/xidelhook.sh &")
+ awful.spawn.with_shell(  "killall udiskie ;  udiskie -t")
+awful.spawn.with_shell(  "wal --theme /home/maren/.cache/wal/colors.json")
+ awful.spawn.with_shell( "killall redshift; sleep 4 ; redshift -l 48.024395:11.598893 &")
+ awful.spawn.with_shell( "pulseaudio -k; sleep 2; pulseaudio & killall pasystray ; pasystray &")
+ awful.spawn.with_shell( "nm-applet &")
+ awful.spawn.with_shell( "blueman-applet")
 
 

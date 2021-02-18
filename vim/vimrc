@@ -1,7 +1,7 @@
 let g:ActualTicket = "INTS-5185"
 
 so ~/dotfiles/vim/.credencials
-so ~/dotfiles/vim/plugins.vim
+so ~/dotfiles/vim/pluginsnew.vim
 so ~/dotfiles/vim/nvimLSP.vim
 so ~/dotfiles/vim/functions.vim
 so ~/dotfiles/vim/github.vim
