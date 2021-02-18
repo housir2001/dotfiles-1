@@ -17,8 +17,8 @@ theme.material          = "Material Design Icons 15"
 
 theme.bg_normal     = "#08060FAA"
 theme.bg_focus      = "#08060FAA"
-theme.bg_urgent     = "#5C279699AA"
-theme.bg_minimize   = "#5C279699AA"
+theme.bg_urgent     = "#5C279622AA"
+theme.bg_minimize   = "#5C279622AA"
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = "#d7d1ed"
@@ -30,26 +30,26 @@ theme.useless_gap   = dpi(2)
 theme.border_width  = dpi(1)
 theme.border_normal = "#000000"
 theme.border_focus  = "#d7d1ed"
-theme.border_marked = "#5656A399"
+theme.border_marked = "#5656A322"
 
 
-theme.bg_widget1="#5C279699"
-theme.bg_widget2="#235B9C99"
-theme.bg_widget3="#5656A399"
-theme.bg_widget4="#5343E199"
-theme.bg_widget5="#B73ACE99"
-theme.bg_widget6="#36B8DE99"
-theme.bg_widget7="#d7d1ed99"
-theme.bg_widget8="#9692a599"
+theme.bg_widget1="#5C279622"
+theme.bg_widget2="#235B9C22"
+theme.bg_widget3="#5656A322"
+theme.bg_widget4="#5343E122"
+theme.bg_widget5="#B73ACE22"
+theme.bg_widget6="#36B8DE22"
+theme.bg_widget7="#D7D1ED22"
+theme.bg_widget8="#9692A522"
 
-theme.fg_widget1="#5C279699"
-theme.fg_widget2="#235B9C99"
-theme.fg_widget3="#5656A399"
-theme.fg_widget4="#5343E199"
-theme.fg_widget5="#B73ACE99"
-theme.fg_widget6="#36B8DE99"
-theme.fg_widget7="#d7d1ed99"
-theme.fg_widget8="#9692a599"
+theme.fg_widget1="#5C279622"
+theme.fg_widget2="#235B9C22"
+theme.fg_widget3="#5656A322"
+theme.fg_widget4="#5343E122"
+theme.fg_widget5="#B73ACE22"
+theme.fg_widget6="#36B8DE22"
+theme.fg_widget7="#D7D1ED22"
+theme.fg_widget8="#9692A522"
 
 theme.titlebar_bg= "#d7d1ed"
 -- There are other variable sets
@@ -119,7 +119,7 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = "/home/maren/Downloads/wallpapers/2880x1800-neon-rainy-lights-cyberpunk_1578254593.jpg"
+theme.wallpaper = "WALLPAPER"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairhw.png"
