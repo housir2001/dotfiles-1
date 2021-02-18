@@ -42,7 +42,7 @@ window {
 prompt {
     spacing: 						0;
     border: 						0;
-    text-color: 					#d197e2;
+    text-color: 					#d7d1ed;
 }
 
 textbox-prompt-colon {
@@ -54,17 +54,17 @@ textbox-prompt-colon {
 
 entry {
     spacing:    					0;
-    text-color: 					#d197e2;
+    text-color: 					#d7d1ed;
 }
 
 case-indicator {
     spacing:    					0;
-    text-color: 					#d197e2;
+    text-color: 					#d7d1ed;
 }
 
 inputbar {
     spacing:    					0px;
-    text-color: 					#d197e2;
+    text-color: 					#d7d1ed;
     padding:    					1px;
     children: 						[ prompt,textbox-prompt-colon,entry,case-indicator ];
 }
@@ -88,39 +88,39 @@ element {
 }
 element normal.normal {
     background-color: 				#00000000;
-    text-color:       				#d197e2;
+    text-color:       				#d7d1ed;
 }
 element normal.urgent {
     background-color: 				#00000000;
-    text-color:       				#d197e2;
+    text-color:       				#d7d1ed;
 }
 element normal.active {
     background-color: 				#00000000;
-    text-color:       				#d197e2;
+    text-color:       				#d7d1ed;
 }
 element selected.normal {
-    background-color: 				#64039F99;
-    text-color:       				#d197e2;
+    background-color: 				#5C279699;
+    text-color:       				#d7d1ed;
 }
 element selected.urgent {
-    background-color: 				#64039F99;
-    text-color:       				#d197e2;
+    background-color: 				#5C279699;
+    text-color:       				#d7d1ed;
 }
 element selected.active {
-    background-color: 				#64039F99;
-    text-color:       				#d197e2;
+    background-color: 				#5C279699;
+    text-color:       				#d7d1ed;
 }
 element alternate.normal {
     background-color: 				#00000000;
-    text-color:       				#d197e2;
+    text-color:       				#d7d1ed;
 }
 element alternate.urgent {
     background-color: 				#00000000;
-    text-color:       				#d197e2;
+    text-color:       				#d7d1ed;
 }
 element alternate.active {
     background-color: 				#00000000;
-    text-color:       				#d197e2;
+    text-color:       				#d7d1ed;
 }
 
 sidebar {
@@ -132,22 +132,22 @@ button {
     background-color:             	#00000000;
     margin: 						5px;
     padding: 						5px;
-    text-color: 					#d197e2;
+    text-color: 					#d7d1ed;
     border: 						0px;
-    border-color: 					#d197e2;
+    border-color: 					#d7d1ed;
 }
 
 button selected {
     background-color:             	#00000000;
-    text-color: 					#d197e2;
+    text-color: 					#d7d1ed;
     border: 						0px;
-    border-color: 					#d197e2;
+    border-color: 					#d7d1ed;
 }
 
 scrollbar {
     width:        					4px;
     border:       					0px;
-    handle-color: 					#d197e2;
+    handle-color: 					#d7d1ed;
     handle-width: 					8px;
     padding:      					0;
 }
@@ -159,6 +159,6 @@ message {
 }
 
 textbox {
-    text-color: 					#d197e2;
+    text-color: 					#d7d1ed;
 }
 
