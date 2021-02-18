@@ -12,45 +12,46 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.font          = "NerdFont 10"
+theme.font          = "JetBrains Mono Medium Nerd Font 10"
+theme.material          = "Material Design Icons 15"
 
-theme.bg_normal     = "#040104AA"
-theme.bg_focus      = "#040104AA"
-theme.bg_urgent     = "#95295E99AA"
-theme.bg_minimize   = "#95295E99AA"
+theme.bg_normal     = "#00001BAA"
+theme.bg_focus      = "#00001BAA"
+theme.bg_urgent     = "#64039F99AA"
+theme.bg_minimize   = "#64039F99AA"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#d3a6d1"
-theme.fg_focus      = "#d3a6d1AA"
-theme.fg_urgent     = "#d3a6d1AA"
-theme.fg_minimize   = "#d3a6d1AA"
+theme.fg_normal     = "#d197e2"
+theme.fg_focus      = "#d197e2AA"
+theme.fg_urgent     = "#d197e2AA"
+theme.fg_minimize   = "#d197e2AA"
 
 theme.useless_gap   = dpi(2)
 theme.border_width  = dpi(1)
 theme.border_normal = "#000000"
-theme.border_focus  = "#d3a6d1"
-theme.border_marked = "#A2516399"
+theme.border_focus  = "#d197e2"
+theme.border_marked = "#5E22CF99"
 
 
-theme.bg_widget1="#95295E99"
-theme.bg_widget2="#AA534699"
-theme.bg_widget3="#A2516399"
-theme.bg_widget4="#DF8F6899"
-theme.bg_widget5="#0F2F9A99"
-theme.bg_widget6="#3E4CC999"
-theme.bg_widget7="#d3a6d199"
-theme.bg_widget8="#93749299"
+theme.bg_widget1="#64039F99"
+theme.bg_widget2="#7A4EBC99"
+theme.bg_widget3="#5E22CF99"
+theme.bg_widget4="#544EE699"
+theme.bg_widget5="#9C05A299"
+theme.bg_widget6="#DC0FA599"
+theme.bg_widget7="#d197e299"
+theme.bg_widget8="#92699e99"
 
-theme.fg_widget1="#95295E99"
-theme.fg_widget2="#AA534699"
-theme.fg_widget3="#A2516399"
-theme.fg_widget4="#DF8F6899"
-theme.fg_widget5="#0F2F9A99"
-theme.fg_widget6="#3E4CC999"
-theme.fg_widget7="#d3a6d199"
-theme.fg_widget8="#93749299"
+theme.fg_widget1="#64039F99"
+theme.fg_widget2="#7A4EBC99"
+theme.fg_widget3="#5E22CF99"
+theme.fg_widget4="#544EE699"
+theme.fg_widget5="#9C05A299"
+theme.fg_widget6="#DC0FA599"
+theme.fg_widget7="#d197e299"
+theme.fg_widget8="#92699e99"
 
-theme.titlebar_bg= "#d3a6d1"
+theme.titlebar_bg= "#d197e2"
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
@@ -118,7 +119,7 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = "/home/maren/Downloads/wallpapers/flowerPink.jpg"
+theme.wallpaper = "/home/maren/Downloads/wallpapers/ultraviolet-wallpaper.jpg"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairhw.png"

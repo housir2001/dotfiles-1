@@ -4,8 +4,8 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=14:antialias=true:hinting=t
                            , "xft:Mononoki Nerd Font:pixelsize=16:antialias=true:hinting=true"
                            , "xft:FontAwesome:pixelsize=13"
                            ]
-       , bgColor = "#040104"
-       , fgColor = "#d3a6d1"
+       , bgColor = ""
+       , fgColor = ""
        , position = Static { xpos = 0 , ypos = 0, width = 1920, height = 24 }
        , lowerOnStart = True
        , hideOnStart = False
@@ -30,7 +30,7 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=14:antialias=true:hinting=t
                     , Run Com "watson.sh" ["-s"] "watson2" 60
                     , Run Com "/home/maren/.config/xmobar/trayer-padding-icon.sh" [] "trayerpad" 20
                     , Run StdinReader
-                    , Run Battery        [ "--template" , "<fc=#A25163>Batt:</fc> <acstatus>"
+                    , Run Battery        [ "--template" , "<fc=>Batt:</fc> <acstatus>"
                              , "--Low"      , "10"        -- units: %
                              , "--High"     , "80"        -- units: %
                              , "--low"      , "darkred"
@@ -48,5 +48,5 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=14:antialias=true:hinting=t
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " <action=`xdotool key control+alt+g`><icon=haskell_20.xpm/> </action><fc=#d3a6d1>  |</fc> %StdinReader% }{ <fc=#d3a6d1><fn=2>|</fn> </fc><fc=#A25163> %cpu% </fc><fc=#d3a6d1> <fn=2>|</fn></fc> <fc=#A25163> %memory% </fc><fc=#d3a6d1> <fn=2>|</fn></fc> <fc=#A25163> %disku% </fc><fc=#d3a6d1> <fn=2>|</fn></fc>  <fc=#DF8F68> %enp0s31f6% </fc><fc=#d3a6d1> <fn=2>|</fn></fc> <fc=#d3a6d1> <fn=2>|</fn></fc> <fc=#DF8F68> %wlp3s0wi% </fc><fc=#d3a6d1> <fn=2>|</fn></fc> <fc=#95295E> %date% </fc><fc=#d3a6d1><fn=2>|</fn></fc> <fc=#95295E>%watson2% / %watson% | %battery% %trayerpad%</fc> "
+       , template = " <action=`xdotool key control+alt+g`><icon=haskell_20.xpm/> </action><fc=>  |</fc> %StdinReader% }{ <fc=><fn=2>|</fn> </fc><fc=> %cpu% </fc><fc=> <fn=2>|</fn></fc> <fc=> %memory% </fc><fc=> <fn=2>|</fn></fc> <fc=> %disku% </fc><fc=> <fn=2>|</fn></fc>  <fc=> %enp0s31f6% </fc><fc=> <fn=2>|</fn></fc> <fc=> <fn=2>|</fn></fc> <fc=> %wlp3s0wi% </fc><fc=> <fn=2>|</fn></fc> <fc=> %date% </fc><fc=><fn=2>|</fn></fc> <fc=>%watson2% / %watson% | %battery% %trayerpad%</fc> "
        }

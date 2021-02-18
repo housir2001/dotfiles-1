@@ -1,0 +1,173 @@
+/*
+ *
+ * Author  : Aditya Shakya
+ * Mail    : adi1090x@gmail.com
+ * Github  : @adi1090x
+ * Twitter : @adi1090x
+ *
+ */
+
+configuration {
+    lines:							15;
+    columns:						1;
+    font: 							"Material Design Icons 12";
+    bw: 							0;
+    location: 						1;
+    padding: 						0;
+    fixed-num-lines: 				true;
+    show-icons: 					false;
+    sidebar-mode: 					false;
+    separator-style: 				"none";
+    hide-scrollbar: 				true;
+    fullscreen: 					false;
+    fake-transparency: 				false;
+    scroll-method: 					0;
+    window-format: 					"{c}  {t}";
+    click-to-exit: 					true;
+    show-match: 					false;
+    combi-hide-mode-prefix: 		false;
+    display-window: 				"󱘈";
+    display-windowcd: 				"";
+    display-run: 					"󱆃";
+    display-ssh: 					"";
+    display-drun: 					"";
+    display-combi: 					"";
+}
+
+
+* {
+    background-color:             	#00001B;
+}
+
+window {
+    border: 						0px;
+    border-color: 					#00001B;
+    padding: 						10;
+    width: 							50%;
+    height: 						100%;
+    background-color:             	#00001B;
+}
+
+prompt {
+    spacing: 						0;
+    border: 						0;
+    text-color: 					#d197e2;
+}
+
+textbox-prompt-colon {
+    expand: 						false;
+    str: 							" ";
+    margin:							0px 4px 0px 0px;
+    text-color: 					inherit;
+}
+
+entry {
+    spacing:    					0;
+    text-color: 					#d197e2;
+}
+
+case-indicator {
+    spacing:    					0;
+    text-color: 					#d197e2;
+}
+
+inputbar {
+    spacing:    					0px;
+    text-color: 					#d197e2;
+    padding:    					1px;
+    children: 						[ prompt,textbox-prompt-colon,entry,case-indicator ];
+}
+
+mainbox {
+    border: 						0px;
+    border-color: 					#00001B;
+}
+
+listview {
+    fixed-height: 					0;
+    border: 						0px;
+    border-color: 					#00001B;
+    spacing: 						4px;
+    scrollbar: 						false;
+}
+
+element {
+    border: 						0px;
+    padding: 						5px;
+}
+element normal.normal {
+    background-color: 				#00001B;
+    text-color:       				#d197e2;
+}
+element normal.urgent {
+    background-color: 				#6B7791;
+    text-color:       				#00001B;
+}
+element normal.active {
+    background-color: 				#00001B;
+    text-color:       				#d197e2;
+}
+element selected.normal {
+    background-color: 				#6B7791;
+    text-color:       				#00001B;
+}
+element selected.urgent {
+    background-color: 				@bg;
+    text-color:       				@red;
+}
+element selected.active {
+    background-color: 				#6B7791;
+    text-color:       				#00001B;
+}
+element alternate.normal {
+    background-color: 				#00001B;
+    text-color:       				#d197e2;
+}
+element alternate.urgent {
+    background-color: 				#6B7791;
+    text-color:       				#314452;
+}
+element alternate.active {
+    background-color: 				#00001B;
+    text-color:       				#314452;
+}
+
+sidebar {
+    border:       					0px;
+    border-color: 					#00001B;
+}
+
+button {
+    background-color:             	#00001B;
+    margin: 						5px;
+    padding: 						5px;
+    text-color: 					#d197e2;
+    border: 						0px;
+    border-color: 					#d197e2;
+}
+
+button selected {
+    background-color:             	#00001B;
+    text-color: 					#d197e2;
+    border: 						0px;
+    border-color: 					#d197e2;
+}
+
+scrollbar {
+    width:        					4px;
+    border:       					0px;
+    handle-color: 					#6B7791;
+    handle-width: 					8px;
+    padding:      					0;
+}
+
+message {
+    border: 						0px;
+    border-color: 					#00001B;
+    padding: 						1px;
+}
+
+textbox {
+    text-color: 					#d197e2;
+}
+
