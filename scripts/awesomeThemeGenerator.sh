@@ -1,6 +1,6 @@
 #!/bin/bash
 
-alpha=22
+alpha=55
 
 colors=$(yq e '.colors' ~/.cache/wal/colors.yml)
 currentColor=#00000000
@@ -28,9 +28,14 @@ done <<< "$colors"
 
 background=$(yq e '.special.background' ~/.cache/wal/colors.yml )
 foreground=$(yq e '.special.foreground' ~/.cache/wal/colors.yml )
+wallpaper=$(cat ~/.cache/wal/wal)
+
+echo $wallpaper
+
+sed -i "s#WALLPAPER#$wallpaper#g" /tmp/theme.lua
 sed -i "s/BGCOLOR/$background/g" /tmp/theme.lua
 sed -i "s/FGCOLOR/$foreground/g" /tmp/theme.lua
 
 mv /tmp/theme.lua /home/maren/dotfiles/awesome/theme.lua
 
-echo 'awesome.restart()' | awesome-client
+ echo 'awesome.restart()' | awesome-client

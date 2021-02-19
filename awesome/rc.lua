@@ -2,6 +2,8 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -365,7 +367,8 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 local tags = charitable.create_tags(
-   { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
+
+   { "󰆍","󰘔","󱅰","󰇰", "󰋙", "󰋙", "󰋙", "󰋙", "󰋙" },
    {
       awful.layout.layouts[1],
       awful.layout.layouts[1],
