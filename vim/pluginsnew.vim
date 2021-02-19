@@ -71,6 +71,8 @@ Plug 'tpope/vim-dadbod'
 " better java syntax highlighting
 Plug 'mafflerbach/java-syntax.vim'
 
+Plug 'tfnico/vim-gradle'
+
 " http client
 Plug 'diepm/vim-rest-console' 
 

@@ -6,6 +6,29 @@ function! Show_documentation()
     endif
 endfunction
 
+function! RunGradleTest(file) 
+    bd! __Potion_Bytecode__
+    split __Potion_Bytecode__
+    normal! ggdG
+    setlocal buftype=nofile
+    :execute "silent !{bash ~/dotfiles/scripts/runGradleTest.sh ".a:file. "}"
+    :r /tmp/build
+    normal! G
+endfunction
+
+
+function! RunAllGradleTest() 
+    bd! __Potion_Bytecode__
+    split __Potion_Bytecode__
+    normal! ggdG
+    setlocal buftype=nofile
+    :execute "silent !{ gradle jbehave 2>&1 /tmp/build }"
+    :r /tmp/build
+    normal! G
+endfunction
+
+
+
 function! RunMvnTest() 
     bd! __Potion_Bytecode__
     vsplit __Potion_Bytecode__

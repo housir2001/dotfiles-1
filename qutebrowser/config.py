@@ -33,7 +33,7 @@ config.load_autoconfig()
 
 config.set('content.javascript.enabled', True, 'file://*')
 config.set('fonts.default_family' ,  ["Inconsolata-dz for Powerline", "Monospace", "DejaVu Sans Mono", "Monaco", "Bitstream Vera Sans Mono", "Andale Mono", "Courier New", "Courier", "Liberation Mono", "monospace", "Fixed", "Consolas", "Terminal", "JetBrains Mono NL Regular"])
-config.set('fonts.default_size' , '10pt')
+config.set('fonts.default_size' , '12pt')
 # Enable JavaScript.
 # Type: Bool
 config.set('content.javascript.enabled', True, 'chrome://*/*')

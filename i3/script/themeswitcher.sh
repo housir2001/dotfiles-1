@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 wallpaper=`ls -1 /home/maren/Downloads/wallpapers | rofi -dmenu -theme ~/dotfiles/i3/rofi.rasi ` 
+feh --bg-scale /home/maren/Downloads/wallpapers/$wallpaper
 
 while getopts ld option
 do
@@ -17,7 +18,7 @@ esac
 done
 
       /home/maren/dotfiles/scripts/rofiThemeGenerator.sh
-      /home/maren/dotfiles/scripts/xmobarThemeGenerator.sh
       /home/maren/dotfiles/scripts/awesomeThemeGenerator.sh
+#      /home/maren/dotfiles/scripts/xmobarThemeGenerator.sh
 
 

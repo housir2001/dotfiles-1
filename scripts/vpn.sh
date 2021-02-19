@@ -33,7 +33,7 @@ while :; do
             ;;
         -k) 
             # kill vpn conneciton 
-            if [ "$wifiConnecton" == "no" ] && [ "$wireConnecton" == "no" ]; then
+            if [ "$wifiConnecton" == "no" ]; then
                  nmcli device connect "$wifiInterface"
             fi
             sudo killall openfortivpn

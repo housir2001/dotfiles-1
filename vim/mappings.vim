@@ -41,6 +41,10 @@ noremap <leader>b :Buffers<CR>
 noremap <leader>ds :VimuxRunCommand "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk; mvn -Dmaven.surefire.debug  -Dtest=".expand("%:t:r")." test --offline"<CR>
 noremap <leader>mc :VimuxRunCommand "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk; mvn clean" <CR>
 
+noremap <leader>dgs :VimuxRunCommand "~/dotfiles/scripts/runGradleTestDebug.sh ".expand("%") ." --debug-jvm"<CR>
+noremap <leader>rgs :call RunGradleTest(expand("%"))<CR>
+noremap <leader>rgS :call RunAllGradleTest()<CR>
+
 " calls mvn test and open the result in a buffer 
 noremap <leader>rS :call RunMvnTest()<CR>
 " calls mvn test for a the current filename as parameter
@@ -135,6 +139,9 @@ nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 nmap <leader>fo gg=G''
 " use Intelij Formatter and settings
 nmap <leader>fO :Dispatch! /home/maren/dotfiles/scripts/format.sh %<cr>
+
+
+
 " format json file
 nmap <leader>fj :%!python -m json.tool<CR>
 " format visual selected json

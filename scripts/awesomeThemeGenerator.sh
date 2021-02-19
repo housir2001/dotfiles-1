@@ -33,5 +33,4 @@ sed -i "s/FGCOLOR/$foreground/g" /tmp/theme.lua
 
 mv /tmp/theme.lua /home/maren/dotfiles/awesome/theme.lua
 
-
-#echo 'awesome.restart()' | awesome-client
+echo 'awesome.restart()' | awesome-client

@@ -17,6 +17,8 @@ local lain = require("lain")
 local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
+local charitable = require("charitable")
+
 require("awful.hotkeys_popup.keys")
 
 -- {{{ Error handling
@@ -362,12 +364,37 @@ end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
-
+local tags = charitable.create_tags(
+   { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
+   {
+      awful.layout.layouts[1],
+      awful.layout.layouts[1],
+      awful.layout.layouts[1],
+      awful.layout.layouts[1],
+      awful.layout.layouts[1],
+      awful.layout.layouts[1],
+      awful.layout.layouts[1],
+      awful.layout.layouts[1],
+      awful.layout.layouts[1],
+   }
+)
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
     -- Each screen has its own tag table.
-    awful.tag({ " 󰆍 ", "  ", "  ", "  ", "󰎰 ", " 󰎵 ", " 󰎸  " }, s, awful.layout.layouts[1])
+    for i = 1, #tags do
+         if not tags[i].selected then
+             tags[i].screen = s
+             tags[i]:view_only()
+             break
+         end
+    end
+    s.scratch = awful.tag.add('scratch-' .. s.index, {})
+    s.mytaglist = awful.widget.taglist({
+       screen = s,
+       buttons = taglist_buttons,
+       source = function(screen, args) return tags end,
+    })
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
     -- Create an imagebox widget which will contain an icon indicating which layout we're using.
@@ -641,33 +668,22 @@ clientkeys = gears.table.join(
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
+-- Keys setup
 for i = 1, 9 do
     globalkeys = gears.table.join(globalkeys,
         -- View tag only.
         awful.key({ modkey }, "#" .. i + 9,
-                  function ()
-                        local screen = awful.screen.focused()
-                        local tag = screen.tags[i]
-                        if tag then
-                           tag:view_only()
-                        end
-                  end,
+                  function () charitable.select_tag(tags[i], awful.screen.focused()) end,
                   {description = "view tag #"..i, group = "tag"}),
         -- Toggle tag display.
         awful.key({ modkey, "Control" }, "#" .. i + 9,
-                  function ()
-                      local screen = awful.screen.focused()
-                      local tag = screen.tags[i]
-                      if tag then
-                         awful.tag.viewtoggle(tag)
-                      end
-                  end,
+                  function () charitable.toggle_tag(tags[i], awful.screen.focused()) end,
                   {description = "toggle tag #" .. i, group = "tag"}),
         -- Move client to tag.
         awful.key({ modkey, "Shift" }, "#" .. i + 9,
                   function ()
                       if client.focus then
-                          local tag = client.focus.screen.tags[i]
+                          local tag = tags[i]
                           if tag then
                               client.focus:move_to_tag(tag)
                           end
@@ -678,7 +694,7 @@ for i = 1, 9 do
         awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
                   function ()
                       if client.focus then
-                          local tag = client.focus.screen.tags[i]
+                          local tag = tags[i]
                           if tag then
                               client.focus:toggle_tag(tag)
                           end
@@ -829,6 +845,19 @@ client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", {raise = false})
 end)
 
+tag.connect_signal("request::screen", function(t)
+    t.selected = false
+    for s in capi.screen do
+        if s ~= t.screen then
+            t.screen = s
+            return
+        end
+    end
+end)
+
+-- work around bugs in awesome 4.0 through 4.3+
+-- see https://github.com/awesomeWM/awesome/issues/2780
+awful.tag.history.restore = function() end
 -- }}}
 
 --awful.spawn.with_shell(  "killall compton; compton --config ~/dotfiles/i3/compton.conf &")
