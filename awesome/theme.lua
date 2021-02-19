@@ -15,43 +15,43 @@ local theme = {}
 theme.font          = "JetBrains Mono Medium Nerd Font 10"
 theme.material          = "Material Design Icons 15"
 
-theme.bg_normal     = "#080A11AA"
-theme.bg_focus      = "#080A11AA"
-theme.bg_urgent     = "#AD2A6122AA"
-theme.bg_minimize   = "#AD2A6122AA"
+theme.bg_normal     = "#080F37AA"
+theme.bg_focus      = "#080F37AA"
+theme.bg_urgent     = "#2F477522AA"
+theme.bg_minimize   = "#2F477522AA"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#cfd0e3"
-theme.fg_focus      = "#cfd0e3AA"
-theme.fg_urgent     = "#cfd0e3AA"
-theme.fg_minimize   = "#cfd0e3AA"
+theme.fg_normal     = "#afbbcc"
+theme.fg_focus      = "#afbbccAA"
+theme.fg_urgent     = "#afbbccAA"
+theme.fg_minimize   = "#afbbccAA"
 
 theme.useless_gap   = dpi(2)
 theme.border_width  = dpi(1)
 theme.border_normal = "#000000"
-theme.border_focus  = "#cfd0e3"
-theme.border_marked = "#0F619922"
+theme.border_focus  = "#afbbcc"
+theme.border_marked = "#E85D5A22"
 
 
-theme.bg_widget1="#AD2A6122"
-theme.bg_widget2="#A3A26422"
-theme.bg_widget3="#0F619922"
-theme.bg_widget4="#4951AA22"
-theme.bg_widget5="#BF54B022"
-theme.bg_widget6="#3EA6C622"
-theme.bg_widget7="#CFD0E322"
-theme.bg_widget8="#90919E22"
+theme.bg_widget1="#2F477522"
+theme.bg_widget2="#A2495222"
+theme.bg_widget3="#E85D5A22"
+theme.bg_widget4="#29589022"
+theme.bg_widget5="#5A6E9E22"
+theme.bg_widget6="#007CC322"
+theme.bg_widget7="#AFBBCC22"
+theme.bg_widget8="#7A828E22"
 
-theme.fg_widget1="#AD2A6122"
-theme.fg_widget2="#A3A26422"
-theme.fg_widget3="#0F619922"
-theme.fg_widget4="#4951AA22"
-theme.fg_widget5="#BF54B022"
-theme.fg_widget6="#3EA6C622"
-theme.fg_widget7="#CFD0E322"
-theme.fg_widget8="#90919E22"
+theme.fg_widget1="#2F477522"
+theme.fg_widget2="#A2495222"
+theme.fg_widget3="#E85D5A22"
+theme.fg_widget4="#29589022"
+theme.fg_widget5="#5A6E9E22"
+theme.fg_widget6="#007CC322"
+theme.fg_widget7="#AFBBCC22"
+theme.fg_widget8="#7A828E22"
 
-theme.titlebar_bg= "#cfd0e3"
+theme.titlebar_bg= "#afbbcc"
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:

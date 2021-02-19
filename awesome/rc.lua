@@ -855,6 +855,12 @@ tag.connect_signal("request::screen", function(t)
     end
 end)
 
+client.connect_signal("focus", function(c) 
+    -- print("the current client changed!", c) 
+    awful.client.setmaster(c)
+end)
+
+
 -- work around bugs in awesome 4.0 through 4.3+
 -- see https://github.com/awesomeWM/awesome/issues/2780
 awful.tag.history.restore = function() end
