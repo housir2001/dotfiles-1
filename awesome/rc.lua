@@ -118,10 +118,8 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 local markup = lain.util.markup
 
 local clock_icon = wibox.widget{
-    markup = ' ',
-    align  = 'center',
-    valign = 'center',
-    widget = wibox.widget.textbox
+    image = "/home/maren/dotfiles/awesome/icons/bar/calendar-month-icon.png",
+    widget = wibox.widget.imagebox
 }
 local clock = awful.widget.textclock(" %a %d %b  %H:%M ")
 local clock_widget = wibox.container.background(wibox.container.margin(wibox.widget {clock_icon, clock, layout = wibox.layout.align.horizontal }, 0, 1), beautiful.bg_widget1)
@@ -138,11 +136,8 @@ local calendar = lain.widget.calendar({
 
 -- FS
 local hdd_icons = wibox.widget{
-    markup = ' 󰋊',
-    font = beautiful.material,
-    align  = 'center',
-    valign = 'center',
-    widget = wibox.widget.textbox
+    image = "/home/maren/dotfiles/awesome/icons/bar/harddisk-icon.png",
+    widget = wibox.widget.imagebox
 }
 
 local fs = lain.widget.fs({
@@ -157,11 +152,8 @@ local fs_widget =  wibox.container.background(wibox.container.margin(wibox.widge
 
 -- CPU
 local cpu_icon = wibox.widget{
-    markup = ' 󰻠',
-    font = beautiful.material,
-    align  = 'center',
-    valign = 'center',
-    widget = wibox.widget.textbox
+    image = "/home/maren/dotfiles/awesome/icons/bar/cpu-64-bit-icon.png",
+    widget = wibox.widget.imagebox
 }
 local cpu = lain.widget.cpu({
     settings = function()
@@ -179,8 +171,15 @@ local bat_icon = wibox.widget{
     valign = 'center',
     widget = wibox.widget.textbox
 }
+
+local bat_icon2 = wibox.widget{
+    image = "/home/maren/dotfiles/awesome/icons/bar/battery-icon.png",
+    widget = wibox.widget.imagebox
+}
+
 local bat = lain.widget.bat({
     settings = function()
+
 
         if bat_now.perc <= 10   then
             bat_icon_markup =''
@@ -244,18 +243,16 @@ local bat = lain.widget.bat({
             end
         end
 
-        widget:set_markup(markup.font(beautiful.font, markup.fg.color(beautiful.fg_normal, bat_icon_markup .. " ".. bat_now.perc .. "% ")))
+        widget:set_markup(markup.font(beautiful.font, markup.fg.color(beautiful.fg_normal,  bat_now.perc .. "% ")))
     end
 })
 
-local bat_widget =  wibox.container.background(wibox.container.margin(wibox.widget { bat_icon, bat.widget, layout = wibox.layout.align.horizontal }, 0, 0), beautiful.bg_widget5)
+local bat_widget =  wibox.container.background(wibox.container.margin(wibox.widget { bat_icon2, bat.widget, layout = wibox.layout.align.horizontal }, 0, 0), beautiful.bg_widget5)
 
 -- MEM 
 local mem_icon = wibox.widget{
-    markup = '<span size="x-large"> </span>',
-    align  = 'center',
-    valign = 'center',
-    widget = wibox.widget.textbox
+    image = "/home/maren/dotfiles/awesome/icons/bar/memory-icon.png",
+    widget = wibox.widget.imagebox
 }
 local mem = lain.widget.mem({
     settings = function()
@@ -264,6 +261,10 @@ local mem = lain.widget.mem({
 })
  mem_widget =  wibox.container.background(wibox.container.margin(wibox.widget { mem_icon, mem.widget, layout = wibox.layout.align.horizontal }, 0, 0), beautiful.bg_widget2)
 
+local network_icon = wibox.widget{
+    image = "/home/maren/dotfiles/awesome/icons/bar/ethernet-icon.png",
+    widget = wibox.widget.imagebox
+}
 
 local mynetdown = wibox.widget.textbox()
 local mynetup = lain.widget.net {
@@ -306,6 +307,44 @@ local mynetup2 = lain.widget.net {
         end
     end
 }
+
+
+local mynetup3 = lain.widget.net {
+    notify = "off",
+    wifi_state = "on",
+    eth_state = "on",
+    settings = function()
+        local eth0 = net_now.devices.eth0
+        if eth0 then
+            if eth0.ethernet then
+                eth_icon:set_image( "/home/maren/dotfiles/awesome/icons/bar/ethernet-icon.png")
+            else
+                eth_icon:set_image()
+            end
+        end
+
+        local wlan0 = net_now.devices.wlp3s0
+        if wlan0 then
+            if wlan0.wifi then
+                local signal = wlan0.signal
+                if signal < -83 then
+                    wifi_icon:set_image( "/home/maren/dotfiles/awesome/icons/bar/wifi-strength-1-icon.png")
+                elseif signal < -70 then
+                    wifi_icon:set_image( "/home/maren/dotfiles/awesome/icons/bar/wifi-strength-2-icon.png")
+                elseif signal < -53 then
+                    wifi_icon:set_image( "/home/maren/dotfiles/awesome/icons/bar/wifi-strength-3-icon.png")
+                elseif signal >= -53 then
+                    wifi_icon:set_image( "/home/maren/dotfiles/awesome/icons/bar/wifi-strength-4-icon.png")
+                end
+            else
+                wifi_icon:set_image()
+            end
+        end
+    end
+}
+
+
+
 
   net_widget2 =  wibox.container.background(wibox.container.margin(wibox.widget { mynetup2.widget, layout = wibox.layout.align.horizontal }, 0, 0), beautiful.bg_widget6)
 
@@ -368,7 +407,7 @@ end
 screen.connect_signal("property::geometry", set_wallpaper)
 local tags = charitable.create_tags(
 
-   { "󰆍","󰘔","󱅰","󰇰", "󰋙", "󰋙", "󰋙", "󰋙", "󰋙" },
+   { "","","","", "", "", "", "", "" },
    {
       awful.layout.layouts[1],
       awful.layout.layouts[1],
@@ -379,8 +418,19 @@ local tags = charitable.create_tags(
       awful.layout.layouts[1],
       awful.layout.layouts[1],
       awful.layout.layouts[1],
-   }
-)
+   },
+   {
+        "/home/maren/dotfiles/awesome/icons/bar/console-icon.png",
+        "/home/maren/dotfiles/awesome/icons/bar/application-icon.png",
+        "/home/maren/dotfiles/awesome/icons/bar/message-reply-text-icon.png",
+        "/home/maren/dotfiles/awesome/icons/bar/email-open-icon.png",
+        "/home/maren/dotfiles/awesome/icons/bar/circle-slice-8-icon.png",
+        "/home/maren/dotfiles/awesome/icons/bar/circle-slice-8-icon.png",
+        "/home/maren/dotfiles/awesome/icons/bar/circle-slice-8-icon.png",
+        "/home/maren/dotfiles/awesome/icons/bar/circle-slice-8-icon.png",
+        "/home/maren/dotfiles/awesome/icons/bar/circle-slice-8-icon.png",
+    })
+
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
@@ -423,7 +473,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "bottom", screen = s, bg = "#00000000"})
+    s.mywibox = awful.wibar({ position = "bottom", screen = s, bg = "#00000000", height= 22})
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,

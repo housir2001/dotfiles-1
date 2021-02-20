@@ -15,43 +15,43 @@ local theme = {}
 theme.font          = "JetBrains Mono Medium Nerd Font 10"
 theme.material          = "Material Design Icons 15"
 
-theme.bg_normal     = "#0a090eAA"
-theme.bg_focus      = "#0a090eAA"
-theme.bg_urgent     = "#CA8F7655AA"
-theme.bg_minimize   = "#CA8F7655AA"
+theme.bg_normal     = "#080A11AA"
+theme.bg_focus      = "#080A11AA"
+theme.bg_urgent     = "#AD2A6100AA"
+theme.bg_minimize   = "#AD2A6100AA"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#afbbe0"
-theme.fg_focus      = "#afbbe0AA"
-theme.fg_urgent     = "#afbbe0AA"
-theme.fg_minimize   = "#afbbe0AA"
+theme.fg_normal     = "#cfd0e3"
+theme.fg_focus      = "#cfd0e3AA"
+theme.fg_urgent     = "#cfd0e3AA"
+theme.fg_minimize   = "#cfd0e3AA"
 
 theme.useless_gap   = dpi(3)
 theme.border_width  = dpi(1)
 theme.border_normal = "#000000"
-theme.border_focus  = "#afbbe0"
-theme.border_marked = "#394A9155"
+theme.border_focus  = "#cfd0e3"
+theme.border_marked = "#0F619900"
 
 
-theme.bg_widget1="#CA8F7655"
-theme.bg_widget2="#3A408D55"
-theme.bg_widget3="#394A9155"
-theme.bg_widget4="#545AA355"
-theme.bg_widget5="#5D72C955"
-theme.bg_widget6="#AA61B455"
-theme.bg_widget7="#AFBBE055"
-theme.bg_widget8="#7A829C55"
+theme.bg_widget1="#AD2A6100"
+theme.bg_widget2="#A3A26400"
+theme.bg_widget3="#0F619900"
+theme.bg_widget4="#4951AA00"
+theme.bg_widget5="#BF54B000"
+theme.bg_widget6="#3EA6C600"
+theme.bg_widget7="#CFD0E300"
+theme.bg_widget8="#90919E00"
 
-theme.fg_widget1="#CA8F7655"
-theme.fg_widget2="#3A408D55"
-theme.fg_widget3="#394A9155"
-theme.fg_widget4="#545AA355"
-theme.fg_widget5="#5D72C955"
-theme.fg_widget6="#AA61B455"
-theme.fg_widget7="#AFBBE055"
-theme.fg_widget8="#7A829C55"
+theme.fg_widget1="#AD2A6100"
+theme.fg_widget2="#A3A26400"
+theme.fg_widget3="#0F619900"
+theme.fg_widget4="#4951AA00"
+theme.fg_widget5="#BF54B000"
+theme.fg_widget6="#3EA6C600"
+theme.fg_widget7="#CFD0E300"
+theme.fg_widget8="#90919E00"
 
-theme.titlebar_bg= "#afbbe0"
+theme.titlebar_bg= "#cfd0e3"
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
@@ -119,7 +119,7 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = "/home/maren/Downloads/wallpapers/city_silhouette_art_136751_2560x1440.jpg"
+theme.wallpaper = "/home/maren/Downloads/wallpapers/biker-cyberpunk-girl-4k-sf-2560x1440.jpg"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairhw.png"

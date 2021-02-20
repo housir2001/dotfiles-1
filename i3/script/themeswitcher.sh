@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 wallpaper=`ls -1 /home/maren/Downloads/wallpapers | rofi -dmenu -theme ~/dotfiles/i3/rofi.rasi ` 
-feh --bg-scale /home/maren/Downloads/wallpapers/$wallpaper
 
 while getopts ld option
 do
