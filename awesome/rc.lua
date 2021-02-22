@@ -276,50 +276,42 @@ local mynetup = lain.widget.net {
 
  net_widget =  wibox.container.background(wibox.container.margin(wibox.widget { mynetup.widget, layout = wibox.layout.align.horizontal }, 0, 0), beautiful.bg_widget6)
 
-local mynetdown2 = wibox.widget.textbox()
-local mynetup2 = lain.widget.net {
-    iface = "wlp3s0",
-    wifi_state = "on",
-    settings = function()
-        local wlan0 = net_now.devices.wlp3s0
-        if wlan0 then  
-            if wlan0.signal then
+local wifi_icon = wibox.widget.imagebox()
+local eth_icon = wibox.widget.imagebox()
 
-                local signal = wlan0.signal
-                if signal < -83 then
-                    wifi_icon = " 󰤟 " 
-                elseif signal < -70 then
-                    wifi_icon = " 󰤢 "
-                elseif signal < -53 then
-                    wifi_icon = " 󰤥 "
-                elseif signal >= -53 then
-                    wifi_icon = " 󰤨 "
-                end
-
-                widget:set_markup(
-                markup.font(beautiful.material, markup.fg.color(beautiful.fg_normal, wifi_icon )) ..
-                markup.font(beautiful.font, markup.fg.color(beautiful.fg_normal, " 󰁞 " .. net_now.sent .. " 󰁆 "  .. net_now.received ))
-                )
-                else 
-
-                widget:set_markup(markup.font(beautiful.material, markup.fg.color(beautiful.fg_normal, " 󰤮 ")))
-            end
-        end
-    end
+local ethstatus = wibox.widget {
+    {
+        eth_icon,
+        layout = wibox.layout.fixed.vertical
+    },
+    bg = beautiful.bg_widget6,
+    widget = wibox.container.background
 }
 
+local wifistatus = wibox.widget {
+    {
+        wifi_icon,
+        layout = wibox.layout.fixed.vertical
+    },
+    {
+        markup = 'sdas',
+        widget = wibox.widget.textbox,
+    },
+    bg = beautiful.bg_widget6,
+    widget = wibox.container.background
+}
 
 local mynetup3 = lain.widget.net {
     notify = "off",
     wifi_state = "on",
     eth_state = "on",
     settings = function()
-        local eth0 = net_now.devices.eth0
+        local eth0 = net_now.devices.enp0s31f6
         if eth0 then
             if eth0.ethernet then
                 eth_icon:set_image( "/home/maren/dotfiles/awesome/icons/bar/ethernet-icon.png")
             else
-                eth_icon:set_image()
+                eth_icon:set_image( "/home/maren/dotfiles/awesome/icons/bar/ethernet-cable-off-icon.png")
             end
         end
 
@@ -337,16 +329,13 @@ local mynetup3 = lain.widget.net {
                     wifi_icon:set_image( "/home/maren/dotfiles/awesome/icons/bar/wifi-strength-4-icon.png")
                 end
             else
-                wifi_icon:set_image()
+                wifi_icon:set_image( "/home/maren/dotfiles/awesome/icons/bar/wifi-strength-alert-outline-icon.png")
             end
         end
     end
 }
 
 
-
-
-  net_widget2 =  wibox.container.background(wibox.container.margin(wibox.widget { mynetup2.widget, layout = wibox.layout.align.horizontal }, 0, 0), beautiful.bg_widget6)
 
  spacer_widget =  wibox.container.background(wibox.container.margin(wibox.widget { wibox.widget.textbox(markup.font(beautiful.font, markup.fg.color(beautiful.fg_normal, "  " ))), layout = wibox.layout.align.horizontal }, 0, 0), beautiful.bg_widget6)
 
@@ -511,8 +500,8 @@ awful.screen.connect_for_each_screen(function(s)
             wibox.widget.imagebox("/home/maren/dotfiles/awesome/icons/display/5-r.png"),
 
             wibox.widget.imagebox("/home/maren/dotfiles/awesome/icons/display/6-l.png"),
-            net_widget,
-            net_widget2,
+            ethstatus,
+            wifistatus,
             wibox.widget.imagebox("/home/maren/dotfiles/awesome/icons/display/6-r.png"),
 
             -- s.mylayoutbox,

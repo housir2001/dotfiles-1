@@ -1,6 +1,6 @@
 #!/bin/bash
 
-alpha=00
+alpha=dd
 
 colors=$(yq e '.colors' ~/.cache/wal/colors.yml)
 i=0

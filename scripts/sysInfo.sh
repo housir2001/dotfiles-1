@@ -9,6 +9,7 @@ while :; do
         -watson) 
             echo $(watson log | head -n1) / $(watson status | sed -e "s/Project //g" -e "s/(.*)//g")
             ;;
+
         *)
             break
     esac
