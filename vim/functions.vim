@@ -12,7 +12,7 @@ function! RunGradleTest(file)
     normal! ggdG
     setlocal buftype=nofile
     :execute "silent !{bash ~/dotfiles/scripts/runGradleTest.sh ".a:file. "}"
-    :r /tmp/build
+    :r /tmp/gradlebuild
     normal! G
 endfunction
 

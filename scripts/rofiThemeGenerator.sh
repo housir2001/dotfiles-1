@@ -1,6 +1,6 @@
 #!/bin/bash
 
-alpha=dd
+alpha=ff
 
 colors=$(yq e '.colors' ~/.cache/wal/colors.yml)
 
@@ -21,7 +21,7 @@ done <<< "$colors"
 
 background=$(yq e '.special.background' ~/.cache/wal/colors.yml )
 foreground=$(yq e '.special.foreground' ~/.cache/wal/colors.yml )
-sed -i "s/BGCOLOR/$background/g" /tmp/rofi.rasi
+sed -i "s/BGCOLOR/$background$alpha/g" /tmp/rofi.rasi
 sed -i "s/FGCOLOR/$foreground/g" /tmp/rofi.rasi
 
 mv /tmp/rofi.rasi /home/maren/dotfiles/i3/rofi.rasi

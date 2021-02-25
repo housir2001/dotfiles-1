@@ -172,9 +172,8 @@ local bat_icon = wibox.widget{
     widget = wibox.widget.textbox
 }
 
-local bat_icon2 = wibox.widget{
-    image = "/home/maren/dotfiles/awesome/icons/bar/battery-icon.png",
-    widget = wibox.widget.imagebox
+local bat_icon2 = wibox.widget.imagebox()
+local battery_status = wibox.widget {
 }
 
 local bat = lain.widget.bat({
@@ -182,72 +181,94 @@ local bat = lain.widget.bat({
 
 
         if bat_now.perc <= 10   then
-            bat_icon_markup =''
+            bat_icon2:set_image( "/home/maren/dotfiles/awesome/icons/bar/battery-10-icon.png")
         end
         if bat_now.perc >= 10 and  bat_now.perc <= 20  then
-             bat_icon_markup = ''
+            bat_icon2:set_image( "/home/maren/dotfiles/awesome/icons/bar/battery-10-icon.png")
         end
         if bat_now.perc >= 20 and  bat_now.perc <= 30  then
-             bat_icon_markup = ''
+            bat_icon2:set_image( "/home/maren/dotfiles/awesome/icons/bar/battery-20-icon.png")
+
         end
         if bat_now.perc >= 30 and  bat_now.perc <= 40  then
-             bat_icon_markup = ''
+            bat_icon2:set_image( "/home/maren/dotfiles/awesome/icons/bar/battery-30-icon.png")
+
         end
         if bat_now.perc >= 40 and  bat_now.perc <= 50  then
-             bat_icon_markup = ''
+            bat_icon2:set_image( "/home/maren/dotfiles/awesome/icons/bar/battery-40-icon.png")
+
         end
         if bat_now.perc >= 50 and  bat_now.perc <= 60  then
-             bat_icon_markup = ''
+            bat_icon2:set_image( "/home/maren/dotfiles/awesome/icons/bar/battery-50-icon.png")
+
         end
         if bat_now.perc >= 60 and  bat_now.perc <= 70  then
-             bat_icon_markup = ''
+            bat_icon2:set_image( "/home/maren/dotfiles/awesome/icons/bar/battery-60-icon.png")
+
         end
         if bat_now.perc >= 70 and  bat_now.perc <= 80  then
-             bat_icon_markup = ''
+            bat_icon2:set_image( "/home/maren/dotfiles/awesome/icons/bar/battery-70-icon.png")
+
         end
         if bat_now.perc >= 80 and  bat_now.perc <= 90  then
-             bat_icon_markup = ''
+            bat_icon2:set_image( "/home/maren/dotfiles/awesome/icons/bar/battery-80-icon.png")
+
         end
-        if bat_now.perc >= 90 and  bat_now.perc <= 100  then
-             bat_icon_markup = ''
+        if bat_now.perc >= 90 and  bat_now.perc <= 95  then
+            bat_icon2:set_image( "/home/maren/dotfiles/awesome/icons/bar/battery-90-icon.png")
         end
-       
+        if bat_now.perc >= 95 and  bat_now.perc <= 100  then
+            bat_icon2:set_image( "/home/maren/dotfiles/awesome/icons/bar/battery-icon.png")
+        end
+
 
         if bat_now.status == "Charging" then
             if bat_now.perc >= 10 and  bat_now.perc <= 20  then
-                bat_icon_markup = ' '
+                bat_icon2:set_image( "/home/maren/dotfiles/awesome/icons/bar/battery-charging-icon.png")
             end
             if bat_now.perc >= 20 and  bat_now.perc <= 30  then
-                bat_icon_markup = ' '
+                bat_icon2:set_image( "/home/maren/dotfiles/awesome/icons/bar/battery-charging-icon.png")
             end
             if bat_now.perc >= 30 and  bat_now.perc <= 40  then
-                bat_icon_markup = ' '
+                bat_icon2:set_image( "/home/maren/dotfiles/awesome/icons/bar/battery-charging-icon.png")
             end
             if bat_now.perc >= 40 and  bat_now.perc <= 50  then
-                bat_icon_markup = ' '
+                bat_icon2:set_image( "/home/maren/dotfiles/awesome/icons/bar/battery-charging-icon.png")
             end
             if bat_now.perc >= 50 and  bat_now.perc <= 60  then
-                bat_icon_markup = ' '
+                bat_icon2:set_image( "/home/maren/dotfiles/awesome/icons/bar/battery-charging-icon.png")
             end
             if bat_now.perc >= 60 and  bat_now.perc <= 70  then
-                bat_icon_markup = ' '
+                bat_icon2:set_image( "/home/maren/dotfiles/awesome/icons/bar/battery-charging-icon.png")
             end
             if bat_now.perc >= 70 and  bat_now.perc <= 80  then
-                bat_icon_markup = ' '
+                bat_icon2:set_image( "/home/maren/dotfiles/awesome/icons/bar/battery-charging-icon.png")
             end
             if bat_now.perc >= 80 and  bat_now.perc <= 90  then
-                bat_icon_markup = ' '
+                bat_icon2:set_image( "/home/maren/dotfiles/awesome/icons/bar/battery-charging-icon.png")
             end
             if bat_now.perc >= 90 and  bat_now.perc <= 100  then
-                bat_icon_markup = ' '
+                bat_icon2:set_image( "/home/maren/dotfiles/awesome/icons/bar/battery-charging-icon.png")
             end
         end
 
-        widget:set_markup(markup.font(beautiful.font, markup.fg.color(beautiful.fg_normal,  bat_now.perc .. "% ")))
+        battery_status = wibox.widget {
+            {
+                bat_icon2,
+                layout = wibox.layout.fixed.horizontal
+            },
+            bg = beautiful.bg_widget5,
+            widget = wibox.container.background
+        }
     end
 })
 
-local bat_widget =  wibox.container.background(wibox.container.margin(wibox.widget { bat_icon2, bat.widget, layout = wibox.layout.align.horizontal }, 0, 0), beautiful.bg_widget5)
+local mybat = lain.widget.net {
+    settings = function()
+        widget:set_markup(markup.font(beautiful.font, markup.fg.color(beautiful.fg_normal, bat_now.perc )))
+    end
+}
+ bat_widget =  wibox.container.background(wibox.container.margin(wibox.widget { mybat.widget, layout = wibox.layout.align.horizontal }, 0, 0), beautiful.bg_widget5)
 
 -- MEM 
 local mem_icon = wibox.widget{
@@ -261,45 +282,18 @@ local mem = lain.widget.mem({
 })
  mem_widget =  wibox.container.background(wibox.container.margin(wibox.widget { mem_icon, mem.widget, layout = wibox.layout.align.horizontal }, 0, 0), beautiful.bg_widget2)
 
-local network_icon = wibox.widget{
-    image = "/home/maren/dotfiles/awesome/icons/bar/ethernet-icon.png",
-    widget = wibox.widget.imagebox
-}
-
-local mynetdown = wibox.widget.textbox()
+ -- NETWORK
 local mynetup = lain.widget.net {
-    iface = "enp0s31f6",
     settings = function()
-        widget:set_markup(markup.font(beautiful.font, markup.fg.color(beautiful.fg_normal, "󰈀  󰁞 " .. net_now.sent .. " 󰁆 "  .. net_now.received)))
+        widget:set_markup(markup.font(beautiful.font, markup.fg.color(beautiful.fg_normal, net_now.sent .. " /"  .. net_now.received)))
     end
 }
-
  net_widget =  wibox.container.background(wibox.container.margin(wibox.widget { mynetup.widget, layout = wibox.layout.align.horizontal }, 0, 0), beautiful.bg_widget6)
 
 local wifi_icon = wibox.widget.imagebox()
 local eth_icon = wibox.widget.imagebox()
 
-local ethstatus = wibox.widget {
-    {
-        eth_icon,
-        layout = wibox.layout.fixed.vertical
-    },
-    bg = beautiful.bg_widget6,
-    widget = wibox.container.background
-}
-
-local wifistatus = wibox.widget {
-    {
-        wifi_icon,
-        layout = wibox.layout.fixed.vertical
-    },
-    {
-        markup = 'sdas',
-        widget = wibox.widget.textbox,
-    },
-    bg = beautiful.bg_widget6,
-    widget = wibox.container.background
-}
+local testwifistatus = wibox.widget{}
 
 local mynetup3 = lain.widget.net {
     notify = "off",
@@ -332,7 +326,19 @@ local mynetup3 = lain.widget.net {
                 wifi_icon:set_image( "/home/maren/dotfiles/awesome/icons/bar/wifi-strength-alert-outline-icon.png")
             end
         end
+
+        testwifistatus = wibox.widget {
+            {
+                wifi_icon,
+                eth_icon,
+                layout = wibox.layout.fixed.horizontal
+            },
+            bg = beautiful.bg_widget6,
+            widget = wibox.container.background
+        }
+
     end
+
 }
 
 
@@ -413,11 +419,11 @@ local tags = charitable.create_tags(
         "/home/maren/dotfiles/awesome/icons/bar/application-icon.png",
         "/home/maren/dotfiles/awesome/icons/bar/message-reply-text-icon.png",
         "/home/maren/dotfiles/awesome/icons/bar/email-open-icon.png",
-        "/home/maren/dotfiles/awesome/icons/bar/circle-slice-8-icon.png",
-        "/home/maren/dotfiles/awesome/icons/bar/circle-slice-8-icon.png",
-        "/home/maren/dotfiles/awesome/icons/bar/circle-slice-8-icon.png",
-        "/home/maren/dotfiles/awesome/icons/bar/circle-slice-8-icon.png",
-        "/home/maren/dotfiles/awesome/icons/bar/circle-slice-8-icon.png",
+        "/home/maren/dotfiles/awesome/icons/bar/circle-outline-icon.png",
+        "/home/maren/dotfiles/awesome/icons/bar/circle-outline-icon.png",
+        "/home/maren/dotfiles/awesome/icons/bar/circle-outline-icon.png",
+        "/home/maren/dotfiles/awesome/icons/bar/circle-outline-icon.png",
+        "/home/maren/dotfiles/awesome/icons/bar/circle-outline-icon.png",
     })
 
 awful.screen.connect_for_each_screen(function(s)
@@ -462,7 +468,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "bottom", screen = s, bg = "#00000000", height= 22})
+    s.mywibox = awful.wibar({ position = "bottom", screen = s, bg = "#00000000", height= 25})
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
@@ -496,13 +502,15 @@ awful.screen.connect_for_each_screen(function(s)
             wibox.widget.imagebox("/home/maren/dotfiles/awesome/icons/display/4-r.png"),
 
             wibox.widget.imagebox("/home/maren/dotfiles/awesome/icons/display/5-l.png"),
+            battery_status,
             bat_widget,
             wibox.widget.imagebox("/home/maren/dotfiles/awesome/icons/display/5-r.png"),
 
             wibox.widget.imagebox("/home/maren/dotfiles/awesome/icons/display/6-l.png"),
-            ethstatus,
-            wifistatus,
+            testwifistatus,
+            net_widget,
             wibox.widget.imagebox("/home/maren/dotfiles/awesome/icons/display/6-r.png"),
+
 
             -- s.mylayoutbox,
             -- wibox.widget.systray(),
@@ -908,13 +916,13 @@ end)
 awful.tag.history.restore = function() end
 -- }}}
 
---awful.spawn.with_shell(  "killall compton; compton --config ~/dotfiles/i3/compton.conf &")
- --awful.spawn.with_shell(  "killall xidelhook; sh /home/maren/dotfiles/scripts/xidelhook.sh &")
- --awful.spawn.with_shell(  "killall udiskie ;  udiskie -t")
---awful.spawn.with_shell(  "wal --theme /home/maren/.cache/wal/colors.json")
- --awful.spawn.with_shell( "killall redshift; sleep 4 ; redshift -l 48.024395:11.598893 &")
- --awful.spawn.with_shell( "pulseaudio -k; sleep 2; pulseaudio & killall pasystray ; pasystray &")
- --awful.spawn.with_shell( "nm-applet &")
- --awful.spawn.with_shell( "blueman-applet")
+awful.spawn.with_shell(  "killall compton; sleep 2; compton --config ~/dotfiles/i3/compton.conf &")
+awful.spawn.with_shell(  "killall xidelhook; sh /home/maren/dotfiles/scripts/xidelhook.sh &")
+awful.spawn.with_shell(  "killall udiskie ;  udiskie -t")
+-- awful.spawn.with_shell(  "wal --theme /home/maren/.cache/wal/colors.json")
+-- awful.spawn.with_shell( "killall redshift; sleep 4 ; redshift -l 48.024395:11.598893 &")
+-- awful.spawn.with_shell( "pulseaudio -k; sleep 2; pulseaudio & killall pasystray ; pasystray &")
+-- awful.spawn.with_shell( "nm-applet &")
+-- awful.spawn.with_shell( "blueman-applet")
 
 

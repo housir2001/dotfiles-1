@@ -1,6 +1,6 @@
 #!/bin/bash
 
-alpha=dd
+alpha=99
 
 colors=$(yq e '.colors' ~/.cache/wal/colors.yml)
 i=0
@@ -36,10 +36,11 @@ sed -i "s#WALLPAPER#$wallpaper#g" /tmp/theme.lua
 sed -i "s/BGCOLOR/$background/g" /tmp/theme.lua
 sed -i "s/FGCOLOR/$foreground/g" /tmp/theme.lua
 
-colorGrad1=$(yq e '.colors.color1' ~/.cache/wal/colors.yml )
+colorGrad1=$(yq e '.colors.color2' ~/.cache/wal/colors.yml )
 colorGrad2=$(yq e '.colors.color4' ~/.cache/wal/colors.yml )
 
 ~/dotfiles/scripts/generateIcons.sh $colorGrad1 $colorGrad2
+
 cp /tmp/theme.lua ~/dotfiles/awesome/theme.lua
 
  echo 'awesome.restart()' | awesome-client

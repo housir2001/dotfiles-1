@@ -10,11 +10,11 @@ for file in $path/*.png ; do
     convert $file $path/../linear_gradient.png  $file -composite ${file/\.png/}-icon.png
 
     convert ${file/\.png/}-icon.png -background none  \
-        \( +clone   -background black   -shadow 100x1+1+2 \) +swap \
+        \( +clone   -background black   -shadow 100x2+2+2 \) +swap \
         -background none   -layers merge +repage  ${file/\.png/}-icon.png
 
     convert ${file/\.png/}-icon.png -background none  \
-        \( +clone   -background white   -shadow 100x1-1-2 \) +swap \
+        \( +clone   -background white   -shadow 100x2-2-2 \) +swap \
         -background none   -layers merge +repage  ${file/\.png/}-icon.png
 
 done

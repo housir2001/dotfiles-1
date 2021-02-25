@@ -15,16 +15,16 @@ local theme = {}
 theme.font          = "JetBrains Mono Medium Nerd Font 10"
 theme.material          = "Material Design Icons 15"
 
-theme.bg_normal     = "BGCOLORAA"
-theme.bg_focus      = "BGCOLORAA"
-theme.bg_urgent     = "COLOR1AA"
-theme.bg_minimize   = "COLOR1AA"
+theme.bg_normal     = "BGCOLOR"
+theme.bg_focus      = "BGCOLOR"
+theme.bg_urgent     = "COLOR1"
+theme.bg_minimize   = "COLOR1"
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = "FGCOLOR"
-theme.fg_focus      = "FGCOLORAA"
-theme.fg_urgent     = "FGCOLORAA"
-theme.fg_minimize   = "FGCOLORAA"
+theme.fg_focus      = "FGCOLOR"
+theme.fg_urgent     = "FGCOLOR"
+theme.fg_minimize   = "FGCOLOR"
 
 theme.useless_gap   = dpi(3)
 theme.border_width  = dpi(1)

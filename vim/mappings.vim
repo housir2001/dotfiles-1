@@ -46,9 +46,9 @@ noremap <leader>rgs :call RunGradleTest(expand("%"))<CR>
 noremap <leader>rgS :call RunAllGradleTest()<CR>
 
 " calls mvn test and open the result in a buffer 
-noremap <leader>rS :call RunMvnTest()<CR>
+" noremap <leader>rS :call RunMvnTest()<CR>
 " calls mvn test for a the current filename as parameter
-noremap <leader>rs :call RunMvnThisTest(expand("%:t:r"))<CR>
+" noremap <leader>rs :call RunMvnThisTest(expand("%:t:r"))<CR>
 
 " start watson time tracking with the current Story ticket
 noremap <leader>tim :call StartTimeTracking(g:ActualTicket)<CR>

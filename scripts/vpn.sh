@@ -37,8 +37,10 @@ while :; do
                  nmcli device connect "$wifiInterface"
             fi
             sudo killall openfortivpn
+#            tmux send-keys -t "VPN:0" $sysPass Enter
             # kill session
-            tmux kill-session -t VPN
+            sleep 2
+#            tmux kill-session -t VPN
             # reactivate wifi connection for the case, that i want to detach from my docking station later
             ;;
         *)

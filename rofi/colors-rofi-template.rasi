@@ -25,18 +25,17 @@ configuration {
     display-combi: 					"";
 }
 
-
 * {
-    background-color:             	#00000000;
+    background-color:             	BGCOLOR;
 }
 
 window {
     border: 						0px;
-    border-color: 					#00000000;
+    border-color: 					BGCOLOR;
     padding: 						10;
     width: 							50%;
     height: 						100%;
-    background-color:             	#000000dd;
+    background-color:             	BGCOLOR;
 }
 
 prompt {
@@ -87,15 +86,15 @@ element {
     padding: 						5px;
 }
 element normal.normal {
-    background-color: 				#00000000;
+    background-color: 				BGCOLOR;
     text-color:       				FGCOLOR;
 }
 element normal.urgent {
-    background-color: 				#00000000;
+    background-color: 				BGCOLOR;
     text-color:       				FGCOLOR;
 }
 element normal.active {
-    background-color: 				#00000000;
+    background-color: 				BGCOLOR;
     text-color:       				FGCOLOR;
 }
 element selected.normal {
@@ -111,15 +110,15 @@ element selected.active {
     text-color:       				FGCOLOR;
 }
 element alternate.normal {
-    background-color: 				#00000000;
+    background-color: 				BGCOLOR;
     text-color:       				FGCOLOR;
 }
 element alternate.urgent {
-    background-color: 				#00000000;
+    background-color: 				BGCOLOR;
     text-color:       				FGCOLOR;
 }
 element alternate.active {
-    background-color: 				#00000000;
+    background-color: 				BGCOLOR;
     text-color:       				FGCOLOR;
 }
 
@@ -129,7 +128,7 @@ sidebar {
 }
 
 button {
-    background-color:             	#00000000;
+    background-color:             	BGCOLOR;
     margin: 						5px;
     padding: 						5px;
     text-color: 					FGCOLOR;
@@ -138,7 +137,7 @@ button {
 }
 
 button selected {
-    background-color:             	#00000000;
+    background-color:             	BGCOLOR;
     text-color: 					FGCOLOR;
     border: 						0px;
     border-color: 					FGCOLOR;

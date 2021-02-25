@@ -8,16 +8,18 @@ do
     in
 
     l) 
+      echo wal -l -i /home/maren/Downloads/wallpapers/$wallpaper
       wal -l -i /home/maren/Downloads/wallpapers/$wallpaper
     ;;
     d)
+      echo wal -i /home/maren/Downloads/wallpapers/$wallpaper 
       wal -i /home/maren/Downloads/wallpapers/$wallpaper 
     ;;
 esac
 done
-
       /home/maren/dotfiles/scripts/rofiThemeGenerator.sh
       /home/maren/dotfiles/scripts/awesomeThemeGenerator.sh
+qutebrowser :config-source
 #      /home/maren/dotfiles/scripts/xmobarThemeGenerator.sh
 
 
