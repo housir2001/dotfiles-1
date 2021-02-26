@@ -15,43 +15,43 @@ local theme = {}
 theme.font          = "JetBrains Mono Medium Nerd Font 10"
 theme.material          = "Material Design Icons 15"
 
-theme.bg_normal     = "#1b1510"
-theme.bg_focus      = "#1b1510"
-theme.bg_urgent     = "#2A619699"
-theme.bg_minimize   = "#2A619699"
+theme.bg_normal     = "#1b1511"
+theme.bg_focus      = "#1b1511"
+theme.bg_urgent     = "#830F8A99"
+theme.bg_minimize   = "#830F8A99"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#cedbd6"
-theme.fg_focus      = "#cedbd6"
-theme.fg_urgent     = "#cedbd6"
-theme.fg_minimize   = "#cedbd6"
+theme.fg_normal     = "#cedad6"
+theme.fg_focus      = "#cedad6"
+theme.fg_urgent     = "#cedad6"
+theme.fg_minimize   = "#cedad6"
 
 theme.useless_gap   = dpi(3)
 theme.border_width  = dpi(1)
 theme.border_normal = "#000000"
-theme.border_focus  = "#cedbd6"
-theme.border_marked = "#0697C399"
+theme.border_focus  = "#cedad6"
+theme.border_marked = "#1C99C899"
 
 
-theme.bg_widget1="#2A619699"
-theme.bg_widget2="#E11EAB99"
-theme.bg_widget3="#0697C399"
-theme.bg_widget4="#1CBAFE99"
-theme.bg_widget5="#4EC1E299"
-theme.bg_widget6="#8A8A8A99"
-theme.bg_widget7="#CEDBD699"
-theme.bg_widget8="#90999599"
+theme.bg_widget1="#830F8A99"
+theme.bg_widget2="#F1378399"
+theme.bg_widget3="#1C99C899"
+theme.bg_widget4="#11A2CE99"
+theme.bg_widget5="#56C6DD99"
+theme.bg_widget6="#8B8B8B99"
+theme.bg_widget7="#CEDAD699"
+theme.bg_widget8="#90989599"
 
-theme.fg_widget1="#2A619699"
-theme.fg_widget2="#E11EAB99"
-theme.fg_widget3="#0697C399"
-theme.fg_widget4="#1CBAFE99"
-theme.fg_widget5="#4EC1E299"
-theme.fg_widget6="#8A8A8A99"
-theme.fg_widget7="#CEDBD699"
-theme.fg_widget8="#90999599"
+theme.fg_widget1="#830F8A99"
+theme.fg_widget2="#F1378399"
+theme.fg_widget3="#1C99C899"
+theme.fg_widget4="#11A2CE99"
+theme.fg_widget5="#56C6DD99"
+theme.fg_widget6="#8B8B8B99"
+theme.fg_widget7="#CEDAD699"
+theme.fg_widget8="#90989599"
 
-theme.titlebar_bg= "#cedbd6"
+theme.titlebar_bg= "#cedad6"
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:

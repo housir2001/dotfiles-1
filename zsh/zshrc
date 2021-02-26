@@ -91,6 +91,7 @@ plugins=(
   vi-mode
   tmux
   mvn
+  kubectl
   )
 
 source $ZSH/oh-my-zsh.sh

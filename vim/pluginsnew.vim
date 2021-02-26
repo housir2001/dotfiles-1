@@ -84,6 +84,8 @@ Plug 'junegunn/fzf.vim'
 
 " Markdown preview in browser
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 " Coc vim implements language server features for different languages
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}

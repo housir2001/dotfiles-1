@@ -6,6 +6,17 @@ function! Show_documentation()
     endif
 endfunction
 
+function! Show_logs(file)
+    bd! __BUILD_OUT__
+    split __BUILD_OUT__
+    normal! ggdG
+    setlocal buftype=nofile
+    :execute "silent !{bash ~/dotfiles/scripts/transformTestOutput.sh ".a:file. "}"
+    :r /tmp/testOutput.md
+    normal! G
+endfunction
+
+
 function! RunGradleTest(file) 
     bd! __Potion_Bytecode__
     split __Potion_Bytecode__
@@ -34,8 +45,14 @@ function! RunMvnTest()
     vsplit __Potion_Bytecode__
     normal! ggdG
     setlocal buftype=nofile
-    :execute "silent !{export JAVA_HOME=/usr/lib/jvm/java-8-openjdk; mvn test --offline > /tmp/build}"
-    :r /tmp/build
+    if filereadable(expand("build.gradle"))
+        :execute "silent !{ gradle jbehave 2>&1 |tee /tmp/build }"
+        :r /tmp/gradlebuild
+    else
+        :execute "silent !{export JAVA_HOME=/usr/lib/jvm/java-8-openjdk; mvn test --offline > /tmp/build}"
+        :r /tmp/build
+    endif
+
     normal! G
 endfunction
 
@@ -45,11 +62,22 @@ function! RunMvnThisTest(file)
     vsplit __Potion_Bytecode__
     normal! ggdG
     setlocal buftype=nofile
-    :execute "silent !{export JAVA_HOME=/usr/lib/jvm/java-8-openjdk; mvn test --offline -Dtest=".a:file." > /tmp/build}"
-    :r /tmp/build
+
+    if filereadable(expand("build.gradle"))
+        :execute "silent !{bash ~/dotfiles/scripts/runGradleTest.sh ".a:file. "}"
+        :r /tmp/gradlebuild
+    else
+        :execute "silent !{export JAVA_HOME=/usr/lib/jvm/java-8-openjdk; mvn test --offline -Dtest=".a:file." > /tmp/build}"
+        :r /tmp/build
+    endif
     normal! G
 endfunction
 
+function! SomeCheck()
+    if filereadable(expand("build.gradle"))
+        echo "SpecificFile exists"
+    endif
+endfunction 
 
 function! StopTime() 
     :execute "silent ! watson stop"

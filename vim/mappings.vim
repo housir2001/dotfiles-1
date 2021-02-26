@@ -42,13 +42,14 @@ noremap <leader>ds :VimuxRunCommand "export JAVA_HOME=/usr/lib/jvm/java-8-openjd
 noremap <leader>mc :VimuxRunCommand "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk; mvn clean" <CR>
 
 noremap <leader>dgs :VimuxRunCommand "~/dotfiles/scripts/runGradleTestDebug.sh ".expand("%") ." --debug-jvm"<CR>
+noremap <leader>sgl :call Show_logs(expand("%"))<CR>
 noremap <leader>rgs :call RunGradleTest(expand("%"))<CR>
 noremap <leader>rgS :call RunAllGradleTest()<CR>
 
 " calls mvn test and open the result in a buffer 
-" noremap <leader>rS :call RunMvnTest()<CR>
+ noremap <leader>rS :call RunMvnTest()<CR>
 " calls mvn test for a the current filename as parameter
-" noremap <leader>rs :call RunMvnThisTest(expand("%:t:r"))<CR>
+ noremap <leader>rs :call RunMvnThisTest(expand("%"))<CR>
 
 " start watson time tracking with the current Story ticket
 noremap <leader>tim :call StartTimeTracking(g:ActualTicket)<CR>
