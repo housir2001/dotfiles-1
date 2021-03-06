@@ -40,7 +40,6 @@ nnoremap <Down>  <NOP>
 syntax on
 
 
-set encoding=UTF-8
 let g:arduino_dir = "/home/maren/Arduino"
 
 let g:far#enable_undo=1
@@ -127,8 +126,10 @@ hi MatchParen cterm=none ctermbg=green ctermfg=blue
 "highlight Pmenu ctermbg=blue guibg=bg ctermfg=black
 "highlight PmenuSbar ctermbg=black guibg=bg ctermfg=1
 "highlight PmenuSel ctermfg=black ctermbg=1 guibg=black
-set fillchars+=vert:░
-set guifont=DroidSansMono\ Nerd\ Font\ 15
+set fillchars+=vert:│
+"set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ 12
+set guifont=Material\ Design\ Icons\ 15
+set encoding=UTF-8
 
 let g:rust_use_custom_ctags_defs = 0  " if using rust.vim
 let g:tagbar_type_rust = {

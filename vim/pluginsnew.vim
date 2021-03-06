@@ -21,8 +21,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " icons in nerdtree
-
 Plug 'ryanoasis/vim-devicons'
+Plug 'vwxyutarooo/nerdtree-devicons-syntax'
 
 " http client
 Plug 'diepm/vim-rest-console' 
@@ -82,10 +82,16 @@ Plug 'vimwiki/vimwiki'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
 " Markdown preview in browser
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+
+" log highlighting
+Plug 'mtdl9/vim-log-highlighting'
 
 " Coc vim implements language server features for different languages
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
@@ -93,5 +99,10 @@ Plug 'antoinemadec/coc-fzf'
 
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
+Plug 'tpope/vim-surround'
+
 call plug#end()
 
+
+" Coc plugins
+let g:coc_global_extensions = ['coc-json', 'coc-css', 'coc-docker', 'coc-go', 'coc-gocode', 'coc-html', 'coc-java', 'coc-java-debug', 'coc-json', 'coc-markdownlint', 'coc-marketplace', 'coc-phpactor', 'coc-post', 'coc-python', 'coc-rls', 'coc-rust-analyzer', 'coc-sh' , 'coc-sql', 'coc-tsserver', 'coc-vimlsp',  'coc-xml', 'coc-yaml']

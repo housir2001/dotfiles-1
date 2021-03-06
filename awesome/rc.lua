@@ -122,13 +122,20 @@ local clock_icon = wibox.widget{
     widget = wibox.widget.imagebox
 }
 local clock = awful.widget.textclock(" %a %d %b  %H:%M ")
-local clock_widget = wibox.container.background(wibox.container.margin(wibox.widget {clock_icon, clock, layout = wibox.layout.align.horizontal }, 0, 1), beautiful.bg_widget1)
+local clock_widget = wibox.container.background (
+    wibox.container.margin(
+        wibox.widget {
+        clock_icon,
+        clock,
+        layout = wibox.layout.align.horizontal
+    }, 0, 1), beautiful.bg_widget1
+)
 
 local calendar = lain.widget.calendar({
     cal = "cal --color=always",
     attach_to = { clock_widget },
     notification_preset = {
-        font = beautiful.font,
+        font = beautiful.wibar,
         fg   = beautiful.fg_normal,
         bg   = beautiful.bg_normal
     }
@@ -141,10 +148,10 @@ local hdd_icons = wibox.widget{
 }
 
 local fs = lain.widget.fs({
-    notification_preset = { fg = beautiful.fg_normal, bg = beautiful.bg_normal, font = beautiful.font },
+    notification_preset = { fg = beautiful.fg_normal, bg = beautiful.bg_normal, font = beautiful.wibar },
     settings = function()
         local fsp = string.format(" %3.2f %s ", fs_now["/"].free, fs_now["/"].units)
-        widget:set_markup(markup.font(beautiful.font, markup.fg.color(beautiful.fg_normal, fsp)))
+        widget:set_markup(markup.font(beautiful.wibar, markup.fg.color(beautiful.fg_normal, fsp)))
     end
 })
 local fs_widget =  wibox.container.background(wibox.container.margin(wibox.widget { hdd_icons, fs.widget, layout = wibox.layout.align.horizontal }, 0, 0), beautiful.bg_widget4)
@@ -157,7 +164,7 @@ local cpu_icon = wibox.widget{
 }
 local cpu = lain.widget.cpu({
     settings = function()
-        widget:set_markup(markup.font(beautiful.font, markup.fg.color(beautiful.fg_normal, " " .. cpu_now.usage .. "% ")))
+        widget:set_markup(markup.font(beautiful.wibar, markup.fg.color(beautiful.fg_normal, " " .. cpu_now.usage .. "% ")))
     end
 })
 local cpu_widget =  wibox.container.background(wibox.container.margin(wibox.widget { cpu_icon, cpu.widget, layout = wibox.layout.align.horizontal }, 0, 0), beautiful.bg_widget3)
@@ -265,7 +272,7 @@ local bat = lain.widget.bat({
 
 local mybat = lain.widget.net {
     settings = function()
-        widget:set_markup(markup.font(beautiful.font, markup.fg.color(beautiful.fg_normal, bat_now.perc )))
+        widget:set_markup(markup.font(beautiful.wibar, markup.fg.color(beautiful.fg_normal, bat_now.perc )))
     end
 }
  bat_widget =  wibox.container.background(wibox.container.margin(wibox.widget { mybat.widget, layout = wibox.layout.align.horizontal }, 0, 0), beautiful.bg_widget5)
@@ -277,7 +284,7 @@ local mem_icon = wibox.widget{
 }
 local mem = lain.widget.mem({
     settings = function()
-        widget:set_markup(markup.font(beautiful.font, markup.fg.color(beautiful.fg_normal, " " .. mem_now.used .. "/" .. mem_now.perc .. "%")))
+        widget:set_markup(markup.font(beautiful.wibar, markup.fg.color(beautiful.fg_normal, " " .. mem_now.used .. "/" .. mem_now.perc .. "%")))
     end
 })
  mem_widget =  wibox.container.background(wibox.container.margin(wibox.widget { mem_icon, mem.widget, layout = wibox.layout.align.horizontal }, 0, 0), beautiful.bg_widget2)
@@ -285,7 +292,7 @@ local mem = lain.widget.mem({
  -- NETWORK
 local mynetup = lain.widget.net {
     settings = function()
-        widget:set_markup(markup.font(beautiful.font, markup.fg.color(beautiful.fg_normal, net_now.sent .. " /"  .. net_now.received)))
+        widget:set_markup(markup.font(beautiful.wibar, markup.fg.color(beautiful.fg_normal, net_now.sent .. " /"  .. net_now.received)))
     end
 }
  net_widget =  wibox.container.background(wibox.container.margin(wibox.widget { mynetup.widget, layout = wibox.layout.align.horizontal }, 0, 0), beautiful.bg_widget6)
@@ -343,7 +350,7 @@ local mynetup3 = lain.widget.net {
 
 
 
- spacer_widget =  wibox.container.background(wibox.container.margin(wibox.widget { wibox.widget.textbox(markup.font(beautiful.font, markup.fg.color(beautiful.fg_normal, "  " ))), layout = wibox.layout.align.horizontal }, 0, 0), beautiful.bg_widget6)
+ spacer_widget =  wibox.container.background(wibox.container.margin(wibox.widget { wibox.widget.textbox(markup.font(beautiful.wibar, markup.fg.color(beautiful.fg_normal, "  " ))), layout = wibox.layout.align.horizontal }, 0, 0), beautiful.bg_widget6)
 
 
 -- Create a wibox for each screen and add it

@@ -22,6 +22,11 @@ noremap <leader>cos :CocSearch <C-r>=expand('<CWORD>') <CR>
 " explor files withc fuzzy search 
 noremap <leader>f :FZF<CR>
 
+command! -bang ProjectFiles call fzf#vim#files('src', {'options': ['--layout=reverse', '--info=inline', '--preview', 'bat {}']}, <bang>0)
+noremap <leader>F :ProjectFiles<CR>
+inoremap <expr> <c-x><c-x> fzf#vim#complete({'down': '20%', 'source': 'cat ~/dotfiles/scripts/data/jbehaveAsserts'})
+
+"
 " some fungitive shortings
 noremap <leader>ge :Gblame<CR>
 noremap <leader>gs :Gstatus<CR>
@@ -263,3 +268,11 @@ map ,rp :%s/<C-R>a/<C-R>s/g
 " dispatching rust builds
 map ,ru           :Dispatch ROCKET_PORT=9990 TEST=1  cargo run settings/settings_testing.json <CR>
 map ,co           :Dispatch cargo build<CR>
+
+
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+

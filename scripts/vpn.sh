@@ -32,16 +32,20 @@ while :; do
             tmux send-keys -t "VPN:0" $sysPass Enter
             ;;
         -k) 
-            # kill vpn conneciton 
+            # reactivate wifi connection for the case, that i want to detach from my docking station later
             if [ "$wifiConnecton" == "no" ]; then
                  nmcli device connect "$wifiInterface"
             fi
-            sudo killall openfortivpn
-#            tmux send-keys -t "VPN:0" $sysPass Enter
-            # kill session
+
+            sysPass=$(pass show Privat/system | head -n1)
+            tmux new-session -d -s "XXXXXX"  sudo killall openfortivpn
             sleep 2
-#            tmux kill-session -t VPN
-            # reactivate wifi connection for the case, that i want to detach from my docking station later
+            tmux send-keys -t "XXXXXX:0" $sysPass Enter
+            # kill tmux session with vpn connection process
+            sleep 2
+            tmux kill-session -t XXXXXX
+            tmux kill-session -t VPN
+
             ;;
         *)
             break

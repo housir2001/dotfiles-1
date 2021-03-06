@@ -129,5 +129,7 @@ Plug 'junegunn/goyo.vim'
 
 " lsp support for nvim
 Plug 'neovim/nvim-lspconfig'
+
+Plug 'tpope/vim-surround'
 call plug#end()
 
