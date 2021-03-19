@@ -12,11 +12,9 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.font          = "Ubuntu 11"
+theme.font          = "JetBrains Mono Medium Nerd Font 10"
 theme.material          = "Material Design Icons 15"
 theme.wibar          = "Ubuntu 11"
-
-
 
 theme.bg_normal     = "#06001A"
 theme.bg_focus      = "#06001A"

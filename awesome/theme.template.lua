@@ -14,6 +14,7 @@ local theme = {}
 
 theme.font          = "JetBrains Mono Medium Nerd Font 10"
 theme.material          = "Material Design Icons 15"
+theme.wibar          = "Ubuntu 11"
 
 theme.bg_normal     = "BGCOLOR"
 theme.bg_focus      = "BGCOLOR"

@@ -206,6 +206,18 @@ alias zathura="devour zathura"
 alias sabnzbd="devour /usr/lib/sabnzbd/SABnzbd.py"
 alias get_idf='. $HOME/development/esp-idf/export.sh'
 alias vim='/usr/sbin/nvim'
+
+function restartPod {
+    pod=$(kubectl get pods | fzf); kubectl delete pod $(echo $pod | cut -f1 -d' ')
+}
+
+function podLogs {
+    pod=$(kubectl get pods | fzf); kubectl logs $(echo $pod | cut -f1 -d' ') -f
+}
+alias listPods='kubectl -n it-integration get pods' 
+
+
+
 source /home/maren/.config/broot/launcher/bash/br
 
 function lastCommit {

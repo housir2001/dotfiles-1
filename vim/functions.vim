@@ -67,7 +67,7 @@ function! RunMvnThisTest(file)
         :execute "silent !{bash ~/dotfiles/scripts/runGradleTest.sh ".a:file. "}"
         :r /tmp/gradlebuild
     else
-        :execute "silent !{export JAVA_HOME=/usr/lib/jvm/java-8-openjdk; mvn test --offline -Dtest=".a:file." > /tmp/build}"
+        :execute "silent !{bash ~/dotfiles/scripts/runTests.sh ".a:file. "}"
         :r /tmp/build
     endif
     normal! G
@@ -126,7 +126,7 @@ endfunction
 
 function! JiraReview(word) 
     :execute 'silent !jira transition \"In Review\" --noedit ' . a:word 
-    :execute     SubtaskJira(g:ActualTicket)    
+    :execute SubtaskJira(g:ActualTicket)    
 endfunction
 
 

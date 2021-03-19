@@ -100,7 +100,7 @@ Plug 'antoinemadec/coc-fzf'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
 Plug 'tpope/vim-surround'
-
+Plug 'mogelbrod/vim-jsonpath'
 call plug#end()
 
 
