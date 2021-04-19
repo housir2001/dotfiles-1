@@ -23,6 +23,7 @@ BUILD-com.sixt.db.archiving
 BUILD-com.sixt.finance.claim_management
 BUILD-com.sixt.finance.controlling.branch_margin
 BUILD-com.sixt.finance.controlling.pdash
+BUILD-com.sixt.finance.controlling.vehicle_tco
 BUILD-com.sixt.fleet.eordering
 BUILD-com.sixt.fleet.mercedes_meconnect
 BUILD-com.sixt.fleet.vehicle_availability
@@ -87,6 +88,7 @@ CANDIDATE-com.sixt.db.archiving
 CANDIDATE-com.sixt.finance.claim_management
 CANDIDATE-com.sixt.finance.controlling.branch_margin
 CANDIDATE-com.sixt.finance.controlling.pdash
+CANDIDATE-com.sixt.finance.controlling.vehicle_tco
 CANDIDATE-com.sixt.fleet.eordering
 CANDIDATE-com.sixt.fleet.mercedes_meconnect
 CANDIDATE-com.sixt.fleet.vehicle_availability
@@ -151,6 +153,7 @@ DOCKER-com.sixt.db.archiving
 DOCKER-com.sixt.finance.claim_management
 DOCKER-com.sixt.finance.controlling.branch_margin
 DOCKER-com.sixt.finance.controlling.pdash
+DOCKER-com.sixt.finance.controlling.vehicle_tco
 DOCKER-com.sixt.fleet.eordering
 DOCKER-com.sixt.fleet.mercedes_meconnect
 DOCKER-com.sixt.fleet.vehicle_availability
@@ -215,6 +218,7 @@ FINAL-com.sixt.db.archiving
 FINAL-com.sixt.finance.claim_management
 FINAL-com.sixt.finance.controlling.branch_margin
 FINAL-com.sixt.finance.controlling.pdash
+FINAL-com.sixt.finance.controlling.vehicle_tco
 FINAL-com.sixt.fleet.eordering
 FINAL-com.sixt.fleet.mercedes_meconnect
 FINAL-com.sixt.fleet.vehicle_availability
@@ -281,6 +285,7 @@ RELEASE-com.sixt.db.archiving
 RELEASE-com.sixt.finance.claim_management
 RELEASE-com.sixt.finance.controlling.branch_margin
 RELEASE-com.sixt.finance.controlling.pdash
+RELEASE-com.sixt.finance.controlling.vehicle_tco
 RELEASE-com.sixt.fleet.eordering
 RELEASE-com.sixt.fleet.mercedes_meconnect
 RELEASE-com.sixt.fleet.vehicle_availability
@@ -345,6 +350,7 @@ SNAPSHOT-com.sixt.db.archiving
 SNAPSHOT-com.sixt.finance.claim_management
 SNAPSHOT-com.sixt.finance.controlling.branch_margin
 SNAPSHOT-com.sixt.finance.controlling.pdash
+SNAPSHOT-com.sixt.finance.controlling.vehicle_tco
 SNAPSHOT-com.sixt.fleet.eordering
 SNAPSHOT-com.sixt.fleet.mercedes_meconnect
 SNAPSHOT-com.sixt.fleet.vehicle_availability

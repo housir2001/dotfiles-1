@@ -27,6 +27,15 @@ function! RunGradleTest(file)
     normal! G
 endfunction
 
+function! RunSQL(sql) 
+    bd! __Potion_SQL__
+    split __Potion_SQL__
+    normal! ggdG
+    setlocal buftype=nofile
+    :execute "silent !{bash ~/dotfiles/scripts/sqliteplus.sh ".a:sql. "}"
+    :r /tmp/queryResult.csv
+    normal! G
+endfunction
 
 function! RunAllGradleTest() 
     bd! __Potion_Bytecode__
@@ -87,6 +96,12 @@ function! StartTimeTracking(word)
     :execute "silent ! watson start " . a:word 
 endfunction
 
+function! ViewSprint() 
+    let tmpWord=expand('<cWORD>')
+    split a:tmpWord
+    :normal ggdG
+    :read ! jira listStories 
+endfunction
 
 function! ViewSprint() 
     let tmpWord=expand('<cWORD>')
@@ -95,6 +110,13 @@ function! ViewSprint()
     :read ! jira listStories 
 endfunction
 
+
+function! ViewRun() 
+    let tmpWord=expand('<cWORD>')
+    split a:tmpWord
+    :normal ggdG
+    :read ! jira runboard 
+endfunction
 
 function! SubtaskJira(word)
     :normal ggdG
@@ -125,7 +147,7 @@ function! JiraOpenReview()
 endfunction
 
 function! JiraReview(word) 
-    :execute 'silent !jira transition \"In Review\" --noedit ' . a:word 
+    :execute "silent !jira transition \"In Review\" --noedit " . a:word 
     :execute SubtaskJira(g:ActualTicket)    
 endfunction
 

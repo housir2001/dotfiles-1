@@ -67,6 +67,7 @@ Plug 'tpope/vim-dispatch'
 
 "Database client 
 Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
 
 " better java syntax highlighting
 Plug 'mafflerbach/java-syntax.vim'

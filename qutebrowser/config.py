@@ -54,7 +54,7 @@ config.bind('<Ctrl-Shift-o>', 'spawn --verbose --detach /home/maren/dotfiles/i3/
 
 config.bind('<Ctrl-Shift-l>', 'hint links spawn --verbose --detach  youtube-dl {hint-url} --output /home/maren/Downloads/ytFiles/%(title)s.%(ext)s')
 
-config.bind('<Ctrl-Shift-f>', 'hint links spawn --verbose --detach  /opt/nzb-monkey/nzbmonkey.py {hint-url} ')
+config.bind('<Ctrl-Shift-f>', 'hint links spawn --verbose --detach  /opt/nzb-monkey/nzbmonkey.py "{hint-url}" ')
 
 
 config.bind('<Ctrl-Shift-d>', 'hint links spawn --verbose --detach mpv {hint-url} --input-ipc-server=/tmp/mpvsocket')

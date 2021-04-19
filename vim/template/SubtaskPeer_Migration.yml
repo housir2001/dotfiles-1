@@ -2,7 +2,7 @@ fields:
   project:
     key: INTS
   summary: >- 
-    Implement feature
+    Migration
   priority:
     name: Medium
   components: # Values: Action Points, Business Testing, Technical Story, 

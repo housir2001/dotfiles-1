@@ -118,6 +118,8 @@ Plug 'kkoomen/vim-doge'
 
 "Database client 
 Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
+
 " icons in nerdtree
 Plug 'ryanoasis/vim-devicons'
 

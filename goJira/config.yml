@@ -93,6 +93,16 @@ custom-commands:
           # otherwise list issues for all project
           echo "\"project: ...\" configuration missing from .jira.d/config.yml"
       fi   
+  - name: runboard
+    help: display stories for active runboard
+    script: |-
+      if [ -n "$JIRA_PROJECT" ]; then
+          # if `project: ...` configured just list the issues for current project
+      {{jira}} list --template table2 --query "project = INTS AND type = Task and (status = Icebox   or status = \"To Do\" or status = \"In Progress\"  or status = \"Blocked\" or status = \"In Review\" or status = \"On Hold\"  )"
+      else
+          # otherwise list issues for all project
+          echo "\"project: ...\" configuration missing from .jira.d/config.yml"
+      fi   
   - name: platform
     help: display stories for active sprint
     script: |-

@@ -5,8 +5,9 @@ function join_by { local d=$1; shift; local f=$1; shift; printf %s "$f" "${@/#/$
 FQSN=`ls -1 /home/maren/development/solutions.common.configuration/src | rofi -dmenu -theme ~/dotfiles/i3/rofi.rasi ` 
 FQSN=${FQSN//\-/_}
 
-result=($(rg queue development/solutions.common.configuration/src/$FQSN))
-pattern="development/solutions.common.configuration/src/com.sixt.db.archiving/solution-conf/"
+result=($(rg queue ~/development/solutions.common.configuration/src/$FQSN))
+pattern="~/development/solutions.common.configuration/src/$FQSN/solution-conf/"
+
 typeset -i i=0 max=${#result[*]}
 while (( i < max ))
 do
@@ -37,6 +38,8 @@ fileName=$pattern$(echo "$pathList" | rofi -dmenu -theme ~/dotfiles/i3/rofi.rasi
 
 cd /home/maren/development/solutions.utils.smoke_tester/
 STAGE=1 cargo run $FQSN $queueName "$fileName"
+# cargo run $FQSN $queueName "$fileName"
+
 #cargo run $FQSN $queueName "$fileName"
 
 #./smoke_tester com.sixt.db.archiving com.sixt.db.archiving.PaymentObject.mirror "/home/maren/development/solutions.java.com.sixt.db.archiving/src/test/resources/data/archiving_event.json" | vim -

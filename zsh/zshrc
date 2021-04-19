@@ -144,7 +144,7 @@ alias v='clippaste'
 alias fqsn="zsh ~/.local/bin/fqsnExporter.sh"
 alias pro="zsh ~/.local/bin/openProject.sh"
 
-alias vpnaddress="hostname -i | cut -f4 -d' ' | c"
+alias vpnaddress="hostname -i | cut -f5 -d' ' | c"
 alias tag="git branch | grep \* | cut -d ' ' -f2"
 alias gitremote="git remote -v | head -n1 | cut -f2 | sed s/\(fetch\)//g | c"
 
@@ -214,9 +214,13 @@ function restartPod {
 function podLogs {
     pod=$(kubectl get pods | fzf); kubectl logs $(echo $pod | cut -f1 -d' ') -f
 }
+
+
+function podLog {
+pod=$(kubectl get pods | fzf); kubectl logs $(echo $pod | cut -f1 -d' ') > output.logs
+}
+
 alias listPods='kubectl -n it-integration get pods' 
-
-
 
 source /home/maren/.config/broot/launcher/bash/br
 

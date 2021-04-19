@@ -6,7 +6,7 @@ echo $FQSN | xsel --clipboard --input
 
 #FQSN=`ls -1 /home/maren/development/solutions.common.configuration/src | rofi -dmenu -theme ~/dotfiles/i3/rofi.rasi ` 
 
-devDir=$(ls -1 /home/maren/development)
+devDir=$(ls -1t /home/maren/development)
 solutionsDir=$(ls -1 /home/maren/development/solutions.common.configuration/src)
 
 FQSN=$(echo -e $devDir"\n"$solutionsDir |  rofi -dmenu -theme ~/dotfiles/i3/rofi.rasi)

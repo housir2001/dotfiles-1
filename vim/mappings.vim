@@ -145,7 +145,7 @@ nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 nmap <leader>fo gg=G''
 " use Intelij Formatter and settings
 nmap <leader>fO :Dispatch! /home/maren/dotfiles/scripts/format.sh %<cr>
-
+nmap <leader>cpr :Dispatch /home/maren/dotfiles/scripts/createPr.sh<cr>
 
 
 " format json file
@@ -219,6 +219,7 @@ nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 
 " some self written functions for displaying and handling Jira tickets
  map <leader>jS :call ViewSprint() <CR> 
+ map <leader>jru :call ViewRun() <CR> 
  map <leader>js :call SubtaskJira(expand("<cWORD>"))<CR>
  map <leader>jv :call ViewJira(expand("<cWORD>"))<CR>
  map <leader>jco :call CommentJira(expand("<cWORD>"))<CR>
@@ -249,26 +250,27 @@ map <leader>" ysiw"
 map <leader>) ysiw)
 
 " for better got to file in build output
-map ,ll :s/target\/classes\/META-INF/src\/main\/resources\/META-INF/g <bar> :s/\[/\[ /g <bar> :s/\]/ \]/g <bar> :s/:/:\r/g <CR>
+map <leader>ll :s/target\/classes\/META-INF/src\/main\/resources\/META-INF/g <bar> :s/\[/\[ /g <bar> :s/\]/ \]/g <bar> :s/:/:\r/g <CR>
 
 " yank in WORD into register a s or q
-map ,1 "ayiW
-map ,2 "syiW
-map ,3 "qyiW
+map <leader>1 "ayiW
+map <leader>2 "syiW
+map <leader>3 "qyiW
 
 " past register a s or q
-map ,p1 "ap
-map ,p2 "sp
-map ,p3 "qp
+map <leader>p1 "ap
+map <leader>p2 "sp
+map <leader>p3 "qp
 
 " using resgister a and s for search and replace Project wide with FAR or buffer with %s
-map ,RP :Far <C-R>a <C-R>s 
-map ,rp :%s/<C-R>a/<C-R>s/g
+map <leader>RP :Far <C-R>a <C-R>s 
+map <leader>rp :%s/<C-R>a/<C-R>s/g
  
 " dispatching rust builds
-map ,ru           :Dispatch ROCKET_PORT=9990 TEST=1  cargo run settings/settings_testing.json <CR>
-map ,co           :Dispatch cargo build<CR>
+map <leader>ru           :Dispatch ROCKET_PORT=9990 TEST=1  cargo run settings/settings_testing.json <CR>
+map <leader>co           :Dispatch cargo build<CR>
 
+map <leader>pri :!lp "%" -o print-quality=3
 
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
