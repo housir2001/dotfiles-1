@@ -1,3 +1,4 @@
+BUILD-com.sixt.automic_event_engine
 BUILD-com.sixt.bi.carfax
 BUILD-com.sixt.bi.datashop_event_forwarder
 BUILD-com.sixt.bi.person_deleted_to_dwh
@@ -63,6 +64,7 @@ BUILD-com.sixt.rental.rental_agreement_restore
 BUILD-com.sixt.rental_operations.basque_rental_transfer
 BUILD-com.sixt.sales_performance.amadeus
 BUILD-com.sixt.workflow.einvoicing
+CANDIDATE-com.sixt.automic_event_engine
 CANDIDATE-com.sixt.bi.carfax
 CANDIDATE-com.sixt.bi.datashop_event_forwarder
 CANDIDATE-com.sixt.bi.person_deleted_to_dwh
@@ -128,6 +130,7 @@ CANDIDATE-com.sixt.rental.rental_agreement_restore
 CANDIDATE-com.sixt.rental_operations.basque_rental_transfer
 CANDIDATE-com.sixt.sales_performance.amadeus
 CANDIDATE-com.sixt.workflow.einvoicing
+DOCKER-com.sixt.automic_event_engine
 DOCKER-com.sixt.bi.carfax
 DOCKER-com.sixt.bi.datashop_event_forwarder
 DOCKER-com.sixt.bi.person_deleted_to_dwh
@@ -193,6 +196,7 @@ DOCKER-com.sixt.rental.rental_agreement_restore
 DOCKER-com.sixt.rental_operations.basque_rental_transfer
 DOCKER-com.sixt.sales_performance.amadeus
 DOCKER-com.sixt.workflow.einvoicing
+FINAL-com.sixt.automic_event_engine
 FINAL-com.sixt.bi.carfax
 FINAL-com.sixt.bi.datashop_event_forwarder
 FINAL-com.sixt.bi.person_deleted_to_dwh
@@ -260,6 +264,7 @@ FINAL-com.sixt.sales_performance.amadeus
 FINAL-com.sixt.workflow.einvoicing
 Mother_of_solution_pipelines
 Pull_Oracle_Docker
+RELEASE-com.sixt.automic_event_engine
 RELEASE-com.sixt.bi.carfax
 RELEASE-com.sixt.bi.datashop_event_forwarder
 RELEASE-com.sixt.bi.person_deleted_to_dwh
@@ -325,6 +330,7 @@ RELEASE-com.sixt.rental.rental_agreement_restore
 RELEASE-com.sixt.rental_operations.basque_rental_transfer
 RELEASE-com.sixt.sales_performance.amadeus
 RELEASE-com.sixt.workflow.einvoicing
+SNAPSHOT-com.sixt.automic_event_engine
 SNAPSHOT-com.sixt.bi.carfax
 SNAPSHOT-com.sixt.bi.datashop_event_forwarder
 SNAPSHOT-com.sixt.bi.person_deleted_to_dwh

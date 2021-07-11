@@ -13,7 +13,8 @@ Plug 'dylanaraps/wal.vim'
 
 " better dir navigator
 " Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
-
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
 " better dir navigator
 Plug 'scrooloose/nerdtree'
 
@@ -102,8 +103,18 @@ Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
 Plug 'tpope/vim-surround'
 Plug 'mogelbrod/vim-jsonpath'
+
+Plug 'uzxmx/vim-widgets'
+
+" Arduino build and flash support
+Plug 'stevearc/vim-arduino'
+
+"Plug 'mfussenegger/nvim-jdtls'
+"Plug 'hrsh7th/nvim-compe'
+"Plug 'hrsh7th/vim-vsnip'
+"Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
-
+" 'coc-java', 'coc-java-debug',
 " Coc plugins
-let g:coc_global_extensions = ['coc-json', 'coc-css', 'coc-docker', 'coc-go', 'coc-gocode', 'coc-html', 'coc-java', 'coc-java-debug', 'coc-json', 'coc-markdownlint', 'coc-marketplace', 'coc-phpactor', 'coc-post', 'coc-python', 'coc-rls', 'coc-rust-analyzer', 'coc-sh' , 'coc-sql', 'coc-tsserver', 'coc-vimlsp',  'coc-xml', 'coc-yaml']
+ let g:coc_global_extensions = ['coc-json', 'coc-css', 'coc-docker', 'coc-go', 'coc-gocode', 'coc-html',  'coc-json', 'coc-markdownlint', 'coc-marketplace', 'coc-phpactor', 'coc-post', 'coc-python', 'coc-rls', 'coc-rust-analyzer', 'coc-sh' , 'coc-sql', 'coc-tsserver', 'coc-vimlsp',  'coc-xml', 'coc-yaml', 'coc-explorer']

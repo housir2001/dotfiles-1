@@ -1,11 +1,9 @@
-let g:ActualTicket = "INTS-5478"
+let g:ActualTicket = "INTS-5333"
 
 so ~/dotfiles/vim/.credencials
 so ~/dotfiles/vim/pluginsnew.vim
-so ~/dotfiles/vim/nvimLSP.vim
+"so ~/dotfiles/vim/nvimLSP.vim
 so ~/dotfiles/vim/functions.vim
-so ~/dotfiles/vim/github.vim
-so ~/dotfiles/vim/snippets.vim
 
 so ~/dotfiles/vim/standardvimrc
 

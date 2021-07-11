@@ -34,12 +34,23 @@ custom-commands:
       else # otherwise list issues for all project
           echo "\"project: ...\" configuration missing from .jira.d/config.yml"
       fi   
+
+  - name: cleanrun
+    help: display issues for active sprint
+    script: |-
+      if [ -n "$JIRA_PROJECT" ]; then
+          # if `project: ...` configured just list the issues for current project
+      {{jira}} list --template table3 --query "project = INTS AND type = Task and (status = Icebox   or status = \"To Do\" or status = \"In Progress\"  or status = \"Blocked\" or status = \"In Review\" or status = \"On Hold\"  )"
+      else
+          # otherwise list issues for all project
+          echo "\"project: ...\" configuration missing from .jira.d/config.yml"
+      fi   
   - name: sprint
     help: display issues for active sprint
     script: |-
       if [ -n "$JIRA_PROJECT" ]; then
           # if `project: ...` configured just list the issues for current project
-          {{jira}} list --template table2 --query "sprint in openSprints() and type != epic and resolution = unresolved and project=$JIRA_PROJECT ORDER BY rank asc, created"
+          {{jira}} list --template table3 --query "sprint in openSprints() and type != epic and project=$JIRA_PROJECT ORDER BY rank asc, created"
       else
           # otherwise list issues for all project
           echo "\"project: ...\" configuration missing from .jira.d/config.yml"
@@ -98,13 +109,23 @@ custom-commands:
     script: |-
       if [ -n "$JIRA_PROJECT" ]; then
           # if `project: ...` configured just list the issues for current project
-      {{jira}} list --template table2 --query "project = INTS AND type = Task and (status = Icebox   or status = \"To Do\" or status = \"In Progress\"  or status = \"Blocked\" or status = \"In Review\" or status = \"On Hold\"  )"
+      {{jira}} list --template table2 --query "project = INTS AND type = Task and (status = Icebox   or status = \"Backlog\" or status = \"In Progress\"  or status = \"Blocked\" or status = \"In Review\" or status = \"On Hold\"  )"
+      else
+          # otherwise list issues for all project
+          echo "\"project: ...\" configuration missing from .jira.d/config.yml"
+      fi   
+  - name: cleanplatform
+    help: display tasl for Platform team
+    script: |-
+      if [ -n "$JIRA_PROJECT" ]; then
+          # if `project: ...` configured just list the issues for current project
+      {{jira}} list --template table3 --query "project = \"Integration Platform\" and type = Task and (status = Icebox  or status = \"To Do\" )"
       else
           # otherwise list issues for all project
           echo "\"project: ...\" configuration missing from .jira.d/config.yml"
       fi   
   - name: platform
-    help: display stories for active sprint
+    help: display tasl for Platform team
     script: |-
       if [ -n "$JIRA_PROJECT" ]; then
           # if `project: ...` configured just list the issues for current project

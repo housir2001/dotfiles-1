@@ -492,6 +492,9 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             awful.widget.watch('bash -c "/home/maren/dotfiles/scripts/sysInfo.sh -watson"', 15),
+            wibox.widget.textbox("||"),
+            awful.widget.watch('bash -c "cat /home/maren/development/binance-bot/data/output"', 5),
+
             wibox.widget.imagebox("/home/maren/dotfiles/awesome/icons/display/1-l.png"),
             clock_widget,
             wibox.widget.imagebox("/home/maren/dotfiles/awesome/icons/display/1-r.png"),
@@ -627,7 +630,7 @@ globalkeys = gears.table.join(
 
   awful.key({ modkey }, "d",
     function ()
-      awful.util.spawn("rofi -combi-modi window#run#ssh -show combi -modi combi -theme ~/dotfiles/i3/rofi.rasi")
+      awful.util.spawn("rofi -show combi -modi combi -window-thumbnail -theme ~/dotfiles/i3/rofi.rasi")
   end,
               {description = "run prompt", group = "launcher"}),
 
@@ -837,8 +840,12 @@ awful.rules.rules = {
 
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
+     { rule = { class = "qutebrowser" },
+       properties = { screen = 1, tag = "2" } },
+{ rule = { class = "microsoft teams - insiders" },
+properties = { screen = 1, tag = "9" } },
+{ rule = { class = "Microsoft Teams - Insiders" },
+properties = { screen = 1, tag = "9" } },
 }
 -- }}}
 

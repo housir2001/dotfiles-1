@@ -7,6 +7,8 @@ fqsn|/home/maren/dotfiles/scripts/copyFqsn.sh
 keyboard activate|/home/maren/dotfiles/scripts/keyboardSwitch.sh true
 keyboard deaktivate|/home/maren/dotfiles/scripts/keyboardSwitch.sh false
 light|/home/maren/dotfiles/i3/script/themeswitcher.sh -l
+tuser|/home/maren/dotfiles/scripts/user.sh --type
+user|/home/maren/dotfiles/scripts/user.sh
 pass|/home/maren/dotfiles/scripts/passScript.sh
 queue|/home/maren/dotfiles/scripts/copyErrorQueue.sh
 stream|/home/maren/dotfiles/scripts/openStream.sh

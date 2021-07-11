@@ -127,8 +127,8 @@ hi MatchParen cterm=none ctermbg=green ctermfg=blue
 "highlight PmenuSbar ctermbg=black guibg=bg ctermfg=1
 "highlight PmenuSel ctermfg=black ctermbg=1 guibg=black
 set fillchars+=vert:│
-"set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ 12
-set guifont=Material\ Design\ Icons\ 15
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ 12
+"set guifont=Material\ Design\ Icons\ 15
 set encoding=UTF-8
 
 let g:rust_use_custom_ctags_defs = 0  " if using rust.vim
@@ -201,4 +201,12 @@ let g:syntastic_java_checkers = ['checkstyle']
 let g:syntastic_java_checkstyle_classpath = '~/nvim/libs/checkstyle-8.36.2-all.jar'
 let g:syntastic_java_checkstyle_conf_file = '~/development/platform.utils.java-common-env/eclipse-java-google-style-adopted.xml'
 
-set guifont=DroidSansMono\ Nerd\ Font\ 30
+" set guifont=DroidSansMono\ Nerd\ Font\ 30
+
+" oracle://TALEND_INT:talend@sxbi-d01.sixt.de/sxbidev_rw.sixt.de
+let g:dbs = {
+\ 'dev': 'oracle://TALEND_INT:talend@sxbi-d01.sixt.de/sxbidev_rw.sixt.de',
+\ 'bot': 'sqlite:/home/maren/development/binance-bot/data',
+\ 'mediamate': 'sqlite:/home/maren/development/rust/mpv/db/restmpv.db',
+\ }
+

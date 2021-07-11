@@ -65,6 +65,32 @@ function! RunMvnTest()
     normal! G
 endfunction
 
+
+function! DecryptMessage() 
+    let selection = Selection()
+    :execute "!{bash ~/dotfiles/scripts/decryptMessage.sh '".selection. "'}"
+    let output = system("cat /tmp/decryptMessage")
+    "bd! __Potion_Message__
+    "split __Potion_Message__
+    "normal! ggdG
+    call append(line('.'), split("++++++++++++++++++++++++++", '\n'))
+    call append(line('.'), split(output, '\n'))
+    call append(line('.'), split(" ", '\n'))
+    call append(line('.'), split(selection, '\n'))
+    call append(line('.'), split("++++++++++++++++++++++++++", '\n'))
+
+endfunction
+
+function! OpenLogFile(classname)
+    bd! __Potion_Logs__
+    split __Potion_Logs__
+    normal! ggdG
+    :execute "silent !{bash ~/dotfiles/scripts/openErrorLog.sh ".a:classname. "}"
+    :r /tmp/buildOut
+    normal! G
+endfunction
+
+
 function! RunMvnThisTest(file) 
 
     bd! __Potion_Bytecode__
@@ -74,7 +100,7 @@ function! RunMvnThisTest(file)
 
     if filereadable(expand("build.gradle"))
         :execute "silent !{bash ~/dotfiles/scripts/runGradleTest.sh ".a:file. "}"
-        :r /tmp/gradlebuild
+        :r /tmp/buildOut
     else
         :execute "silent !{bash ~/dotfiles/scripts/runTests.sh ".a:file. "}"
         :r /tmp/build

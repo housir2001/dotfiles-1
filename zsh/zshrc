@@ -3,6 +3,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 PATH=$HOME/.composer/vendor/bin:$PATH:
 PATH=$HOME/.local/bin:$PATH:
+PATH=$HOME/go/bin:$PATH:
 PATH=$HOME/.local/locations:$PATH:
 PATH=$HOME/node_modules/.bin:$PATH:
 PATH=$HOME/.cargo/bin:$PATH:
@@ -90,7 +91,6 @@ plugins=(
   git
   vi-mode
   tmux
-  mvn
   kubectl
   )
 
@@ -147,7 +147,8 @@ alias pro="zsh ~/.local/bin/openProject.sh"
 alias vpnaddress="hostname -i | cut -f5 -d' ' | c"
 alias tag="git branch | grep \* | cut -d ' ' -f2"
 alias gitremote="git remote -v | head -n1 | cut -f2 | sed s/\(fetch\)//g | c"
-
+ipaddrtemp=$(ip -j addr | jq '.[]  | select (.ifname == "ppp0").addr_info[].local')
+alias ipaddr="echo $(echo "maren@$ipaddrtemp\:support")"
 source ~/exportedVars
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 

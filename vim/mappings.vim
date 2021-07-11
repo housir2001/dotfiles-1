@@ -25,7 +25,7 @@ noremap <leader>f :FZF<CR>
 command! -bang ProjectFiles call fzf#vim#files('src', {'options': ['--layout=reverse', '--info=inline', '--preview', 'bat {}']}, <bang>0)
 noremap <leader>F :ProjectFiles<CR>
 inoremap <expr> <c-x><c-x> fzf#vim#complete({'down': '20%', 'source': 'cat ~/dotfiles/scripts/data/jbehaveAsserts'})
-
+inoremap <expr> <c-l><c-l> fzf#vim#complete({'left': '37%', 'source': '~/dotfiles/scripts/jiraCompletion.sh'})
 "
 " some fungitive shortings
 noremap <leader>ge :Gblame<CR>
@@ -50,6 +50,8 @@ noremap <leader>dgs :VimuxRunCommand "~/dotfiles/scripts/runGradleTestDebug.sh "
 noremap <leader>sgl :call Show_logs(expand("%"))<CR>
 noremap <leader>rgs :call RunGradleTest(expand("%"))<CR>
 noremap <leader>rgS :call RunAllGradleTest()<CR>
+noremap <leader>ol :call OpenLogFile(expand("<cWORD>"))<cr>
+vmap <leader>de :'<,'> call DecryptMessage()<CR>
 
 " calls mvn test and open the result in a buffer 
  noremap <leader>rS :call RunMvnTest()<CR>
@@ -153,13 +155,17 @@ nmap <leader>fj :%!python -m json.tool<CR>
 " format visual selected json
 vmap <leader>fj :'<,'> call BeautifyMvnLog()<CR>
 
+
 " extract a json from our log 
 nmap <leader>log kdggjdGdt{$dT}
 nmap <leader>lig dt{$dT}
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-nmap <leader>r :NERDTreeFind<CR> 
-map <leader>n :NERDTreeToggle<CR>
+"nmap <leader>r :NERDTreeFind<CR> 
+"map <leader>n :NERDTreeToggle<CR>
+
+map <leader>n :CocCommand explorer<CR>
+
 
 " some yanking register stuff
 vnoremap  <leader>y  "+y
@@ -257,7 +263,7 @@ map <leader>1 "ayiW
 map <leader>2 "syiW
 map <leader>3 "qyiW
 
-" past register a s or q
+" paste register a s or q
 map <leader>p1 "ap
 map <leader>p2 "sp
 map <leader>p3 "qp

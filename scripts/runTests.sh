@@ -8,5 +8,5 @@ len=${#pathArray[@]};
 file=$( echo ${pathArray[len-1]} | cut -d'.' -f1 )
 filename=${pathArray[len-3]}.${pathArray[len-2]}.$file
 echo "RUN mvn test --offline -Dtest=$filename"
-mvn test --offline -Dtest=$filename > /tmp/build
+mvn test -Dtest=$filename > /tmp/build
 
